@@ -68,10 +68,10 @@
     <option name="minorVersion" value="1.4" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2k2HeuyFI9q0R7VvufEWd2Bb5NX" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -86,7 +86,7 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/WongyuK/Documents/GitHub/CarHardkeyProject/test.c",
+    "last_opened_file_path": "C:/Users/WongyuK/Documents/GitHub/CarHardkeyProject/main.c",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -117,8 +117,8 @@
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CarHardkeyProject" TARGET_NAME="test.c" CONFIG_NAME="test">
-      <option name="sourceFile" value="C:\Users\WongyuK\Documents\GitHub\CarHardkeyProject\test.c" />
+    <configuration name="test" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CarHardkeyProject" TARGET_NAME="main.c" CONFIG_NAME="test">
+      <option name="sourceFile" value="C:\Users\WongyuK\Documents\GitHub\CarHardkeyProject\main.c" />
       <method v="2">
         <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
@@ -138,7 +138,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1722474850988</updated>
-      <workItem from="1722474852687" duration="8352000" />
+      <workItem from="1722474852687" duration="8536000" />
     </task>
     <servers />
   </component>
