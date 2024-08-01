@@ -14,11 +14,18 @@ void initializeObservers() {
 
 void registerHandler(HardKey hardkey, Handler handler) {
 
-    // Dynamic space allocation for new observer processing
     Observer *newObserver = (Observer*)malloc(sizeof(Observer));
-    newObserver -> handler = handler;
-    newObserver -> next = observer[hardkey];
-    observer[hardkey] = newObserver;
+    newObserver->handler = handler;
+    newObserver->next = NULL;
+    if (observer[hardkey] == NULL) {
+        observer[hardkey] = newObserver;
+    } else {
+        Observer *temp = observer[hardkey];
+        while (temp->next) {
+            temp = temp->next;
+        }
+        temp->next = newObserver;
+    }
 
 }
 
