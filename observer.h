@@ -64,6 +64,8 @@ typedef struct Observer {
     struct Observer *next;
 } Observer;
 
+extern Observer *observer[NUM_KEYS];
+
 void registerHandler(HardKey key, Handler handler);
 void unregisterHandler(HardKey key, Handler handler);
 void notifyHandlers(HardKey key);

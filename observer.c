@@ -9,7 +9,7 @@ void initializeObservers() {
     for (int i = 0; i < NUM_KEYS; i++) {
         observer[i] = NULL;
     }
-    printf("initialize success");
+    printf("initialize success\n");
 }
 
 void registerHandler(HardKey hardkey, Handler handler) {
