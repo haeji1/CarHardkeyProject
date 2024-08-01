@@ -48,5 +48,3 @@ void notifyHandlers(HardKey hardKey) {
 void handlerEvent(HardKey hardKey) {
     notifyHandlers(hardKey);
 }
-
-
