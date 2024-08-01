@@ -9,13 +9,14 @@ void initializeObservers() {
     for (int i = 0; i < NUM_KEYS; i++) {
         observer[i] = NULL;
     }
+    printf("initialize success");
 }
 
 void registerHandler(HardKey hardkey, Handler handler) {
 
     // Dynamic space allocation for new observer processing
     Observer *newObserver = (Observer*)malloc(sizeof(Observer));
-    newObserver -> Handler = handler;
+    newObserver -> handler = handler;
     newObserver -> next = observer[hardkey];
     observer[hardkey] = newObserver;
 
@@ -25,7 +26,7 @@ void registerHandler(HardKey hardkey, Handler handler) {
 void unregisterHandler(HardKey hardKey, Handler handler) {
     Observer **now = &observer[hardKey];
     while (*now) {
-        if ((*now) -> Handler == handler) {
+        if ((*now) -> handler == handler) {
             Observer* del = *now;
             *now = (*now) -> next;
             free(del);
@@ -39,7 +40,7 @@ void unregisterHandler(HardKey hardKey, Handler handler) {
 void notifyHandlers(HardKey hardKey) {
     Observer *now = observer[hardKey];
     while (now) {
-        now -> Handler();
+        now -> handler();
         now = now -> next;
     }
 }

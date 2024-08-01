@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include "observer.h"
 
 int main(){
-
-    printf("Hello World!");
+    initializeObservers();
     return 0;
 }

@@ -60,7 +60,7 @@ typedef void (*Handler)(void);
 
 // To connect observers, the address of the next observer must be declared together.
 typedef struct Observer {
-    Handler Handler;
+    Handler handler;
     struct Observer *next;
 } Observer;
 

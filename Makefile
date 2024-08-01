@@ -1,8 +1,11 @@
-	all:
-		gcc -o main main.c
-		./main
-		./observer
+all: main.exe
+	./main.exe
 
+main.exe: main.o observer.o
+	gcc -o main.exe main.o observer.o
 
-	run:
-		./main
+main.o: main.c observer.h
+	gcc -c main.c
+
+observer.o: observer.c observer.h
+	gcc -c observer.c
