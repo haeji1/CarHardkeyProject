@@ -159,8 +159,6 @@ void handleTrunkOperations() {
 }
 
 int main() {
-    char command[50];
-int main() {
     char input[10];
     int ignitionStarted = 0;
     int selection;
