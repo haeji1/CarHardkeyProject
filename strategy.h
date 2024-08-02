@@ -11,6 +11,12 @@ typedef enum {
     ENGAGED
 } LockState;
 
+typedef enum {
+    quickRoute,
+ConvenientRoute,
+MinimumFareRoute
+} NavigationRoute;
+
 void engageLock();
 void disengageLock();
 LockState getLockState();
@@ -18,5 +24,9 @@ LockState getLockState();
 void activateDefrost();
 void deactivateDefrost();
 DefrostState getDefrostState();
+
+void Activatenavigation();
+void Disablenavigation();
+NavigationRoute getNavigationRoutetime();
 
 #endif // STRATEGY_H
