@@ -4,38 +4,39 @@
 #include "display.h"
 #include "observer.h"
 #include "horn.h"
+#include "headlights.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
     printf("1. HORN\n");
     printf("2. HEADLIGHTS\n");
-    printf("3. RADIO\n");
-    printf("4. EXIT\n");
+    printf("3. TURN_SIGNALS\n");
+    printf("4. WINDSHIELD_WIPERS\n");
+    printf("5. HAZARD_LIGHTS\n");
+    printf("6. CRUISE_CONTROL\n");
+    printf("7. RADIO_VOLUME\n");
+    printf("8. RADIO_TUNING\n");
+    printf("50. EXIT\n");
 }
 
 void handleHornCommands() {
-    char input[10];
-    printf("Enter HORN command (HORN_ON/HORN_OFF): ");
-    if (scanf("%9s", input) != 1) {
-        perror("scanf failed");
-        exit(EXIT_FAILURE);
-    }
+    handlerEvent(HORN);
+}
 
-    if (strcmp(input, "HORN_ON") == 0) {
-        notifyHandlers(HORN); // Handle the HORN ON event
-    } else if (strcmp(input, "HORN_OFF") == 0) {
-        handleHornOff(); // Handle the HORN OFF event
-    } else {
-        printf("Unknown HORN command.\n");
-    }
+void handleHeadlightsCommands() {
+
+    handlerEvent(HEADLIGHTS);
+    //unregisterHandler(HEADLIGHTS);
+
 }
 
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();
+    initializeHeadlightsHandlers();
 }
 
 void cleanupFeatureHandlers() {
     // Unregister handlers for various features
-    unregisterHandler(HORN, handleHornOff);
+    unregisterHandler(HORN, handleHorn);
 }

@@ -1,3 +1,2 @@
 void initializeHornHandlers();
-void handleHornOn();
-void handleHornOff();
+void handleHorn();
