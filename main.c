@@ -53,13 +53,13 @@ int main() {
             } else if(selection == 11) {
                 handleClimateTempCommands();
             } else if (selection == 12) {
-
+                handleClimateFanCommands();
             } else if(selection == 13) {
-
+                handleClimateAirflowCommands();
             } else if (selection == 14) {
-
+                handleDefrostCommands();
             } else if(selection == 15) {
-
+                handlePowerWindowsCommands();
             } else if (selection == 16) {
 
             } else if(selection == 17) {
