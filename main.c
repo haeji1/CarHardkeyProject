@@ -48,9 +48,29 @@ int main() {
                 handleHornCommands();
             } else if (selection == 2) {
                 //
-            } else if (selection == 3) {
-                //
-            } else if (selection == 4) {
+            } else if (selection == 10) {
+                handleRadioSourceCommands();
+            } else if(selection == 11) {
+                handleClimateTempCommands();
+            } else if (selection == 12) {
+
+            } else if(selection == 13) {
+
+            } else if (selection == 14) {
+
+            } else if(selection == 15) {
+
+            } else if (selection == 16) {
+
+            } else if(selection == 17) {
+
+            } else if (selection == 18) {
+
+            } else if(selection == 19) {
+
+            }
+
+            else if (selection == 50) {
                 break; // Exit the program
             } else {
                 printf("Invalid selection. Please try again.\n");

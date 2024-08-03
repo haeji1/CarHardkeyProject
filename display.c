@@ -4,35 +4,42 @@
 #include "display.h"
 #include "observer.h"
 #include "horn.h"
+#include "RadioSource.h"
+#include "ClimateTemp.h"
+
 
 void displayMenu() {
     printf("\nAvailable features:\n");
     printf("1. HORN\n");
     printf("2. HEADLIGHTS\n");
-    printf("3. RADIO\n");
-    printf("4. EXIT\n");
+    printf("10. RADIO\n");
+    printf("11. ClimateTemp\n");
+    printf("50. EXIT\n");
 }
 
 void handleHornCommands() {
-    char input[10];
-    printf("Enter HORN command (HORN_ON/HORN_OFF): ");
-    if (scanf("%9s", input) != 1) {
-        perror("scanf failed");
-        exit(EXIT_FAILURE);
-    }
-
-    if (strcmp(input, "HORN_ON") == 0) {
-        notifyHandlers(HORN); // Handle the HORN ON event
-    } else if (strcmp(input, "HORN_OFF") == 0) {
-        handleHornOff(); // Handle the HORN OFF event
-    } else {
-        printf("Unknown HORN command.\n");
-    }
+    handlerEvent(HORN);
 }
+
+
+// 라디오
+void handleRadioSourceCommands() {
+    handlerEvent(RADIO_SOURCE);
+
+}
+// 기후 체인지
+void handleClimateTempCommands() {
+    handlerEvent(CLIMATE_TEMP);
+
+}
+
 
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();
+    initializeRadioSourceHandlers();
+    initializeClimateTempHandlers();
+
 }
 
 void cleanupFeatureHandlers() {
