@@ -50,7 +50,7 @@ int main() {
             } else if (selection == 2) {
                 handleHeadlightsCommands();
             } else if (selection == 3) {
-                //handleTurnSignalsCommands();
+                handleTurnSignalsCommands();
             } else if (selection == 4) {
                 //handleWindshieldWipersCommands();
             } else if (selection == 5) {

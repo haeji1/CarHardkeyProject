@@ -1,10 +1,10 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o headlights.o display.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o display.o
+main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o display.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o display.o
 
-main.o: main.c observer.h ignition.h horn.h headlights.h display.h
+main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h display.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -21,3 +21,6 @@ horn.o: horn.c observer.h horn.h
 
 headlights.o: headlights.c observer.h headlights.h
 	gcc -c headlights.c
+
+turnsignals.o: turnsignals.c observer.h turnsignals.h
+	gcc -c turnsignals.c

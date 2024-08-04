@@ -30,10 +30,17 @@ void handleHeadlightsCommands() {
 
 }
 
+void handleTurnSignalsCommands() {
+
+    handlerEvent(TURN_SIGNALS);
+
+}
+
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();
     initializeHeadlightsHandlers();
+    initializeTurnSignalsHandlers();
 }
 
 void cleanupFeatureHandlers() {
