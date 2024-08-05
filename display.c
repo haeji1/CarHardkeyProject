@@ -36,6 +36,26 @@ void handleTurnSignalsCommands() {
 
 }
 
+void handleWindshieldWipersCommands(){
+    handlerEvent(WINDSHIELD_WIPERS);
+}
+
+void handleHazardLightsCommands(){
+    handlerEvent(HAZARD_LIGHTS);
+}
+
+void handleCruiseControlCommands(){
+    handlerEvent(CRUISE_CONTROL);
+}
+
+void handleRadioVolumeCommands(){
+    handlerEvent(RADIO_VOLUME);
+}
+
+void handleRadioTuningCommands(){
+    handlerEvent(RADIO_TUNING);
+}
+
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();

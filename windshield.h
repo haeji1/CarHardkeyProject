@@ -1,0 +1,2 @@
+void initializeWindshieldWipersHandlers();
+void handleWindshieldWipers();

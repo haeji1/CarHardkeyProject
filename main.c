@@ -52,15 +52,15 @@ int main() {
             } else if (selection == 3) {
                 handleTurnSignalsCommands();
             } else if (selection == 4) {
-                //handleWindshieldWipersCommands();
+                handleWindshieldWipersCommands();
             } else if (selection == 5) {
-                //handleHazardLightsCommands();
+                handleHazardLightsCommands();
             } else if (selection == 6) {
-                //handleCruiseControlCommands();
+                handleCruiseControlCommands();
             } else if (selection == 7) {
-                //handleRadioVolumeCommands();
+                handleRadioVolumeCommands();
             } else if (selection == 8) {
-                //handleRadioTuningCommands();
+                handleRadioTuningCommands();
             } else if (selection == 50) {
                 break; // Exit the program
             } else {
