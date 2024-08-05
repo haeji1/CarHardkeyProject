@@ -8,6 +8,7 @@
 #include "turnsignals.h"
 #include "windshield.h"
 #include "hazard.h"
+#include "cruise.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -62,8 +63,11 @@ void handleRadioTuningCommands(){
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();
-    //initializeHeadlightsHandlers();
-    //initializeTurnSignalsHandlers();
+    initializeHeadlightsHandlers();
+    initializeTurnSignalsHandlers();
+    initializeWindshieldWipersHandlers();
+    initializeHazardLightsHandlers();
+    initializeCruiseControlHandlers();
 }
 
 void cleanupFeatureHandlers() {

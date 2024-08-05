@@ -1,10 +1,10 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o display.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o display.o
+main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o display.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o display.o
 
-main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h display.h
+main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h cruise.h display.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -30,3 +30,6 @@ windshield.o: windshield.c observer.h windshield.h
 
 hazard.o: hazard.c observer.h hazard.h
 	gcc -c hazard.c
+
+cruise.o: cruise.c observer.h cruise.h
+	gcc -c cruise.c
