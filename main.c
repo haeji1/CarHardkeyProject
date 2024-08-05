@@ -26,7 +26,7 @@ int main() {
             if (strcmp(input, "ON") == 0) {
                 notifyHandlers(IGNITION);
                 //notifyHandlers(HORN);
-                handlerEvent(RADIO_SOURCE);
+                //handlerEvent(RADIO_SOURCE);
                 // minseokK 9~19 NotifyHandler
                 // notifyHandlers(RADIO_SOURCE);
                 // notifyHandlers(CLIMATE_TEMP);

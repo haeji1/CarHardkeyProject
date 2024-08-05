@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include "observer.h"
 #include "RadioSource.h"
-#include "display.h"
 #include <unistd.h>
 
 // 인터페이스
@@ -80,9 +79,6 @@ void handleRadioSource(){
 
 }
 
-void showDisplay() {
-    displayMenu();
-}
 
 void initializeRadioSourceHandlers() {
     registerHandler(RADIO_SOURCE, handleRadioSource);
