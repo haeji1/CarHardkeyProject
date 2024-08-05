@@ -23,7 +23,6 @@ void displayMenu() {
     printf("39. \n");
 
 
-
 }
 
 void handleHornCommands() {

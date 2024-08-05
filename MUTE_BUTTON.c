@@ -12,5 +12,5 @@ void muteButtonHandler() {
 
 
     }
-    sleep(3000);
+    sleep(3);
 }
