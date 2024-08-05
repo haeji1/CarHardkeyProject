@@ -6,6 +6,7 @@
 #include "horn.h"
 #include "sunroof.h"
 #include "drive.h"
+#include "steering.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -15,6 +16,7 @@ void displayMenu() {
     printf("20. SUNROOF\n");
     printf("21. TRUNK\n");
     printf("24. DRIVEMODE\n");
+    printf("28. STEERINGADJUST\n");
     printf("4. EXIT\n");
 }
 
@@ -40,6 +42,7 @@ void initializeFeatureHandlers() {
     initializeHornHandlers();
     initializeSunroofHandlers();
     initializeDriveModeHandlers();
+    initializeSteeringAdjustHandlers();
 }
 
 void cleanupFeatureHandlers() {

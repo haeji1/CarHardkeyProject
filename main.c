@@ -5,6 +5,7 @@
 #include "display.h"
 #include "sunroof.h"
 #include "drive.h"
+#include "steering.h"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -71,6 +72,14 @@ int main() {
                     continue;
                 }
                 executeDriveModeOperation(driveModeOperation);
+            } else if (selection == 28) {
+                printf("Select steering adjust operation (0: Up, 1: Down, 2: In, 3: Out):");
+                int steeringAjustOperation;
+                if (scanf("%d", &steeringAjustOperation) != 1 || steeringAjustOperation < 0 || steeringAjustOperation > 2) {
+                    printf("Invalid steering adjust. Please enter 0, 1, 2 or 3.\n");
+                    continue;
+                }
+                executeSteeringAdjustOperation(steeringAjustOperation);
             }
             else if (selection == 4) {
                 break; // Exit the program

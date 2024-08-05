@@ -22,7 +22,7 @@ void executeDriveModeOperation(int operation) {
     if (operation >= 0 && operation < 3) {
         operations[operation]();
     } else {
-        printf("Invalid sunroof operation.\n");
+        printf("Invalid DriveMode.\n");
     }
 }
 
