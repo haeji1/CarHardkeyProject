@@ -4,7 +4,7 @@
 typedef enum {
     OFF,
     ON
-} DefrostState;
+} DefrostState, ParkingAssistState, LaneSupportState, HillDescentControlState;
 
 typedef enum {
     DISENGAGED,
@@ -12,10 +12,21 @@ typedef enum {
 } LockState;
 
 typedef enum {
-    quickRoute,
-ConvenientRoute,
-MinimumFareRoute
+    SILENT,
+    VIBRATE,
+    RING
+} ResponseMode;
+
+typedef enum {
+    QUICK_ROUTE,
+    CONVENIENT_ROUTE,
+    MINIMUM_FARE_ROUTE
 } NavigationRoute;
+
+typedef struct {
+    double latitude;
+    double longitude;
+} Coordinates;
 
 void engageLock();
 void disengageLock();
@@ -25,8 +36,28 @@ void activateDefrost();
 void deactivateDefrost();
 DefrostState getDefrostState();
 
-void Activatenavigation();
-void Disablenavigation();
-NavigationRoute getNavigationRoutetime();
+void activateParkingAssist();
+void deactivateParkingAssist();
+ParkingAssistState getParkingAssistState();
+
+void activateLaneSupport();
+void deactivateLaneSupport();
+LaneSupportState getLaneSupportState();
+
+void activateHillDescentControl();
+void deactivateHillDescentControl();
+HillDescentControlState getHillDescentControlState();
+
+typedef void (*PhoneResponseStrategy)();
+void setPhoneResponseStrategy(PhoneResponseStrategy strategy);
+void respondToCall();
+
+typedef void (*NavigationStrategy)(Coordinates destination);
+void setNavigationStrategy(NavigationStrategy strategy);
+void navigateTo(Coordinates destination);
+
+void quickRouteStrategy(Coordinates destination);
+void convenientRouteStrategy(Coordinates destination);
+void minimumFareRouteStrategy(Coordinates destination);
 
 #endif // STRATEGY_H
