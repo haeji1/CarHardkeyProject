@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "observer.h"
 #include "ignition.h"
-
+#include <unistd.h>
 static int ignitionState = 0; // 0 for OFF, 1 for ON
 
 void handleIgnition(void) {
@@ -11,6 +11,7 @@ void handleIgnition(void) {
         ignitionState = 1;
         printf("Engine started.\n");
     }
+
 }
 
 void handleShutdownEvent(void) {
@@ -20,6 +21,7 @@ void handleShutdownEvent(void) {
         ignitionState = 0;
         printf("Engine stopped.\n");
     }
+
 }
 
 void initializeIgnitionHandlers() {

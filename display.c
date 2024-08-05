@@ -16,7 +16,7 @@ void displayMenu() {
     printf("\nAvailable features:\n");
     printf("1. HORN\n");
     printf("2. HEADLIGHTS\n");
-    printf("10. RADIO\n");
+    printf("10. RADIO_SOURCE\n");
     printf("11. ClimateTemp\n");
     printf("12. ClimateFan\n");
     printf("13. CLIMATE_AIRFLOW\n");
@@ -78,5 +78,5 @@ void initializeFeatureHandlers() {
 
 void cleanupFeatureHandlers() {
     // Unregister handlers for various features
-    unregisterHandler(HORN, handleHornOff);
+    unregisterHandler(HORN, handleHorn);
 }

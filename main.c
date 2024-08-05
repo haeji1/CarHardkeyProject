@@ -9,7 +9,7 @@ void cleanupFeatureHandlers();
 
 int main() {
     char input[10];
-    int ignitionStarted = 0; 
+    int ignitionStarted = 0;
     int selection;
 
     initializeObservers();
@@ -25,6 +25,20 @@ int main() {
 
             if (strcmp(input, "ON") == 0) {
                 notifyHandlers(IGNITION);
+                //notifyHandlers(HORN);
+                handlerEvent(RADIO_SOURCE);
+                // minseokK 9~19 NotifyHandler
+                // notifyHandlers(RADIO_SOURCE);
+                // notifyHandlers(CLIMATE_TEMP);
+                // notifyHandlers(CLIMATE_FAN);
+                // notifyHandlers(CLIMATE_AIRFLOW);
+                // notifyHandlers(DEFROST);
+                // notifyHandlers(POWER_WINDOWS);
+                // notifyHandlers(WINDOW_LOCK);
+                // notifyHandlers(DOOR_LOCKS);
+                // notifyHandlers(MIRROR_ADJUST);
+                // notifyHandlers(SEAT_ADJUST);
+                //////////////////////////////
                 ignitionStarted = 1; // Set the ignition started flag
                 printf("Engine started. Select a feature using the menu.\n");
             } else if (strcmp(input, "OFF") == 0) {
@@ -43,7 +57,7 @@ int main() {
                 perror("scanf failed");
                 exit(EXIT_FAILURE);
             }
-            
+
             if (selection == 1) {
                 handleHornCommands();
             } else if (selection == 2) {

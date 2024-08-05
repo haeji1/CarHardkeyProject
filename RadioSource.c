@@ -5,10 +5,11 @@
 // Created by MinseokK on 24. 7. 31.
 //
 #include <stdio.h>
+#include <stdlib.h>
 #include "observer.h"
 #include "RadioSource.h"
 #include "display.h"
-
+#include <unistd.h>
 
 // 인터페이스
 //typedef void (*radio_source_function)();
@@ -26,6 +27,7 @@ void AM(void){
         sourceState = 0;
         printf("RadioSource Turned AM");
     }
+    sleep(3);
 }
 
 void FM(void){
@@ -36,6 +38,7 @@ void FM(void){
         sourceState = 1;
         printf("RadioSource Turned FM");
     }
+    sleep(3);
 }
 
 
@@ -47,11 +50,12 @@ void Bluetooth(void){
         sourceState = 2;
         printf("RadioSource Turned Bt");
     }
+    sleep(3);
 }
 
 
 // Context
-void handleRadioSource(void){
+void handleRadioSource(){
     int opt;
     printf(" == RadioSouce options == \n");
     printf("0. AM \n");
@@ -68,16 +72,18 @@ void handleRadioSource(void){
     }else if(opt == 2){
         Bluetooth();
     }else if(opt == 3){
-        //exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
     }else{
         printf("Unknown RadioSource command.\n");
     }
+
 
 }
 
 void showDisplay() {
     displayMenu();
 }
+
 void initializeRadioSourceHandlers() {
     registerHandler(RADIO_SOURCE, handleRadioSource);
 
