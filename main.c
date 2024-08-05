@@ -3,17 +3,11 @@
 #include <string.h>
 #include "observer.h"
 #include "display.h"
+#include "sunroof.h"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 
-void openSunroof() {
-    printf("Sunroof opened.\n");
-}
-
-void closeSunroof() {
-    printf("Sunroof closed.\n");
-}
 
 void trunkOpened() {
     printf("Trunk opened.\n");
@@ -21,141 +15,6 @@ void trunkOpened() {
 
 void trunkClosed() {
     printf("Trunk closed.\n");
-}
-
-void printWelcomeMenu() {
-    printf("=========Welcome to the Hardkey Project CLI===========\n");
-    printf("Available hard keys:\n");
-    printf("20. sunroof\n");
-    printf("21. trunk\n");
-    printf("3. exit\n");
-}
-
-void printOperationMenu() {
-    printf("\n");
-    printf("====================\n");
-    printf("Choose an operation:\n");
-    printf("1. register handler\n");
-    printf("2. unregister handler\n");
-    printf("3. notify\n");
-    printf("4. back\n");
-    printf("====================\n");
-}
-
-void printSunroofHandlerMenu() {
-    printf("\n");
-    printf("Choose a sunroof handler to register/unregister:\n");
-    printf("1. openSunroof\n");
-    printf("2. closeSunroof\n");
-    printf("3. back\n");
-}
-
-void printTrunkHandlerMenu() {
-    printf("\n");
-    printf("Choose a trunk handler to register/unregister:\n");
-    printf("1. trunkOpened\n");
-    printf("2. trunkClosed\n");
-    printf("3. back\n");
-}
-
-void handleSunroofOperations() {
-    char input[10];
-    int choice;
-    while (1) {
-        printOperationMenu();
-        printf("Enter your choice: ");
-        fgets(input, sizeof(input), stdin);
-        choice = atoi(input);
-
-        switch (choice) {
-            case 1:  // register handler
-                printSunroofHandlerMenu();
-                printf("Enter your choice: ");
-                fgets(input, sizeof(input), stdin);
-                choice = atoi(input);
-                if (choice == 1) {
-                    registerHandler(SUNROOF_CONTROL, openSunroof);
-                    printf("openSunroof handler registered.\n");
-                } else if (choice == 2) {
-                    registerHandler(SUNROOF_CONTROL, closeSunroof);
-                    printf("closeSunroof handler registered.\n");
-                }
-                break;
-            case 2:  // unregister handler
-                printSunroofHandlerMenu();
-                printf("Enter your choice: ");
-                fgets(input, sizeof(input), stdin);
-                choice = atoi(input);
-                if (choice == 20) {
-                    unregisterHandler(SUNROOF_CONTROL, openSunroof);
-                    printf("openSunroof handler unregistered.\n");
-                } else if (choice == 21) {
-                    unregisterHandler(SUNROOF_CONTROL, closeSunroof);
-                    printf("closeSunroof handler unregistered.\n");
-                }
-                break;
-            case 3:  // notify
-                if (observer[SUNROOF_CONTROL] == NULL) {
-                    printf("No handlers registered.\n");
-                } else {
-                    printf("====================\n");
-                    handlerEvent(SUNROOF_CONTROL);
-                    printf("====================\n");
-                }
-                break;
-            case 4:  // back
-                return;
-            default:
-                printf("Invalid choice. Please try again.\n");
-        }
-    }
-}
-
-void handleTrunkOperations() {
-    char input[10];
-    int choice;
-    while (1) {
-        printOperationMenu();
-        printf("Please select and enter numbers ");
-        fgets(input, sizeof(input), stdin);
-        choice = atoi(input);
-
-        switch (choice) {
-            case 1:  // register handler
-                printTrunkHandlerMenu();
-                printf("Enter your choice: ");
-                fgets(input, sizeof(input), stdin);
-                choice = atoi(input);
-                if (choice == 1) {
-                    registerHandler(TRUNK_RELEASE, trunkOpened);
-                    printf("trunkOpened handler registered.\n");
-                } else if (choice == 2) {
-                    registerHandler(TRUNK_RELEASE, trunkClosed);
-                    printf("trunkClosed handler registered.\n");
-                }
-                break;
-            case 2:  // unregister handler
-                printTrunkHandlerMenu();
-                printf("Enter your choice: ");
-                fgets(input, sizeof(input), stdin);
-                choice = atoi(input);
-                if (choice == 1) {
-                    unregisterHandler(TRUNK_RELEASE, trunkOpened);
-                    printf("trunkOpened handler unregistered.\n");
-                } else if (choice == 2) {
-                    unregisterHandler(TRUNK_RELEASE, trunkClosed);
-                    printf("trunkClosed handler unregistered.\n");
-                }
-                break;
-            case 3:  // notify
-                handlerEvent(TRUNK_RELEASE);
-                break;
-            case 4:  // back
-                return;
-            default:
-                printf("Invalid choice. Please try again.\n");
-        }
-    }
 }
 
 int main() {
@@ -201,7 +60,19 @@ int main() {
                 //
             } else if (selection == 3) {
                 //
-            } else if (selection == 4) {
+            } else if (selection == 20) {
+                // Execute sunroof operation based on strategy pattern
+                printf("Select sunroof operation (0: Open, 1: Close, 2: Tilt): ");
+                int sunroofOperation;
+                if (scanf("%d", &sunroofOperation) != 1 || sunroofOperation < 0 || sunroofOperation > 2) {
+                    printf("Invalid sunroof operation. Please enter 0, 1, or 2.\n");
+                    continue;
+                }
+                executeSunroofOperation(sunroofOperation);
+            } else if (selection == 21) {
+                // trunk
+            }
+            else if (selection == 4) {
                 break; // Exit the program
             } else {
                 printf("Invalid selection. Please try again.\n");
