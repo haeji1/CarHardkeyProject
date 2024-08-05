@@ -9,6 +9,7 @@
 #include "windshield.h"
 #include "hazard.h"
 #include "cruise.h"
+#include "radio.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -68,6 +69,7 @@ void initializeFeatureHandlers() {
     initializeWindshieldWipersHandlers();
     initializeHazardLightsHandlers();
     initializeCruiseControlHandlers();
+    initializeRadioHandlers();
 }
 
 void cleanupFeatureHandlers() {

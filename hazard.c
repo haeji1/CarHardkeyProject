@@ -13,7 +13,7 @@ void handleHazardLights(void) {
     int opt;
     printf(" == HAZARD_LIGHTS options == \n");
     printf("1. Off \n");
-    printf("2. ON \n");
+    printf("2. On \n");
     printf("4. EXIT\n");
 
     scanf("%d", &opt);
