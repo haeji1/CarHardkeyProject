@@ -3,17 +3,24 @@
 #include <string.h>
 #include "observer.h"
 #include "display.h"
+#include "VOICE_COMMAND.c"
+#include "MUTE_BUTTON.c"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 
 int main() {
+
     char input[10];
     int ignitionStarted = 0; 
     int selection;
 
     initializeObservers();
     initializeFeatureHandlers();
+
+    registerHandler(MUTE_BUTTON, muteButtonHandler);
+    registerHandler(VOICE_COMMAND, Voice_Command_toggle);
+
 
     while (1) {
         if(!ignitionStarted){
@@ -52,11 +59,44 @@ int main() {
                 //
             } else if (selection == 4) {
                 break; // Exit the program
-            } else {
+            }
+            else if(selection ==30) {
+                break;
+            }
+            else if(selection ==31){
+
+                break;
+            }
+            else if(selection ==32) {
+                handlerEvent(MUTE_BUTTON); // MUTE_BUTTON 이벤트를 처리하여 음성 상태 변경
+           }
+            else if(selection ==33) {
+                handlerEvent(VOICE_COMMAND); // MUTE_BUTTON 이벤트를 처리하여 음성 상태 변경
+            }
+            else if(selection ==34) {
+
+            }
+            else if(selection ==35) {
+
+            }
+            else if(selection ==36) {
+
+            }
+            else if(selection ==37) {
+
+
+            }
+            else if(selection ==38) {
+
+            }
+            else if(selection ==39) {
+
+            }else{
                 printf("Invalid selection. Please try again.\n");
             }
         }
     }
+
 
     cleanupFeatureHandlers();
 
