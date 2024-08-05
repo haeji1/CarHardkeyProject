@@ -13,15 +13,9 @@
 
 void displayMenu() {
     printf("\nAvailable features:\n");
-    printf("1. HORN\n");
-    printf("2. HEADLIGHTS\n");
-    printf("3. TURN_SIGNALS\n");
-    printf("4. WINDSHIELD_WIPERS\n");
-    printf("5. HAZARD_LIGHTS\n");
-    printf("6. CRUISE_CONTROL\n");
-    printf("7. RADIO_VOLUME\n");
-    printf("8. RADIO_TUNING\n");
-    printf("50. EXIT\n");
+    for(int i=1; i<NUM_KEYS; i++){
+        printf("%d. %s \n", i, getHardKeyName(i));
+    }
 }
 
 void handleCommands(int num){

@@ -2,7 +2,7 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
-#define NUM_KEYS 40
+#define NUM_KEYS 48
 
 typedef enum {
     IGNITION,            // Start/Stop engine
@@ -54,6 +54,9 @@ typedef enum {
     SEAT_HEATER,         // Activate seat heater (individual seat)
     SEAT_COOLER          // Activate seat cooler (individual seat)
 } HardKey;
+
+// Mapping each enum to string
+const char* getHardKeyName(HardKey key);
 
 // Declaration of Handler, a function pointer with no return value and no parameters
 typedef void (*Handler)(void);
