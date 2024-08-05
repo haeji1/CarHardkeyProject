@@ -45,27 +45,8 @@ int main() {
                 exit(EXIT_FAILURE);
             }
             
-            if (selection == 1) {
-                handleHornCommands();
-            } else if (selection == 2) {
-                handleHeadlightsCommands();
-            } else if (selection == 3) {
-                handleTurnSignalsCommands();
-            } else if (selection == 4) {
-                handleWindshieldWipersCommands();
-            } else if (selection == 5) {
-                handleHazardLightsCommands();
-            } else if (selection == 6) {
-                handleCruiseControlCommands();
-            } else if (selection == 7) {
-                handleRadioVolumeCommands();
-            } else if (selection == 8) {
-                handleRadioTuningCommands();
-            } else if (selection == 50) {
-                break; // Exit the program
-            } else {
-                printf("Invalid selection. Please try again.\n");
-            }
+            handleCommands(selection);
+
         }
     }
 

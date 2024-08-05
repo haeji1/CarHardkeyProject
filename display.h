@@ -1,4 +1,5 @@
 void displayMenu();
+void handleCommands(int num);
 void handleHornCommands();
 void handleHeadlightsCommands();
 void handleTurnSignalsCommands();
