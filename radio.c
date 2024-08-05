@@ -49,10 +49,17 @@ void handleRadioTuning(void) {
 
 void setVolume(){
 
-    printf("Enter radio volume : \n");
-    int volume;
-    scanf("%d", &volume);
-    radioVolume = volume;
+    int flag = 0;
+    while(!flag){
+        printf("Enter radio volume (1~100) : \n");
+        int volume;
+        scanf("%d", &volume);
+        radioVolume = volume;
+
+        if(radioVolume >= 1 && radioVolume <= 100) flag = 1;
+        
+        printf("Out of range.\n");
+    }
 
 }
 
