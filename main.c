@@ -31,7 +31,6 @@ int main() {
     //등록30~39
     registerHandler(MUTE_BUTTON, muteButtonHandler);//
     registerHandler(VOICE_COMMAND, Voice_Command_toggle);//
-    registerHandler(MUTE_BUTTON, muteButtonHandler);//
     registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
     registerHandler(REAR_DEFROST, handleDefrostCommand);//
     registerHandler(CHILD_LOCK, handleLockCommand);//

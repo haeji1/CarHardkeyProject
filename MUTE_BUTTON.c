@@ -10,7 +10,7 @@ void muteButtonHandler() {
     } else {
         printf("\nAudio system is now UNMUTED\n");
 
-    }
-    sleep(3); // 3초 대기
 
+    }
+    sleep(3000);
 }

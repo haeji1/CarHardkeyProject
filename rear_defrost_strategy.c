@@ -7,11 +7,13 @@ static DefrostState currentDefrostState = OFF;
 void activateDefrost() {
     currentDefrostState = ON;
     printf("Rear defrost activated.\n");
+    sleep(3000);
 }
 
 void deactivateDefrost() {
     currentDefrostState = OFF;
     printf("Rear defrost deactivated.\n");
+    sleep(3000);
 }
 
 DefrostState getDefrostState() {

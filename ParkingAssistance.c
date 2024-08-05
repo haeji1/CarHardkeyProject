@@ -7,12 +7,14 @@ static ParkingAssistState currentParkingAssistState = OFF;
 void activateParkingAssist() {
     currentParkingAssistState = ON;
     printf("Parking assist activated.\n");
+    sleep(3000);
 }
 
 // 주차 지원 기능을 비활성화하는 함수
 void deactivateParkingAssist() {
     currentParkingAssistState = OFF;
     printf("Parking assist deactivated.\n");
+    sleep(3000);
 }
 
 // 현재 주차 지원 상태를 반환하는 함수
