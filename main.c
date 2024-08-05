@@ -4,18 +4,10 @@
 #include "observer.h"
 #include "display.h"
 #include "sunroof.h"
+#include "drive.h"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
-
-
-void trunkOpened() {
-    printf("Trunk opened.\n");
-}
-
-void trunkClosed() {
-    printf("Trunk closed.\n");
-}
 
 int main() {
     char input[10];
@@ -71,6 +63,14 @@ int main() {
                 executeSunroofOperation(sunroofOperation);
             } else if (selection == 21) {
                 // trunk
+            } else if (selection == 24) {
+                printf("Select drivemode operation (0: Eco, 1: Sports, 2: Normal): ");
+                int driveModeOperation;
+                if (scanf("%d", &driveModeOperation) != 1 || driveModeOperation < 0 || driveModeOperation > 2) {
+                    printf("Invalid drive mode. Please enter 0, 1, or 2.\n");
+                    continue;
+                }
+                executeDriveModeOperation(driveModeOperation);
             }
             else if (selection == 4) {
                 break; // Exit the program
