@@ -60,6 +60,7 @@ void sunroofOperationHandler() {
         if (sunroofState != lastExecutedState) {
             lastExecutedState = sunroofState;
             executeSunroofOperation(sunroofState);
+            unregisterFunction(SUNROOF_CONTROL, sunroofOperationHandler);
         }
     } else {
         printf("Invalid sunroof state: %d\n", sunroofState);

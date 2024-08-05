@@ -3,7 +3,6 @@ all: main.exe
 
 main.exe: main.o observer.o ignition.o horn.o display.o sunroof.o drive.o
 	gcc -o main.exe main.o observer.o ignition.o horn.o display.o sunroof.o drive.o
-
 main.o: main.c observer.h ignition.h horn.h display.h sunroof.h drive.h
 	gcc -c main.c
 

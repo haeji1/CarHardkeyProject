@@ -68,6 +68,7 @@ extern Observer *observer[NUM_KEYS];
 
 void registerHandler(HardKey key, Handler handler);
 void unregisterHandler(HardKey key, Handler handler);
+void unregisterFunction(HardKey key, Handler handler);
 void notifyHandlers(HardKey key);
 void handlerEvent(HardKey key);
 void initializeObservers();

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <windows.h>
 #include "observer.h"
 #include "drive.h"
 
@@ -32,6 +33,8 @@ void ecoMode() {
         driveState = 0;
         printf("Setting eco mode.\n");
         handlerEvent(DRIVE_MODE);
+        // unregisterFunction(DRIVE_MODE, ecoMode);
+        unregisterHandler(DRIVE_MODE, ecoMode);
     }
 }
 
@@ -42,6 +45,8 @@ void sportsMode() {
         driveState = 1;
         printf("Setting sports mode.\n");
         handlerEvent(DRIVE_MODE);
+        // unregisterFunction(DRIVE_MODE, sportsMode);
+        unregisterHandler(DRIVE_MODE, sportsMode);
     }
 }
 
@@ -52,6 +57,8 @@ void normalMode() {
         driveState = 2;
         printf("Setting normal mode.\n");
         handlerEvent(DRIVE_MODE);
+        // unregisterFunction(DRIVE_MODE, normalMode);
+        unregisterHandler(DRIVE_MODE, normalMode);
     }
 }
 
@@ -60,6 +67,7 @@ void driveModeOperationHandler() {
         if (driveState != lastExecutedState) {
             lastExecutedState = driveState;
             executeDriveModeOperation(driveState);
+            // unregisterFunction(DRIVE_MODE, driveModeOperationHandler);
         }
     } else {
         printf("Invalid sunroof state: %d\n", driveState);

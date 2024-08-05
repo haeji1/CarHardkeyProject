@@ -1,3 +1,4 @@
+#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "observer.h"
@@ -26,21 +27,27 @@ void registerHandler(HardKey hardkey, Handler handler) {
         }
         temp->next = newObserver;
     }   
-
+    // printf("Registered handler at %p\n", (void*)handler);
 }
 
 // If there is the same handler for the input hardkey, the current observer is removed.
 void unregisterHandler(HardKey hardKey, Handler handler) {
     Observer **now = &observer[hardKey];
     while (*now) {
+        printf("=====");
+        printf("Checking handler at %p against %p\n", (void*)((*now)->handler), (void*)handler);
         if ((*now) -> handler == handler) {
+            printf("free[[[]]]");
             Observer* del = *now;
             *now = (*now) -> next;
             free(del);
+            del = NULL;
+            printf("success unregister\n");
             return; 
         }
         now = &(*now) -> next;
     }
+    
 }
 
 // Calls all handlers registered with the input hardkey
@@ -56,4 +63,12 @@ void notifyHandlers(HardKey hardKey) {
 void handlerEvent(HardKey hardKey) {
     printf("status changed\n");
     notifyHandlers(hardKey);
+}
+
+void unregisterFunction(HardKey hardKey, Handler handler) {
+    Sleep(10000);
+    printf("10 seconds\n");
+    printf("unregister\n");
+    unregisterHandler(hardKey, handler);
+    printf("menu\n");
 }
