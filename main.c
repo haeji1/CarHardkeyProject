@@ -3,8 +3,17 @@
 #include <string.h>
 #include "observer.h"
 #include "display.h"
+
+
+
+// 30~39번 입니다
 #include "VOICE_COMMAND.c"
 #include "MUTE_BUTTON.c"
+#include "NAVIGATION.c"
+#include "lock_strategy.c"
+#include "rear_defrost_strategy.c"
+
+
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -18,6 +27,7 @@ int main() {
     initializeObservers();
     initializeFeatureHandlers();
 
+    //등록하는데
     registerHandler(MUTE_BUTTON, muteButtonHandler);
     registerHandler(VOICE_COMMAND, Voice_Command_toggle);
 
@@ -61,20 +71,18 @@ int main() {
                 break; // Exit the program
             }
             else if(selection ==30) {
-                break;
+                handleDefrostCommand();
             }
             else if(selection ==31){
-
-                break;
+                handleLockCommand();
             }
             else if(selection ==32) {
                 handlerEvent(MUTE_BUTTON); // MUTE_BUTTON 이벤트를 처리하여 음성 상태 변경
            }
             else if(selection ==33) {
-                handlerEvent(VOICE_COMMAND); // MUTE_BUTTON 이벤트를 처리하여 음성 상태 변경
+                handlerEvent(VOICE_COMMAND); // VOICE_COMMAND 이벤트를 처리하여 음성 상태 변경
             }
             else if(selection ==34) {
-
             }
             else if(selection ==35) {
 

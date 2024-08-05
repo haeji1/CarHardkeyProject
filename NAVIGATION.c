@@ -1,11 +1,3 @@
 #include "strategy.h"
+#include <stdio.h>
 
-
-void Activatenavigation(){
-
-
-}
-void Disablenavigation(){
-
-
-}

@@ -37,7 +37,7 @@ void unregisterHandler(HardKey hardKey, Handler handler) {
             Observer* del = *now;
             *now = (*now) -> next;
             free(del);
-            return; 
+            return;
         }
         now = &(*now) -> next;
     }

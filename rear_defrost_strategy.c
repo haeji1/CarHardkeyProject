@@ -17,3 +17,16 @@ void deactivateDefrost() {
 DefrostState getDefrostState() {
     return currentDefrostState;
 }
+
+void handleDefrostCommand() {
+    char input[10];
+    printf("Enter command (ON/OFF) to control rear defrost or 'exit' to quit:\n");
+        printf("Current state: %s\n", getDefrostState() == ON ? "Activated" : "Deactivated");
+        scanf("%s", input);
+
+        if (strcmp(input, "ON") == 0) {
+            activateDefrost();
+        } else if (strcmp(input, "OFF") == 0) {
+            deactivateDefrost();
+    }
+}
