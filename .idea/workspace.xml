@@ -16,7 +16,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ea4b835-55d9-4142-b58a-ed053392cac2" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/HILL_DESCENT.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MUTE_BUTTON.c" beforeDir="false" afterPath="$PROJECT_DIR$/MUTE_BUTTON.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ParkingAssistance.c" beforeDir="false" afterPath="$PROJECT_DIR$/ParkingAssistance.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +91,7 @@
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;wongyuk&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;wongyuk(2)&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/WongyuK/Documents/GitHub/CarHardkeyProject/main.c&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -143,12 +146,27 @@
       <option name="presentableId" value="Default" />
       <updated>1722474850988</updated>
       <workItem from="1722474852687" duration="8536000" />
-      <workItem from="1722557777545" duration="8746000" />
+      <workItem from="1722557777545" duration="15297000" />
+      <workItem from="1722815358090" duration="532000" />
+      <workItem from="1722815903369" duration="17794000" />
+      <workItem from="1722838114184" duration="301000" />
+      <workItem from="1722838429412" duration="7668000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/NAVIGATION.c</url>
+          <line>22</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
