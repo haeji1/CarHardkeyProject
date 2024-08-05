@@ -11,16 +11,16 @@ void displayMenu() {
     printf("2. HEADLIGHTS\n");
     printf("3. RADIO\n");
     printf("4. EXIT\n");
-    printf("3O. \n");
-    printf("31. \n");
-    printf("32. \n");
-    printf("33. \n");
-    printf("34. \n");
-    printf("35. \n");
-    printf("36. \n");
-    printf("37. \n");
-    printf("38. \n");
-    printf("39. \n");
+    printf("3O. REAR_DEFROST \n");
+    printf("31. CHILD_LOCK\n");
+    printf("32. MUTE_BUTTON\n");
+    printf("33. VOICE_COMMAND\n");
+    printf("34. PHONE_ANSWER\n");
+    printf("35. PHONE_END_CALL\n");
+    printf("36. NAVIGATION\n");
+    printf("37. LANE_ASSIST\n");
+    printf("38. PARKING_ASSIST\n");
+    printf("39. HILL_DESCENT\n");
 
 
 }
