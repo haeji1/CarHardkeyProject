@@ -1,0 +1,2 @@
+void initializeHeadlightsHandlers();
+void handleHeadlights();

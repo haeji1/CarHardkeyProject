@@ -1,27 +1,15 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <time.h>
 #include "observer.h"
 #include "horn.h"
 
-static int hornState = 0; // 0 for OFF, 1 for ON
-
-void handleHornOn(void) {
-    if (hornState == 1) {
-        printf("Horn is already ON.\n");
-    } else {
-        hornState = 1;
-        printf("Horn turned ON.\n");
-    }
-}
-
-void handleHornOff(void) {
-    if (hornState == 0) {
-        printf("Horn is already OFF.\n");
-    } else {
-        hornState = 0;
-        printf("Horn turned OFF.\n");
-    }
+void handleHorn(void) {
+    printf("Horn turned ON.\n");
+    Sleep(1000);
 }
 
 void initializeHornHandlers() {
-    registerHandler(HORN, handleHornOn);
+    registerHandler(HORN, handleHorn);
 }

@@ -17,14 +17,15 @@ int main() {
 
     while (1) {
         if(!ignitionStarted){
-            printf("Enter command (ON/OFF/EXIT): ");
+            printf("\nEnter command for IGNITION (ON/OFF/EXIT): ");
             if (scanf("%9s", input) != 1) {
                 perror("scanf failed");
                 exit(EXIT_FAILURE);
             }
 
             if (strcmp(input, "ON") == 0) {
-                notifyHandlers(IGNITION);
+                handlerEvent(HORN);// -> notify 다른 기능들
+                handlerEvent(HEADLIGHTS);
                 ignitionStarted = 1; // Set the ignition started flag
                 printf("Engine started. Select a feature using the menu.\n");
             } else if (strcmp(input, "OFF") == 0) {
@@ -47,10 +48,20 @@ int main() {
             if (selection == 1) {
                 handleHornCommands();
             } else if (selection == 2) {
-                //
+                handleHeadlightsCommands();
             } else if (selection == 3) {
-                //
+                handleTurnSignalsCommands();
             } else if (selection == 4) {
+                handleWindshieldWipersCommands();
+            } else if (selection == 5) {
+                handleHazardLightsCommands();
+            } else if (selection == 6) {
+                handleCruiseControlCommands();
+            } else if (selection == 7) {
+                handleRadioVolumeCommands();
+            } else if (selection == 8) {
+                handleRadioTuningCommands();
+            } else if (selection == 50) {
                 break; // Exit the program
             } else {
                 printf("Invalid selection. Please try again.\n");

@@ -1,0 +1,2 @@
+void initializeHazardLightsHandlers();
+void handleHazardLights();

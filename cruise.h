@@ -1,0 +1,2 @@
+void initializeCruiseControlHandlers();
+void handleCruiseControl();
