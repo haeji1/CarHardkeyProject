@@ -7,7 +7,6 @@ Observer *observer[NUM_KEYS];
 
 void registerHandler(HardKey hardkey, Handler handler) {
     Observer *newObserver = (Observer *)malloc(sizeof(Observer));
-	//Observer **now = &observer[hardkey];
 	//printf("Checking handler at %p against %p\n", (void*)((*now)->handler), (void*)handler);
     newObserver -> handler = handler;
     newObserver -> next = observer[hardkey];

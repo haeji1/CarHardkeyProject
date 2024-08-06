@@ -9,18 +9,19 @@
 static int ClimateTempState = 22;
 
 void setTemp(){
+    printf("Currently Temp : %d\n", ClimateTempState);
     int input;
     printf("Ajust Temp:");
     scanf("%d", &input);
     if (ClimateTempState == 22){
         ClimateTempState = input;
-        printf("setting %d degree\n", ClimateTempState);
+    }else{
+        ClimateTempState = input;
     }
+    printf("setting %d degree\n", ClimateTempState);
 }
 
 void handleClimateTemp(ClimateTempControlFunction *ct){
-    int inputTemp;
-    printf("Currently Temp : %d\n", ClimateTempState);
     *ct = setTemp;
 
 }
