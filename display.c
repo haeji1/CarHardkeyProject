@@ -260,32 +260,122 @@ void handlePowerWindowsCommands() {
 }
 
 void handleWindowLockCommands() {
-    handlerEvent(WINDOW_LOCK);
+    int option, value;
+    WindowLockControlFunction wl = NULL;  // Initialize rs to NULL
+
+    printf("PowerWindows Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handleWindowLock(&wl);
+            // Register and handle event if needed
+            registerHandler(WINDOW_LOCK, wl);
+            printf("display.c rs adress is : %p\n", wl);
+            handlerEvent(WINDOW_LOCK);
+            unregisterHandler(WINDOW_LOCK, wl);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handleDoorLockCommands() {
-    handlerEvent(DOOR_LOCKS);
+    int option, value;
+    DoorLockControlFunction dl = NULL;  // Initialize rs to NULL
+
+    printf("PowerWindows Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handleDoorLock(&dl);
+            // Register and handle event if needed
+            registerHandler(DOOR_LOCKS, dl);
+            printf("display.c rs adress is : %p\n", dl);
+            handlerEvent(DOOR_LOCKS);
+            unregisterHandler(DOOR_LOCKS, dl);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handleMirrorAdjustCommands() {
-    handlerEvent(MIRROR_ADJUST);
+        int option, value;
+    MirrorAdjustControlFunction ma = NULL;  // Initialize rs to NULL
+
+    printf("PowerWindows Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handleMirrorAdjust(&ma);
+            // Register and handle event if needed
+            registerHandler(MIRROR_ADJUST, ma);
+            printf("display.c rs adress is : %p\n", ma);
+            handlerEvent(MIRROR_ADJUST);
+            unregisterHandler(MIRROR_ADJUST, ma);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 void handleSeatAdjustCommands(){ // 파일 만들어애됨
 
 }
 
-
+/*
 void initializeFeatureHandlers() {
-    //initializeHornHandlers();
-    //initializeRadioSourceHandlers();
-/*    initializeClimateTempHandlers();
+    initializeHornHandlers();
+    initializeRadioSourceHandlers();
+    initializeClimateTempHandlers();
     initializeClimateFanHandlers();
     initializeClimateAirflowHandlers();
     initializeDefrostHandlers();
     initializePowerWindowsHandlers();
     initializeWindowLockHandlers();
     initializeDoorLockHandlers();
-    initializeMirrorAdjustHandlers();*/
+    initializeMirrorAdjustHandlers();
 }
 
 void cleanupFeatureHandlers() {
@@ -300,3 +390,4 @@ void cleanupFeatureHandlers() {
     unregisterHandler(DOOR_LOCKS, handleDoorLockCommands);
     unregisterHandler(MIRROR_ADJUST, handleMirrorAdjustCommands);
 }
+*/

@@ -3,16 +3,8 @@
 //
 
 
-typedef void (*CarHandlerStrategy)(void *context, void *data);
-
-typedef struct {
-    CarHandlerStrategy strategy;
-    void *data;
-} CarHandlerContext;
-
-void executeHandler(CarHandlerContext *context);
+// Poewr Window랑 곂침
 
 
-
-void handleMirrorAdjust();
-void initializeMirrorAdjustHandlers();
+typedef void(*MirrorAdjustControlFunction)();
+void handleMirrorAdjust(MirrorAdjustControlFunction *ma);

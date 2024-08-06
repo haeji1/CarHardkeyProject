@@ -2,5 +2,5 @@
 // Created by MinseokK on 24. 8. 5.
 //
 
-void handleDoorLock();
-void initializeDoorLockHandlers();
+typedef void(*DoorLockControlFunction)(void);
+void handleDoorLock(DoorLockControlFunction *dl);

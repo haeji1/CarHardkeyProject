@@ -3,7 +3,5 @@
 //
 
 typedef void(*handlePowerWindowsControlFunction)();
-int Up();
-int Down();
 void handlePowerWindows(handlePowerWindowsControlFunction *pwcf);
 

@@ -92,7 +92,7 @@ int main() {
         }
     }
 
-    cleanupFeatureHandlers();
+    //cleanupFeatureHandlers();
 
     return 0;
 }

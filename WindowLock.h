@@ -2,6 +2,6 @@
 // Created by MinseokK on 24. 8. 5.
 //
 
+typedef void(*WindowLockControlFunction)(void);
 
-void handlePowerWindows();
-void initializeWindowsLockHandlers();
+void handleWindowLock(WindowLockControlFunction *wl);

@@ -11,6 +11,7 @@
 static int WindowIdentifierState = 0;
 static int Action = 1;
 int opt;
+
 // 창 식별자
 void ControlWindow(int input){
     WindowIdentifierState = input;
@@ -21,10 +22,12 @@ void ControlWindow(int input){
         scanf("%d", &opt);
 
         if (opt == 1){
-            printf("Action : %d\n", Down());
+            printf("Down\n");
+            Action = 1;
         }
         else{
-            printf("Action : %d\n", Up());
+            printf("UP\n");
+            Action = 0;
         }
     }
     else if(WindowIdentifierState==1){
@@ -34,10 +37,12 @@ void ControlWindow(int input){
         scanf("%d", &opt);
 
         if (opt == 1){
-            printf("Action : %d\n", Down());
+            printf("Down\n");
+            Action = 1;
         }
         else{
-            printf("Action : %d\n", Up());
+            printf("UP\n");
+            Action = 0;
         }
     } else if(WindowIdentifierState == 2){
 
@@ -47,10 +52,12 @@ void ControlWindow(int input){
         scanf("%d", &opt);
 
         if (opt == 1){
-            printf("Action : %d\n", Down());
+            printf("Down\n");
+            Action = 1;
         }
         else{
-            printf("Action : %d\n", Up());
+            printf("UP\n");
+            Action = 0;
         }
     } else if(WindowIdentifierState == 3){
         printf("you choose WindowRearRight\n");
@@ -60,10 +67,12 @@ void ControlWindow(int input){
         scanf("%d", &opt);
 
         if (opt == 1){
-            printf("Action : %d\n", Down());
+            printf("Down\n");
+            Action = 1;
         }
         else{
-            printf("Action : %d\n", Up());
+            printf("UP\n");
+            Action = 0;
         }
     }
 }
@@ -83,16 +92,6 @@ void WindowRearRight(int input){
 }
 
 //up down
-int Up(){
-    printf("UP\n");
-    Action = 0;
-    return Action;
-}
-int Down(){
-    printf("Down\n");
-    Action = 1;
-    return Action;
-}
 
 
 
