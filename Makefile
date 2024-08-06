@@ -36,3 +36,33 @@ cruise.o: cruise.c observer.h cruise.h
 
 radio.o: radio.c observer.h radio.h
 	gcc -c radio.c
+
+sunroof.o: sunroof.c observer.h sunroof.h
+	gcc -c sunroof.c
+
+trunk.o: trunk.c observer.h trunk.h
+	gcc -c trunk.c
+
+fuel.o: fuel.c observer.h fuel.h
+	gcc -c fuel.c
+
+drive.o: drive.c observer.h drive.h
+	gcc -c drive.c
+
+pbrake.o: pbrake.c observer.h pbrake.h
+	gcc -c pbrake.c
+
+steering.o: steering.c observer.h steering.h
+	gcc -c steering.c
+
+interior.o: interior.c observer.h interior.h
+	gcc -c interior.c
+
+traction.o: traction.c observer.h traction.h
+	gcc -c traction.c
+
+menu.o: menu.c observer.h menu.h
+	gcc -c menu.c
+
+clean:
+	rm -f *.o main.exe

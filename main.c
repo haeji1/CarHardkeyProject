@@ -3,6 +3,12 @@
 #include <string.h>
 #include "observer.h"
 #include "display.h"
+#include "sunroof.h"
+#include "drive.h"
+#include "steering.h"
+#include "interior.h"
+#include "traction.h"
+#include "menu.h"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -12,7 +18,7 @@ int main() {
     int ignitionStarted = 0; 
     int selection;
 
-    initializeObservers();
+    // initializeObservers();
     initializeFeatureHandlers();
 
     while (1) {
@@ -62,6 +68,27 @@ int main() {
             } else if (selection == 8) {
                 handleRadioTuningCommands();
             } else if (selection == 50) {
+                //
+            } else if (selection == 20) {
+                sunroofMenu();
+            } else if (selection == 21) {
+                trunkReleaseMenu();
+            } else if(selection == 22) {
+                fuelCapReleaseMenu();
+            } else if (selection == 23) {
+                parkingBrakeMenu();
+            }
+            else if (selection == 24) {
+                driveModeMenu();
+            } else if (selection == 25) {
+                tractionMenu();
+            }
+            else if (selection == 28) {
+                steeringMenu();
+            } else if (selection == 29) {
+                interiorLightMenu();
+            }
+            else if (selection == 4) {
                 break; // Exit the program
             } else {
                 printf("Invalid selection. Please try again.\n");

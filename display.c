@@ -4,6 +4,11 @@
 #include "display.h"
 #include "observer.h"
 #include "horn.h"
+#include "sunroof.h"
+#include "drive.h"
+#include "steering.h"
+#include "traction.h"
+#include "menu.h"
 #include "headlights.h"
 #include "turnsignals.h"
 #include "windshield.h"
@@ -22,6 +27,16 @@ void displayMenu() {
     printf("7. RADIO_VOLUME\n");
     printf("8. RADIO_TUNING\n");
     printf("50. EXIT\n");
+    printf("3. RADIO\n");
+    printf("20. SUNROOF\n");
+    printf("21. TRUNK RELEASE\n");
+    printf("22. Fuel Cap Release\n");
+    printf("23. PARKING BRAKE\n");
+    printf("24. DRIVE MODE\n");
+    printf("25. TRACTION\n");
+    printf("28. STEERING ADJUST\n");
+    printf("29. INTERIOR LIGHT\n");
+    printf("4. EXIT\n");
 }
 
 void handleHornCommands() {
