@@ -41,7 +41,7 @@ void notifyHandlers(HardKey hardKey) {
 
 // It is executed first when an event for hardkey is registered and the handler is called through notifyhandler.
 void handlerEvent(HardKey hardKey) {
-    printf("status changed\n");
+    printf("An event occures\n");
     notifyHandlers(hardKey);
 }
 
