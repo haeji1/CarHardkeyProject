@@ -8,22 +8,19 @@
 
 static int ClimateTempState = 22;
 
-void handleClimateTemp(){
-    int inputTemp;
-    printf("Currently Temp : %d\n", ClimateTempState);
+void setTemp(){
+    int input;
     printf("Ajust Temp:");
-    scanf("%d", &inputTemp);
+    scanf("%d", &input);
     if (ClimateTempState == 22){
-        ClimateTempState = inputTemp;
-        printf("setting %d degree", ClimateTempState);
+        ClimateTempState = input;
+        printf("setting %d degree\n", ClimateTempState);
     }
-    else{ // 초기화 22도로
-
-    }
-    sleep(5);
 }
 
-void initializeClimateTempHandlers() {
-    registerHandler(CLIMATE_TEMP, handleClimateTemp);
+void handleClimateTemp(ClimateTempControlFunction *ct){
+    int inputTemp;
+    printf("Currently Temp : %d\n", ClimateTempState);
+    *ct = setTemp;
 
 }

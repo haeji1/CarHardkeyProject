@@ -2,5 +2,5 @@
 // Created by MinseokK on 24. 8. 2.
 //
 
-void handleClimateTemp();
-void initializeClimateTempHandlers();
+typedef void(*ClimateTempControlFunction)(void);
+void handleClimateTemp(ClimateTempControlFunction *ct);

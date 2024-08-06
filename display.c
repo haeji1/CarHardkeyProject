@@ -38,7 +38,7 @@ void handleRadioSourceCommands() {
     int option, value;
     radioSourceControlFunction rs = NULL;  // Initialize rs to NULL
 
-    printf("TRACTION Menu:\n");
+    printf("RadioSouce Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Select RadioSource\n");
     printf("2. Listen to event\n");
@@ -76,7 +76,42 @@ void handleRadioSourceCommands() {
 }
 
 void handleClimateTempCommands() {
-    handlerEvent(CLIMATE_TEMP);
+    int option, value;
+    ClimateTempControlFunction ct = NULL;  // Initialize rs to NULL
+
+    printf("TRACTION Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Select RadioSource\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            break;
+        case 2:
+            handleClimateTemp(&ct);
+            // Register and handle event if needed
+            registerHandler(CLIMATE_TEMP, ct);
+            printf("display.c rs adress is : %p\n", ct);
+            handlerEvent(CLIMATE_TEMP);
+            unregisterHandler(CLIMATE_TEMP, ct);
+            break;
+
+        case 3:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handleClimateFanCommands() {
