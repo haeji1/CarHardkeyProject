@@ -1,10 +1,11 @@
 #ifndef SUNROOF_H
 #define SUNROOF_H
 
-void initializeSunroofHandlers();
-void executeSunroofOperation(int opration);
+typedef void(*sunroofControlFunction)();
 
-// Define function pointer type for sunroof operations (strategy pattern)
-typedef void (*SunroofOperation)();
+void openSunroof();
+void closeSunroof();
+void tiltSunroof();
+void sunroofControl(sunroofControlFunction);
 
 #endif

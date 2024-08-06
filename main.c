@@ -20,13 +20,6 @@ int main() {
     // initializeObservers();
     initializeFeatureHandlers();
 
-    // tractionControlFunction tc = tractionOn;
-    // tractionControl(tc);
-
-    // registerHandler(TRACTION_CONTROL, tc);
-    // handlerEvent(TRACTION_CONTROL);
-    // unregisterHandler(TRACTION_CONTROL, tc);
-
     while (1) {
         if(!ignitionStarted){
             printf("Enter command (ON/OFF/EXIT): ");
@@ -63,14 +56,7 @@ int main() {
             } else if (selection == 3) {
                 //
             } else if (selection == 20) {
-                // Execute sunroof operation based on strategy pattern
-                printf("Select sunroof operation (0: Open, 1: Close, 2: Tilt): ");
-                int sunroofOperation;
-                if (scanf("%d", &sunroofOperation) != 1 || sunroofOperation < 0 || sunroofOperation > 2) {
-                    printf("Invalid sunroof operation. Please enter 0, 1, or 2.\n");
-                    continue;
-                }
-                executeSunroofOperation(sunroofOperation);
+                sunroofMenu();
             } else if (selection == 21) {
                 // trunk
             } else if (selection == 24) {
