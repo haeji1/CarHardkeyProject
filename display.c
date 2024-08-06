@@ -45,7 +45,6 @@ void handleHornCommands() {
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();
-    initializeSteeringAdjustHandlers();
 }
 
 void cleanupFeatureHandlers() {

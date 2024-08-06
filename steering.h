@@ -1,9 +1,12 @@
 #ifndef STEERING_H
 #define STEERING_H
 
-void initializeSteeringAdjustHandlers();
-void executeSteeringAdjustOperation(int operation);
+typedef void(*steeringControlFunction)();
 
-typedef void (*SteeringAdjustOperation)();
+void upSteering();
+void downSteering();
+void inSteering();
+void outSteering();
+void steeringControl(steeringControlFunction);
 
 #endif
