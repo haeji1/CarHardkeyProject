@@ -10,6 +10,3 @@ void handleWindowLock(){
     printf("Window LOCK");
 }
 
-void initializeWindowsLockHandlers() {
-    registerHandler(WINDOW_LOCK, handleWindowLock);
-}
