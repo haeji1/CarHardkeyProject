@@ -16,12 +16,13 @@ void displayMenu() {
     printf("2. HEADLIGHTS\n");
     printf("3. RADIO\n");
     printf("20. SUNROOF\n");
-    printf("21. TRUNKRELEASE\n");
-    printf("23. PARKINGBRAKE\n");
-    printf("24. DRIVEMODE\n");
+    printf("21. TRUNK RELEASE\n");
+    printf("22. Fuel Cap Release\n");
+    printf("23. PARKING BRAKE\n");
+    printf("24. DRIVE MODE\n");
     printf("25. TRACTION\n");
-    printf("28. STEERINGADJUST\n");
-    printf("29. INTERIORLIGHT\n");
+    printf("28. STEERING ADJUST\n");
+    printf("29. INTERIOR LIGHT\n");
     printf("4. EXIT\n");
 }
 

@@ -60,6 +60,8 @@ int main() {
                 sunroofMenu();
             } else if (selection == 21) {
                 trunkReleaseMenu();
+            } else if(selection == 22) {
+                fuelCapReleaseMenu();
             } else if (selection == 23) {
                 parkingBrakeMenu();
             }

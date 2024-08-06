@@ -4,6 +4,7 @@
 
 void sunroofMenu();
 void trunkReleaseMenu();
+void fuelCapReleaseMenu();
 void driveModeMenu();
 void tractionMenu();
 void steeringMenu();

@@ -2,6 +2,7 @@
 #include "menu.h"
 #include "sunroof.h"
 #include "trunk.h"
+#include "fuel.h"
 #include "drive.h"
 #include "traction.h"
 #include "observer.h"
@@ -96,6 +97,42 @@ void trunkReleaseMenu() {
             break;
     }
 }
+
+void fuelCapReleaseMenu() {
+    int option, value;
+    fuelCapReleaseControlFunction fr;
+
+    printf("FUEL CAP RELEASE Menu:\n");
+    printf("1. Activate fuel cap release\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            // Register the handler
+            fr = activateFuelCapRelease;
+            registerHandler(FUEL_CAP_RELEASE, fr);
+            // Notify the event
+            handlerEvent(FUEL_CAP_RELEASE);
+            unregisterHandler(FUEL_CAP_RELEASE, fr);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("FUEL_CAP_RELEASE");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
 void parkingBrakeMenu() {
     int option, value;
     parkingBrakeControlFunction pc;
