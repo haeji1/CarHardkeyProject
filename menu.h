@@ -6,5 +6,6 @@ void sunroofMenu();
 void driveModeMenu();
 void tractionMenu();
 void steeringMenu();
+void interiorLightMenu();
 
 #endif // MENU_H

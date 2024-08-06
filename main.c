@@ -68,13 +68,7 @@ int main() {
             else if (selection == 28) {
                 steeringMenu();
             } else if (selection == 29) {
-                printf("Select interior light operation (0: Off, 1: On):");
-                int interiorLightOperation;
-                if (scanf("%d", &interiorLightOperation) != 1 || interiorLightOperation < 0 || interiorLightOperation > 2) {
-                    printf("Invalid steering adjust. Please enter 0 or 1.\n");
-                    continue;
-                }
-                executeInteriorLightOperation(interiorLightOperation);
+                interiorLightMenu();
             }
             else if (selection == 4) {
                 break; // Exit the program

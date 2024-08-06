@@ -5,6 +5,7 @@
 #include "traction.h"
 #include "observer.h"
 #include "steering.h"
+#include "interior.h"
 
 void sunroofMenu() {
     int option, value;
@@ -217,4 +218,55 @@ void steeringMenu() {
             break;
     }
 
+}
+
+void interiorLightMenu() {
+    int option, value;
+    interiorLightControlFunction ic;
+
+    printf("Interior Light Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter interior light state (0=Off, 1=On): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("TRACTION_CONTROL", value);
+
+            // Set the traction control function
+            if (value == 0) {
+                ic = offInteriorLight;
+            } else {
+                ic = onInteriorLight;
+            }
+
+            // Execute the interior light function
+            interiorLightControl(ic);
+            registerHandler(INTERIOR_LIGHT, ic);
+            // Notify the event
+            handlerEvent(INTERIOR_LIGHT);
+            unregisterHandler(INTERIOR_LIGHT, ic);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("INTERIOR_LIGHT");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
