@@ -115,7 +115,44 @@ void handleClimateTempCommands() {
 }
 
 void handleClimateFanCommands() {
-    handlerEvent(CLIMATE_FAN);
+    int option, value;
+    ClimateFanControlFunction cf = NULL;  // Initialize rs to NULL
+
+    printf("RadioSouce Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Select RadioSource\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            break;
+        case 2:
+            handleClimateFan(&cf);
+            // Register and handle event if needed
+            registerHandler(CLIMATE_FAN, cf);
+            printf("display.c rs adress is : %p\n", cf);
+            handlerEvent(CLIMATE_FAN);
+
+
+            unregisterHandler(CLIMATE_FAN, cf);
+            break;
+
+        case 3:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handleClimateAirflowCommands() {

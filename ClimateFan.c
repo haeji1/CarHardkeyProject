@@ -63,37 +63,37 @@ void Level_Five(){
 
 
 // 버퍼를 비우는 함수
-void clearInputBuffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
-}
+//void clearInputBuffer() {
+//    int c;
+//    while ((c = getchar()) != '\n' && c != EOF);
+//}
 
-void handleClimateFan(){
+void handleClimateFan(ClimateFanControlFunction *cf){
     int opt;
     while(1){
 
         printf("Select the Fan Level (0 to 5): \n");
         if (scanf("%d", &opt) != 1) {
             printf("Invalid selection. Please try again.\n");
-            clearInputBuffer(); // 입력 버퍼 비우기
+        //    clearInputBuffer(); // 입력 버퍼 비우기
 
             continue;
         }
         switch(opt){
             case 1:
-                Level_One();
+                *cf = Level_One;
             break;
             case 2:
-                Level_Two();
+                *cf = Level_Two;
             break;
             case 3:
-                Level_Three();
+                *cf = Level_Three;
             break;
             case 4:
-                Level_Four();
+                *cf = Level_Four;
             break;
             case 5:
-                Level_Five();
+                *cf = Level_Five;
             break;
             default:
                 printf("error\n");
@@ -101,9 +101,6 @@ void handleClimateFan(){
         }
         break;
     }
+    //(*cf)();
 }
 
-void initializeClimateFanHandlers() {
-    registerHandler(CLIMATE_FAN, handleClimateFan);
-
-}
