@@ -43,7 +43,7 @@ void Bluetooth(void) {
 }
 
 //context
-void handleRadioSource(radioSourceControlFunction rs) {
+void handleRadioSource(radioSourceControlFunction *rs) {
     int opt;
 
     printf(" == RadioSource options == \n");
@@ -55,17 +55,18 @@ void handleRadioSource(radioSourceControlFunction rs) {
     scanf("%d", &opt);
 
     if (opt == 0) {
-        rs = AM;
+        *rs = AM;
     } else if (opt == 1) {
-        rs = FM;
+        *rs = FM;
     } else if (opt == 2) {
-        rs = Bluetooth;
+        *rs = Bluetooth;
     } else if (opt == 3) {
         exit(EXIT_FAILURE);
     } else {
         printf("Unknown RadioSource command.\n");
     }
-    rs();  // rs 넣은 전략 함수를 실행;
+    (*rs)();  // rs 넣은 전략 함수를 실행;
+
 }
 
 //void initializeRadioSourceHandlers() {

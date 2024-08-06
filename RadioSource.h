@@ -13,6 +13,6 @@ typedef void(*radioSourceControlFunction)(void);
 void AM(void);
 void FM(void);
 void Bluetooth(void);
-void handleRadioSource(radioSourceControlFunction rs);
+void handleRadioSource(radioSourceControlFunction *rs);
 
 #endif // RADIOSOURCE_H

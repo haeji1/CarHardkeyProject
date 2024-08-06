@@ -53,10 +53,13 @@ void handleRadioSourceCommands() {
         case 1:
             break;
         case 2:
-            handleRadioSource(rs);
+            handleRadioSource(&rs);
             // Register and handle event if needed
             registerHandler(RADIO_SOURCE, rs);
+            printf("display.c rs adress is : %p\n", rs);
             handlerEvent(RADIO_SOURCE);
+
+
             unregisterHandler(RADIO_SOURCE, rs);
             break;
 
