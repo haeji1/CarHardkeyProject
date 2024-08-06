@@ -6,6 +6,8 @@
 #include "sunroof.h"
 #include "drive.h"
 #include "steering.h"
+#include "interior.h"
+#include "traction.c"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -15,8 +17,13 @@ int main() {
     int ignitionStarted = 0;
     int selection;
 
-    initializeObservers();
+    // initializeObservers();
     initializeFeatureHandlers();
+
+    traction_control_function tc = tractionOn;
+    registerHandler(TRACTION_CONTROL, tc);
+    handlerEvent(TRACTION_CONTROL);
+    unregisterHandler(TRACTION_CONTROL, tc);
 
     while (1) {
         if(!ignitionStarted){
@@ -80,6 +87,14 @@ int main() {
                     continue;
                 }
                 executeSteeringAdjustOperation(steeringAjustOperation);
+            } else if (selection == 29) {
+                printf("Select interior light operation (0: Off, 1: On):");
+                int interiorLightOperation;
+                if (scanf("%d", &interiorLightOperation) != 1 || interiorLightOperation < 0 || interiorLightOperation > 2) {
+                    printf("Invalid steering adjust. Please enter 0 or 1.\n");
+                    continue;
+                }
+                executeInteriorLightOperation(interiorLightOperation);
             }
             else if (selection == 4) {
                 break; // Exit the program
