@@ -28,34 +28,57 @@ typedef struct {
     double longitude;
 } Coordinates;
 
-void engageLock();
-void disengageLock();
-LockState getLockState();
+// Function pointer types
+typedef void (*EngageLockFunction)();
+typedef void (*DisengageLockFunction)();
+typedef LockState (*GetLockStateFunction)();
 
-void activateDefrost();
-void deactivateDefrost();
-DefrostState getDefrostState();
+typedef void (*ActivateDefrostFunction)();
+typedef void (*DeactivateDefrostFunction)();
+typedef DefrostState (*GetDefrostStateFunction)();
 
-void activateParkingAssist();
-void deactivateParkingAssist();
-ParkingAssistState getParkingAssistState();
+typedef void (*ActivateParkingAssistFunction)();
+typedef void (*DeactivateParkingAssistFunction)();
+typedef ParkingAssistState (*GetParkingAssistStateFunction)();
 
-void activateLaneSupport();
-void deactivateLaneSupport();
-LaneSupportState getLaneSupportState();
+typedef void (*ActivateLaneSupportFunction)();
+typedef void (*DeactivateLaneSupportFunction)();
+typedef LaneSupportState (*GetLaneSupportStateFunction)();
 
-void activateHillDescentControl();
-void deactivateHillDescentControl();
-HillDescentControlState getHillDescentControlState();
+typedef void (*ActivateHillDescentControlFunction)();
+typedef void (*DeactivateHillDescentControlFunction)();
+typedef HillDescentControlState (*GetHillDescentControlStateFunction)();
 
 typedef void (*PhoneResponseStrategy)();
 void setPhoneResponseStrategy(PhoneResponseStrategy strategy);
 void respondToCall();
 
-typedef void (*NavigationStrategy)(Coordinates destination);
-void setNavigationStrategy(NavigationStrategy strategy);
-void navigateTo(Coordinates destination);
+//typedef void (*NavigationStrategy)(Coordinates destination);
+//void setNavigationStrategy(NavigationStrategy strategy);
+//void navigateTo(Coordinates destination);
 
+// Define function pointers
+extern EngageLockFunction engageLock;
+extern DisengageLockFunction disengageLock;
+extern GetLockStateFunction getLockState;
+
+extern ActivateDefrostFunction activateDefrost;
+extern DeactivateDefrostFunction deactivateDefrost;
+extern GetDefrostStateFunction getDefrostState;
+
+//extern ActivateParkingAssistFunction activateParkingAssist;
+//extern DeactivateParkingAssistFunction deactivateParkingAssist;
+//extern GetParkingAssistStateFunction getParkingAssistState;
+
+//extern ActivateLaneSupportFunction activateLaneSupport;
+//extern DeactivateLaneSupportFunction deactivateLaneSupport;
+//extern GetLaneSupportStateFunction getLaneSupportState;
+
+extern ActivateHillDescentControlFunction activateHillDescentControl;
+extern DeactivateHillDescentControlFunction deactivateHillDescentControl;
+extern GetHillDescentControlStateFunction getHillDescentControlState;
+
+// Strategy functions
 void quickRouteStrategy(Coordinates destination);
 void convenientRouteStrategy(Coordinates destination);
 void minimumFareRouteStrategy(Coordinates destination);

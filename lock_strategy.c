@@ -2,24 +2,28 @@
 #include <stdio.h>
 #include <string.h>
 
+// 초기 잠금 상태 설정
 static LockState currentLockState = DISENGAGED;
 
-// 잠금 기능을 활성화하는 함수
-void engageLock() {
+// 실제 함수 구현
+void engageLockImpl() {
     currentLockState = ENGAGED;
     printf("Child lock engaged.\n");
 }
 
-// 잠금 기능을 비활성화하는 함수
-void disengageLock() {
+void disengageLockImpl() {
     currentLockState = DISENGAGED;
     printf("Child lock disengaged.\n");
 }
 
-// 현재 잠금 상태를 반환하는 함수
-LockState getLockState() {
+LockState getLockStateImpl() {
     return currentLockState;
 }
+
+// 함수 포인터 변수 정의 및 초기화
+EngageLockFunction engageLock = engageLockImpl;
+DisengageLockFunction disengageLock = disengageLockImpl;
+GetLockStateFunction getLockState = getLockStateImpl;
 
 // 사용자 입력을 처리하고 잠금 상태를 제어하는 함수
 void handleLockCommand() {
@@ -33,6 +37,10 @@ void handleLockCommand() {
         engageLock();
     } else if (strcmp(input, "DISENGAGE") == 0) {
         disengageLock();
+    } else if (strcmp(input, "exit") == 0) {
+        printf("Exiting...\n");
+    } else {
+        printf("Invalid command.\n");
     }
 }
 

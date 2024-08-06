@@ -7,13 +7,9 @@
 
 
 // 30~39번 입니다
-#include "VOICE_COMMAND.c"
-#include "MUTE_BUTTON.c"
-#include "NAVIGATION.c"
+
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
-#include "ParkingAssistance.c"
-#include "Lane_Support.c"
 
 
 void initializeFeatureHandlers();
@@ -29,13 +25,13 @@ int main() {
     initializeFeatureHandlers();
 
     //등록30~39
-    registerHandler(MUTE_BUTTON, muteButtonHandler);//
-    registerHandler(VOICE_COMMAND, Voice_Command_toggle);//
-    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
+    //registerHandler(MUTE_BUTTON, muteButtonHandler);//
+    //registerHandler(VOICE_COMMAND, Voice_Command_toggle);//
+    //registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
     registerHandler(REAR_DEFROST, handleDefrostCommand);//
     registerHandler(CHILD_LOCK, handleLockCommand);//
-    registerHandler(NAVIGATION,navigatehandle);//
-    registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
+    //registerHandler(NAVIGATION,navigatehandle);//
+    //registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
 
 
 
@@ -85,10 +81,10 @@ int main() {
                 handlerEvent(CHILD_LOCK); // 어린이 보호
             }
             else if(selection ==32) {
-                handlerEvent(MUTE_BUTTON); // 음소거 기능
+           //     handlerEvent(MUTE_BUTTON); // 음소거 기능
            }
             else if(selection ==33) {
-                handlerEvent(VOICE_COMMAND); // 보이스 커맨드
+             //   handlerEvent(VOICE_COMMAND); // 보이스 커맨드
             }
             else if(selection ==34) {
 
@@ -97,13 +93,13 @@ int main() {
 
             }
             else if(selection ==36) {
-                handlerEvent(NAVIGATION); // 네비게이션
+              //  handlerEvent(NAVIGATION); // 네비게이션
             }
             else if(selection ==37) {
-                handlerEvent(LANE_ASSIST); // 차선 지원
+            //    handlerEvent(LANE_ASSIST); // 차선 지원
             }
             else if(selection ==38) {
-                handlerEvent(PARKING_ASSIST);//
+              //  handlerEvent(PARKING_ASSIST);//
             }
             else if(selection ==39) {
 

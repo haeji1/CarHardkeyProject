@@ -3,218 +3,277 @@
 #include <string.h>
 #include <ctype.h>
 
-#define INPUT_FILE "hardkey_event" // 원본 파일 이름
-#define TEMP_FILE "temp_file"      // 임시 파일 이름
-#define MAX_LINE_LENGTH 256        // 한 줄의 최대 길이
+#define INPUT_FILE "hardkey_event"  // 입력 파일의 이름 정의
+#define TEMP_FILE "hardkey_event.tmp"  // 임시 파일의 이름 정의
+#define MAX_LINE_LENGTH 256  // 파일에서 읽을 한 줄의 최대 길이
+#define MAX_VALUES 5  // 최대 값 개수
 
-// 특정 명령어의 값을 업데이트하는 함수
-void updateValuesInFile(const char *command, int new_values[], int num_values) {
-    FILE *file = fopen(INPUT_FILE, "r");    // 원본 파일을 읽기 모드로 엽니다.
-    FILE *temp = fopen(TEMP_FILE, "w");     // 임시 파일을 쓰기 모드로 엽니다.
+// CommandInfo 구조체 정의
+typedef struct {
+    const char *command;  // 명령어 문자열
+    int num_values;  // 명령어에 관련된 값의 개수
+} CommandInfo;
 
-    if (file == NULL || temp == NULL) {
-        perror("Error opening file");       // 파일 열기 실패 시 에러 메시지를 출력합니다.
-        return;
-    }
+// 가능한 명령어와 해당 값의 개수 정의
+CommandInfo commands[] = {
+    {"IGNITION", 1},
+    {"HORN", 1},
+    {"HEADLIGHTS", 1},
+    {"TURN_SIGNALS", 1},
+    {"WINDSHIELD_WIPERS", 1},
+    {"HAZARD_LIGHTS", 1},
+    {"CRUISE_CONTROL", 2},
+    {"RADIO_VOLUME", 1},
+    {"RADIO_TUNING", 1},
+    {"RADIO_SOURCE", 1},
+    {"CLIMATE_TEMP", 1},
+    {"CLIMATE_FAN", 1},
+    {"CLIMATE_AIRFLOW", 1},
+    {"DEFROST", 1},
+    {"POWER_WINDOWS", 2},
+    {"WINDOW_LOCK", 1},
+    {"DOOR_LOCKS", 1},
+    {"MIRROR_ADJUST", 2},
+    {"SEAT_ADJUST", 3},
+    {"SUNROOF_CONTROL", 1},
+    {"TRUNK_RELEASE", 1},
+    {"FUEL_CAP_RELEASE", 1},
+    {"PARKING_BRAKE", 1},
+    {"DRIVE_MODE", 1},
+    {"TRACTION_CONTROL", 1},
+    {"HEATED_SEATS", 2},
+    {"COOLED_SEATS", 2},
+    {"STEERING_ADJUST", 1},
+    {"INTERIOR_LIGHT", 1},
+    {"REAR_DEFROST", 1},
+    {"CHILD_LOCK", 1},
+    {"MUTE_BUTTON", 1},
+    {"VOICE_COMMAND", 1},
+    {"PHONE_ANSWER", 1},
+    {"PHONE_END_CALL", 1},
+    {"NAVIGATION", 2},
+    {"LANE_ASSIST", 1},
+    {"PARKING_ASSIST", 1},
+    {"HILL_DESCENT", 1},
+    {"HUD_ADJUST", 1},
+    {"GLOVE_BOX_RELEASE", 1},
+    {"FOG_LIGHTS", 1},
+    {"EMERGENCY_BRAKE", 1},
+    {"TRAILER_CONTROL", 1},
+    {"AUTO_HOLD", 1},
+    {"HANDS_FREE", 1},
+    {"SEAT_HEATER", 2},
+    {"SEAT_COOLER", 2}
+};
 
-    char line[MAX_LINE_LENGTH];
-    int found_command = 0;   // 명령어가 발견되었는지 여부를 추적합니다.
-    int value_index = 0;     // 업데이트할 값의 인덱스를 추적합니다.
+#define NUM_COMMANDS (sizeof(commands) / sizeof(commands[0]))  // 명령어 배열의 총 개수
 
-    // 원본 파일을 한 줄씩 읽으면서 처리합니다.
-    while (fgets(line, sizeof(line), file)) {
-        // 명령어가 현재 줄의 시작 부분과 일치하는 경우
-        if (strncmp(line, command, strlen(command)) == 0) {
-            found_command = 1;     // 명령어가 발견되었음을 표시합니다.
-            fprintf(temp, "%s", line); // 임시 파일에 원본 명령어를 그대로 복사합니다.
-            continue;
-        }
-
-        if (found_command) {
-            // 현재 줄이 숫자로 시작하면 값을 업데이트합니다.
-            if ((isdigit(line[0]) || (line[0] == '-' && isdigit(line[1]))) && value_index < num_values) {
-                fprintf(temp, "%d   // Updated value\n", new_values[value_index++]);
-                // 원본 줄의 주석 부분을 복사합니다.
-                if (strchr(line, '/') != NULL) {
-                    fprintf(temp, "%s", strchr(line, '/') + 1);
-                }
-                continue;
-            }
-
-            // 공백 줄을 만나면 명령어 블록이 끝났음을 표시합니다.
-            if (line[0] == '\n') {
-                found_command = 0;
-            }
-
-            // 주석을 유지하면서 나머지 내용을 그대로 복사합니다.
-            fprintf(temp, "%s", line);
-        } else {
-            // 명령어를 찾기 전의 내용을 그대로 복사합니다.
-            fprintf(temp, "%s", line);
-        }
-    }
-
-    fclose(file);  // 원본 파일을 닫습니다.
-    fclose(temp);  // 임시 파일을 닫습니다.
-
-    // 원본 파일을 삭제하고 임시 파일을 원본 파일로 이름을 변경합니다.
-    remove(INPUT_FILE);
-    rename(TEMP_FILE, INPUT_FILE);
-}
-
-// 특정 명령어의 값을 읽어오는 함수
-int* readValuesForCommand(const char *command, int *num_values) {
-    FILE *file = fopen(INPUT_FILE, "r");    // 원본 파일을 읽기 모드로 엽니다.
+// 파일에서 명령어와 값을 읽어오는 함수
+int readValuesFromFile(const char *command, int *values, int max_values) {
+    FILE *file = fopen(INPUT_FILE, "r");
     if (file == NULL) {
-        perror("Error opening file");       // 파일 열기 실패 시 에러 메시지를 출력합니다.
-        return NULL;
+        perror("Error opening file");  // 파일 열기 오류 처리
+        return -1;
     }
 
     char line[MAX_LINE_LENGTH];
-    int found_command = 0; // 명령어가 발견되었는지 여부를 추적합니다.
-    *num_values = 0;       // 값의 개수를 초기화합니다.
+    int found_command = 0;
+    int num_read_values = 0;
 
-    // 원본 파일을 한 줄씩 읽으면서 명령어 뒤에 오는 값의 개수를 셉니다.
+    // 파일의 각 줄을 읽어오는 루프
     while (fgets(line, sizeof(line), file)) {
-        if (strncmp(line, command, strlen(command)) == 0) {
-            found_command = 1;     // 명령어가 발견되었음을 표시합니다.
-            continue;
-        }
+        line[strcspn(line, "\n")] = 0;  // 줄 끝의 개행 문자 제거
 
-        if (found_command) {
-            // 현재 줄이 숫자로 시작하면 값의 개수를 셉니다.
-            if (isdigit(line[0]) || (line[0] == '-' && isdigit(line[1]))) {
-                (*num_values)++;
-            } else if (line[0] == '\n') {
-                break; // 공백 줄을 만나면 명령어 블록이 끝났음을 표시합니다.
+        if (found_command && isdigit(line[0])) {
+            values[num_read_values] = atoi(line);  // 문자열을 정수로 변환
+            num_read_values++;
+            if (num_read_values >= max_values) {
+                break;  // 최대 값 개수에 도달하면 종료
             }
         }
-    }
-
-    if (*num_values == 0) {
-        printf("No values found for command '%s'.\n", command); // 값이 없는 경우 메시지를 출력합니다.
-        fclose(file);  // 파일을 닫습니다.
-        return NULL;
-    }
-
-    // 값을 저장할 메모리를 할당합니다.
-    int *values = (int *)malloc((*num_values) * sizeof(int));
-    if (values == NULL) {
-        perror("Error allocating memory"); // 메모리 할당 실패 시 에러 메시지를 출력합니다.
-        fclose(file);  // 파일을 닫습니다.
-        return NULL;
-    }
-
-    // 파일 포인터를 처음으로 되돌리고 값을 읽어옵니다.
-    fseek(file, 0, SEEK_SET);
-    found_command = 0; // 명령어 발견 플래그를 초기화합니다.
-    int index = 0;     // 값의 인덱스를 초기화합니다.
-
-    while (fgets(line, sizeof(line), file)) {
-        if (strncmp(line, command, strlen(command)) == 0) {
-            found_command = 1; // 명령어가 발견되었음을 표시합니다.
-            continue;
-        }
-
-        if (found_command) {
-            // 현재 줄이 숫자로 시작하면 값을 저장합니다.
-            if (isdigit(line[0]) || (line[0] == '-' && isdigit(line[1]))) {
-                values[index++] = atoi(line); // 문자열을 정수로 변환하여 저장합니다.
-            } else if (line[0] == '\n') {
-                break; // 공백 줄을 만나면 명령어 블록이 끝났음을 표시합니다.
-            }
+        if (strcmp(line, command) == 0) {
+            found_command = 1;  // 명령어 찾음
+        } else if (!isdigit(line[0])) {
+            found_command = 0;  // 명령어가 아니면 초기화
         }
     }
 
-    fclose(file);  // 파일을 닫습니다.
-    return values; // 읽어온 값을 반환합니다.
+    fclose(file);
+    return num_read_values;
 }
 
-// 명령어의 값을 출력하는 함수
-void printValuesForCommand(const char *command) {
-    int num_values;
-    int *values = readValuesForCommand(command, &num_values);
-
-    if (values == NULL) {
-        return; // 값을 읽어오지 못한 경우 함수를 종료합니다.
+// 파일에 명령어와 값을 작성 또는 업데이트하는 함수
+void writeOrUpdateValueToFile(const char *command, int *values, int num_values) {
+    FILE *file = fopen(INPUT_FILE, "r");
+    if (file == NULL) {
+        perror("Error opening file");  // 파일 열기 오류 처리
+        return;
     }
 
-    printf("Current values for command '%s':\n", command);
-    for (int i = 0; i < num_values; i++) {
-        printf("%d\n", values[i]); // 값을 출력합니다.
-    }
-
-    free(values); // 할당된 메모리를 해제합니다.
-}
-
-// 명령어의 값을 입력받아 파일을 업데이트하는 함수
-void processUpdate(const char *command) {
-    int num_values;
-    int *current_values = readValuesForCommand(command, &num_values);
-
-    if (current_values == NULL) {
-        return; // 값을 읽어오지 못한 경우 함수를 종료합니다.
-    }
-
-    printf("Current values for command '%s':\n", command);
-    for (int i = 0; i < num_values; i++) {
-        printf("%d\n", current_values[i]); // 현재 값을 출력합니다.
-    }
-
-    int *new_values = (int *)malloc(num_values * sizeof(int));
-    if (new_values == NULL) {
-        perror("Error allocating memory"); // 메모리 할당 실패 시 에러 메시지를 출력합니다.
-        free(current_values); // 할당된 메모리를 해제합니다.
+    FILE *tempFile = fopen(TEMP_FILE, "w");
+    if (tempFile == NULL) {
+        perror("Error creating temporary file");  // 임시 파일 생성 오류 처리
+        fclose(file);
         return;
     }
 
     char line[MAX_LINE_LENGTH];
-    printf("Enter new values for '%s' (total %d values):\n", command, num_values);
-    for (int i = 0; i < num_values; i++) {
-        printf("Value %d: ", i + 1);
-        if (fgets(line, sizeof(line), stdin) != NULL) {
-            new_values[i] = atoi(line); // 입력된 값을 정수로 변환하여 저장합니다.
+    int found_command = 0;
+    int command_updated = 0;
+
+    // 파일의 각 줄을 읽어오는 루프
+    while (fgets(line, sizeof(line), file)) {
+        line[strcspn(line, "\n")] = 0;  // 줄 끝의 개행 문자 제거
+
+        if (strcmp(line, command) == 0) {
+            found_command = 1;
+            fprintf(tempFile, "%s\n", line);
+            for (int i = 0; i < num_values; ++i) {
+                fprintf(tempFile, "%d\n", values[i]);  // 새 값 작성
+            }
+            fprintf(tempFile, "   // Updated values\n");
+            command_updated = 1;
+            continue;
+        }
+
+        if (found_command && isdigit(line[0])) {
+            while (fgets(line, sizeof(line), file) && isdigit(line[0])) {
+                // 이전 값 건너뛰기
+            }
+            if (line) {
+                fprintf(tempFile, "%s\n", line);
+            }
+            found_command = 0;
+            continue;
+        }
+
+        fprintf(tempFile, "%s\n", line);  // 원본 파일의 나머지 내용 작성
+    }
+
+    if (!command_updated) {
+        fprintf(tempFile, "%s\n", command);
+        for (int i = 0; i < num_values; ++i) {
+            fprintf(tempFile, "%d\n", values[i]);  // 새 명령어 및 값 추가
+        }
+        fprintf(tempFile, "   // Updated values\n");
+    }
+
+    fclose(file);
+    fclose(tempFile);
+
+    // 원본 파일 삭제 및 임시 파일로 대체
+    if (remove(INPUT_FILE) != 0) {
+        perror("Error deleting original file");
+        return;
+    }
+
+    if (rename(TEMP_FILE, INPUT_FILE) != 0) {
+        perror("Error renaming temporary file");
+    }
+}
+
+// 파일에서 명령어의 현재 값을 출력하는 함수
+void printCurrentValues(const char *command, int num_values) {
+    int current_values[MAX_VALUES];
+    int num_read_values = readValuesFromFile(command, current_values, num_values);
+    if (num_read_values > 0) {
+        printf("Current values for '%s': ", command);
+        for (int i = 0; i < num_read_values; ++i) {
+            printf("%d ", current_values[i]);
+        }
+        printf("\n");
+    } else {
+        printf("No values found for '%s'.\n", command);
+    }
+}
+
+// 명령어 값을 업데이트하는 함수
+void handleUpdateCommand() {
+    char command[256];
+    printf("Enter the command to update (e.g., 'IGNITION'): ");
+    fgets(command, sizeof(command), stdin);
+
+    size_t len = strlen(command);
+    if (len > 0 && command[len - 1] == '\n') {
+        command[len - 1] = '\0';  // 개행 문자 제거
+    }
+
+    int num_values = 0;
+    int values[MAX_VALUES];
+    int command_found = 0;
+
+    // 명령어가 유효한지 확인
+    for (int i = 0; i < NUM_COMMANDS; ++i) {
+        if (strcmp(commands[i].command, command) == 0) {
+            num_values = commands[i].num_values;
+            command_found = 1;
+            break;
         }
     }
 
-    updateValuesInFile(command, new_values, num_values); // 파일을 업데이트합니다.
-    free(current_values); // 할당된 메모리를 해제합니다.
-    free(new_values);     // 할당된 메모리를 해제합니다.
-    printf("Values for '%s' have been updated.\n", command);
+    if (!command_found) {
+        printf("Command not found.\n");
+        return;
+    }
+
+    // 사용자로부터 값 입력 받기
+    printf("Enter %d value(s):\n", num_values);
+    for (int i = 0; i < num_values; ++i) {
+        printf("Value %d: ", i + 1);
+        scanf("%d", &values[i]);
+    }
+
+    writeOrUpdateValueToFile(command, values, num_values);
+    printf("Values updated successfully.\n");
 }
 
 int main() {
-    char command[MAX_LINE_LENGTH];
-
+    char action;
     while (1) {
-        printf("Enter the command to update or read (or type 'exit' to quit): ");
-        if (fgets(command, sizeof(command), stdin) == NULL) {
-            perror("Input error"); // 입력 오류 발생 시 에러 메시지를 출력합니다.
-            exit(EXIT_FAILURE);   // 프로그램을 종료합니다.
+        printf("Enter 'r' to read a command's values, 'u' to update values, or 'q' to quit: ");
+
+        // 단일 문자 입력 읽기
+        int result = scanf(" %c", &action);
+        if (result != 1) {
+            printf("Failed to read input. Exiting...\n");
+            return 1;
         }
 
-        command[strcspn(command, "\n")] = '\0'; // 개행 문자를 제거합니다.
+        // 입력 버퍼 비우기
+        while (getchar() != '\n');
 
-        if (strcmp(command, "exit") == 0) {
-            break; // 'exit'을 입력하면 프로그램을 종료합니다.
-        }
+        if (action == 'r') {
+            char command[256];
+            printf("Enter the command to read (e.g., 'IGNITION'): ");
+            fgets(command, sizeof(command), stdin);
 
-        printf("Do you want to read or update the values for '%s'? (r/u): ", command);
-        char option_line[MAX_LINE_LENGTH];
-        if (fgets(option_line, sizeof(option_line), stdin) == NULL) {
-            perror("Input error"); // 입력 오류 발생 시 에러 메시지를 출력합니다.
-            exit(EXIT_FAILURE);   // 프로그램을 종료합니다.
-        }
-        char option = option_line[0];
+            size_t len = strlen(command);
+            if (len > 0 && command[len - 1] == '\n') {
+                command[len - 1] = '\0';  // 개행 문자 제거
+            }
 
-        if (option == 'r') {
-            printValuesForCommand(command); // 값을 읽어 출력합니다.
-        } else if (option == 'u') {
-            processUpdate(command); // 값을 업데이트합니다.
+            int num_values = 0;
+            for (int i = 0; i < NUM_COMMANDS; ++i) {
+                if (strcmp(commands[i].command, command) == 0) {
+                    num_values = commands[i].num_values;
+                    break;
+                }
+            }
+
+            if (num_values > 0) {
+                printCurrentValues(command, num_values);
+            } else {
+                printf("Command not found.\n");
+            }
+        } else if (action == 'u') {
+            handleUpdateCommand();
+        } else if (action == 'q') {
+            printf("Quitting...\n");
+            break;
         } else {
-            printf("Invalid option. Please enter 'r' to read or 'u' to update.\n");
+            printf("Invalid option. Please enter 'r', 'u', or 'q'.\n");
         }
     }
 
-    return 0; // 프로그램 종료
+    return 0;
 }

@@ -1,153 +1,112 @@
 IGNITION
-1   // Ignition state (1 = On)
+4
+   // Updated values
+
 
 HORN
-1   // Activation signal
 
+3
+   // Updated values
 HEADLIGHTS
-2   // Headlight state (0 = Off, 1 = Low, 2 = High)
 
+2   // Headlight state (0 = Off, 1 = Low, 2 = High)
 TURN_SIGNALS
 0   // Direction (0 = Left, 1 = Right)
-
 WINDSHIELD_WIPERS
 1   // Wiper speed (0 = Off, 1 = Low, 2 = High)
-
 HAZARD_LIGHTS
 1   // Hazard light state (0 = Off, 1 = On)
-
 CRUISE_CONTROL
 1   // Cruise control state (1 = On)
 60  // Speed setting
-
 RADIO_VOLUME
-50  // Volume level (0-100)
-
-RADIO_TUNING
+3
+   // Updated valuesRADIO_TUNING
 1010    // Radio station frequency
-
 RADIO_SOURCE
 1   // Source type (0 = AM, 1 = FM, 2 = Bluetooth, etc.)
-
 CLIMATE_TEMP
 22  // Desired temperature
-
 CLIMATE_FAN
 3   // Fan speed level (0-5)
-
 CLIMATE_AIRFLOW
 2   // Airflow direction (0 = Face, 1 = Feet, 2 = Defrost, etc.)
-
 DEFROST
 1   // Defrost state (0 = Off, 1 = On)
-
 POWER_WINDOWS
 0   // Window identifier (0 = FrontLeft, 1 = FrontRight, 2 = RearLeft, 3 = RearRight)
 1   // Action (0 = Up, 1 = Down)
-
 WINDOW_LOCK
 0   // Lock state (0 = Unlock, 1 = Lock)
-
 DOOR_LOCKS
 1   // Lock state (0 = Unlock, 1 = Lock)
-
 MIRROR_ADJUST
 0   // Mirror identifier (0 = Left, 1 = Right)
 1   // Adjustment direction (0 = Up, 1 = Down, 2 = Left, 3 = Right)
-
 SEAT_ADJUST
 0   // Seat identifier (0 = Driver, 1 = Passenger)
 1   // Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar)
 3   // Adjustment value
-
 SUNROOF_CONTROL
 1   // Action (0 = Open, 1 = Close, 2 = Tilt)
-
 TRUNK_RELEASE
 1   // Activation signal
-
 FUEL_CAP_RELEASE
 1   // Activation signal
-
 PARKING_BRAKE
 1   // Brake state (0 = Disengage, 1 = Engage)
-
 DRIVE_MODE
 2   // Drive mode (0 = Eco, 1 = Sport, 2 = Normal)
-
 TRACTION_CONTROL
 1   // Control state (0 = Off, 1 = On)
-
 HEATED_SEATS
 0   // Seat identifier (0 = Driver, 1 = Passenger)
 2   // Heat level (0-3)
-
 COOLED_SEATS
 1   // Seat identifier (0 = Driver, 1 = Passenger)
 3   // Cooling level (0-3)
-
 STEERING_ADJUST
 1   // Adjustment direction (0 = Up, 1 = Down, 2 = In, 3 = Out)
-
 INTERIOR_LIGHT
 1   // Light state (0 = Off, 1 = On)
-
 REAR_DEFROST
 1   // Defrost state (0 = Off, 1 = On)
-
 CHILD_LOCK
 0   // Lock state (0 = Disengage, 1 = Engage)
-
 MUTE_BUTTON
 1   // Activation signal
-
 VOICE_COMMAND
 1   // Activation signal
-
 PHONE_ANSWER
 1   // Activation signal
-
 PHONE_END_CALL
 1   // Activation signal
-
 NAVIGATION
 37.7749  // Latitude
 -122.4194 // Longitude
-
 LANE_ASSIST
 1   // Assist state (0 = Off, 1 = On)
-
 PARKING_ASSIST
 0   // Assist state (0 = Off, 1 = On)
-
 HILL_DESCENT
 1   // Control state (0 = Off, 1 = On)
-
 HUD_ADJUST
 3   // Display setting
-
 GLOVE_BOX_RELEASE
 1   // Activation signal
-
 FOG_LIGHTS
 1   // Light state (0 = Off, 1 = On)
-
 EMERGENCY_BRAKE
 1   // Activation signal
-
 TRAILER_CONTROL
 1   // Control setting
-
 AUTO_HOLD
 0   // Hold state (0 = Off, 1 = On)
-
 HANDS_FREE
 1   // Activation signal
-
 SEAT_HEATER
 0   // Seat identifier (0 = Driver, 1 = Passenger)
 3   // Heat level (0-3)
-
 SEAT_COOLER
 1   // Seat identifier (0 = Driver, 1 = Passenger)
 2   // Cooling level (0-3)
