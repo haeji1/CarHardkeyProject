@@ -20,7 +20,8 @@ int main() {
     // initializeObservers();
     initializeFeatureHandlers();
 
-    traction_control_function tc = tractionOn;
+    tractionControlFunction tc = tractionOn;
+    tractionControl(tc);
     registerHandler(TRACTION_CONTROL, tc);
     handlerEvent(TRACTION_CONTROL);
     unregisterHandler(TRACTION_CONTROL, tc);
