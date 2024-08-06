@@ -5,28 +5,11 @@
 
 Observer *observer[NUM_KEYS];
 
-// Initializes an observer array of size NUM_KEY
-void initializeObservers() {
-    for (int i = 0; i < NUM_KEYS; i++) {
-        observer[i] = NULL;
-    }
-    printf("initialize success\n");
-}
-
 void registerHandler(HardKey hardkey, Handler handler) {
-
-    Observer *newObserver = (Observer*)malloc(sizeof(Observer));
-    newObserver->handler = handler;
-    newObserver->next = NULL;
-    if (observer[hardkey] == NULL) {
-        observer[hardkey] = newObserver;
-    } else {
-        Observer *temp = observer[hardkey];
-        while (temp->next) {
-            temp = temp->next;
-        }
-        temp->next = newObserver;
-    }   
+    Observer *newObserver = (Observer *)malloc(sizeof(Observer));
+    newObserver -> handler = handler;
+    newObserver -> next = observer[hardkey];
+    observer[hardkey] = newObserver;
     // printf("Registered handler at %p\n", (void*)handler);
 }
 
@@ -34,20 +17,17 @@ void registerHandler(HardKey hardkey, Handler handler) {
 void unregisterHandler(HardKey hardKey, Handler handler) {
     Observer **now = &observer[hardKey];
     while (*now) {
-        printf("=====");
-        printf("Checking handler at %p against %p\n", (void*)((*now)->handler), (void*)handler);
+        // printf("=====");
+        // printf("Checking handler at %p against %p\n", (void*)((*now)->handler), (void*)handler);
         if ((*now) -> handler == handler) {
-            printf("free[[[]]]");
             Observer* del = *now;
             *now = (*now) -> next;
             free(del);
-            del = NULL;
             printf("success unregister\n");
             return; 
         }
         now = &(*now) -> next;
     }
-    
 }
 
 // Calls all handlers registered with the input hardkey
@@ -66,9 +46,6 @@ void handlerEvent(HardKey hardKey) {
 }
 
 void unregisterFunction(HardKey hardKey, Handler handler) {
-    Sleep(10000);
-    printf("10 seconds\n");
-    printf("unregister\n");
+    // Sleep(10000);
     unregisterHandler(hardKey, handler);
-    printf("menu\n");
 }
