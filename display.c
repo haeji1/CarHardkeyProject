@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "display.h"
 #include "observer.h"
 #include "horn.h"
@@ -10,7 +8,9 @@
 #include "ClimateAirflow.h"
 #include "Defrost.h"
 #include "PowerWindows.h"
-
+#include "WindowLock.h"
+#include "DoorLock.h"
+#include "MirrorAdjust.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -26,8 +26,6 @@ void displayMenu() {
     printf("17. DOOR_LOCKS\n");
     printf("18. MIRROR_ADJUST\n");
     printf("19. SEAT_ADJUST\n");
-
-
     printf("50. EXIT\n");
 }
 
@@ -36,47 +34,98 @@ void handleHornCommands() {
 }
 
 
-// 라디오
 void handleRadioSourceCommands() {
-    handlerEvent(RADIO_SOURCE);
+    int option, value;
+    radioSourceControlFunction rs = NULL;  // Initialize rs to NULL
 
+    printf("TRACTION Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Select RadioSource\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            break;
+        case 2:
+            handleRadioSource(rs);
+            // Register and handle event if needed
+            registerHandler(RADIO_SOURCE, rs);
+            handlerEvent(RADIO_SOURCE);
+            unregisterHandler(RADIO_SOURCE, rs);
+            break;
+
+        case 3:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
-// 기후 체인지
+
 void handleClimateTempCommands() {
     handlerEvent(CLIMATE_TEMP);
-
 }
-// 펜 레벨 선택
-void handleClimateFanCommands(){
+
+void handleClimateFanCommands() {
     handlerEvent(CLIMATE_FAN);
 }
 
-// 공기 흐름
-void handleClimateAirflowCommands(){
+void handleClimateAirflowCommands() {
     handlerEvent(CLIMATE_AIRFLOW);
 }
 
-void handleDefrostCommands(){
+void handleDefrostCommands() {
     handlerEvent(DEFROST);
 }
 
-void handlePowerWindowsCommands(){
+void handlePowerWindowsCommands() {
     handlerEvent(POWER_WINDOWS);
-};
+}
+
+void handleWindowLockCommands() {
+    handlerEvent(WINDOW_LOCK);
+}
+
+void handleDoorLockCommands() {
+    handlerEvent(DOOR_LOCKS);
+}
+
+void handleMirrorAdjustCommands() {
+    handlerEvent(MIRROR_ADJUST);
+}
 
 void initializeFeatureHandlers() {
-    // Initialize handlers for various features
-    initializeHornHandlers();
-    initializeRadioSourceHandlers();
-    initializeClimateTempHandlers();
+    //initializeHornHandlers();
+    //initializeRadioSourceHandlers();
+/*    initializeClimateTempHandlers();
     initializeClimateFanHandlers();
     initializeClimateAirflowHandlers();
-    initializeDefrostlers();
+    initializeDefrostHandlers();
     initializePowerWindowsHandlers();
-
+    initializeWindowLockHandlers();
+    initializeDoorLockHandlers();
+    initializeMirrorAdjustHandlers();*/
 }
 
 void cleanupFeatureHandlers() {
-    // Unregister handlers for various features
-    unregisterHandler(HORN, handleHorn);
+    unregisterHandler(HORN, handleHornCommands);
+    unregisterHandler(RADIO_SOURCE, handleRadioSourceCommands);
+    unregisterHandler(CLIMATE_TEMP, handleClimateTempCommands);
+    unregisterHandler(CLIMATE_FAN, handleClimateFanCommands);
+    unregisterHandler(CLIMATE_AIRFLOW, handleClimateAirflowCommands);
+    unregisterHandler(DEFROST, handleDefrostCommands);
+    unregisterHandler(POWER_WINDOWS, handlePowerWindowsCommands);
+    unregisterHandler(WINDOW_LOCK, handleWindowLockCommands);
+    unregisterHandler(DOOR_LOCKS, handleDoorLockCommands);
+    unregisterHandler(MIRROR_ADJUST, handleMirrorAdjustCommands);
 }

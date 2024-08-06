@@ -3,9 +3,16 @@
 //
 
 
-void AM();
-void FM();
-void Bluetooth();
-void handleRadioSource();
-void showDisplay();
-void initializeRadioSourceHandlers();
+#ifndef RADIOSOURCE_H
+#define RADIOSOURCE_H
+
+#include <stdio.h>
+
+typedef void(*radioSourceControlFunction)(void);
+
+void AM(void);
+void FM(void);
+void Bluetooth(void);
+void handleRadioSource(radioSourceControlFunction rs);
+
+#endif // RADIOSOURCE_H

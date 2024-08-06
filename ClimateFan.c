@@ -105,4 +105,5 @@ void handleClimateFan(){
 
 void initializeClimateFanHandlers() {
     registerHandler(CLIMATE_FAN, handleClimateFan);
+
 }

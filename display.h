@@ -1,5 +1,7 @@
-void displayMenu();
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
+void displayMenu();
 
 void handleHornCommands();
 void handleRadioSourceCommands();
@@ -8,9 +10,11 @@ void handleClimateFanCommands();
 void handleClimateAirflowCommands();
 void handleDefrostCommands();
 void handlePowerWindowsCommands();
-
-
-
+void handleWindowLockCommands();
+void handleDoorLockCommands();
+void handleMirrorAdjustCommands();
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
+
+#endif // DISPLAY_H

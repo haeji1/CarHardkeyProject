@@ -2,10 +2,10 @@ all: main.exe
 	./main.exe
 
 
-main.exe: main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o
+main.exe: main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o WindowLock.o DoorLock.o MirrorAdjust.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o WindowLock.o DoorLock.o MirrorAdjust.o
 
-main.o: main.c observer.h ignition.h horn.h display.h RadioSource.h ClimateTemp.h ClimateFan.h ClimateAirFlow.h Defrost.h PowerWindows.h
+main.o: main.c observer.h ignition.h horn.h display.h RadioSource.h ClimateTemp.h ClimateFan.h ClimateAirFlow.h Defrost.h PowerWindows.h WindowLock.h DoorLock.h MirrorAdjust.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -37,3 +37,16 @@ Defrost.o : Defrost.c observer.h Defrost.h
 
 PowerWindows.o : PowerWindows.c PowerWindows.h observer.h
 	gcc -c PowerWindows.c
+
+WindowLock.o : WindowLock.c WindowLock.h observer.h
+	gcc -c WindowLock.c
+
+DoorLock.o : DoorLock.c DoorLock.h observer.h
+	gcc -c DoorLock.c
+
+
+MirrorAdjust.o : MirrorAdjust.c MirrorAdjust.h observer.h
+	gcc -c MirrorAdjust.c
+
+clean:
+	rm -f *.o main.exe

@@ -9,12 +9,12 @@ void initializeObservers() {
     for (int i = 0; i < NUM_KEYS; i++) {
         observer[i] = NULL;
     }
-    printf("initialize success");
+    printf("initialize success\n");
 }
 
 void registerHandler(HardKey hardkey, Handler handler) {
-
     Observer *newObserver = (Observer*)malloc(sizeof(Observer));
+    Observer **now = &observer[hardkey];
     newObserver->handler = handler;
     newObserver->next = NULL;
     if (observer[hardkey] == NULL) {
@@ -26,12 +26,14 @@ void registerHandler(HardKey hardkey, Handler handler) {
         }
         temp->next = newObserver;
     }
+    printf("initializeClimateFanHandlers at %p against %p\n", (void*)((*now)->handler), (void*)handler);
 
 }
 
 // If there is the same handler for the input hardkey, the current observer is removed.
 void unregisterHandler(HardKey hardKey, Handler handler) {
     Observer **now = &observer[hardKey];
+    printf("Checking handler at %p against %p\n", (void*)((*now)->handler), (void*)handler);
     while (*now) {
         if ((*now) -> handler == handler) {
             Observer* del = *now;
