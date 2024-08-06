@@ -156,15 +156,107 @@ void handleClimateFanCommands() {
 }
 
 void handleClimateAirflowCommands() {
-    handlerEvent(CLIMATE_AIRFLOW);
+    int option, value;
+    ClimateAirflowControlFunction cfcf = NULL;  // Initialize rs to NULL
+
+    printf("CLIMATE_AIRFLOW Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handleClimateAirflow(&cfcf);
+            // Register and handle event if needed
+            registerHandler(CLIMATE_AIRFLOW, cfcf);
+            printf("display.c rs adress is : %p\n", cfcf);
+            handlerEvent(CLIMATE_AIRFLOW);
+
+
+            unregisterHandler(CLIMATE_AIRFLOW, cfcf);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handleDefrostCommands() {
-    handlerEvent(DEFROST);
+    int option, value;
+    DefrostControlFunction dfc = NULL;  // Initialize rs to NULL
+
+    printf("DEFROST Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handleDefrost(&dfc);
+            // Register and handle event if needed
+            registerHandler(DEFROST, dfc);
+            printf("display.c rs adress is : %p\n", dfc);
+            handlerEvent(DEFROST);
+            unregisterHandler(DEFROST, dfc);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handlePowerWindowsCommands() {
-    handlerEvent(POWER_WINDOWS);
+        int option, value;
+    handlePowerWindowsControlFunction pwcf = NULL;  // Initialize rs to NULL
+
+    printf("PowerWindows Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handlePowerWindows(&pwcf);
+            // Register and handle event if needed
+            registerHandler(POWER_WINDOWS, pwcf);
+            printf("display.c rs adress is : %p\n", pwcf);
+            handlerEvent(POWER_WINDOWS);
+            unregisterHandler(POWER_WINDOWS, pwcf);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void handleWindowLockCommands() {
@@ -178,6 +270,10 @@ void handleDoorLockCommands() {
 void handleMirrorAdjustCommands() {
     handlerEvent(MIRROR_ADJUST);
 }
+void handleSeatAdjustCommands(){ // 파일 만들어애됨
+
+}
+
 
 void initializeFeatureHandlers() {
     //initializeHornHandlers();

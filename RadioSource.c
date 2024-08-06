@@ -29,7 +29,7 @@ void FM(void) {
         printf("FM mode.\n");
     } else {
         sourceState = 1;
-        printf("RadioSource Turned FM\n");
+        printf("RadioSource Turning FM\n");
     }
     sleep(3);
 }
@@ -56,6 +56,7 @@ void handleRadioSource(radioSourceControlFunction *rs) {
 
     scanf("%d", &opt);
 
+
     if (opt == 0) {
         *rs = AM;
     } else if (opt == 1) {
@@ -67,7 +68,8 @@ void handleRadioSource(radioSourceControlFunction *rs) {
     } else {
         printf("Unknown RadioSource command.\n");
     }
-    (*rs)();  // rs 넣은 전략 함수를 실행;
+
+    //(*rs)();  // rs 넣은 전략 함수를 실행;
 
 }
 

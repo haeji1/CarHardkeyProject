@@ -14,15 +14,15 @@
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
 
-void initializeFeatureHandlers();
-void cleanupFeatureHandlers();
+//void initializeFeatureHandlers();
+//void cleanupFeatureHandlers();
 
 int main() {
     char input[10];
     int ignitionStarted = 0;
     int selection;
 
-    //initializeFeatureHandlers();
+    //initializeFeatureHandlers();                    handleRadioSourceCommands();
 
     while (1) {
         if (!ignitionStarted) {

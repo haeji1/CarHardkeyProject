@@ -13,14 +13,12 @@ void setTemp(){
     int input;
     printf("Ajust Temp:");
     scanf("%d", &input);
-    if (ClimateTempState == 22){
-        ClimateTempState = input;
-    }else{
-        ClimateTempState = input;
-    }
+
+    ClimateTempState = input;
+
     printf("setting %d degree\n", ClimateTempState);
 }
-
+// context
 void handleClimateTemp(ClimateTempControlFunction *ct){
     *ct = setTemp;
 
