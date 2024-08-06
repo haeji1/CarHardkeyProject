@@ -11,6 +11,9 @@
 #include "WindowLock.h"
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
+#include "SeatAdjust.h"
+
+
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -361,7 +364,7 @@ void handleMirrorAdjustCommands() {
     }
 }
 void handleSeatAdjustCommands(){ // 파일 만들어애됨
-
+    handleSeatAdjust();
 }
 
 /*

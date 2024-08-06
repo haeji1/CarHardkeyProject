@@ -13,7 +13,7 @@ void handlePowerWindowsCommands();
 void handleWindowLockCommands();
 void handleDoorLockCommands();
 void handleMirrorAdjustCommands();
-
+void handleSeatAdjustCommands();
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 

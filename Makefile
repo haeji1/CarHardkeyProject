@@ -2,10 +2,10 @@ all: main.exe
 	./main.exe
 
 
-main.exe: main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o WindowLock.o DoorLock.o MirrorAdjust.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o WindowLock.o DoorLock.o MirrorAdjust.o
+main.exe: main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o WindowLock.o DoorLock.o MirrorAdjust.o SeatAdjust.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o display.o RadioSource.o ClimateTemp.o ClimateFan.o ClimateAirFlow.o Defrost.o PowerWindows.o WindowLock.o DoorLock.o MirrorAdjust.o SeatAdjust.o
 
-main.o: main.c observer.h ignition.h horn.h display.h RadioSource.h ClimateTemp.h ClimateFan.h ClimateAirFlow.h Defrost.h PowerWindows.h WindowLock.h DoorLock.h MirrorAdjust.h
+main.o: main.c observer.h ignition.h horn.h display.h RadioSource.h ClimateTemp.h ClimateFan.h ClimateAirFlow.h Defrost.h PowerWindows.h WindowLock.h DoorLock.h MirrorAdjust.h SeatAdjust.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -47,6 +47,9 @@ DoorLock.o : DoorLock.c DoorLock.h observer.h
 
 MirrorAdjust.o : MirrorAdjust.c MirrorAdjust.h observer.h
 	gcc -c MirrorAdjust.c
+
+SeatAdjust.o : SeatAdjust.c SeatAdjust.h observer.h
+	gcc -c SeatAdjust.o
 
 clean:
 	rm -f *.o main.exe

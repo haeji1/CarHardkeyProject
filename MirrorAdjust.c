@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "observer.h"
 #include <stdlib.h>
-#include "PowerWindows.h"
+
 static int MirrorIdentifierState = 0;
 static int  AdjustmentDirectionState = 1;
 static int opt;

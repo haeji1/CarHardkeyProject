@@ -14,6 +14,7 @@
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
 
+
 //void initializeFeatureHandlers();
 //void cleanupFeatureHandlers();
 
@@ -82,6 +83,9 @@ int main() {
                     break;
                 case 18:
                     handleMirrorAdjustCommands();
+                    break;
+                case 19:
+                    handleSeatAdjustCommands();
                     break;
                 case 50:
                     break; // Exit the program
