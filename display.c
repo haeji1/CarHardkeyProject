@@ -17,6 +17,7 @@ void displayMenu() {
     printf("21. TRUNK\n");
     printf("24. DRIVEMODE\n");
     printf("28. STEERINGADJUST\n");
+    printf("29. INTERIORLIGHT\n");
     printf("4. EXIT\n");
 }
 
