@@ -49,7 +49,7 @@ MirrorAdjust.o : MirrorAdjust.c MirrorAdjust.h observer.h
 	gcc -c MirrorAdjust.c
 
 SeatAdjust.o : SeatAdjust.c SeatAdjust.h observer.h
-	gcc -c SeatAdjust.o
+	gcc -c SeatAdjust.c
 
 clean:
 	rm -f *.o main.exe

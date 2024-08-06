@@ -7,6 +7,8 @@
 #include "observer.h"
 #include <stdlib.h>
 
+
+
 void handleSeatAdjust(){
     printf("handleSeatAdjust");
 }
