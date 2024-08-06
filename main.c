@@ -59,7 +59,7 @@ int main() {
             } else if (selection == 20) {
                 sunroofMenu();
             } else if (selection == 21) {
-                // trunk
+                trunkReleaseMenu();
             } else if (selection == 23) {
                 parkingBrakeMenu();
             }

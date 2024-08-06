@@ -16,7 +16,7 @@ void displayMenu() {
     printf("2. HEADLIGHTS\n");
     printf("3. RADIO\n");
     printf("20. SUNROOF\n");
-    printf("21. TRUNK\n");
+    printf("21. TRUNKRELEASE\n");
     printf("23. PARKINGBRAKE\n");
     printf("24. DRIVEMODE\n");
     printf("25. TRACTION\n");

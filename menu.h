@@ -3,6 +3,7 @@
 #define MENU_H
 
 void sunroofMenu();
+void trunkReleaseMenu();
 void driveModeMenu();
 void tractionMenu();
 void steeringMenu();

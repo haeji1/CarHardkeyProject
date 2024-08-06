@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "menu.h"
 #include "sunroof.h"
+#include "trunk.h"
 #include "drive.h"
 #include "traction.h"
 #include "observer.h"
@@ -61,6 +62,40 @@ void sunroofMenu() {
     }
 }
 
+void trunkReleaseMenu() {
+    int option, value;
+    trunkReleaseControlFunction tr;
+
+    printf("TRUNK RELEASE Menu:\n");
+    printf("1. Activate trunk release\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            // Register the handler
+            tr = activateTrunkRelease;
+            registerHandler(TRUNK_RELEASE, tr);
+            // Notify the event
+            handlerEvent(TRUNK_RELEASE);
+            unregisterHandler(TRUNK_RELEASE, tr);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRUNK_RELEASE");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
 void parkingBrakeMenu() {
     int option, value;
     parkingBrakeControlFunction pc;
