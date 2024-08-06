@@ -1,9 +1,9 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o
-main.o: main.c observer.h ignition.h horn.h display.h sunroof.h drive.h steering.h interior.h
+main.exe: main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o traction.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o traction.o
+main.o: main.c observer.h ignition.h horn.h display.h sunroof.h drive.h steering.h interior.h traction.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -30,7 +30,7 @@ steering.o: steering.c observer.h steering.h
 interior.o: interior.c observer.h interior.h
 	gcc -c interior.c
 
-traction.o: traction.c observer.h
+traction.o: traction.c observer.h traction.h
 	gcc -c traction.c
 clean:
 	rm -f *.o main.exe
