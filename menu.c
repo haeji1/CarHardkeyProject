@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "menu.h"
+#include "headlights.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -9,6 +10,60 @@
 #include "steering.h"
 #include "interior.h"
 #include "pbrake.h"
+
+void headlightsMenu(){
+    int option, value;
+    headlightsControlFunction hc;
+
+    printf("HEADLIGHTS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter headlights state (0=Off, 1=Low, 2=High): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("HEADLIGHTS", value);
+
+            // Set the headlights control function
+            if (value == 0) {
+                hc = offHeadlights;
+            } else if (value == 1) {
+                hc = lowHeadlights;
+            } else {
+                hc = highHeadlights;
+            }
+
+            // Execute the traction control function
+            headlightsControl(hc);
+            registerHandler(HEADLIGHTS, hc);
+            // Notify the event
+            handlerEvent(HEADLIGHTS);
+            unregisterHandler(HEADLIGHTS, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HAEDLIGHTS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
 
 void sunroofMenu() {
     int option, value;

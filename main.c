@@ -54,7 +54,7 @@ int main() {
             if (selection == 1) {
                 handleHornCommands();
             } else if (selection == 2) {
-                handleHeadlightsCommands();
+                headlightsMenu();
             } else if (selection == 3) {
                 handleTurnSignalsCommands();
             } else if (selection == 4) {
