@@ -1,10 +1,11 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
-void initializeDriveModeHandlers();
-void executeDriveModeOperation(int operation);
+typedef void(*driveModeControlFunction)();
 
-// Define function pointer type for drive mode
-typedef void (*DriveModeOperation)();
+void ecoMode();
+void sportsMode();
+void normalMode();
+void driveModeControl(driveModeControlFunction);
 
 #endif

@@ -8,6 +8,7 @@
 #include "steering.h"
 #include "interior.h"
 #include "traction.h"
+#include "menu.h"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -60,13 +61,7 @@ int main() {
             } else if (selection == 21) {
                 // trunk
             } else if (selection == 24) {
-                printf("Select drivemode operation (0: Eco, 1: Sports, 2: Normal): ");
-                int driveModeOperation;
-                if (scanf("%d", &driveModeOperation) != 1 || driveModeOperation < 0 || driveModeOperation > 2) {
-                    printf("Invalid drive mode. Please enter 0, 1, or 2.\n");
-                    continue;
-                }
-                executeDriveModeOperation(driveModeOperation);
+                driveModeMenu();
             } else if (selection == 25) {
                 tractionMenu();
             } 
