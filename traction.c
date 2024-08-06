@@ -1,4 +1,10 @@
 #include <stdio.h>
+#include "traction.h"
+
+/*
+    0 : off
+    1 : on
+*/
 
 // Interface for traction control
 typedef void(*tractionControlFunction)();
@@ -12,6 +18,5 @@ void tractionOn() {
 }
 
 void tractionControl(tractionControlFunction tc) {
-    // tc();
-    printf("Change status successful\n");
+    printf("status changed by function\n");
 }

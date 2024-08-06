@@ -7,7 +7,7 @@
 #include "drive.h"
 #include "steering.h"
 #include "interior.h"
-#include "traction.c"
+#include "traction.h"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -20,11 +20,12 @@ int main() {
     // initializeObservers();
     initializeFeatureHandlers();
 
-    tractionControlFunction tc = tractionOn;
-    tractionControl(tc);
-    registerHandler(TRACTION_CONTROL, tc);
-    handlerEvent(TRACTION_CONTROL);
-    unregisterHandler(TRACTION_CONTROL, tc);
+    // tractionControlFunction tc = tractionOn;
+    // tractionControl(tc);
+
+    // registerHandler(TRACTION_CONTROL, tc);
+    // handlerEvent(TRACTION_CONTROL);
+    // unregisterHandler(TRACTION_CONTROL, tc);
 
     while (1) {
         if(!ignitionStarted){
@@ -80,7 +81,10 @@ int main() {
                     continue;
                 }
                 executeDriveModeOperation(driveModeOperation);
-            } else if (selection == 28) {
+            } else if (selection == 25) {
+                tractionMenu();
+            } 
+            else if (selection == 28) {
                 printf("Select steering adjust operation (0: Up, 1: Down, 2: In, 3: Out):");
                 int steeringAjustOperation;
                 if (scanf("%d", &steeringAjustOperation) != 1 || steeringAjustOperation < 0 || steeringAjustOperation > 2) {
