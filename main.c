@@ -60,7 +60,10 @@ int main() {
                 sunroofMenu();
             } else if (selection == 21) {
                 // trunk
-            } else if (selection == 24) {
+            } else if (selection == 23) {
+                parkingBrakeMenu();
+            }
+            else if (selection == 24) {
                 driveModeMenu();
             } else if (selection == 25) {
                 tractionMenu();

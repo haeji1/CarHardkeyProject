@@ -1,9 +1,9 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o traction.o menu.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o traction.o menu.o
-main.o: main.c observer.h ignition.h horn.h display.h sunroof.h drive.h steering.h interior.h traction.h menu.h
+main.exe: main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o traction.o menu.o pbrake.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o display.o sunroof.o drive.o steering.o interior.o traction.o menu.o pbrake.o
+main.o: main.c observer.h ignition.h horn.h display.h sunroof.h drive.h steering.h interior.h traction.h menu.h pbrake.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -23,6 +23,9 @@ sunroof.o: sunroof.c observer.h sunroof.h
 
 drive.o: drive.c observer.h drive.h
 	gcc -c drive.c
+
+pbrake.o: pbrake.c observer.h pbrake.h
+	gcc -c pbrake.c
 
 steering.o: steering.c observer.h steering.h
 	gcc -c steering.c

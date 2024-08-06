@@ -6,6 +6,7 @@
 #include "observer.h"
 #include "steering.h"
 #include "interior.h"
+#include "pbrake.h"
 
 void sunroofMenu() {
     int option, value;
@@ -52,6 +53,57 @@ void sunroofMenu() {
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("SUNROOF_CONTROL");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
+void parkingBrakeMenu() {
+    int option, value;
+    parkingBrakeControlFunction pc;
+
+    printf("Parking Brake Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter traction state (0=Disengage, 1=Engage): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("PARKING_BRAKE", value);
+
+            // Set the traction control function
+            if (value == 0) {
+                pc = disengageBrake;
+            } else {
+                pc = engageBrake;
+            }
+
+            // Execute the traction control function
+            parkingBrakeControl(pc);
+            registerHandler(PARKING_BRAKE, pc);
+            // Notify the event
+            handlerEvent(PARKING_BRAKE);
+            unregisterHandler(PARKING_BRAKE, pc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("PARKING_BRAKE");
             break;
 
         default:
