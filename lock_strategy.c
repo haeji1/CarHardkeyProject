@@ -14,6 +14,7 @@ void engageLockImpl() {
 void disengageLockImpl() {
     currentLockState = DISENGAGED;
     printf("Child lock disengaged.\n");
+
 }
 
 LockState getLockStateImpl() {
@@ -27,20 +28,22 @@ GetLockStateFunction getLockState = getLockStateImpl;
 
 // 사용자 입력을 처리하고 잠금 상태를 제어하는 함수
 void handleLockCommand() {
-    char input[10];
+    int command;
 
-    printf("Enter command (ENGAGE/DISENGAGE) to control child lock or 'exit' to quit:\n");
-    printf("Current state: %s\n", getLockState() == ENGAGED ? "Engaged" : "Disengaged");
-    scanf("%s", input);
+    while (1) {
+        printf("Enter command (1 for ENGAGE, 2 for DISENGAGE)\n");
+        printf("Current state: %s\n", getLockState() == ENGAGED ? "Engaged" : "Disengaged");
+        scanf("%d", &command);
 
-    if (strcmp(input, "ENGAGE") == 0) {
-        engageLock();
-    } else if (strcmp(input, "DISENGAGE") == 0) {
-        disengageLock();
-    } else if (strcmp(input, "exit") == 0) {
-        printf("Exiting...\n");
-    } else {
-        printf("Invalid command.\n");
+        if (command == 1) {
+            engageLock();
+            break;
+        } else if (command == 2) {
+            disengageLock();
+            break;
+        }
+        else {
+            printf("Invalid command. Please enter 1, 2\n");
+        }
     }
 }
-

@@ -90,8 +90,8 @@ void handleRadioTuningCommands(){
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
     initializeHornHandlers();
-    initializeHeadlightsHandlers();
-    initializeTurnSignalsHandlers();
+    //nitializeHeadlightsHandlers();
+    //initializeTurnSignalsHandlers();
     initializeWindshieldWipersHandlers();
     initializeHazardLightsHandlers();
     initializeCruiseControlHandlers();

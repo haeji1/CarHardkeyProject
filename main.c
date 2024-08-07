@@ -10,7 +10,7 @@
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
-
+#include "file.c"
 
 
 // 30~39번 입니다
@@ -27,6 +27,7 @@ void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 
 int main() {
+
     char input[10];
     int ignitionStarted = 0; 
     int selection;
@@ -146,7 +147,12 @@ int main() {
             }
             else if(selection ==39) {
 
-            }else{
+            }
+
+			else  if(selection==50){
+			return 0;
+			}
+			else{
                 printf("Invalid selection. Please try again.\n");
             }
         }

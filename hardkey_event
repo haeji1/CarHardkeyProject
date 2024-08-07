@@ -1,14 +1,8 @@
 IGNITION
-4
-   // Updated values
-
-
+1
 HORN
-
 3
-   // Updated values
 HEADLIGHTS
-
 2   // Headlight state (0 = Off, 1 = Low, 2 = High)
 TURN_SIGNALS
 0   // Direction (0 = Left, 1 = Right)
