@@ -10,6 +10,11 @@
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
+
+
+
+// 30~39번 입니다
+
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
 #include "MUTE_BUTTON.c"
@@ -18,16 +23,10 @@
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
 
-void initializeFeatureHandlers();
-void cleanupFeatureHandlers();
-
 int main() {
     char input[10];
     int ignitionStarted = 0; 
     int selection;
-
-    //initializeObservers();
-    initializeFeatureHandlers();
 
     //등록30~39
     registerHandler(MUTE_BUTTON, muteButtonHandler);//
@@ -41,26 +40,27 @@ int main() {
 
     while (1) {
         if(!ignitionStarted){
-            printf("\nEnter command for IGNITION (ON/OFF/EXIT): ");
-            if (scanf("%9s", input) != 1) {
-                perror("scanf failed");
-                exit(EXIT_FAILURE);
-            }
+            ignitionStarted = ignitionMenu();
+            // printf("\nEnter command for IGNITION (ON/OFF/EXIT): ");
+            // if (scanf("%9s", input) != 1) {
+            //     perror("scanf failed");
+            //     exit(EXIT_FAILURE);
+            // }
 
-            if (strcmp(input, "ON") == 0) {
-                handlerEvent(HORN);// -> notify 다른 기능들
-                handlerEvent(HEADLIGHTS);
-                ignitionStarted = 1; // Set the ignition started flag
-                printf("Engine started. Select a feature using the menu.\n");
-            } else if (strcmp(input, "OFF") == 0) {
-                //handleShutdownEvent();
-                printf("Unknown command. Please use START or EXIT.\n");
-                break;
-            } else if (strcmp(input, "EXIT") == 0) {
-                break;
-            } else {
-                printf("Unknown command.\n");
-            }
+            // if (strcmp(input, "ON") == 0) {
+            //     handlerEvent(HORN);// -> notify 다른 기능들
+            //     handlerEvent(HEADLIGHTS);
+            //     ignitionStarted = 1; // Set the ignition started flag
+            //     printf("Engine started. Select a feature using the menu.\n");
+            // } else if (strcmp(input, "OFF") == 0) {
+            //     //handleShutdownEvent();
+            //     printf("Unknown command. Please use START or EXIT.\n");
+            //     break;
+            // } else if (strcmp(input, "EXIT") == 0) {
+            //     break;
+            // } else {
+            //     printf("Unknown command.\n");
+            // }
         }else{
             displayMenu();
             printf("Enter your choice (number): ");
@@ -76,18 +76,16 @@ int main() {
             } else if (selection == 3) {
                 turnSignalsMenu();
             } else if (selection == 4) {
-                handleWindshieldWipersCommands();
+                windshieldWipersMenu();
             } else if (selection == 5) {
-                handleHazardLightsCommands();
+                hazardLightsMenu();
             } else if (selection == 6) {
-                handleCruiseControlCommands();
+                cruiseControlMenu();
             } else if (selection == 7) {
-                handleRadioVolumeCommands();
+                //handleRadioVolumeCommands();
             } else if (selection == 8) {
-                handleRadioTuningCommands();
-            } else if (selection == 50) {
-                //
-            } else if (selection == 20) {
+                //handleRadioTuningCommands();
+            }  else if (selection == 20) {
                 sunroofMenu();
             } else if (selection == 21) {
                 trunkReleaseMenu();
@@ -141,10 +139,7 @@ int main() {
             }
             else if(selection ==39) {
 
-            } else if (selection == 50) {
-                break;
-            }
-            else {
+            }else{
                 printf("Invalid selection. Please try again.\n");
             }
         }
