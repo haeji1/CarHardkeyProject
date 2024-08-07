@@ -34,6 +34,7 @@ void displayMenu() {
     printf("24. DRIVE MODE\n");
     printf("25. TRACTION\n");
     printf("26. HEATED SEATS\n");
+    printf("27. COOLED SEATS\n");
     printf("28. STEERING ADJUST\n");
     printf("29. INTERIOR LIGHT\n");
      printf("50. EXIT\n");

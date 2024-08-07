@@ -3,7 +3,7 @@
 
 /*
     Seat Identifier : (0 ~ 1)
-    Seat Level : (0 ~ 3)
+    Heated Level : (0 ~ 3)
 */
 
 typedef void(*heatSeatControlFunction)();

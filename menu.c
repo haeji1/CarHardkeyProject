@@ -10,6 +10,7 @@
 #include "interior.h"
 #include "pbrake.h"
 #include "hseat.h"
+#include "cseat.h"
 
 void sunroofMenu() {
     int option, value;
@@ -333,6 +334,64 @@ void heatedSeatMenu() {
 
             // Unregister the handler
             unregisterHandler(HEATED_SEATS, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HEATED_SEATS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
+void cooledSeatMenu() {
+    int option, seatId, coolLevel;
+    coolSeatControlFunction cc;
+    CseatStatus status;
+
+    printf("COOLED SEATS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter seat identifier (0 = Driver, 1 = Passenger): ");
+            if (scanf("%d", &seatId) != 1 || (seatId < 0 || seatId > 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            printf("Enter cool level (0-3): ");
+            if (scanf("%d", &coolLevel) != 1 || (coolLevel < 0 || coolLevel > 3)) {
+                printf("Invalid input. Enter a value between 0 and 3.\n");
+                return;
+            }
+
+            // Set the heated seat status
+            status.seatId = seatId;
+            status.coolLevel = coolLevel;
+            
+            // Use a wrapper to pass the changed value of the structure
+            adjustCooledSeat(status);
+            cc = cooledSeatHandlerWrapper;
+
+            // register handler
+            registerHandler(COOLED_SEATS, cc);
+
+            // Notify the event
+            handlerEvent(COOLED_SEATS);
+
+            // Unregister the handler
+            unregisterHandler(COOLED_SEATS, cc);
             break;
 
         case 2:

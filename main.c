@@ -85,6 +85,8 @@ int main() {
                 tractionMenu();
             } else if (selection == 26) {
                 heatedSeatMenu();
+            } else if (selection == 27) {
+                cooledSeatMenu();
             } else if (selection == 28) {
                 steeringMenu();
             } else if (selection == 29) {
