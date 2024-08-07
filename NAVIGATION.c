@@ -28,7 +28,6 @@ void navigateTo(Coordinates destination) {
     }
 }
 
-
 void navigatehandle() {
     int strategyChoice;
     Coordinates destination;
@@ -52,17 +51,17 @@ void navigatehandle() {
     switch (strategyChoice) {
         case 1:
             setNavigationStrategy(quickRouteStrategy);
-        break;
+            break;
         case 2:
             setNavigationStrategy(convenientRouteStrategy);
-        break;
+            break;
         case 3:
             setNavigationStrategy(minimumFareRouteStrategy);
-        break;
+            break;
         default:
             printf("Invalid choice. Using Quick Route as default.\n");
-        setNavigationStrategy(quickRouteStrategy);
-        break;
+            setNavigationStrategy(quickRouteStrategy);
+            break;
     }
 
     // 설정된 전략으로 네비게이션 실행

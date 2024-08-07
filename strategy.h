@@ -28,6 +28,11 @@ typedef struct {
     double longitude;
 } Coordinates;
 
+typedef enum {
+    UNMUTED,
+    MUTED
+} AudioState;
+
 // Function pointer types
 typedef void (*EngageLockFunction)();
 typedef void (*DisengageLockFunction)();
@@ -49,15 +54,13 @@ typedef void (*ActivateHillDescentControlFunction)();
 typedef void (*DeactivateHillDescentControlFunction)();
 typedef HillDescentControlState (*GetHillDescentControlStateFunction)();
 
-typedef void (*PhoneResponseStrategy)();
-void setPhoneResponseStrategy(PhoneResponseStrategy strategy);
-void respondToCall();
+typedef void (*ToggleMuteFunction)();
+typedef AudioState (*GetAudioStateFunction)();
 
-//typedef void (*NavigationStrategy)(Coordinates destination);
-//void setNavigationStrategy(NavigationStrategy strategy);
-//void navigateTo(Coordinates destination);
+typedef void (*VoiceCommandToggleFunction)();
+typedef void (*NavigationStrategy)(Coordinates destination);
 
-// Define function pointers
+// Declare function pointers
 extern EngageLockFunction engageLock;
 extern DisengageLockFunction disengageLock;
 extern GetLockStateFunction getLockState;
@@ -66,21 +69,35 @@ extern ActivateDefrostFunction activateDefrost;
 extern DeactivateDefrostFunction deactivateDefrost;
 extern GetDefrostStateFunction getDefrostState;
 
-//extern ActivateParkingAssistFunction activateParkingAssist;
-//extern DeactivateParkingAssistFunction deactivateParkingAssist;
-//extern GetParkingAssistStateFunction getParkingAssistState;
+extern ActivateParkingAssistFunction activateParkingAssist;
+extern DeactivateParkingAssistFunction deactivateParkingAssist;
+extern GetParkingAssistStateFunction getParkingAssistState;
 
-//extern ActivateLaneSupportFunction activateLaneSupport;
-//extern DeactivateLaneSupportFunction deactivateLaneSupport;
-//extern GetLaneSupportStateFunction getLaneSupportState;
+extern ActivateLaneSupportFunction activateLaneSupport;
+extern DeactivateLaneSupportFunction deactivateLaneSupport;
+extern GetLaneSupportStateFunction getLaneSupportState;
 
 extern ActivateHillDescentControlFunction activateHillDescentControl;
 extern DeactivateHillDescentControlFunction deactivateHillDescentControl;
 extern GetHillDescentControlStateFunction getHillDescentControlState;
 
-// Strategy functions
+extern ToggleMuteFunction toggleMute;
+extern GetAudioStateFunction getAudioState;
+
+extern VoiceCommandToggleFunction voiceCommandToggle;
+
 void quickRouteStrategy(Coordinates destination);
 void convenientRouteStrategy(Coordinates destination);
 void minimumFareRouteStrategy(Coordinates destination);
+
+void setNavigationStrategy(NavigationStrategy strategy);
+void navigateTo(Coordinates destination);
+void navigatehandle();
+
+// Lane Support Functions
+void handleLaneSupportCommand();
+
+// Parking Assist Functions
+void handleParkingAssistCommand();
 
 #endif // STRATEGY_H

@@ -1,39 +1,51 @@
 #include "strategy.h"
 #include <stdio.h>
-#include <string.h>
+#include <unistd.h> // sleep 함수 사용을 위한 헤더
 
-// 전역 변수를 사용하여 차선 유지 지원 상태를 저장합니다.
+// 전역 변수를 사용하여 차선 지원 상태를 저장합니다.
 static LaneSupportState currentLaneSupportState = OFF;
 
-void activateLaneSupport() {
+// 차선 지원 기능을 활성화하는 함수
+void activateLaneSupportImpl() {
     currentLaneSupportState = ON;
     printf("Lane support activated.\n");
+    sleep(3); // 3초 대기
 }
 
-void deactivateLaneSupport() {
+// 차선 지원 기능을 비활성화하는 함수
+void deactivateLaneSupportImpl() {
     currentLaneSupportState = OFF;
     printf("Lane support deactivated.\n");
+    sleep(3); // 3초 대기
 }
 
-LaneSupportState getLaneSupportState() {
+// 현재 차선 지원 상태를 반환하는 함수
+LaneSupportState getLaneSupportStateImpl() {
     return currentLaneSupportState;
 }
 
-// 사용자 입력을 처리하고 차선 유지 지원 상태를 제어하는 함수
+// 함수 포인터 할당
+ActivateLaneSupportFunction activateLaneSupport = activateLaneSupportImpl;
+DeactivateLaneSupportFunction deactivateLaneSupport = deactivateLaneSupportImpl;
+GetLaneSupportStateFunction getLaneSupportState = getLaneSupportStateImpl;
+
+// 사용자 입력을 처리하고 차선 지원 상태를 제어하는 함수
 void handleLaneSupportCommand() {
     char input[10];
 
-    printf("Enter command (ACTIVATE/DEACTIVATE) to control lane support or 'exit' to quit:\n");
-    printf("Current state: %s\n", getLaneSupportState() == ON ? "Activated" : "Deactivated");
-    scanf("%s", input);
+    while (1) {
+        printf("Enter command (ON/OFF) to control lane support or 'exit' to quit:\n");
+        printf("Current state: %s\n", getLaneSupportState() == ON ? "Activated" : "Deactivated");
+        scanf("%s", input);
 
-    if (strcmp(input, "ACTIVATE") == 0) {
-        activateLaneSupport();
-    } else if (strcmp(input, "DEACTIVATE") == 0) {
-        deactivateLaneSupport();
-    } else if (strcmp(input, "exit") == 0) {
-        return;
-    } else {
-        printf("Invalid command. Please enter ACTIVATE, DEACTIVATE, or exit.\n");
+        if (strcmp(input, "ON") == 0) {
+            activateLaneSupport();
+        } else if (strcmp(input, "OFF") == 0) {
+            deactivateLaneSupport();
+        } else if (strcmp(input, "exit") == 0) {
+            break;
+        } else {
+            printf("Invalid command. Please enter 'ON', 'OFF', or 'exit'.\n");
+        }
     }
 }
