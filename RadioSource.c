@@ -61,7 +61,7 @@ void handleRadioSource(radioSourceControlFunction *rs) {
 
 
     if (opt == 0) {
-        *rs = AM;
+        *rs = AM;  // *rs 포인터가 AM함수의 주소를 가르킴
     } else if (opt == 1) {
         *rs = FM;
     } else if (opt == 2) {
