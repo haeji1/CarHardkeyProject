@@ -22,9 +22,10 @@
 #include "NAVIGATION.c"
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
-#include "end_call.c"
-#include "answer_call.c"
-#include "HILL_DESCENT.c"
+
+//#include "end_call.c"
+//#include "answer_call.c"
+//#include "HILL_DESCENT.c"
 
 
 
@@ -32,6 +33,7 @@ void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 
 int main() {
+
 
     char input[10];
     int ignitionStarted = 0; 
