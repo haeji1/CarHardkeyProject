@@ -1,5 +1,2 @@
 # CarHardkeyProject
-For, execution of program
-```
-mingw32-make all
-```
+reference : https://github.com/ninhnv/C-programming/blob/main/Exercise_project.md
