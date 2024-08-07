@@ -6,6 +6,7 @@
 #include "sunroof.h"
 #include "drive.h"
 #include "steering.h"
+#include "hseat.h"
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
@@ -104,8 +105,11 @@ int main() {
                 driveModeMenu();
             } else if (selection == 25) {
                 tractionMenu();
-            }
-            else if (selection == 28) {
+            } else if (selection == 26) {
+                heatedSeatMenu();
+            } else if (selection == 27) {
+                cooledSeatMenu();
+            } else if (selection == 28) {
                 steeringMenu();
             } else if (selection == 29) {
                 interiorLightMenu();

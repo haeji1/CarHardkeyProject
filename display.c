@@ -4,6 +4,17 @@
 #include "display.h"
 #include "observer.h"
 #include "horn.h"
+#include "sunroof.h"
+#include "drive.h"
+#include "steering.h"
+#include "traction.h"
+#include "menu.h"
+#include "headlights.h"
+#include "turnsignals.h"
+#include "windshield.h"
+#include "hazard.h"
+#include "cruise.h"
+#include "radio.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -15,7 +26,6 @@ void displayMenu() {
     printf("6. CRUISE_CONTROL\n");
     printf("7. RADIO_VOLUME\n");
     printf("8. RADIO_TUNING\n");
-    printf("50. EXIT\n");
     printf("3. RADIO\n");
     printf("20. SUNROOF\n");
     printf("21. TRUNK RELEASE\n");
@@ -23,9 +33,10 @@ void displayMenu() {
     printf("23. PARKING BRAKE\n");
     printf("24. DRIVE MODE\n");
     printf("25. TRACTION\n");
+    printf("26. HEATED SEATS\n");
+    printf("27. COOLED SEATS\n");
     printf("28. STEERING ADJUST\n");
     printf("29. INTERIOR LIGHT\n");
-    printf("4. EXIT\n");
     printf("3O. REAR_DEFROST \n");
     printf("31. CHILD_LOCK\n");
     printf("32. MUTE_BUTTON\n");
@@ -36,8 +47,7 @@ void displayMenu() {
     printf("37. LANE_ASSIST\n");
     printf("38. PARKING_ASSIST\n");
     printf("39. HILL_DESCENT\n");
-
-
+    printf("50. EXIT\n");
 }
 
 void handleHornCommands() {
