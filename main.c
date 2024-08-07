@@ -10,11 +10,6 @@
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
-
-
-
-// 30~39번 입니다
-
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
 #include "MUTE_BUTTON.c"
@@ -146,7 +141,10 @@ int main() {
             }
             else if(selection ==39) {
 
-            }else{
+            } else if (selection == 50) {
+                break;
+            }
+            else {
                 printf("Invalid selection. Please try again.\n");
             }
         }

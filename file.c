@@ -227,19 +227,22 @@ void handleUpdateCommand() {
     printf("Values updated successfully.\n");
 }
 
-int main() {
+int handlefiles() {
     char action;
+    // 초기 테스트용으로 "IGNITION" 명령어를 업데이트
+    int values[] = {3};  // 값 배열 정의
+    writeOrUpdateValueToFile("IGNITION", values, 1);  // 배열의 주소를 전달
+    printCurrentValues("IGNITION", 1);
+
     while (1) {
         printf("Enter 'r' to read a command's values, 'u' to update values, or 'q' to quit: ");
 
-        // 단일 문자 입력 읽기
         int result = scanf(" %c", &action);
         if (result != 1) {
             printf("Failed to read input. Exiting...\n");
             return 1;
         }
 
-        // 입력 버퍼 비우기
         while (getchar() != '\n');
 
         if (action == 'r') {
