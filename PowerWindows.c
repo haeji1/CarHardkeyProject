@@ -8,6 +8,8 @@
 #include "observer.h"
 #include "PowerWindows.h"
 #include <stdlib.h>
+#include <unistd.h>
+
 
 static int WindowIdentifierState = 0;
 static int Action = 1;
@@ -17,7 +19,9 @@ int opt;
 void ControlWindow(int input){
     WindowIdentifierState = input;
     if (WindowIdentifierState==0){
+        WindowIdentifierState = 0;
         printf("you choose WindowFrontLeft\n");
+        sleep(3);
         printf("0 : UP\n");
         printf("1 : Down\n");
         scanf("%d", &opt);
@@ -30,9 +34,12 @@ void ControlWindow(int input){
             printf("UP\n");
             Action = 0;
         }
+
     }
     else if(WindowIdentifierState==1){
+        WindowIdentifierState = 1;
         printf("you choose WindowFrontRight\n");
+        sleep(3);
         printf("0 : UP\n");
         printf("1 : Down\n");
         scanf("%d", &opt);
@@ -46,8 +53,9 @@ void ControlWindow(int input){
             Action = 0;
         }
     } else if(WindowIdentifierState == 2){
-
+        WindowIdentifierState = 2;
         printf("you choose WindowRearLeft\n");
+        sleep(3);
         printf("0 : UP\n");
         printf("1 : Down\n");
         scanf("%d", &opt);
@@ -61,7 +69,9 @@ void ControlWindow(int input){
             Action = 0;
         }
     } else if(WindowIdentifierState == 3){
+        WindowIdentifierState = 3;
         printf("you choose WindowRearRight\n");
+        sleep(3);
         printf("0 : UP\n");
         printf("1 : Down\n");
 
@@ -76,6 +86,7 @@ void ControlWindow(int input){
             Action = 0;
         }
     }
+    sleep(3);
 }
 
 void WindowFrontLeft(int input){

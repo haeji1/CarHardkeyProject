@@ -5,8 +5,10 @@
 #include "observer.h"
 #include "ClimateAirflow.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static int ClimateAirflowState = 2;
+
 
 void AirflowFace(){
     if (ClimateAirflowState == 0) {
@@ -15,6 +17,7 @@ void AirflowFace(){
         ClimateAirflowState = 0;
         printf("AirflowFace Turned\n");
     }
+    sleep(3);
 }
 
 void AirflowFoot(){

@@ -5,6 +5,7 @@
 #include "ClimateFan.h"
 #include "observer.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 static int ClimateFan = 3; // 0 - 5 level
 
@@ -16,7 +17,7 @@ void Level_One(){
         ClimateFan = 1;
     }
     printf("ClimateFanLevel : %d\n", ClimateFan);
-    sleep(2);
+    sleep(3);
 }
 void Level_Two(){
     if(ClimateFan == 2){
@@ -26,7 +27,7 @@ void Level_Two(){
         ClimateFan = 2;
     }
     printf("ClimateFanLevel : %d\n", ClimateFan);
-    sleep(2);
+    sleep(3);
 }
 void Level_Three(){
     if(ClimateFan == 3){
@@ -36,7 +37,7 @@ void Level_Three(){
         ClimateFan = 3;
     }
     printf("ClimateFanLevel : %d\n", ClimateFan);
-    sleep(2);
+    sleep(3);
 }
 
 void Level_Four(){
@@ -47,7 +48,7 @@ void Level_Four(){
         ClimateFan = 4;
     }
     printf("ClimateFanLevel : %d\n", ClimateFan);
-    sleep(2);
+    sleep(3);
 }
 void Level_Five(){
     if(ClimateFan == 5){
@@ -57,16 +58,10 @@ void Level_Five(){
         ClimateFan = 5;
     }
     printf("ClimateFanLevel : %d\n", ClimateFan);
-    sleep(2);
+    sleep(3);
 }
 
 
-
-// 버퍼를 비우는 함수
-//void clearInputBuffer() {
-//    int c;
-//    while ((c = getchar()) != '\n' && c != EOF);
-//}
 
 void handleClimateFan(ClimateFanControlFunction *cf){
     int opt;

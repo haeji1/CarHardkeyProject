@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include "observer.h"
 #include <stdlib.h>
+#include <unistd.h>
+
 
 static int SeatIdentifierState = 0;
 static int AdjustmentTypeState = 1;
@@ -28,6 +30,7 @@ void AdjustmentValue(){
     if(op3 == 1){
         AdjustmentValueState = 1;
         printf("Change AdjustmentValue : %d\n",AdjustmentValueState);
+
     } else if(op3 == 2){
         AdjustmentValueState = 2;
         printf("Change AdjustmentValue : %d\n",AdjustmentValueState);
@@ -35,18 +38,21 @@ void AdjustmentValue(){
         AdjustmentValueState = 3;
         printf("Change AdjustmentValue : %d\n",AdjustmentValueState);
     }
+    sleep(3);
 
 }
 
 void AdjustmentPosition(){
     AdjustmentTypeState = 0;
     printf("Position mode State : %d \n", AdjustmentTypeState);
+    sleep(3);
     AdjustmentValue();
 
 }
 void AdjustmentRecline(){
     AdjustmentTypeState = 1;
     printf("Recline mode State : %d \n", AdjustmentTypeState);
+    sleep(3);
     AdjustmentValue();
 
 
@@ -54,6 +60,7 @@ void AdjustmentRecline(){
 void AdjustmentLumbar(){
     AdjustmentTypeState = 2;
     printf("Lumbar mode State : %d \n", AdjustmentTypeState);
+    sleep(3);
     AdjustmentValue();
 
 }
@@ -86,12 +93,14 @@ void AdjustType(){
 void DriverSeat(){
     SeatIdentifierState = 0;
     printf("DriverSeat mode State : %d \n", SeatIdentifierState);
+    sleep(3);
     AdjustType();
 
 }
 void PassengerSeat(){
     SeatIdentifierState = 1;
     printf("PassengerSeat mode State : %d \n", SeatIdentifierState);
+    sleep(3);
     AdjustType();
 }
 

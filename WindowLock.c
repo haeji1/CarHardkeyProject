@@ -6,15 +6,19 @@
 #include <stdio.h>
 #include "observer.h"
 #include <stdlib.h>
+#include <unistd.h>
+
 static int WindowLockState = 0;
 
 void WindowLock(){
     WindowLockState = 1;
     printf("WindowLock\n");
+    sleep(3);
 }
 void WindowUnlock(){
     WindowLockState = 0;
     printf("WindowUnLock\n");
+    sleep(3);
 }
 void handleWindowLock(WindowLockControlFunction *wl){
     int opt;

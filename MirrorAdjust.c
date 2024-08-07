@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "observer.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static int MirrorIdentifierState = 0;
 static int  AdjustmentDirectionState = 1;
@@ -17,7 +18,9 @@ static int opt;
 void AdjustDirection(int input){
     MirrorIdentifierState = input;
     if (MirrorIdentifierState == 0){
+        MirrorIdentifierState = 0;
         printf("MirrorIdentifierLeft mode\n");
+        sleep(3);
         printf("0 : UP\n");
         printf("1 : Down\n");
         printf("2 : Left\n");
@@ -28,6 +31,7 @@ void AdjustDirection(int input){
         if (opt == 0){
             printf("UP\n");
             AdjustmentDirectionState = 0;
+
 
         }
         else if(opt == 1){
@@ -42,8 +46,11 @@ void AdjustDirection(int input){
             printf("Right\n");
             AdjustmentDirectionState = 3;
         }
+        sleep(3);
     }else if(MirrorIdentifierState == 1){
+        MirrorIdentifierState = 1;
         printf("MirrorIdentifierRight mode\n");
+        sleep(3);
         printf("0 : UP\n");
         printf("1 : Down\n");
         printf("2 : Left\n");
@@ -67,6 +74,7 @@ void AdjustDirection(int input){
             printf("Right\n");
             AdjustmentDirectionState = 3;
         }
+        sleep(3);
 
     }
 }
