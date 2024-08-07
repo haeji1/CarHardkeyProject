@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "menu.h"
 #include "headlights.h"
 #include "turnsignals.h"
@@ -13,6 +15,11 @@
 #include "pbrake.h"
 #include "hseat.h"
 #include "cseat.h"
+#include "file.c"
+
+#define MAX_NUM 5
+#define ONE 1
+#define TWO 2
 
 void headlightsMenu(){
     int option, value;
@@ -123,6 +130,7 @@ void turnSignalsMenu(){
 
 void sunroofMenu() {
     int option, value;
+    int values[MAX_NUM];
     sunroofControlFunction sc;
 
     printf("SUNROOF Menu:\n");
@@ -143,7 +151,8 @@ void sunroofMenu() {
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("SUNROOF_CONTROL", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("SUNROOF_CONTROL", values, ONE);
 
             // Set the sunroof control function
             if (value == 0) {
@@ -165,7 +174,7 @@ void sunroofMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("SUNROOF_CONTROL");
+            printCurrentValues("SUNROOF_CONTROL", ONE);
             break;
 
         default:
@@ -176,6 +185,7 @@ void sunroofMenu() {
 
 void trunkReleaseMenu() {
     int option, value;
+    int values[MAX_NUM];
     trunkReleaseControlFunction tr;
 
     printf("TRUNK RELEASE Menu:\n");
@@ -189,6 +199,8 @@ void trunkReleaseMenu() {
 
     switch (option) {
         case 1:
+            values[0] = 1;
+            writeOrUpdateValueToFile("TRUNK_RELEASE", values, ONE);
             // Register the handler
             tr = activateTrunkRelease;
             registerHandler(TRUNK_RELEASE, tr);
@@ -200,7 +212,7 @@ void trunkReleaseMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("TRUNK_RELEASE");
+            printCurrentValues("Trunk_RELEASE", ONE);
             break;
 
         default:
@@ -211,6 +223,7 @@ void trunkReleaseMenu() {
 
 void fuelCapReleaseMenu() {
     int option, value;
+    int values[MAX_NUM];
     fuelCapReleaseControlFunction fr;
 
     printf("FUEL CAP RELEASE Menu:\n");
@@ -224,6 +237,8 @@ void fuelCapReleaseMenu() {
 
     switch (option) {
         case 1:
+            values[0] = 1;
+            writeOrUpdateValueToFile("FUEL_CAP_RELEASE", values, ONE);
             // Register the handler
             fr = activateFuelCapRelease;
             registerHandler(FUEL_CAP_RELEASE, fr);
@@ -235,7 +250,7 @@ void fuelCapReleaseMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("FUEL_CAP_RELEASE");
+            printCurrentValues("FUEL_CAP_RELEASE", ONE);
             break;
 
         default:
@@ -246,6 +261,7 @@ void fuelCapReleaseMenu() {
 
 void parkingBrakeMenu() {
     int option, value;
+    int values[MAX_NUM];
     parkingBrakeControlFunction pc;
 
     printf("Parking Brake Menu:\n");
@@ -259,23 +275,24 @@ void parkingBrakeMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter traction state (0=Disengage, 1=Engage): ");
+            printf("Enter brake state (0=Disengage, 1=Engage): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
                 printf("Invalid input. Enter 0 or 1.\n");
                 return;
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("PARKING_BRAKE", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("PARKING_BRAKE", values, ONE);
 
-            // Set the traction control function
+            // Set the brake control function
             if (value == 0) {
                 pc = disengageBrake;
             } else {
                 pc = engageBrake;
             }
 
-            // Execute the traction control function
+            // Execute the brake control function
             parkingBrakeControl(pc);
             registerHandler(PARKING_BRAKE, pc);
             // Notify the event
@@ -286,7 +303,7 @@ void parkingBrakeMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("PARKING_BRAKE");
+            printCurrentValues("PARKING_BRAKE", ONE);
             break;
 
         default:
@@ -297,6 +314,7 @@ void parkingBrakeMenu() {
 
 void driveModeMenu() {
     int option, value;
+    int values[MAX_NUM];
     driveModeControlFunction dc;
 
     printf("Drive mode Menu:\n");
@@ -317,7 +335,8 @@ void driveModeMenu() {
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("DRIVE_MODE", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("DRIVE_MODE", values, ONE);
 
             // Set the drive mode control function
             if (value == 0) {
@@ -339,7 +358,7 @@ void driveModeMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("DRIVE_MODE");
+            printCurrentValues("DRIVE_MODE", ONE);
             break;
 
         default:
@@ -350,6 +369,7 @@ void driveModeMenu() {
 
 void tractionMenu() {
     int option, value;
+    int values[MAX_NUM];
     tractionControlFunction tc;
 
     printf("TRACTION Menu:\n");
@@ -370,7 +390,8 @@ void tractionMenu() {
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("TRACTION_CONTROL", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("TRACTION_CONTROL", values, ONE);
 
             // Set the traction control function
             if (value == 0) {
@@ -390,7 +411,7 @@ void tractionMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("TRACTION_CONTROL");
+            printCurrentValues("TRACTION_CONTROL",ONE);
             break;
 
         default:
@@ -401,6 +422,7 @@ void tractionMenu() {
 
 void heatedSeatMenu() {
     int option, seatId, heatLevel;
+    int values[MAX_NUM];
     heatSeatControlFunction hc;
     HseatStatus status;
 
@@ -430,6 +452,10 @@ void heatedSeatMenu() {
             // Set the heated seat status
             status.seatId = seatId;
             status.heatLevel = heatLevel;
+
+            values[0] = seatId;
+            values[1] = heatLevel;
+            writeOrUpdateValueToFile("HEATED_SEATS", values, 2);
             
             // Use a wrapper to pass the changed value of the structure
             adjustHeatedSeat(status);
@@ -448,7 +474,7 @@ void heatedSeatMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HEATED_SEATS");
+            printCurrentValues("HEATED_SEATS",2);
             break;
 
         default:
@@ -459,6 +485,7 @@ void heatedSeatMenu() {
 
 void cooledSeatMenu() {
     int option, seatId, coolLevel;
+    int values[MAX_NUM];
     coolSeatControlFunction cc;
     CseatStatus status;
 
@@ -488,6 +515,10 @@ void cooledSeatMenu() {
             // Set the heated seat status
             status.seatId = seatId;
             status.coolLevel = coolLevel;
+
+            values[0] = seatId;
+            values[1] = coolLevel;
+            writeOrUpdateValueToFile("COOLED_SEATS", values, 2);
             
             // Use a wrapper to pass the changed value of the structure
             adjustCooledSeat(status);
@@ -506,7 +537,7 @@ void cooledSeatMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HEATED_SEATS");
+            printCurrentValues("COOLED_SEATS",TWO);
             break;
 
         default:
@@ -517,6 +548,8 @@ void cooledSeatMenu() {
 
 void steeringMenu() {
     int option, value;
+    int values[MAX_NUM];
+
     steeringControlFunction sc;
 
     printf("Steering Adjust Menu:\n");
@@ -536,8 +569,9 @@ void steeringMenu() {
                 return;
             }
 
+            values[0] = value;
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("DRIVE_MODE", value);
+            writeOrUpdateValueToFile("STEERING_ADJUST", values, ONE);
 
             // Set the steering control function
             if (value == 0) {
@@ -561,7 +595,7 @@ void steeringMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("STEERING_ADJUST");
+            printCurrentValues("STEERING_ADJUST", ONE);
             break;
 
         default:
@@ -573,6 +607,7 @@ void steeringMenu() {
 
 void interiorLightMenu() {
     int option, value;
+    int values[MAX_NUM];
     interiorLightControlFunction ic;
 
     printf("Interior Light Menu:\n");
@@ -592,8 +627,8 @@ void interiorLightMenu() {
                 return;
             }
 
-            // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("TRACTION_CONTROL", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("INTERIOR_LIGHT", values, ONE);
 
             // Set the traction control function
             if (value == 0) {
@@ -612,8 +647,7 @@ void interiorLightMenu() {
 
         case 2:
             printf("Listening to events...\n");
-            // Implement event listening functionality if needed
-            // listenToEvents("INTERIOR_LIGHT");
+            printCurrentValues("INTERIOR_LIGHT", ONE);
             break;
 
         default:
