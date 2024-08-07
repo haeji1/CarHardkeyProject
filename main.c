@@ -22,6 +22,11 @@
 #include "NAVIGATION.c"
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
+#include "end_call.c"
+#include "answer_call.c"
+#include "HILL_DESCENT.c"
+
+
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -36,11 +41,11 @@ int main() {
     initializeFeatureHandlers();
 
     //등록30~39
-    registerHandler(MUTE_BUTTON, muteButtonHandler);//
-    registerHandler(VOICE_COMMAND,voiceCommandToggle);//
-    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
-    registerHandler(REAR_DEFROST, handleDefrostCommand);//
-    registerHandler(CHILD_LOCK, handleLockCommand);//
+    registerHandler(MUTE_BUTTON, muteButtonHandler);// 한거
+    registerHandler(VOICE_COMMAND,voiceCommandToggle);//한거
+    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//한거
+    registerHandler(REAR_DEFROST, handleDefrostCommand);//한거
+    registerHandler(CHILD_LOCK, handleLockCommand);//한거
     registerHandler(NAVIGATION,navigatehandle);//
     registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
 

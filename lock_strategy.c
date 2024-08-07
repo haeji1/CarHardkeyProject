@@ -1,20 +1,23 @@
 #include "strategy.h"
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h> // sleep 함수 사용을 위해 필요한 헤더 파일
 
 // 초기 잠금 상태 설정
 static LockState currentLockState = DISENGAGED;
+
 
 // 실제 함수 구현
 void engageLockImpl() {
     currentLockState = ENGAGED;
     printf("Child lock engaged.\n");
+    sleep(3);
 }
 
 void disengageLockImpl() {
     currentLockState = DISENGAGED;
     printf("Child lock disengaged.\n");
-
+    sleep(3);
 }
 
 LockState getLockStateImpl() {

@@ -33,7 +33,7 @@ typedef enum {
     MUTED
 } AudioState;
 
-// Function pointer types
+// 함수 포인터 타입
 typedef void (*EngageLockFunction)();
 typedef void (*DisengageLockFunction)();
 typedef LockState (*GetLockStateFunction)();
@@ -60,7 +60,12 @@ typedef AudioState (*GetAudioStateFunction)();
 typedef void (*VoiceCommandToggleFunction)();
 typedef void (*NavigationStrategy)(Coordinates destination);
 
-// Declare function pointers
+// 추가된 함수 포인터 타입
+typedef void (*HandleHillDescentControlCommandFunction)();
+typedef void (*AnswerCallFunction)();
+typedef void (*EndCallFunction)();
+
+// 함수 포인터 선언
 extern EngageLockFunction engageLock;
 extern DisengageLockFunction disengageLock;
 extern GetLockStateFunction getLockState;
@@ -86,6 +91,11 @@ extern GetAudioStateFunction getAudioState;
 
 extern VoiceCommandToggleFunction voiceCommandToggle;
 
+// 새로운 함수 포인터 선언
+extern HandleHillDescentControlCommandFunction handleHillDescentControlCommand;
+extern AnswerCallFunction answerCall;
+extern EndCallFunction endCall;
+
 void quickRouteStrategy(Coordinates destination);
 void convenientRouteStrategy(Coordinates destination);
 void minimumFareRouteStrategy(Coordinates destination);
@@ -94,10 +104,10 @@ void setNavigationStrategy(NavigationStrategy strategy);
 void navigateTo(Coordinates destination);
 void navigatehandle();
 
-// Lane Support Functions
+// 차선 유지 지원 기능
 void handleLaneSupportCommand();
 
-// Parking Assist Functions
+// 주차 보조 기능
 void handleParkingAssistCommand();
 
 #endif // STRATEGY_H
