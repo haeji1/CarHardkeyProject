@@ -29,8 +29,6 @@ ClimateTemp.o : ClimateTemp.c observer.h ClimateTemp.h
 ClimateFan.o : ClimateFan.c observer.h ClimateFan.h
 	gcc -c ClimateFan.c
 
-ClimateAirflow.o : ClimateAirflow.c observer.h ClimateAirFlow.h
-	gcc -c ClimateAirflow.c
 
 Defrost.o : Defrost.c observer.h Defrost.h
 	gcc -c Defrost.c
@@ -50,6 +48,7 @@ MirrorAdjust.o : MirrorAdjust.c MirrorAdjust.h observer.h
 
 SeatAdjust.o : SeatAdjust.c SeatAdjust.h observer.h
 	gcc -c SeatAdjust.c
-
+ClimateAirFlow.o : ClimateAirFlow.c ClimateAirFlow.h observer.h
+	gcc -c ClimateAirFlow.c
 clean:
 	rm -f *.o main.exe
