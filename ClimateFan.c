@@ -70,6 +70,7 @@ void Level_Five(){
 
 void handleClimateFan(ClimateFanControlFunction *cf){
     int opt;
+    printf("Currently ClimateFan : %d \n",ClimateFan);
     while(1){
 
         printf("Select the Fan Level (0 to 5): \n");

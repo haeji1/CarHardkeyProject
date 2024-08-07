@@ -20,6 +20,7 @@ void setTemp(){
 }
 // context
 void handleClimateTemp(ClimateTempControlFunction *ct){
+    printf("Currently ClimateTempState : %d \n",ClimateTempState);
     *ct = setTemp;
 
 }

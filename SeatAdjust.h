@@ -2,5 +2,5 @@
 // Created by MinseokK on 24. 8. 7.
 //
 
-
-void handleSeatAdjust();
+typedef void(*handleSeatAdjustControlFunction)(void);
+void handleSeatAdjust(handleSeatAdjustControlFunction * sac);

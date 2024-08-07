@@ -18,6 +18,7 @@ void WindowUnlock(){
 }
 void handleWindowLock(WindowLockControlFunction *wl){
     int opt;
+    printf("Currently WindowLockState : %d \n",WindowLockState);
 
     printf(" == WindowLock options == \n");
     printf("0. WindowUnLock \n");

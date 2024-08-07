@@ -20,6 +20,7 @@ void WindshieldDefrostOFF(){
 
 
 void handleDefrost(DefrostControlFunction *dfc){
+    printf("Currently deforstState : %d \n",deforstState);
     printf(" == WindshieldDefrostControl options == \n");
     printf("0. Defrost_OFF \n");
     printf("1. Defrost_ON \n");

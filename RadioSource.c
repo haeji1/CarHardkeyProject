@@ -47,6 +47,9 @@ void Bluetooth(void) {
 //context
 void handleRadioSource(radioSourceControlFunction *rs) {
     int opt;
+    printf("Currently sourceState : %d \n",sourceState);
+
+
 
     printf(" == RadioSource options == \n");
     printf("0. AM \n");

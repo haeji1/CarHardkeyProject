@@ -78,6 +78,9 @@ void MirrorIdentifierRight(int input){
 }
 
 void handleMirrorAdjust(MirrorAdjustControlFunction *ma){
+    printf("Currently MirrorIdentifierState : %d \n",MirrorIdentifierState);
+    printf("Currently AdjustmentDirectionState : %d \n",AdjustmentDirectionState);
+
     printf(" == PowerWindows options == \n");
     printf("0. MirrorIdentifierLeft \n");
     printf("1. MirrorIdentifierRight \n");

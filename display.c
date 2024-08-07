@@ -44,7 +44,7 @@ void handleRadioSourceCommands() {
     printf("RadioSouce Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Select RadioSource\n");
-    printf("2. Listen to event\n");
+
     printf("Enter your choice: ");
 
     if (scanf("%d", &option) != 1) {
@@ -54,8 +54,6 @@ void handleRadioSourceCommands() {
 
     switch (option) {
         case 1:
-            break;
-        case 2:
             handleRadioSource(&rs);
             // Register and handle event if needed
             registerHandler(RADIO_SOURCE, rs);
@@ -66,7 +64,7 @@ void handleRadioSourceCommands() {
             unregisterHandler(RADIO_SOURCE, rs);
             break;
 
-        case 3:
+        case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("TRACTION_CONTROL");
@@ -82,9 +80,8 @@ void handleClimateTempCommands() {
     int option, value;
     ClimateTempControlFunction ct = NULL;  // Initialize rs to NULL
 
-    printf("TRACTION Menu:\n");
+    printf("ClimateTemp Menu:\n");
     printf("1. Write value to file\n");
-    printf("2. Select RadioSource\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
 
@@ -95,8 +92,6 @@ void handleClimateTempCommands() {
 
     switch (option) {
         case 1:
-            break;
-        case 2:
             handleClimateTemp(&ct);
             // Register and handle event if needed
             registerHandler(CLIMATE_TEMP, ct);
@@ -105,7 +100,7 @@ void handleClimateTempCommands() {
             unregisterHandler(CLIMATE_TEMP, ct);
             break;
 
-        case 3:
+        case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("TRACTION_CONTROL");
@@ -121,9 +116,8 @@ void handleClimateFanCommands() {
     int option, value;
     ClimateFanControlFunction cf = NULL;  // Initialize rs to NULL
 
-    printf("RadioSouce Menu:\n");
+    printf("ClimateFan Menu:\n");
     printf("1. Write value to file\n");
-    printf("2. Select RadioSource\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
 
@@ -134,8 +128,6 @@ void handleClimateFanCommands() {
 
     switch (option) {
         case 1:
-            break;
-        case 2:
             handleClimateFan(&cf);
             // Register and handle event if needed
             registerHandler(CLIMATE_FAN, cf);
@@ -145,8 +137,7 @@ void handleClimateFanCommands() {
 
             unregisterHandler(CLIMATE_FAN, cf);
             break;
-
-        case 3:
+        case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("TRACTION_CONTROL");
@@ -331,7 +322,7 @@ void handleDoorLockCommands() {
 }
 
 void handleMirrorAdjustCommands() {
-        int option, value;
+    int option, value;
     MirrorAdjustControlFunction ma = NULL;  // Initialize rs to NULL
 
     printf("PowerWindows Menu:\n");
@@ -364,7 +355,37 @@ void handleMirrorAdjustCommands() {
     }
 }
 void handleSeatAdjustCommands(){ // 파일 만들어애됨
-    handleSeatAdjust();
+    int option, value;
+    handleSeatAdjustControlFunction sac = NULL;  // Initialize rs to NULL
+
+    printf("PowerWindows Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            handleSeatAdjust(&sac);
+            // Register and handle event if needed
+            registerHandler(SEAT_ADJUST, sac);
+            printf("display.c rs adress is : %p\n", sac);
+            handlerEvent(SEAT_ADJUST);
+            unregisterHandler(SEAT_ADJUST, sac);
+            break;
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TRACTION_CONTROL");
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 /*

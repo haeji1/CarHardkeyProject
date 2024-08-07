@@ -36,6 +36,9 @@ void AirflowDefrost(){
 }
 
 void handleClimateAirflow(ClimateAirflowControlFunction *cfcf){
+    printf("Currently ClimateAirflowState : %d \n",ClimateAirflowState);
+
+
     printf(" == ClimateAirflowControl options == \n");
     printf("0. Face \n");
     printf("1. Foot \n");

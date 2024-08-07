@@ -18,7 +18,7 @@ void DoorUnlock(){
 }
 void handleDoorLock(DoorLockControlFunction *dl){
     int opt;
-
+    printf("Currently DoorLockState : %d \n",DoorLockState);
     printf(" == DoorLock options == \n");
     printf("0. DoorUnLock \n");
     printf("1. Doorlock \n");

@@ -8,6 +8,7 @@
 #include "observer.h"
 #include "PowerWindows.h"
 #include <stdlib.h>
+
 static int WindowIdentifierState = 0;
 static int Action = 1;
 int opt;
@@ -96,7 +97,8 @@ void WindowRearRight(int input){
 
 
 void handlePowerWindows(handlePowerWindowsControlFunction *pwcf){
-
+    printf("Currently WindowIdentifierState : %d \n",WindowIdentifierState);
+    printf("Currently Action : %d \n",Action);
 
     printf(" == PowerWindows options == \n");
     printf("0. WindowFrontLeft \n");
