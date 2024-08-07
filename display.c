@@ -26,7 +26,6 @@ void displayMenu() {
     printf("6. CRUISE_CONTROL\n");
     printf("7. RADIO_VOLUME\n");
     printf("8. RADIO_TUNING\n");
-    printf("50. EXIT\n");
     printf("3. RADIO\n");
     printf("20. SUNROOF\n");
     printf("21. TRUNK RELEASE\n");
@@ -34,9 +33,10 @@ void displayMenu() {
     printf("23. PARKING BRAKE\n");
     printf("24. DRIVE MODE\n");
     printf("25. TRACTION\n");
+    printf("26. HEATED SEATS\n");
     printf("28. STEERING ADJUST\n");
     printf("29. INTERIOR LIGHT\n");
-    printf("4. EXIT\n");
+     printf("50. EXIT\n");
 }
 
 void handleHornCommands() {

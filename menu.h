@@ -10,5 +10,6 @@ void tractionMenu();
 void steeringMenu();
 void interiorLightMenu();
 void parkingBrakeMenu();
+void heatedSeatMenu();
 
 #endif // MENU_H

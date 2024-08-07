@@ -9,6 +9,7 @@
 #include "steering.h"
 #include "interior.h"
 #include "pbrake.h"
+#include "hseat.h"
 
 void sunroofMenu() {
     int option, value;
@@ -280,6 +281,64 @@ void tractionMenu() {
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("TRACTION_CONTROL");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
+void heatedSeatMenu() {
+    int option, seatId, heatLevel;
+    heatSeatControlFunction hc;
+    HseatStatus status;
+
+    printf("HEATED SEATS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter seat identifier (0 = Driver, 1 = Passenger): ");
+            if (scanf("%d", &seatId) != 1 || (seatId < 0 || seatId > 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            printf("Enter heat level (0-3): ");
+            if (scanf("%d", &heatLevel) != 1 || (heatLevel < 0 || heatLevel > 3)) {
+                printf("Invalid input. Enter a value between 0 and 3.\n");
+                return;
+            }
+
+            // Set the heated seat status
+            status.seatId = seatId;
+            status.heatLevel = heatLevel;
+            
+            // Use a wrapper to pass the changed value of the structure
+            adjustHeatedSeat(status);
+            hc = heatedSeatHandlerWrapper;
+
+            // register handler
+            registerHandler(HEATED_SEATS, hc);
+
+            // Notify the event
+            handlerEvent(HEATED_SEATS);
+
+            // Unregister the handler
+            unregisterHandler(HEATED_SEATS, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HEATED_SEATS");
             break;
 
         default:
