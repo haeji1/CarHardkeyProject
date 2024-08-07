@@ -6,6 +6,7 @@
 #include "headlights.h"
 #include "turnsignals.h"
 #include "windshield.h"
+#include "hazard.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -210,6 +211,59 @@ void windshieldWipersMenu(){
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("WINDSHIELD_WIPERS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
+
+void hazardLightsMenu(){
+    int option, value;
+    hazardLightsControlFunction hc;
+
+    printf("HAZARD_LIGHTS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter turn signals state (0=Off, 1=On): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("HAZARD_LIGHTS", value);
+
+            // Set the hazard lights control function
+            if (value == 0) {
+                hc = offHazardLights;
+                
+            } else {
+                hc = onHazardLights;
+            }
+
+            // Execute the traction control function
+            hazardLightsControl(hc);
+            registerHandler(HAZARD_LIGHTS, hc);
+            // Notify the event
+            handlerEvent(HAZARD_LIGHTS);
+            unregisterHandler(HAZARD_LIGHTS, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HAZARD_LIGHTS");
             break;
 
         default:
