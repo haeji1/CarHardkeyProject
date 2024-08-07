@@ -19,9 +19,9 @@ static int opt;
 void AdjustmentValue(){
     printf("=== AdjustMnet Value ===\n");
     printf("=== Currently Type : %d ===\n", AdjustmentValueState);
-    printf("0 \n");
     printf("1 \n");
     printf("2 \n");
+    printf("3 \n");
     int op3;
     scanf("%d", &op3);
 
