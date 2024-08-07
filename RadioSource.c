@@ -12,66 +12,28 @@
 
 
 
-static int sourceState = 1; // 0 for AM, 1 for FM, 2 BT
+//static int sourceState = 1; // 0 for AM, 1 for FM, 2 BT
+typedef void (*radioSourceControlFunction)();
 
 void AM(void) {
-    if (sourceState == 0) {
-        printf("AM mode.\n");
-    } else {
-        sourceState = 0;
-        printf("RadioSource Turned AM\n");
-    }
+    printf("AM");
     sleep(3);
 }
 
 void FM(void) {
-    if (sourceState == 1) {
-        printf("FM mode.\n");
-    } else {
-        sourceState = 1;
-        printf("RadioSource Turning FM\n");
-    }
+    printf("FM");
     sleep(3);
 }
 
 void Bluetooth(void) {
-    if (sourceState == 2) {
-        printf("BT mode.\n");
-    } else {
-        sourceState = 2;
-        printf("RadioSource Turned BT\n");
-    }
+    printf("BT");
     sleep(3);
 }
 
 //context
-void handleRadioSource(radioSourceControlFunction *rs) {
-    int opt;
-    printf("Currently sourceState : %d \n",sourceState);
+void handleRadioSource(radioSourceControlFunction rs) {
 
-
-
-    printf(" == RadioSource options == \n");
-    printf("0. AM \n");
-    printf("1. FM \n");
-    printf("2. Bluetooth \n");
-    printf("3. exit \n");
-
-    scanf("%d", &opt);
-
-
-    if (opt == 0) {
-        *rs = AM;  // *rs 포인터가 AM함수의 주소를 가르킴
-    } else if (opt == 1) {
-        *rs = FM;
-    } else if (opt == 2) {
-        *rs = Bluetooth;
-    } else if (opt == 3) {
-        exit(EXIT_FAILURE);
-    } else {
-        printf("Unknown RadioSource command.\n");
-    }
-
+    printf("status changed by function\n");
     //(*rs)();  // rs 넣은 전략 함수를 실행;
 
 }

@@ -12,7 +12,11 @@
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
 #include "SeatAdjust.h"
+#include "file.c"
 
+#define MAX_NUM 5
+#define ONE 1
+#define TWO 2
 
 
 void displayMenu() {
@@ -39,28 +43,41 @@ void handleHornCommands() {
 
 void handleRadioSourceCommands() {
     int option, value;
-    radioSourceControlFunction rs = NULL;  // Initialize rs to NULL
+    int values[MAX_NUM];
+    radioSourceControlFunction rs;  // Initialize rs to NULL
 
     printf("RadioSouce Menu:\n");
     printf("1. Write value to file\n");
-    printf("2. Select RadioSource\n");
-
+    printf("2. Listen to event\n");
     printf("Enter your choice: ");
-
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
     }
 
+
     switch (option) {
         case 1:
-            handleRadioSource(&rs);
+            printf("Enter sunroof state (0=AM, 1=FM, 2=BT): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+            // Perform write operation to file if needed
+            values[0] = value;
+            writeOrUpdateValueToFile("RADIO_SOURCE", values, ONE);
+
+            if (value == 0) {
+                rs = AM;
+            } else if (value == 1) {
+                rs = FM;
+            } else {
+                rs = Bluetooth;
+            }
+            handleRadioSource(rs);
             // Register and handle event if needed
             registerHandler(RADIO_SOURCE, rs);
-            printf("display.c rs adress is : %p\n", rs);
             handlerEvent(RADIO_SOURCE);
-
-
             unregisterHandler(RADIO_SOURCE, rs);
             break;
 
@@ -68,6 +85,7 @@ void handleRadioSourceCommands() {
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("TRACTION_CONTROL");
+            printCurrentValues("RADIO_SOURCE", ONE);
             break;
 
         default:
