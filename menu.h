@@ -5,6 +5,7 @@
 void hornMenu();
 void headlightsMenu();
 void turnSignalsMenu();
+void windshieldWipersMenu();
 void sunroofMenu();
 void trunkReleaseMenu();
 void fuelCapReleaseMenu();

@@ -5,6 +5,7 @@
 #include "horn.h"
 #include "headlights.h"
 #include "turnsignals.h"
+#include "windshield.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -155,6 +156,60 @@ void turnSignalsMenu(){
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("TURN_SIGNALS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
+
+void windshieldWipersMenu(){
+    int option, value;
+    windshieldWipersControlFunction wc;
+
+    printf("WINDSHIELD_WIPERS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter windshield wipers state (0=Off, 1=Low, 2=High): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("WINDSHIELD_WIPERS", value);
+
+            // Set the windshield wipers control function
+            if (value == 0) {
+                wc = offWindshieldWipers;
+            } else if (value == 1) {
+                wc = lowWindshieldWipers;
+            } else {
+                wc = highWindshieldWipers;
+            }
+
+            // Execute the traction control function
+            windshieldWipersControl(wc);
+            registerHandler(WINDSHIELD_WIPERS, wc);
+            // Notify the event
+            handlerEvent(WINDSHIELD_WIPERS);
+            unregisterHandler(WINDSHIELD_WIPERS, wc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("WINDSHIELD_WIPERS");
             break;
 
         default:
