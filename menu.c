@@ -17,6 +17,7 @@
 #include "hseat.h"
 #include "cseat.h"
 #include "file.c"
+#include "RadioSource.h"
 
 #define MAX_NUM 5
 #define ONE 1
@@ -56,6 +57,61 @@ void hornMenu() {
             break;
     }
 }
+void radioSourceMenu() {
+    int option, value;
+    int values[MAX_NUM];
+    RadioSouceControlFunction rc;
+
+    printf("RADIO_SOURCE Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter RADIO_SOURCE state (0=Open, 1=Close, 2=Tilt): ");
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+        // Perform write operation to file if needed
+        values[0] = value;
+        writeOrUpdateValueToFile("RADIO_SOURCE", values, ONE);
+
+        // Set the sunroof control function
+        if (value == 0) {
+            rc = AM;
+        } else if (value == 1) {
+            rc = FM;
+        } else if(value == 2){
+            rc = BT;
+        }
+
+        // Execute the traction control function
+        radioSouceControl(rc);
+        registerHandler(RADIO_SOURCE, rc);
+        // Notify the event
+        handlerEvent(RADIO_SOURCE);
+        unregisterHandler(RADIO_SOURCE, rc);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("RADIO_SOURCE", ONE);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
+
 
 void headlightsMenu(){
     int option, value;

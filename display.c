@@ -16,6 +16,8 @@
 #include "cruise.h"
 #include "radio.h"
 
+#include "RadioSource.h"
+
 void displayMenu() {
     printf("\nAvailable features:\n");
     printf("1. HORN\n");
@@ -89,16 +91,16 @@ void handleRadioTuningCommands(){
 
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
-    initializeHornHandlers();
-    initializeHeadlightsHandlers();
-    initializeTurnSignalsHandlers();
-    initializeWindshieldWipersHandlers();
-    initializeHazardLightsHandlers();
-    initializeCruiseControlHandlers();
-    initializeRadioHandlers();
+    //initializeHornHandlers();
+    //initializeHeadlightsHandlers();
+    //initializeTurnSignalsHandlers();
+    //initializeWindshieldWipersHandlers();
+    //initializeHazardLightsHandlers();
+    //initializeCruiseControlHandlers();
+    //initializeRadioHandlers();
 }
 
 void cleanupFeatureHandlers() {
     // Unregister handlers for various features
-    unregisterHandler(HORN, handleHorn);
+    //unregisterHandler(HORN, handleHorn);
 }

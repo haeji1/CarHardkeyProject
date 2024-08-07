@@ -10,6 +10,8 @@
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
+#include "RadioSource.h"
+
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
 #include "MUTE_BUTTON.c"
@@ -17,6 +19,7 @@
 #include "NAVIGATION.c"
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
+
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -87,6 +90,8 @@ int main() {
                 handleRadioTuningCommands();
             } else if (selection == 50) {
                 //
+            } else if (selection == 10) {
+                radioSourceMenu();
             } else if (selection == 20) {
                 sunroofMenu();
             } else if (selection == 21) {
