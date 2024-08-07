@@ -7,6 +7,7 @@
 #include "turnsignals.h"
 #include "windshield.h"
 #include "hazard.h"
+#include "cruise.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -271,6 +272,75 @@ void hazardLightsMenu(){
             break;
     }
 
+}
+
+void cruiseControlMenu() {
+    int option, state, speed;
+    int values[MAX_NUM];
+    cruiseControlFunction cc;
+    CruiseControlState cruiseControlState;
+
+    printf("CRUISE_CONTROL Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter cruise control state (0 = Off, 1 = On): ");
+            if (scanf("%d", &state) != 1 || (state < 0 || state > 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            printf("Enter speed in cruise control (30-150): ");
+            if (scanf("%d", &speed) != 1 || (speed < 30 || speed > 150)) {
+                printf("Invalid input. Enter a value between 30 and 150.\n");
+                return;
+            }
+
+            // Set the cruise control status
+            cruiseControlState.cruiseState = state;
+            cruiseControlState.speed = speed;
+
+            values[0] = state;
+            values[1] = speed;
+            writeOrUpdateValueToFile("CRUISE_CONTROL", values, 60);
+            
+            //Set the cruise control function
+            if (state == 0) {
+                cc = deactivateCruiseControl;
+            } else {
+                cc = activateCruiseControl;
+                cc = adjustCruiseControlSpeed;
+            }
+
+            // register handler
+            //adjustCruiseControl(cc, &cruiseControlState);
+            cruiseControlAction(cc, &cruiseControlState);
+            registerHandler(CRUISE_CONTROL, (Handler)cc);
+
+            // Notify the event
+            handlerEvent(CRUISE_CONTROL);
+
+            // Unregister the handler
+            unregisterHandler(CRUISE_CONTROL, (Handler)cc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("CRUISE_CONTROL", 60);
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
 }
 
 void sunroofMenu() {
