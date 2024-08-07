@@ -2,6 +2,8 @@
 #ifndef MENU_H
 #define MENU_H
 
+void headlightsMenu();
+void turnSignalsMenu();
 void sunroofMenu();
 void trunkReleaseMenu();
 void fuelCapReleaseMenu();
