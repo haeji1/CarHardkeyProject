@@ -1,27 +1,20 @@
 #include <stdio.h>
-#include "observer.h"
 #include "ignition.h"
 
-static int ignitionState = 0; // 0 for OFF, 1 for ON
+/*
+    1 : on
+*/
 
-void handleIgnition(void) {
-    if (ignitionState == 1) {
-        printf("Safety check: Engine is already ON.\n");
-    } else {
-        ignitionState = 1;
-        printf("Engine started.\n");
-    }
+typedef void(*ignitionFunction)();
+
+// void offIgnition() {
+//     printf("Engine turned OFF\n");
+// }
+
+void onIgnition() {
+    printf("Engine starts with ignition!\n");
 }
 
-void handleShutdownEvent(void) {
-    if (ignitionState == 0) {
-        printf("Safety check: Engine is already OFF.\n");
-    } else {
-        ignitionState = 0;
-        printf("Engine stopped.\n");
-    }
-}
-
-void initializeIgnitionHandlers() {
-    registerHandler(IGNITION, handleIgnition);
+void ignition(ignitionFunction igFunc) {
+    printf("status changed by function\n");
 }

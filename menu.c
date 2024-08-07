@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
+#include "ignition.h"
 #include "horn.h"
 #include "headlights.h"
 #include "turnsignals.h"
@@ -24,6 +25,58 @@
 #define MAX_NUM 5
 #define ONE 1
 #define TWO 2
+
+int ignitionMenu() {
+    int option, value;
+    int values[MAX_NUM];
+    ignitionFunction igFunc;
+
+    printf("IGNITION Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return 0 ;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter ignition state (1=On): ");
+            if (scanf("%d", &value) != 1 || (value != 1)) {
+                printf("Invalid input. Enter 1.\n");
+                return 0;
+            }
+
+            // Perform write operation to file if needed
+            values[0] = value;
+            writeOrUpdateValueToFile("IGNITION", values, ONE);
+
+            // Set the ignition function
+            if (value == 1) {
+                igFunc = onIgnition;
+                printf("IGNITION ON\n");
+            }
+
+            // Execute the ignition function
+            tractionControl(igFunc);
+            registerHandler(IGNITION, igFunc);
+            // Notify the event
+            handlerEvent(IGNITION);
+            //unregisterHandler(IGNITION, igFunc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("IGNITION", ONE);
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
 
 void hornMenu() {
     int option, value;
@@ -93,7 +146,7 @@ void headlightsMenu(){
                 hc = highHeadlights;
             }
 
-            // Execute the traction control function
+            // Execute the head lights function
             headlightsControl(hc);
             registerHandler(HEADLIGHTS, hc);
             // Notify the event
@@ -146,7 +199,7 @@ void turnSignalsMenu(){
                 tc = rightTurnSignal;
             }
 
-            // Execute the traction control function
+            // Execute the turn signals function
             turnSignalsControl(tc);
             registerHandler(TURN_SIGNALS, tc);
             // Notify the event
@@ -200,7 +253,7 @@ void windshieldWipersMenu(){
                 wc = highWindshieldWipers;
             }
 
-            // Execute the traction control function
+            // Execute the windshield wipers function
             windshieldWipersControl(wc);
             registerHandler(WINDSHIELD_WIPERS, wc);
             // Notify the event
@@ -253,7 +306,7 @@ void hazardLightsMenu(){
                 hc = onHazardLights;
             }
 
-            // Execute the traction control function
+            // Execute the hazard lights control function
             hazardLightsControl(hc);
             registerHandler(HAZARD_LIGHTS, hc);
             // Notify the event
