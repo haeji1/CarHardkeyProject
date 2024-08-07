@@ -10,6 +10,18 @@
 #include "traction.h"
 #include "menu.h"
 
+
+
+// 30~39번 입니다
+
+#include "lock_strategy.c"
+#include "rear_defrost_strategy.c"
+#include "MUTE_BUTTON.c"
+#include "VOICE_COMMAND.c"
+#include "NAVIGATION.c"
+#include "Lane_Support.c"
+#include "ParkingAssistance.c"
+
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 
@@ -18,8 +30,18 @@ int main() {
     int ignitionStarted = 0; 
     int selection;
 
-    // initializeObservers();
+    //initializeObservers();
     initializeFeatureHandlers();
+
+    //등록30~39
+    registerHandler(MUTE_BUTTON, muteButtonHandler);//
+    registerHandler(VOICE_COMMAND,voiceCommandToggle);//
+    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
+    registerHandler(REAR_DEFROST, handleDefrostCommand);//
+    registerHandler(CHILD_LOCK, handleLockCommand);//
+    registerHandler(NAVIGATION,navigatehandle);//
+    registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
+
 
     while (1) {
         if(!ignitionStarted){
@@ -90,7 +112,37 @@ int main() {
             }
             else if (selection == 4) {
                 break; // Exit the program
-            } else {
+            }
+            else if(selection ==30) {
+                handlerEvent(REAR_DEFROST); // 서리제거
+            }
+            else if(selection ==31){
+                handlerEvent(CHILD_LOCK); // 어린이 보호
+            }
+            else if(selection ==32) {
+                handlerEvent(MUTE_BUTTON); // 음소거 기능
+           }
+            else if(selection ==33) {
+                handlerEvent(VOICE_COMMAND); // 음소거 기능
+            }
+            else if(selection ==34) {
+
+            }
+            else if(selection ==35) {
+
+            }
+            else if(selection ==36) {
+                handlerEvent(NAVIGATION); // 네비게이션
+            }
+            else if(selection ==37) {
+               handlerEvent(LANE_ASSIST); // 차선 지원
+            }
+            else if(selection ==38) {
+                handlerEvent(PARKING_ASSIST);// 주차 보조
+            }
+            else if(selection ==39) {
+
+            }else{
                 printf("Invalid selection. Please try again.\n");
             }
         }

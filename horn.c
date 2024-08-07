@@ -11,5 +11,4 @@ void handleHorn(void) {
 }
 
 void initializeHornHandlers() {
-    registerHandler(HORN, handleHorn);
 }

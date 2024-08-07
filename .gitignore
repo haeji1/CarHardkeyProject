@@ -1,5 +1,3 @@
-### C ###
-# Prerequisites
 *.d
 
 # Object files
@@ -65,3 +63,40 @@ dkms.conf
 # Ignore all local history of files
 .history
 .ionide
+
+### IntelliJ IDEA ###
+# IntelliJ IDEA project files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Gradle project files (if using Gradle)
+.gradle/
+build/
+
+# User-specific files
+.idea/.idea.*
+.idea/.name
+.idea/modules.xml
+.idea/workspace.xml
+.idea/misc.xml
+
+# Project-specific directories
+.idea/gradle.xml
+.idea/gradle/
+.idea/libraries/
+.idea/jdkTable.xml
+.idea/shelf/
+.idea/.editorconfig
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Other files
+.DS_Store
+*.swp
+*.swo

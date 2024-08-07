@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "observer.h"
@@ -24,7 +23,7 @@ void unregisterHandler(HardKey hardKey, Handler handler) {
             *now = (*now) -> next;
             free(del);
             printf("success unregister\n");
-            return; 
+            return;
         }
         now = &(*now) -> next;
     }
