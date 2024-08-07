@@ -3,7 +3,7 @@
 
 typedef void(*GloveBoxReleaseFunction)();
 
-void releaseGloveBoxLatch();
-void setGloveBoxRelease(GloveBoxReleaseFunction func);
+void releaseGloveBox();
+void setGloveBoxRelease(GloveBoxReleaseFunction gbr);
 
 #endif // GLOVE_BOX_RELEASE_H

@@ -7,7 +7,7 @@
 typedef void(*autoHoldFunction)();
 
 void autoHoldOff() {
-    printf("Off the autohold\n");
+    printf("\n--Off the autohold--\n");
 }
 
 void autoHoldOn() {
@@ -15,6 +15,5 @@ void autoHoldOn() {
 }
 
 void setAutoHold(autoHoldFunction af) {
-    // af();
     printf("\n<<Change the current state successful>>\n");
 }

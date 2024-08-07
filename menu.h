@@ -5,11 +5,11 @@
 
 void autoHoldMenu();
 void hudAdjustMenu();
-// void gloveBoxReleaseMenu();
-// void fogLightsMenu();
-// void emergencyBrakeMenu();
-// void trailerControlMenu();
-// void handsFreeMenu();
+void gloveBoxReleaseMenu();
+void fogLightsMenu();
+void emergencyBrakeMenu();
+void trailerControlMenu();
+void handsFreeMenu();
 // void seatHeaterMenu();
 // void seatCoolerMenu();
 

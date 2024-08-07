@@ -10,8 +10,8 @@
 #include "trailer_control.h"
 #include "auto_hold.h"
 #include "hands_free.h"
-#include "seat_heater.h"
-#include "seat_cooler.h"
+// #include "seat_heater.h"
+// #include "seat_cooler.h"
 #include "menu.h"
 
 // Function prototypes
@@ -57,19 +57,19 @@ int main() {
             if (selection == 40) {
                 hudAdjustMenu();
             } else if (selection == 41) {
-                //gloveBoxReleaseMenu();
+                gloveBoxReleaseMenu();
             } else if (selection == 42) {
-                //fogLightsMenu();
+                fogLightsMenu();
             } else if (selection == 43) {
-                //emergencyBrakeMenu()
+                emergencyBrakeMenu();
             } else if (selection == 44) {
-                //trailerControlMenu()
+                trailerControlMenu();
             } else if (selection == 45) {
                 autoHoldMenu();
             } else if (selection == 46) {
-                //handsFreeMenu()
+                handsFreeMenu();
             } else if (selection == 47) {
-                //seatHeaterMenu()
+                // seatHeaterMenu();
             } else if (selection == 48) {
                 // seatCoolerMenu();
             } else if (selection == 50) {

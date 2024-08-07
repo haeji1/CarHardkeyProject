@@ -16,5 +16,5 @@ void fogLightsOn() {
 }
 
 void setFogLights(fogLightFunction flf) {
-    printf("Fog lights control successful\n");
+    printf("current state changed\n");
 }

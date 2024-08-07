@@ -1,16 +1,12 @@
 // #include <stdio.h>
 // #include "seat_cooler.h"
 
-// //0
 
-
+// //0driver 1passenger
+// //(0~3)cooling level
 
 
 // void setSeatCooler(int seatId, int coolingLevel) {
-//     printf("Seat cooler for seat %d set to level %d\n", seatId, coolingLevel);
-// }
-
-// void setupSeatCooler(seatCoolerFunction scf, int seatId, int coolingLevel) {
-//     scf(seatId, coolingLevel); 
-//     printf("Seat cooler setup successful\n");
+//     const char* seat = (seatId == 0) ? "Driver" : "Passenger";
+//     printf("Seat Cooler: %s seat, Cooling Level %d\n", seat, coolingLevel);
 // }

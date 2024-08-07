@@ -4,10 +4,10 @@
 // Function pointer for glove box release
 typedef void(*GloveBoxReleaseFunction)();
 
-void releaseGloveBoxLatch() {
-	printf("glove box released\n");
+void releaseGloveBox() {
+	printf("glove box opened\n");
 }
 
-void setGloveBoxRelease(GloveBoxReleaseFunction func) {
+void setGloveBoxRelease(GloveBoxReleaseFunction gbr) {
     printf("current status changed\n");
 }

@@ -4,6 +4,6 @@
 typedef void (*handsFreeFunction)();
 
 void activateHandsFree(void);
-void setupHandsFree(handsFreeFunction hff);
+void setHandsFree(handsFreeFunction hff);
 
 #endif // HANDS_FREE_H

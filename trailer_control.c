@@ -10,6 +10,6 @@ void controlTrailer() {
     printf("Trailer control setting\n");
 }
 
-void setupTrailerControl(trailerControlFunction tcf) {
+void setTrailerControl(trailerControlFunction tcf) {
     printf("Trailer control setup successful\n");
 }

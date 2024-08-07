@@ -19,39 +19,13 @@ void displayMenu() {
     printf("50. EXIT\n");
 }
 
-// void autoHoldMenu() {
-//     int option, value;
-//     autoHoldFunction af;
-
-//     printf(" Menu:\n");
-//     printf("1. Write value to file\n");
-//     printf("2. Listen to event\n");
-//     printf("Enter your choice: ");
-//     if (scanf("%d", &option) != 1) {
-//         printf("Invalid input. Returning to menu.\n");
-//         return;
-//     }
-
-
-// }
-
-
-
-
-
-
 void initializeFeatureHandlers() {
     // Initialize handlers for various features
-    
-    // initializeAutoHoldHandlers();
-    // initializeSunroofHandlers();
-    // initializeDriveModeHandlers();
-    // initializeSteeringAdjustHandlers();
 }
 
 void cleanupFeatureHandlers() {
     // Unregister handlers 
-    // unregisterHandler(HORN, handleHornOff);
+
 }
 
 

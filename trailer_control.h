@@ -4,6 +4,6 @@
 typedef void (*trailerControlFunction)();
 
 void controlTrailer();
-void setupTrailerControl(trailerControlFunction tcf);
+void setTrailerControl(trailerControlFunction tcf);
 
 #endif // TRAILER_CONTROL_H

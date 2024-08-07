@@ -4,6 +4,6 @@
 typedef void (*emergencyBrakeFunction)();
 
 void activateEmergencyBrake(void);
-void setupEmergencyBrake(emergencyBrakeFunction ebf);
+void setEmergencyBrake(emergencyBrakeFunction ebf);
 
 #endif // EMERGENCY_BRAKE_H

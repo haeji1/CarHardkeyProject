@@ -4,6 +4,6 @@
 typedef void(*HUDAdjustFunction)();
 
 void adjustHUDSettings();
-void setHUDAdjustFunction(HUDAdjustFunction haf);
+void setHUDAdjust(HUDAdjustFunction haf);
 
 #endif // HUD_ADJUST_H
