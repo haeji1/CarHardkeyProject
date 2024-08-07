@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
+#include "horn.h"
 #include "headlights.h"
 #include "turnsignals.h"
 #include "sunroof.h"
@@ -20,6 +21,41 @@
 #define MAX_NUM 5
 #define ONE 1
 #define TWO 2
+
+void hornMenu() {
+    int option, value;
+    hornControlFunction hc;
+
+    printf("Horn Menu:\n");
+    printf("1. Activate horn\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            // Register the handler
+            hc = activateHorn;
+            registerHandler(HORN, hc);
+            // Notify the event
+            handlerEvent(HORN);
+            unregisterHandler(HORN, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HORN");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
 
 void headlightsMenu(){
     int option, value;

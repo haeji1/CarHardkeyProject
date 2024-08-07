@@ -1,14 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <windows.h>
-#include <time.h>
-#include "observer.h"
 #include "horn.h"
 
-void handleHorn(void) {
-    printf("Horn turned ON.\n");
-    Sleep(1000);
+/*
+    1 : Actvation Signal
+*/
+
+typedef void(*hornControlFunction)();
+
+void activateHorn() {
+    printf("Horn sounds!\n");
 }
 
-void initializeHornHandlers() {
+// Function to execute the horn control function
+void hornControl(hornControlFunction hc) {
+    printf("Status changed by function\n");
 }

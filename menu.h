@@ -2,6 +2,7 @@
 #ifndef MENU_H
 #define MENU_H
 
+void hornMenu();
 void headlightsMenu();
 void turnSignalsMenu();
 void sunroofMenu();

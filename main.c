@@ -70,7 +70,7 @@ int main() {
             }
             
             if (selection == 1) {
-                handleHornCommands();
+                hornMenu();
             } else if (selection == 2) {
                 headlightsMenu();
             } else if (selection == 3) {
@@ -149,8 +149,6 @@ int main() {
             }
         }
     }
-
-    cleanupFeatureHandlers();
 
     return 0;
 }
