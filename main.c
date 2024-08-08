@@ -17,7 +17,7 @@
 #include "ClimateTemp.h"
 #include "Defrost.h"
 #include "DoorLock.h"
-
+#include "MirrorAdjust.h"
 
 
 #include "lock_strategy.c"
@@ -114,10 +114,8 @@ int main() {
 
             } else if (selection == 17) {
                 DoorLockMenu();
-
-
-
-
+            } else if (selection == 18){
+                mirrorAdjustMenu();
             } else if (selection == 20) {
                 sunroofMenu();
             } else if (selection == 21) {

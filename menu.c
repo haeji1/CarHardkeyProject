@@ -24,7 +24,7 @@
 #include "ClimateTemp.h"
 #include "Defrost.h"
 #include "DoorLock.h"
-
+#include "MirrorAdjust.h"
 
 #define MAX_NUM 5
 #define ONE 1
@@ -386,7 +386,63 @@ void DoorLockMenu() {
     }
 }
 
+void mirrorAdjustMenu() { /////////////////////////////////////////////
+    int option, mirrorId, ajustmentDirection;
+    int values[MAX_NUM];
+    MirrorAdjustControlFunction ma;
+    MirrorState state;
 
+    printf("mirrorAdjust Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter mirrorAdjust state (0=Left, 1=Right): ");
+            if (scanf("%d", &mirrorId) != 1 || (mirrorId != 0 && mirrorId != 1 && mirrorId != 2)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+            return;
+            }
+            printf("Enter ajustmentDirection (0-3): ");
+            if (scanf("%d", &ajustmentDirection) != 1 || (ajustmentDirection < 0 || ajustmentDirection > 3)) {
+                printf("Invalid input. Enter a value between 0 and 3.\n");
+                return;
+            }
+
+        state.mirrorId = mirrorId;
+        state.ajustmentDirection = ajustmentDirection;
+        // Perform write operation to file if needed
+        values[0] = mirrorId;
+        values[1] = ajustmentDirection;
+        writeOrUpdateValueToFile("MIRROR_ADJUST", values, 2);
+
+
+        // Execute the traction control function
+        handleMirrorAdjust(state);
+        ma = mirroradjustHandlerWrapper;
+
+        registerHandler(MIRROR_ADJUST, ma);
+        // Notify the event
+        handlerEvent(MIRROR_ADJUST);
+        unregisterHandler(MIRROR_ADJUST, ma);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("MIRROR_ADJUST", 2);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
 
 
 

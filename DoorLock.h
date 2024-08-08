@@ -10,6 +10,6 @@ typedef void(*DoorLockControlFunction)();
 
 void DoorLock();
 void DoorUnlock();
-void handleDefrost(DoorLockControlFunction);
+void handleDoorLock(DoorLockControlFunction);
 
 #endif //DOORLOCK_H

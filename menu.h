@@ -23,5 +23,6 @@ void climateFanMenu();
 void ClimateTempMenu();
 void DefrostMenu();
 void DoorLockMenu();
+void mirrorAdjustMenu();
 
 #endif // MENU_H
