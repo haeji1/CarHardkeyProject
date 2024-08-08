@@ -21,6 +21,8 @@
 #include "RadioSource.h"
 #include "ClimateAirflow.h"
 #include "ClimateFan.h"
+#include "ClimateTemp.h"
+
 
 #define MAX_NUM 5
 #define ONE 1
@@ -228,7 +230,55 @@ void climateFanMenu() {
     }
 }
 
+void ClimateTempMenu() {
+    int option, value;
+    int values[MAX_NUM];
+    ClimateTempControlFunction ct;
 
+    printf("CLIMATE_TEMP Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter CLIMATE_TEMP state (0=Open, 1=Close, 2=Tilt): ");  /////////// 세팅
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+        // Perform write operation to file if needed
+        values[0] = value;
+        writeOrUpdateValueToFile("CLIMATE_TEMP", values, ONE);
+
+        // Set the sunroof control function
+        if (value == 1) {
+            ct = setTemp;
+        }
+        // Execute the traction control function
+        handleClimateTemp(ct);
+        registerHandler(CLIMATE_TEMP, ct);
+        // Notify the event
+        handlerEvent(CLIMATE_TEMP);
+        unregisterHandler(CLIMATE_TEMP, ct);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("CLIMATE_TEMP", ONE);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
 
 
 
