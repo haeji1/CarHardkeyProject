@@ -73,6 +73,10 @@ REAR_DEFROST
 CHILD_LOCK
 1
    // Updated values
+   // Updated values
+
+   // Updated values
+
 MUTE_BUTTON
 1
 VOICE_COMMAND
@@ -86,7 +90,11 @@ NAVIGATION
 342
 LANE_ASSIST
 0
+   // Updated values
+   // Updated values
+
 PARKING_ASSIST
+
 0   // Assist state (0 = Off, 1 = On)
 HILL_DESCENT
 0
