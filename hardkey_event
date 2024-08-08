@@ -26,21 +26,37 @@ RADIO_VOLUME
 RADIO_SOURCE
 1   // Source type (0 = AM, 1 = FM, 2 = Bluetooth, etc.)
 CLIMATE_TEMP
-22  // Desired temperature
+50
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 CLIMATE_FAN
+4
+   // Updated values
+   // Updated values
+
+
+   // Updated values
+
+CLIMATE_AIRFLOW
 2
    // Updated values
-CLIMATE_AIRFLOW
 
-2   // Airflow direction (0 = Face, 1 = Feet, 2 = Defrost, etc.)
 DEFROST
+
 1   // Defrost state (0 = Off, 1 = On)
 POWER_WINDOWS
 0   // Window identifier (0 = FrontLeft, 1 = FrontRight, 2 = RearLeft, 3 = RearRight)
 1   // Action (0 = Up, 1 = Down)
 WINDOW_LOCK
-0   // Lock state (0 = Unlock, 1 = Lock)
+1
+   // Updated values
 DOOR_LOCKS
+
 1   // Lock state (0 = Unlock, 1 = Lock)
 MIRROR_ADJUST
 0   // Mirror identifier (0 = Left, 1 = Right)

@@ -5,9 +5,15 @@
 #ifndef CLIMATETEMP_H
 #define CLIMATETEMP_H
 
+typedef struct {
+    int setting;
+} TempState;
+
+TempState globalTempState;
+
 typedef void(*ClimateTempControlFunction)();
 
-void setTemp();
+void adjustTemp(TempState state);
 void handleClimateTemp(ClimateTempControlFunction);
-
+void ClimateTempHandlerWrapper();
 #endif //CLIMATETEMP_H

@@ -83,7 +83,7 @@ void radioSourceMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter RADIO_SOURCE state (0=Open, 1=Close, 2=Tilt): ");
+            printf("Enter RADIO_SOURCE state (0= AM, 1= FM, 2= Bluetooth): ");
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -137,7 +137,7 @@ void climateAirflowMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter RADIO_SOURCE state (0=Open, 1=Close, 2=Tilt): ");  // 교체 airflow로
+            printf("Enter climateAirflow state (0= Face, 1= Foot, 2= Defrost): ");  // 교체 airflow로
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -192,10 +192,10 @@ void climateFanMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter CLIMATE_FAN state (0=Open, 1=Close, 2=Tilt): ");
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-            printf("Invalid input. Enter 0 or 1.\n");
-            return;
+        printf("Enter CLIMATE_FAN level (1 = level_1, 2 = level_2, 3 = level_3, 4 = level_4, 5 = level_5):");
+        if (scanf("%d", &value) != 1 || value < 1 || value > 6) {
+            printf("Invalid input. Enter a value between 1 and 5.\n");
+        return;
         }
 
         // Perform write operation to file if needed
@@ -236,9 +236,10 @@ void climateFanMenu() {
 }
 
 void ClimateTempMenu() {
-    int option, value;
+    int option, setting;
     int values[MAX_NUM];
     ClimateTempControlFunction ct;
+    TempState state;
 
     printf("CLIMATE_TEMP Menu:\n");
     printf("1. Write value to file\n");
@@ -251,20 +252,21 @@ void ClimateTempMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter CLIMATE_TEMP state (0=Open, 1=Close, 2=Tilt): ");  /////////// 세팅
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+        printf("Enter CLIMATE_TEMP setting -20 to 80: ");  /////////// 세팅
+        if (scanf("%d", &setting) != 1 || setting < -20 || setting > 80){
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
 
+        state.setting = setting;
         // Perform write operation to file if needed
-        values[0] = value;
+        values[0] = setting;
         writeOrUpdateValueToFile("CLIMATE_TEMP", values, ONE);
 
         // Set the sunroof control function
-        if (value == 1) {
-            ct = setTemp;
-        }
+        adjustTemp(state);
+        ct = ClimateTempHandlerWrapper;
+
         // Execute the traction control function
         handleClimateTemp(ct);
         registerHandler(CLIMATE_TEMP, ct);
@@ -302,7 +304,7 @@ void DefrostMenu() {
     switch (option) {
         case 1:
             printf("Enter Defrost state (0=OFF, 1=ON): ");  /////////// 세팅
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
@@ -352,8 +354,8 @@ void WindowLockMenu() { /////////////////////
 
     switch (option) {
         case 1:
-            printf("Enter WindowLock state (0=DoorUnlock, 1=Windowlock, 2=Tilt): ");
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Enter WindowLock state (0=DoorUnlock, 1=Windowlock): ");
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
@@ -404,8 +406,8 @@ void DoorLockMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter DoorLock state (0=DoorUnlock, 1=Doorlock, 2=Tilt): ");
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Enter DoorLock state (0=DoorUnlock, 1=Doorlock): ");
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
@@ -459,7 +461,7 @@ void mirrorAdjustMenu() { /////////////////////////////////////////////
     switch (option) {
         case 1:
             printf("Enter mirrorAdjust state (0=Left, 1=Right): ");
-            if (scanf("%d", &mirrorId) != 1 || (mirrorId != 0 && mirrorId != 1 && mirrorId != 2)) {
+            if (scanf("%d", &mirrorId) != 1 || (mirrorId != 0 && mirrorId != 1)) {
                 printf("Invalid input. Enter 0 or 1.\n");
             return;
             }
@@ -575,9 +577,10 @@ void seatAdjustMenu() { /////////////////////////////////////////////
 
     switch (option) {
         case 1:
-            printf("Enter seatAdjust state (0= Driver, 1= Passenger, 2= RearLeft, 3= RearRight): ");
-            if (scanf("%d", &seatId) != 1 || (seatId < 0 || seatId > 3)) {
-                printf("Invalid input. Enter a value between 0 and 3.\n");
+            printf("Enter seatAdjust state (0= Driver, 1= Passenger): ");
+
+            if (scanf("%d", &seatId) != 1 || (seatId != 0 && seatId != 1)) {
+                printf("Invalid input. Enter a value between 0 and 1.\n");
             return;
             }
 

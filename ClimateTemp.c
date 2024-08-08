@@ -10,24 +10,16 @@
 
 static int ClimateTempState = 22;
 
-void setTemp(){
-    printf("Currently Temp : %d\n", ClimateTempState);
-    printf("Ajust Temp: \n");
+void adjustTemp(TempState state){
+    globalTempState.setting = state.setting;
 
-    int input;
-    scanf("%d", &input);
-    if (input > -100 && input < 100){
-        ClimateTempState = input;
-    } else{
-        printf("out of limit\n");
-        setTemp();
-    }
-
-    printf("setting %d degree\n", ClimateTempState);
-    sleep(3);
 }
 // context
 void handleClimateTemp(ClimateTempControlFunction ct){
     printf("status changed by function\n");
 
+}
+void ClimateTempHandlerWrapper() {
+    // Wrapper function to call
+    printf("Climate Temp is = %d\n",globalTempState.setting);
 }
