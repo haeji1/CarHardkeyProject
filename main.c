@@ -20,7 +20,7 @@
 #include "MirrorAdjust.h"
 #include "PowerWindows.h"
 #include "WindowLock.h"
-
+#include "SeatAdjust.h"
 
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
@@ -118,6 +118,8 @@ int main() {
                 DoorLockMenu();
             } else if (selection == 18){
                 mirrorAdjustMenu();
+            } else if (selection == 19){
+                seatAdjustMenu();
             } else if (selection == 20) {
                 sunroofMenu();
             } else if (selection == 21) {

@@ -27,7 +27,7 @@
 #include "MirrorAdjust.h"
 #include "PowerWindows.h"
 #include "WindowLock.h"
-
+#include "SeatAdjust.h"
 
 #define MAX_NUM 5
 #define ONE 1
@@ -478,7 +478,7 @@ void mirrorAdjustMenu() { /////////////////////////////////////////////
 
 
         // Execute the traction control function
-        handleMirrorAdjust(state);
+        adjustMirrorSeat(state);
         ma = mirroradjustHandlerWrapper;
 
         registerHandler(MIRROR_ADJUST, ma);
@@ -537,7 +537,7 @@ void powerwindowMenu() { /////////////////////////////////////////////
 
 
         // Execute the traction control function
-        handlePowerWindows(state);
+        adjustPowerWindows(state);
         pwcf = windowsjustHandlerWrapper;
 
         registerHandler(POWER_WINDOWS, pwcf);
@@ -558,6 +558,68 @@ void powerwindowMenu() { /////////////////////////////////////////////
     }
 }
 
+void seatAdjustMenu() { /////////////////////////////////////////////
+    int option, seatId, adjustType, adjustValue;
+    int values[MAX_NUM];
+    SeatAdjustControlFunction sac;
+    SeatState state;
+
+    printf("seatAdjust Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter seatAdjust state (0= Driver, 1= Passenger, 2= RearLeft, 3= RearRight): ");
+            if (scanf("%d", &seatId) != 1 || (seatId < 0 || seatId > 3)) {
+                printf("Invalid input. Enter a value between 0 and 3.\n");
+            return;
+            }
+
+            // 조정 타입 입력 받기
+            printf("Enter Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar): ");
+            if (scanf("%d", &adjustType) != 1 || (adjustType < 0 || adjustType > 2)) {
+                printf("Invalid input. Enter a value between 0 and 2.\n");
+            return;
+            }
+
+        state.seatId = seatId;
+        state.adjustType = adjustType;
+        state.adjustValue = adjustValue;
+        // Perform write operation to file if needed
+        values[0] = seatId;
+        values[1] = adjustType;
+        values[2] = adjustValue;
+
+        writeOrUpdateValueToFile("SEAT_ADJUST", values, 3);
+
+
+        // Execute the traction control function
+        adjustSeatSeat(state);
+        sac = seatadjustHandlerWrapper;
+
+        registerHandler(SEAT_ADJUST, sac);
+        // Notify the event
+        handlerEvent(SEAT_ADJUST);
+        unregisterHandler(SEAT_ADJUST, sac);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("SEAT_ADJUST", 3);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
 
 
 

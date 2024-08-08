@@ -26,4 +26,5 @@ void WindowLockMenu();
 void DoorLockMenu();
 void mirrorAdjustMenu();
 void powerwindowMenu();
+void seatAdjustMenu();
 #endif // MENU_H

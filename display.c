@@ -30,6 +30,16 @@ void displayMenu() {
     printf("7. RADIO_VOLUME\n");
     printf("8. RADIO_TUNING\n");
     printf("3. RADIO\n");
+    printf("10. RADIO_SOURCE\n");
+    printf("11. ClimateTemp\n");
+    printf("12. ClimateFan\n");
+    printf("13. CLIMATE_AIRFLOW\n");
+    printf("14. DEFROST\n");
+    printf("15. POWER_WINDOWS\n");
+    printf("16. WINDOW_LOCK\n");
+    printf("17. DOOR_LOCKS\n");
+    printf("18. MIRROR_ADJUST\n");
+    printf("19. SEAT_ADJUST\n");
     printf("20. SUNROOF\n");
     printf("21. TRUNK RELEASE\n");
     printf("22. Fuel Cap Release\n");

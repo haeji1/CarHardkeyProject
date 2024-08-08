@@ -11,6 +11,7 @@ typedef struct{
 } MirrorState;
 
 MirrorState globalMirrorState;
+
 typedef void(*MirrorAdjustControlFunction)();
 void adjustMirrorSeat(MirrorState State);
 void mirroradjustHandlerWrapper();

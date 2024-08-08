@@ -28,8 +28,10 @@ RADIO_SOURCE
 CLIMATE_TEMP
 22  // Desired temperature
 CLIMATE_FAN
-3   // Fan speed level (0-5)
+2
+   // Updated values
 CLIMATE_AIRFLOW
+
 2   // Airflow direction (0 = Face, 1 = Feet, 2 = Defrost, etc.)
 DEFROST
 1   // Defrost state (0 = Off, 1 = On)
