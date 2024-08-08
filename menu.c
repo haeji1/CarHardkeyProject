@@ -25,6 +25,7 @@
 #include "Defrost.h"
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
+#include "PowerWindows.h"
 
 #define MAX_NUM 5
 #define ONE 1
@@ -443,8 +444,65 @@ void mirrorAdjustMenu() { /////////////////////////////////////////////
         break;
     }
 }
+/// powerwindow
+void powerwindowMenu() { /////////////////////////////////////////////
+    int option, windowId, Action;
+    int values[MAX_NUM];
+    handlePowerWindowsControlFunction pwcf;
+    WindowState state;
+
+    printf("powerwindow Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter powerwindow state (0=FrontLeft, 1=FrontRight, 2=RearLeft, 3=RearRight): ");
+            if (scanf("%d", &windowId) != 1 || windowId < 0 || windowId > 3) {
+                printf("Invalid input. Enter a value between 0 and 3.\n");
+            return;
+            }
+
+            printf("Enter Action (0 = Up, 1 = Down): ");
+            if (scanf("%d", &Action) != 1 || (Action != 0 && Action != 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+            return;
+            }
+
+        state.windowId = windowId;
+        state.Action = Action;
+        // Perform write operation to file if needed
+        values[0] = windowId;
+        values[1] = Action;
+        writeOrUpdateValueToFile("POWER_WINDOWS", values, 2);
 
 
+        // Execute the traction control function
+        handlePowerWindows(state);
+        pwcf = windowsjustHandlerWrapper;
+
+        registerHandler(POWER_WINDOWS, pwcf);
+        // Notify the event
+        handlerEvent(POWER_WINDOWS);
+        unregisterHandler(POWER_WINDOWS, pwcf);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("POWER_WINDOWS", 2);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
 
 
 

@@ -14,4 +14,5 @@ MirrorState globalMirrorState;
 typedef void(*MirrorAdjustControlFunction)();
 void adjustMirrorSeat(MirrorState State);
 void mirroradjustHandlerWrapper();
+void handleMirrorAdjust(MirrorAdjustControlFunction);
 #endif //MIRRORADJUST_H
