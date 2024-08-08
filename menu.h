@@ -21,5 +21,6 @@ void radioSourceMenu();
 void climateAirflowMenu();
 void climateFanMenu();
 void ClimateTempMenu();
+void DefrostMenu();
 
 #endif // MENU_H

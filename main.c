@@ -15,7 +15,7 @@
 #include "ClimateAirflow.h"
 #include "ClimateFan.h"
 #include "ClimateTemp.h"
-
+#include "Defrost.h"
 
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
@@ -104,7 +104,7 @@ int main() {
 			} else if (selection == 13) {
                 climateAirflowMenu();
 			} else if (selection == 14) {
-
+                DefrostMenu();
 			} else if (selection == 15) {
 
 			} else if (selection == 16) {
