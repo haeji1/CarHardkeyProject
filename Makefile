@@ -1,8 +1,8 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o
+main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o WindowLock.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o WindowLock.o
 
 main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h cruise.h radio.h display.h
 	gcc -c main.c
@@ -94,5 +94,7 @@ MirrorAdjust.o : MirrorAdjust.c MirrorAdjust.h observer.h
 PowerWindows.o : PowerWindows.c PowerWindows.h observer.h
 	gcc -c PowerWindows.c
 
+WindowLock.o : WindowLock.c WindowLock.h observer.h
+	gcc -c WindowLock.c
 clean:
 	rm -f *.o main.exe

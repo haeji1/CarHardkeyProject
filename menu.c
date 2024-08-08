@@ -26,6 +26,8 @@
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
 #include "PowerWindows.h"
+#include "WindowLock.h"
+
 
 #define MAX_NUM 5
 #define ONE 1
@@ -327,6 +329,58 @@ void DefrostMenu() {
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             printCurrentValues("DEFROST", ONE);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
+void WindowLockMenu() { /////////////////////
+    int option, value;
+    int values[MAX_NUM];
+    WindowLockControlFunction wl;
+
+    printf("WindowLock Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter WindowLock state (0=DoorUnlock, 1=Windowlock, 2=Tilt): ");
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+        // Perform write operation to file if needed
+        values[0] = value;
+        writeOrUpdateValueToFile("WINDOW_LOCK", values, ONE);
+
+        // Set the sunroof control function
+        if (value == 0) {
+            wl = WindowUnlock;
+        } else if (value == 1) {
+            wl = WindowLock;
+        }
+
+        // Execute the traction control function
+        handleWindowLock(wl);
+        registerHandler(WINDOW_LOCK, wl);
+        // Notify the event
+        handlerEvent(WINDOW_LOCK);
+        unregisterHandler(WINDOW_LOCK, wl);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("WINDOW_LOCK", ONE);
         break;
 
         default:

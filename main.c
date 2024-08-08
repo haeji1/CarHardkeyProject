@@ -19,6 +19,8 @@
 #include "DoorLock.h"
 #include "MirrorAdjust.h"
 #include "PowerWindows.h"
+#include "WindowLock.h"
+
 
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
@@ -111,7 +113,7 @@ int main() {
 			} else if (selection == 15) {
                 powerwindowMenu();
 			} else if (selection == 16) {
-
+                WindowLockMenu();
             } else if (selection == 17) {
                 DoorLockMenu();
             } else if (selection == 18){
