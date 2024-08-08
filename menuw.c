@@ -1,25 +1,25 @@
 #include "menuw.h"
 #include <stdio.h>
 #include "observer.h"
+#include "file.c"
 
 //30~39
-#include "MUTE_BUTTON.c"
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
+#include "MUTE_BUTTON.c"
 #include "VOICE_COMMAND.c"
 #include "NAVIGATION.c"
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
+#include "end_call.c"
+#include "answer_call.c"
+#include "HILL_DESCENT.c"
 
 void MUTE_BUTTON_MENU(){
     int option, value;
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
 
-	printf("Steering Adjust Menu:\n");
-    printf("1. Write value to file\n");
+    printf("TRUNK RELEASE Menu:\n");
+    printf("1. Activate trunk release\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
 
@@ -40,6 +40,7 @@ void MUTE_BUTTON_MENU(){
 
         case 2:
             printf("Listening to events...\n");
+            printCurrentValues("MUTE_BUTTON", 1);
 
         break;
 
@@ -52,6 +53,10 @@ void MUTE_BUTTON_MENU(){
 
 void VOICE_COMMAND_MENU(){
 
+    printf("Steering Adjust Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
 
     int option, value;
     if (scanf("%d", &option) != 1) {
@@ -59,15 +64,6 @@ void VOICE_COMMAND_MENU(){
         return;
     }
 
-    printf("Steering Adjust Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
 
     switch (option) {
         case 1:
@@ -81,7 +77,7 @@ void VOICE_COMMAND_MENU(){
 
         case 2:
             printf("Listening to events...\n");
-
+            printCurrentValues("VOICE_COMMAND", 1);
         break;
 
         default:
@@ -94,17 +90,12 @@ void VOICE_COMMAND_MENU(){
 
 void PARKING_ASSIST_MENU(){
 
-
-    int option, value;
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
-
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
+
+    int option, value;
 
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
@@ -128,6 +119,7 @@ void PARKING_ASSIST_MENU(){
 
         default:
             printf("Invalid choice. Returning to menu.\n");
+            printCurrentValues("PARKING_ASSIST", 1);
         break;
     }
 
@@ -138,10 +130,6 @@ void REAR_DEFROST_MENU(){
 
 
     int option, value;
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
 
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
@@ -152,6 +140,7 @@ void REAR_DEFROST_MENU(){
         printf("Invalid input. Returning to menu.\n");
         return;
     }
+
 
     switch (option) {
         case 1:
@@ -170,6 +159,7 @@ void REAR_DEFROST_MENU(){
 
         default:
             printf("Invalid choice. Returning to menu.\n");
+            printCurrentValues("REAR_DEFROST", 1);
         break;
     }
 
@@ -180,10 +170,6 @@ void CHILD_LOCK_MENU(){
 
 
     int option, value;
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
 
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
@@ -207,7 +193,7 @@ void CHILD_LOCK_MENU(){
 
         case 2:
             printf("Listening to events...\n");
-
+            printCurrentValues("CHILD_LOCK", 1);
         break;
 
         default:
@@ -220,12 +206,7 @@ void CHILD_LOCK_MENU(){
 
 void NAVIGATION_MENU(){
 
-
     int option, value;
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
 
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
@@ -236,6 +217,7 @@ void NAVIGATION_MENU(){
         printf("Invalid input. Returning to menu.\n");
         return;
     }
+
 
     switch (option) {
         case 1:
@@ -249,6 +231,7 @@ void NAVIGATION_MENU(){
 
         case 2:
             printf("Listening to events...\n");
+            printCurrentValues("NAVIGATION", 2);
 
         break;
 
@@ -261,14 +244,76 @@ void NAVIGATION_MENU(){
 
 
 void LANE_ASSIST_MENU(){
-
-
     int option, value;
+    printf("Steering Adjust Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
     }
 
+    switch (option) {
+        case 1:
+        printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
+
+        registerHandler(LANE_ASSIST, handleLaneSupportCommand);
+        handlerEvent(LANE_ASSIST);
+        unregisterHandler(LANE_ASSIST, handleLaneSupportCommand);
+
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            printCurrentValues("LANE_ASSIST", 1);
+        break;
+    }
+
+}
+
+
+void Phone_Answer_MENU(){ //35
+    int option, value;
+    printf("Steering Adjust Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
+        registerHandler(PHONE_ANSWER,answerCall);
+        handlerEvent(PHONE_ANSWER);
+        unregisterHandler(PHONE_ANSWER,answerCall);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+        printCurrentValues("PHONE_ANSWER", 1);
+
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+
+}
+
+void Phone_End_Call_MENU(){
+    int option, value;
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");
@@ -283,15 +328,15 @@ void LANE_ASSIST_MENU(){
         case 1:
             printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
 
-        registerHandler(LANE_ASSIST, handleLaneSupportCommand);
-        handlerEvent(LANE_ASSIST);
-        unregisterHandler(LANE_ASSIST, handleLaneSupportCommand);
+        registerHandler(PHONE_END_CALL,endCallImpl);
+        handlerEvent(PHONE_END_CALL);
+        unregisterHandler(PHONE_END_CALL,endCallImpl);
 
         break;
 
         case 2:
             printf("Listening to events...\n");
-
+            printCurrentValues("PHONE_END_CALL", 1);
         break;
 
         default:

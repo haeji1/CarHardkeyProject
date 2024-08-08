@@ -11,29 +11,19 @@
 #include "traction.h"
 #include "menu.h"
 #include "file.c"
+#include "menuw.c"
+
 
 
 // 30~39번 입니다
-
-#include "lock_strategy.c"
-#include "rear_defrost_strategy.c"
-#include "MUTE_BUTTON.c"
-#include "VOICE_COMMAND.c"
-#include "NAVIGATION.c"
-#include "Lane_Support.c"
-#include "ParkingAssistance.c"
-
-//#include "end_call.c"
-//#include "answer_call.c"
-//#include "HILL_DESCENT.c"
-
 
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
 
 int main() {
-
+  //  initHillDescentControl();
+  //  handleHillDescentControlCommand();
 
     char input[10];
     int ignitionStarted = 0; 
@@ -41,16 +31,6 @@ int main() {
 
     //initializeObservers();
     initializeFeatureHandlers();
-
-    //등록30~39
-    registerHandler(MUTE_BUTTON, muteButtonHandler);// 한거
-    registerHandler(VOICE_COMMAND,voiceCommandToggle);//한거
-    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//한거
-    registerHandler(REAR_DEFROST, handleDefrostCommand);//한거
-    registerHandler(CHILD_LOCK, handleLockCommand);//한거
-    registerHandler(NAVIGATION,navigatehandle);//
-    registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
-
 
     while (1) {
         if(!ignitionStarted){
@@ -126,7 +106,7 @@ int main() {
                 break; // Exit the program
             }
             else if(selection ==30) {
-                handlerEvent(REAR_DEFROST); // 서리제거
+               MUTE_BUTTON_MENU();
             }
             else if(selection ==31){
                 handlerEvent(CHILD_LOCK); // 어린이 보호

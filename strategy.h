@@ -33,6 +33,10 @@ typedef enum {
     MUTED
 } AudioState;
 
+typedef void (*ActivateHillFunction)();
+typedef void (*DeactivateHillFunction)();
+typedef DefrostState (*GetHillStateFunction)();
+
 // 함수 포인터 타입
 typedef void (*EngageLockFunction)();
 typedef void (*DisengageLockFunction)();
@@ -50,9 +54,6 @@ typedef void (*ActivateLaneSupportFunction)();
 typedef void (*DeactivateLaneSupportFunction)();
 typedef LaneSupportState (*GetLaneSupportStateFunction)();
 
-typedef void (*ActivateHillDescentControlFunction)();
-typedef void (*DeactivateHillDescentControlFunction)();
-typedef HillDescentControlState (*GetHillDescentControlStateFunction)();
 
 typedef void (*ToggleMuteFunction)();
 typedef AudioState (*GetAudioStateFunction)();
@@ -65,6 +66,8 @@ typedef void (*HandleHillDescentControlCommandFunction)();
 typedef void (*AnswerCallFunction)();
 typedef void (*EndCallFunction)();
 
+
+
 // 함수 포인터 선언
 extern EngageLockFunction engageLock;
 extern DisengageLockFunction disengageLock;
@@ -74,6 +77,11 @@ extern ActivateDefrostFunction activateDefrost;
 extern DeactivateDefrostFunction deactivateDefrost;
 extern GetDefrostStateFunction getDefrostState;
 
+// hill
+extern ActivateHillFunction activateHill;
+extern DeactivateHillFunction deactivateHill;
+extern GetHillStateFunction getHillState;
+
 extern ActivateParkingAssistFunction activateParkingAssist;
 extern DeactivateParkingAssistFunction deactivateParkingAssist;
 extern GetParkingAssistStateFunction getParkingAssistState;
@@ -81,10 +89,6 @@ extern GetParkingAssistStateFunction getParkingAssistState;
 extern ActivateLaneSupportFunction activateLaneSupport;
 extern DeactivateLaneSupportFunction deactivateLaneSupport;
 extern GetLaneSupportStateFunction getLaneSupportState;
-
-extern ActivateHillDescentControlFunction activateHillDescentControl;
-extern DeactivateHillDescentControlFunction deactivateHillDescentControl;
-extern GetHillDescentControlStateFunction getHillDescentControlState;
 
 extern ToggleMuteFunction toggleMute;
 extern GetAudioStateFunction getAudioState;
@@ -111,3 +115,4 @@ void handleLaneSupportCommand();
 void handleParkingAssistCommand();
 
 #endif // STRATEGY_H
+
