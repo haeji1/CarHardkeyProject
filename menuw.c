@@ -36,7 +36,6 @@ void MUTE_BUTTON_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter MUTE_BUTTON (0=ON, 1=OFF: ");
 
         registerHandler(MUTE_BUTTON, muteButtonHandler);
         handlerEvent(MUTE_BUTTON);
@@ -47,7 +46,7 @@ void MUTE_BUTTON_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("MUTE_BUTTON", 1);
-
+			sleep(3);
         break;
 
         default:
@@ -84,6 +83,7 @@ void VOICE_COMMAND_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("VOICE_COMMAND", 1);
+			sleep(3);
         break;
 
         default:
@@ -113,11 +113,6 @@ void PARKING_ASSIST_MENU(){
         case 1:
             printf("Enter PARKING_ASSIST (0=ON, 1=OFF): ");
 
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-            printf("Invalid input. Enter 0 or 1.\n");
-            return;
-        }
-
         registerHandler(PARKING_ASSIST, handleParkingAssistCommand);
         handlerEvent(PARKING_ASSIST);
         unregisterHandler(PARKING_ASSIST, handleParkingAssistCommand);
@@ -126,12 +121,12 @@ void PARKING_ASSIST_MENU(){
 
         case 2:
             printf("Listening to events...\n");
-
+			printCurrentValues("PARKING_ASSIST", 1);
+			sleep(3);
         break;
 
         default:
             printf("Invalid choice. Returning to menu.\n");
-            printCurrentValues("PARKING_ASSIST", 1);
         break;
     }
 
@@ -163,6 +158,8 @@ void REAR_DEFROST_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("REAR_DEFROST", 1);
+			sleep(3);
+
         break;
 
         default:
@@ -199,6 +196,7 @@ void CHILD_LOCK_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("CHILD_LOCK", 1);
+			sleep(3);
         break;
 
         default:
@@ -235,7 +233,7 @@ void NAVIGATION_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("NAVIGATION", 2);
-
+			sleep(3);
         break;
 
         default:
@@ -273,6 +271,7 @@ void LANE_ASSIST_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("LANE_ASSIST", 1);
+			sleep(3)
 
         break;
 
@@ -307,8 +306,8 @@ void Phone_End_Call_MENU(){ //34
 
         case 2:
          printf("Listening to events...\n");
-           printCurrentValues("PHONE_ANSWER", 1);
-
+         printCurrentValues("PHONE_ANSWER", 1);
+		 sleep(3);
         break;
 
         default:
@@ -344,6 +343,7 @@ void Phone_Answer_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("PHONE_END_CALL", 1);
+			sleep(3)
         break;
 
         default:
@@ -377,7 +377,8 @@ void HILL_DESCENT_MENU(){
 
         case 2:
             printf("Listening to events...\n");
-        printCurrentValues("HILL_DESCENT", 1);
+            printCurrentValues("HILL_DESCENT", 1);
+			sleep(3);
         break;
 
         default:

@@ -48,8 +48,13 @@ TRUNK_RELEASE
 FUEL_CAP_RELEASE
 1   // Activation signal
 PARKING_BRAKE
-1   // Brake state (0 = Disengage, 1 = Engage)
+0
+0
+   // Updated values
+   // Updated values
+
 DRIVE_MODE
+
 2   // Drive mode (0 = Eco, 1 = Sport, 2 = Normal)
 TRACTION_CONTROL
 1   // Control state (0 = Off, 1 = On)
@@ -65,11 +70,7 @@ INTERIOR_LIGHT
 1   // Light state (0 = Off, 1 = On)
 REAR_DEFROST
 0
-   // Updated values
-   // Updated values
-
 CHILD_LOCK
-
 0   // Lock state (0 = Disengage, 1 = Engage)
 MUTE_BUTTON
 1   // Activation signal
@@ -88,9 +89,6 @@ PARKING_ASSIST
 0   // Assist state (0 = Off, 1 = On)
 HILL_DESCENT
 0
-   // Updated values
-   // Updated values
-
 HUD_ADJUST
 
 3   // Display setting
