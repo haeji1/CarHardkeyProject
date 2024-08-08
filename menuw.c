@@ -167,6 +167,7 @@ void REAR_DEFROST_MENU(){
 }
 
 
+/*
 void CHILD_LOCK_MENU(){
 
 
@@ -202,7 +203,7 @@ void CHILD_LOCK_MENU(){
     }
 
 }
-
+*/
 
 void NAVIGATION_MENU(){
 

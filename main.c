@@ -11,9 +11,7 @@
 #include "traction.h"
 #include "menu.h"
 
-// wongyuk
 #include "menuw.h"
-#include "menuw.c"
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -106,7 +104,7 @@ int main() {
                REAR_DEFROST_MENU(); // 후면 서리 제거
             }
             else if(selection ==31){
-               CHILD_LOCK_MENU(); // 어린이 보호
+             //  CHILD_LOCK_MENU(); // 어린이 보호
             }
             else if(selection ==32) {
                 MUTE_BUTTON_MENU(); // 음소거 기능
