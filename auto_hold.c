@@ -11,9 +11,9 @@ void autoHoldOff() {
 }
 
 void autoHoldOn() {
-    printf("\n--On the autohold mode--\n");
+    printf("\n***** On the autohold mod *****\n");
 }
 
 void setAutoHold(autoHoldFunction af) {
-    printf("\n<<Change the current state successful>>\n");
+    printf("\n***** Change the current state successful *****\n");
 }

@@ -5,10 +5,10 @@
 typedef void(*handsFreeFunction)();
 
 void activateHandsFree() {
-    printf("Hands-fre emode activated\n");
+    printf("\n***** Hands-free mode activated *****\n");
 }
 
 void setHandsFree(handsFreeFunction hff) {
     hff(); 
-    printf("Hands-free setup successful\n");
+    printf("\n***** Change the current state successful *****\n");
 }

@@ -10,8 +10,8 @@
 #include "trailer_control.h"
 #include "auto_hold.h"
 #include "hands_free.h"
-// #include "seat_heater.h"
-// #include "seat_cooler.h"
+#include "seat_heater.h"
+#include "seat_cooler.h"
 #include "menu.h"
 
 // Function prototypes
@@ -69,9 +69,9 @@ int main() {
             } else if (selection == 46) {
                 handsFreeMenu();
             } else if (selection == 47) {
-                // seatHeaterMenu();
+                seatHeaterMenu();
             } else if (selection == 48) {
-                // seatCoolerMenu();
+                seatCoolerMenu();
             } else if (selection == 50) {
                 break; // Exit the program
             } else {

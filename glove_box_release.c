@@ -5,9 +5,9 @@
 typedef void(*GloveBoxReleaseFunction)();
 
 void releaseGloveBox() {
-	printf("glove box opened\n");
+	printf("\n***** glove box latch opened *****\n");
 }
 
 void setGloveBoxRelease(GloveBoxReleaseFunction gbr) {
-    printf("current status changed\n");
+    printf("\n***** Change the current state successful *****\n");
 }

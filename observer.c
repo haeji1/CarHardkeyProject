@@ -1,4 +1,3 @@
-#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "observer.h"
@@ -24,7 +23,7 @@ void unregisterHandler(HardKey hardKey, Handler handler) {
             *now = (*now) -> next;
             free(del);
             printf(">>success unregister\n");
-            return; 
+            return;
         }
         now = &(*now) -> next;
     }
@@ -41,9 +40,10 @@ void notifyHandlers(HardKey hardKey) {
 
 // It is executed first when an event for hardkey is registered and the handler is called through notifyhandler.
 void handlerEvent(HardKey hardKey) {
-    printf(">> An event occures\n");
+    printf("\n[An event occures]\n");
     notifyHandlers(hardKey);
 }
+
 
 void unregisterFunction(HardKey hardKey, Handler handler) {
     // Sleep(10000);

@@ -7,9 +7,9 @@
 typedef void(*trailerControlFunction)();
 
 void controlTrailer() {
-    printf("Trailer control setting\n");
+    printf("\n***** Trailer control setting *****\n");
 }
 
 void setTrailerControl(trailerControlFunction tcf) {
-    printf("Trailer control setup successful\n");
+    printf("\n***** Change the current state successful *****\n");
 }

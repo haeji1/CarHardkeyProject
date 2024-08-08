@@ -8,13 +8,13 @@
 typedef void(*fogLightFunction)();
 
 void fogLightsOff() {
-    printf("Fog lights turned off\n");
+    printf("\n***** Fog lights turned off *****\n");
 }
 
 void fogLightsOn() {
-    printf("Fog lights turned on\n");
+    printf("\n***** Fog lights turned on *****\n");
 }
 
 void setFogLights(fogLightFunction flf) {
-    printf("current state changed\n");
+    printf("\n***** Change the current state successful *****\n");
 }

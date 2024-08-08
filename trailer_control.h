@@ -1,7 +1,7 @@
 #ifndef TRAILER_CONTROL_H
 #define TRAILER_CONTROL_H
 
-typedef void (*trailerControlFunction)();
+typedef void(*trailerControlFunction)();
 
 void controlTrailer();
 void setTrailerControl(trailerControlFunction tcf);

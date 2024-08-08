@@ -6,9 +6,9 @@
 typedef void(*emergencyBrakeFunction)();
 
 void activateEmergencyBrake() {
-    printf("Emergency brake activated\n");
+    printf("\n***** Emergency brake activated *****\n");
 }
 
 void setEmergencyBrake(emergencyBrakeFunction ebf) { 
-    printf("Emergency brake setup successful\n");
+    printf("\n***** Change the current state successful *****\n");
 }

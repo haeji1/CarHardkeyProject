@@ -6,9 +6,9 @@
 typedef void(*HUDAdjustFunction)();
 
 void adjustHUDSettings() {
-    printf("Hud Adjust released.\n");
+    printf("\n***** Hud Adjust released *****\n");
 }
 
 void setHUDAdjust(HUDAdjustFunction haf) {
-    printf("current status changed\n");
+    printf("\n***** Change the current state successful *****\n");
 }
