@@ -35,5 +35,5 @@ void handleMirrorAdjust(MirrorAdjustControlFunction ma){
 void mirroradjustHandlerWrapper() {
     // Wrapper function to call
     const char *mirrorName = (globalMirrorState.mirrorId == 0) ? "Left" : "Right";
-    printf("mirror %s heat ajustmentDirection set to %d\n", mirrorName, globalMirrorState.ajustmentDirection);
+    printf("%s mirror ajustment set to %d\n", mirrorName, globalMirrorState.ajustmentDirection);
 }
