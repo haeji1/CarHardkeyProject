@@ -27,7 +27,7 @@ int main() {
     int selection;
 
     //initializeObservers();
-    initializeFeatureHandlers();
+    // initializeFeatureHandlers();
 
     //등록30~39
     registerHandler(MUTE_BUTTON, muteButtonHandler);//

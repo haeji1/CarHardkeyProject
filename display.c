@@ -87,18 +87,18 @@ void handleRadioTuningCommands(){
     handlerEvent(RADIO_TUNING);
 }
 
-void initializeFeatureHandlers() {
-    // Initialize handlers for various features
-    initializeHornHandlers();
-    initializeHeadlightsHandlers();
-    initializeTurnSignalsHandlers();
-    initializeWindshieldWipersHandlers();
-    initializeHazardLightsHandlers();
-    initializeCruiseControlHandlers();
-    initializeRadioHandlers();
-}
+// void initializeFeatureHandlers() {
+//     // Initialize handlers for various features
+//     initializeHornHandlers();
+//     initializeHeadlightsHandlers();
+//     initializeTurnSignalsHandlers();
+//     initializeWindshieldWipersHandlers();
+//     initializeHazardLightsHandlers();
+//     initializeCruiseControlHandlers();
+//     initializeRadioHandlers();
+// }
 
 void cleanupFeatureHandlers() {
     // Unregister handlers for various features
-    unregisterHandler(HORN, handleHorn);
+    // unregisterHandler(HORN, handleHorn);
 }
