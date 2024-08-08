@@ -17,7 +17,9 @@
 #include "hseat.h"
 #include "cseat.h"
 #include "file.c"
+
 #include "RadioSource.h"
+#include "ClimateAirflow.h"
 
 #define MAX_NUM 5
 #define ONE 1
@@ -111,6 +113,80 @@ void radioSourceMenu() {
         break;
     }
 }
+void climateAirflowMenu() {
+    int option, value;
+    int values[MAX_NUM];
+    ClimateAirflowControlFunction cac;
+
+    printf("climateAirflow Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter RADIO_SOURCE state (0=Open, 1=Close, 2=Tilt): ");  // 교체 airflow로
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+        // Perform write operation to file if needed
+        values[0] = value;
+        writeOrUpdateValueToFile("CLIMATE_AIRFLOW", values, ONE);
+
+        // Set the sunroof control function
+        if (value == 0) {
+            cac = AirflowFace;
+        } else if (value == 1) {
+            cac = AirflowFoot;
+        } else if(value == 2){
+            cac = AirflowDefrost;
+        }
+
+        // Execute the traction control function
+        handleClimateAirflow(cac);
+        registerHandler(CLIMATE_AIRFLOW, cac);
+        // Notify the event
+        handlerEvent(CLIMATE_AIRFLOW);
+        unregisterHandler(CLIMATE_AIRFLOW, cac);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+        // Implement event listening functionality if needed
+        printCurrentValues("CLIMATE_AIRFLOW", ONE);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 void headlightsMenu(){
