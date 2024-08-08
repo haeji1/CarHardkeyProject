@@ -3,12 +3,14 @@
 #include <unistd.h> // sleep 함수 사용을 위한 헤더
 
 // 전역 변수를 사용하여 차선 지원 상태를 저장합니다.
-static LaneSupportState currentLaneSupportState = OFF;
+static LaneSupportState currentLaneSupportState = ON;
 
 // 차선 지원 기능을 활성화하는 함수
 void activateLaneSupportImpl() {
     currentLaneSupportState = ON;
     printf("Lane support activated.\n");
+    int values[] = {};
+    writeOrUpdateValueToFile("LANE_ASSIST", values, 1);  // 배열의 주소를 전달
     sleep(3); // 3초 대기
 }
 
@@ -16,6 +18,8 @@ void activateLaneSupportImpl() {
 void deactivateLaneSupportImpl() {
     currentLaneSupportState = OFF;
     printf("Lane support deactivated.\n");
+    int values[] = {0};
+    writeOrUpdateValueToFile("LANE_ASSIST", values, 1);  // 배열의 주소를 전달
     sleep(3); // 3초 대기
 }
 

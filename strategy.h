@@ -1,5 +1,6 @@
 #ifndef STRATEGY_H
 #define STRATEGY_H
+#include "file.c"
 
 typedef enum {
     OFF,
@@ -61,11 +62,6 @@ typedef AudioState (*GetAudioStateFunction)();
 typedef void (*VoiceCommandToggleFunction)();
 typedef void (*NavigationStrategy)(Coordinates destination);
 
-// 추가된 함수 포인터 타입
-typedef void (*HandleHillDescentControlCommandFunction)();
-typedef void (*AnswerCallFunction)();
-typedef void (*EndCallFunction)();
-
 
 
 // 함수 포인터 선언
@@ -96,9 +92,7 @@ extern GetAudioStateFunction getAudioState;
 extern VoiceCommandToggleFunction voiceCommandToggle;
 
 // 새로운 함수 포인터 선언
-extern HandleHillDescentControlCommandFunction handleHillDescentControlCommand;
-extern AnswerCallFunction answerCall;
-extern EndCallFunction endCall;
+
 
 void quickRouteStrategy(Coordinates destination);
 void convenientRouteStrategy(Coordinates destination);
@@ -107,6 +101,26 @@ void minimumFareRouteStrategy(Coordinates destination);
 void setNavigationStrategy(NavigationStrategy strategy);
 void navigateTo(Coordinates destination);
 void navigatehandle();
+
+typedef void (*ActivateHillDescentFunction)(void);
+typedef void (*DeactivateHillDescentFunction)(void);
+typedef int (*GetHillDescentStateFunction)(void);
+
+typedef void (*AnswerPhoneFunction)(void);
+typedef void (*EndCallFunction)(void);
+typedef int (*GetCallStateFunction)(void);
+
+extern int currentCallState;  // 현재 호출 상태를 저장하는 전역 변수
+
+// Function declarations
+void answerPhoneImpl(void);
+void endCallImpl(void);
+int getCallStateImpl(void);
+
+extern AnswerPhoneFunction answerPhone;
+extern EndCallFunction endCall;
+extern GetCallStateFunction getCallState;
+
 
 // 차선 유지 지원 기능
 void handleLaneSupportCommand();

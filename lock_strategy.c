@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h> // sleep 함수 사용을 위해 필요한 헤더 파일
 
-// 초기 잠금 상태 설정
+
 static LockState currentLockState = DISENGAGED;
 
 
@@ -38,11 +38,15 @@ void handleLockCommand() {
         printf("Current state: %s\n", getLockState() == ENGAGED ? "Engaged" : "Disengaged");
         scanf("%d", &command);
 
-        if (command == 1) {
-            engageLock();
-            break;
-        } else if (command == 2) {
+        if (command == 0) {
+            int values[]={0};
             disengageLock();
+            writeOrUpdateValueToFile("CHILD_LOCK", values, 1);
+            break;
+        } else if (command == 1) {
+            int values[]={1};
+            engageLock();
+            writeOrUpdateValueToFile("CHILD_LOCK", values, 1);
             break;
         }
         else {

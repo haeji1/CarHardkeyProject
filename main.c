@@ -10,13 +10,10 @@
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
-#include "file.c"
+
+// wongyuk
+#include "menuw.h"
 #include "menuw.c"
-
-
-
-// 30~39번 입니다
-
 
 void initializeFeatureHandlers();
 void cleanupFeatureHandlers();
@@ -106,34 +103,34 @@ int main() {
                 break; // Exit the program
             }
             else if(selection ==30) {
-               MUTE_BUTTON_MENU();
+               REAR_DEFROST_MENU(); // 후면 서리 제거
             }
             else if(selection ==31){
-                handlerEvent(CHILD_LOCK); // 어린이 보호
+               CHILD_LOCK_MENU(); // 어린이 보호
             }
             else if(selection ==32) {
-                handlerEvent(MUTE_BUTTON); // 음소거 기능
+                MUTE_BUTTON_MENU(); // 음소거 기능
            }
             else if(selection ==33) {
-                handlerEvent(VOICE_COMMAND); // 음소거 기능
+               VOICE_COMMAND_MENU(); // 보이스 커맨드 기능
             }
             else if(selection ==34) {
-
+               Phone_Answer_MENU(); // 됬네 전화끊기
             }
             else if(selection ==35) {
-
+				Phone_End_Call_MENU();//전화걸기!
             }
             else if(selection ==36) {
-                handlerEvent(NAVIGATION); // 네비게이션
+                NAVIGATION_MENU(); // 네비게이션
             }
             else if(selection ==37) {
-               handlerEvent(LANE_ASSIST); // 차선 지원
+               LANE_ASSIST_MENU(); //차선 보조
             }
             else if(selection ==38) {
-                handlerEvent(PARKING_ASSIST);// 주차 보조
+               PARKING_ASSIST_MENU();// 주차 보조
             }
-            else if(selection ==39) {
-
+            else if(selection ==39) { // HILL
+                HILL_DESCENT_MENU(); // 아직 안함
             }
 
 			else  if(selection==50){

@@ -1,7 +1,6 @@
 #include "menuw.h"
 #include <stdio.h>
 #include "observer.h"
-#include "file.c"
 
 //30~39
 #include "lock_strategy.c"
@@ -76,8 +75,6 @@ void VOICE_COMMAND_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
-
         registerHandler(VOICE_COMMAND, voiceCommandToggle);
         handlerEvent(VOICE_COMMAND);
         unregisterHandler(VOICE_COMMAND, voiceCommandToggle);
@@ -158,30 +155,18 @@ void REAR_DEFROST_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
-
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
-            printf("Invalid input. Enter 0 or 1.\n");
-            return;
-        }
-
-
-
         registerHandler(REAR_DEFROST, handleDefrostCommand);
         handlerEvent(REAR_DEFROST);
         unregisterHandler(REAR_DEFROST, handleDefrostCommand);
-
-
         break;
 
         case 2:
             printf("Listening to events...\n");
-
+            printCurrentValues("REAR_DEFROST", 1);
         break;
 
         default:
             printf("Invalid choice. Returning to menu.\n");
-            printCurrentValues("REAR_DEFROST", 1);
         break;
     }
 
@@ -206,12 +191,9 @@ void CHILD_LOCK_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
-
         registerHandler(CHILD_LOCK, handleLockCommand);
         handlerEvent(CHILD_LOCK);
         unregisterHandler(CHILD_LOCK, handleLockCommand);
-
         break;
 
         case 2:
@@ -245,12 +227,9 @@ void NAVIGATION_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
-
         registerHandler(NAVIGATION, navigatehandle);
         handlerEvent(NAVIGATION);
         unregisterHandler(NAVIGATION, navigatehandle);
-
         break;
 
         case 2:
@@ -284,7 +263,6 @@ void LANE_ASSIST_MENU(){
 
     switch (option) {
         case 1:
-        printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
 
         registerHandler(LANE_ASSIST, handleLaneSupportCommand);
         handlerEvent(LANE_ASSIST);
@@ -294,6 +272,7 @@ void LANE_ASSIST_MENU(){
 
         case 2:
             printf("Listening to events...\n");
+            printCurrentValues("LANE_ASSIST", 1);
 
         break;
 
@@ -305,8 +284,7 @@ void LANE_ASSIST_MENU(){
 
 }
 
-
-void Phone_Answer_MENU(){ //35
+void Phone_End_Call_MENU(){ //34
     int option, value;
     int values[MAX_NUM];
 
@@ -322,15 +300,14 @@ void Phone_Answer_MENU(){ //35
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
-        registerHandler(PHONE_ANSWER,answerCall);
+        registerHandler(PHONE_ANSWER,answerPhone);
         handlerEvent(PHONE_ANSWER);
-        unregisterHandler(PHONE_ANSWER,answerCall);
+        unregisterHandler(PHONE_ANSWER,answerPhone);
         break;
 
         case 2:
-            printf("Listening to events...\n");
-        printCurrentValues("PHONE_ANSWER", 1);
+         printf("Listening to events...\n");
+           printCurrentValues("PHONE_ANSWER", 1);
 
         break;
 
@@ -341,7 +318,7 @@ void Phone_Answer_MENU(){ //35
 
 }
 
-void Phone_End_Call_MENU(){
+void Phone_Answer_MENU(){
     int option, value;
     int values[MAX_NUM];
 
@@ -357,17 +334,50 @@ void Phone_End_Call_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
 
-        registerHandler(PHONE_END_CALL,endCallImpl);
+        registerHandler(PHONE_END_CALL,endCall);
         handlerEvent(PHONE_END_CALL);
-        unregisterHandler(PHONE_END_CALL,endCallImpl);
+        unregisterHandler(PHONE_END_CALL,endCall);
 
         break;
 
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("PHONE_END_CALL", 1);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+
+}
+
+void HILL_DESCENT_MENU(){
+    int option, value;
+    int values[MAX_NUM];
+
+    printf("Steering Adjust Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+
+        registerHandler(HILL_DESCENT,handleHillDescentCommand);
+        handlerEvent(HILL_DESCENT);
+        unregisterHandler(HILL_DESCENT,handleHillDescentCommand);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+        printCurrentValues("HILL_DESCENT", 1);
         break;
 
         default:

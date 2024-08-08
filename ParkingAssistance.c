@@ -9,12 +9,16 @@ static ParkingAssistState currentParkingAssistState = OFF;
 void activateParkingAssistImpl() {
     currentParkingAssistState = ON;
     printf("Parking assist activated.\n");
+    int values[] = {1};  //
+    writeOrUpdateValueToFile("PARKING_BRAKE", values, 2);  // 배열의 주소를 전달
     sleep(3); // 3초 대기
 }
 
 // 주차 지원 기능을 비활성화하는 함수
 void deactivateParkingAssistImpl() {
     currentParkingAssistState = OFF;
+    int values[] = {0};  //
+    writeOrUpdateValueToFile("PARKING_BRAKE", values, 2);  // 배열의 주소를 전달
     printf("Parking assist deactivated.\n");
     sleep(3); // 3초 대기
 }

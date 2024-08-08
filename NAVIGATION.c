@@ -31,14 +31,16 @@ void navigateTo(Coordinates destination) {
 void navigatehandle() {
     int strategyChoice;
     Coordinates destination;
-
+    int values[1];
     // 사용자로부터 좌표 입력 받기
     printf("Enter destination coordinates:\n");
     printf("Latitude: ");
     scanf("%lf", &destination.latitude);
+    values[0]=destination.latitude;
     printf("Longitude: ");
     scanf("%lf", &destination.longitude);
-
+    values[1]=destination.longitude;
+    writeOrUpdateValueToFile("NAVIGATION", values, 2);  // 배열의 주소를 전달
     // 사용자로부터 네비게이션 전략 선택 받기
     printf("Select navigation strategy:\n");
     printf("1. Quick Route\n");

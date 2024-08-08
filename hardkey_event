@@ -64,13 +64,17 @@ STEERING_ADJUST
 INTERIOR_LIGHT
 1   // Light state (0 = Off, 1 = On)
 REAR_DEFROST
-1   // Defrost state (0 = Off, 1 = On)
+0
+   // Updated values
+   // Updated values
+
 CHILD_LOCK
+
 0   // Lock state (0 = Disengage, 1 = Engage)
 MUTE_BUTTON
 1   // Activation signal
 VOICE_COMMAND
-1   // Activation signal
+1
 PHONE_ANSWER
 1   // Activation signal
 PHONE_END_CALL
@@ -83,8 +87,12 @@ LANE_ASSIST
 PARKING_ASSIST
 0   // Assist state (0 = Off, 1 = On)
 HILL_DESCENT
-1   // Control state (0 = Off, 1 = On)
+0
+   // Updated values
+   // Updated values
+
 HUD_ADJUST
+
 3   // Display setting
 GLOVE_BOX_RELEASE
 1   // Activation signal
@@ -104,3 +112,6 @@ SEAT_HEATER
 SEAT_COOLER
 1   // Seat identifier (0 = Driver, 1 = Passenger)
 2   // Cooling level (0-3)
+PHONE_CALL
+0
+   // Updated values
