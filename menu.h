@@ -19,5 +19,6 @@ void cooledSeatMenu();
 
 void radioSourceMenu();
 void climateAirflowMenu();
+void climateFanMenu();
 
 #endif // MENU_H

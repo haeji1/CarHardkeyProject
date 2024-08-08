@@ -13,7 +13,7 @@
 
 #include "RadioSource.h"
 #include "ClimateAirflow.h"
-
+#include "ClimateFan.h"
 
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
@@ -96,7 +96,7 @@ int main() {
             } else if (selection == 10) {
                 radioSourceMenu();
 			} else if (selection == 11) {
-
+				climateFanMenu();
 			} else if (selection == 12) {
 
 			} else if (selection == 13) {
