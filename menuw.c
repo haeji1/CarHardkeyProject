@@ -167,9 +167,8 @@ void REAR_DEFROST_MENU(){
 }
 
 
-/*
-void CHILD_LOCK_MENU(){
 
+void CHILD_LOCK_MENU(){
 
     int option, value;
     int values[MAX_NUM];
@@ -186,9 +185,9 @@ void CHILD_LOCK_MENU(){
 
     switch (option) {
         case 1:
-        registerHandler(CHILD_LOCK, childFunction);
+        registerHandler(CHILD_LOCK, handleLockCommand);
         handlerEvent(CHILD_LOCK);
-        unregisterHandler(CHILD_LOCK, childFunction);
+        unregisterHandler(CHILD_LOCK, handleLockCommand);
         break;
 
         case 2:
@@ -203,7 +202,7 @@ void CHILD_LOCK_MENU(){
     }
 
 }
-*/
+
 
 void NAVIGATION_MENU(){
 

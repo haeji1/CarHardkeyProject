@@ -1,11 +1,9 @@
 #include "strategy.h"
 #include <stdio.h>
-#include <string.h>
 #include <unistd.h> // sleep 함수 사용을 위해 필요한 헤더 파일
 
-
+// 현재 잠금 상태를 나타내는 변수
 static LockState currentLockState = DISENGAGED;
-
 
 // 실제 함수 구현
 void engageLockImpl() {
@@ -32,25 +30,21 @@ GetLockStateFunction getLockState = getLockStateImpl;
 // 사용자 입력을 처리하고 잠금 상태를 제어하는 함수
 void handleLockCommand() {
     int command;
-
     while (1) {
         printf("Enter command (1 for ENGAGE, 2 for DISENGAGE)\n");
-        printf("Current state: %s\n", getLockState() == ENGAGED ? "Engaged" : "Disengaged");
         scanf("%d", &command);
-
-        if (command == 0) {
-            int values[]={0};
-            disengageLock();
-            writeOrUpdateValueToFile("CHILD_LOCK", values, 1);
-            break;
-        } else if (command == 1) {
-            int values[]={1};
+        if (command == 1) {
+            int values[] = {1};
             engageLock();
             writeOrUpdateValueToFile("CHILD_LOCK", values, 1);
             break;
-        }
-        else {
-            printf("Invalid command. Please enter 1, 2\n");
+        } else if (command == 2) {
+            int values[] = {0};
+            disengageLock();
+            writeOrUpdateValueToFile("CHILD_LOCK", values, 1);
+            break;
+        } else {
+            printf("Invalid command. Please enter 1 or 2\n");
         }
     }
 }
