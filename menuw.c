@@ -15,8 +15,15 @@
 #include "answer_call.c"
 #include "HILL_DESCENT.c"
 
+#define MAX_NUM 5
+#define ONE 1
+#define TWO 2
+
+
+
 void MUTE_BUTTON_MENU(){
     int option, value;
+    int values[MAX_NUM];
 
     printf("TRUNK RELEASE Menu:\n");
     printf("1. Activate trunk release\n");
@@ -59,6 +66,8 @@ void VOICE_COMMAND_MENU(){
     printf("Enter your choice: ");
 
     int option, value;
+    int values[MAX_NUM];
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -96,6 +105,7 @@ void PARKING_ASSIST_MENU(){
     printf("Enter your choice: ");
 
     int option, value;
+    int values[MAX_NUM];
 
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
@@ -104,7 +114,12 @@ void PARKING_ASSIST_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
+            printf("Enter PARKING_ASSIST (0=ON, 1=OFF): ");
+
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
 
         registerHandler(PARKING_ASSIST, handleParkingAssistCommand);
         handlerEvent(PARKING_ASSIST);
@@ -127,9 +142,8 @@ void PARKING_ASSIST_MENU(){
 
 
 void REAR_DEFROST_MENU(){
-
-
     int option, value;
+
 
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
@@ -146,9 +160,17 @@ void REAR_DEFROST_MENU(){
         case 1:
             printf("Enter VOICE_COMMAND (0=ON, 1=OFF): ");
 
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+
+
         registerHandler(REAR_DEFROST, handleDefrostCommand);
         handlerEvent(REAR_DEFROST);
         unregisterHandler(REAR_DEFROST, handleDefrostCommand);
+
 
         break;
 
@@ -170,6 +192,7 @@ void CHILD_LOCK_MENU(){
 
 
     int option, value;
+    int values[MAX_NUM];
 
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
@@ -207,6 +230,7 @@ void CHILD_LOCK_MENU(){
 void NAVIGATION_MENU(){
 
     int option, value;
+    int values[MAX_NUM];
 
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
@@ -244,7 +268,10 @@ void NAVIGATION_MENU(){
 
 
 void LANE_ASSIST_MENU(){
+
     int option, value;
+    int values[MAX_NUM];
+
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");
@@ -281,6 +308,8 @@ void LANE_ASSIST_MENU(){
 
 void Phone_Answer_MENU(){ //35
     int option, value;
+    int values[MAX_NUM];
+
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");
@@ -314,6 +343,8 @@ void Phone_Answer_MENU(){ //35
 
 void Phone_End_Call_MENU(){
     int option, value;
+    int values[MAX_NUM];
+
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");

@@ -1,7 +1,7 @@
 #include "strategy.h"
 #include <stdio.h>
 #include <string.h>
-
+#include "file.c"
 static DefrostState currentDefrostState = OFF;
 
 void activateDefrostImpl() {
@@ -39,9 +39,13 @@ void handleDefrostCommand() {
 
         // 명령 처리
         if (strcmp(input, "ON") == 0) {
+            int values[]={1};
             activateDefrost();
+            writeOrUpdateValueToFile("DEFROST", values, 1);  // 배열의 주소를 전달
         } else if (strcmp(input, "OFF") == 0) {
             deactivateDefrost();
+             int values[]={0};
+             writeOrUpdateValueToFile("DEFROST", values, 1);  // 배열의 주소를 전달
         } else if (strcmp(input, "exit") == 0) {
             printf("Exiting...\n");
             running = 0; // 루프 종료
