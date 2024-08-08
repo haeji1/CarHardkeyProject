@@ -55,17 +55,20 @@ void sunroofMenu() {
             }
 
             // Execute the traction control function
+            printf("****************************\n");
             sunroofControl(sc);
             registerHandler(SUNROOF_CONTROL, sc);
             // Notify the event
             handlerEvent(SUNROOF_CONTROL);
             unregisterHandler(SUNROOF_CONTROL, sc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("SUNROOF_CONTROL", ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -93,17 +96,20 @@ void trunkReleaseMenu() {
             values[0] = 1;
             writeOrUpdateValueToFile("TRUNK_RELEASE", values, ONE);
             // Register the handler
+            printf("****************************\n");
             tr = activateTrunkRelease;
             registerHandler(TRUNK_RELEASE, tr);
             // Notify the event
             handlerEvent(TRUNK_RELEASE);
             unregisterHandler(TRUNK_RELEASE, tr);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("Trunk_RELEASE", ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -131,17 +137,20 @@ void fuelCapReleaseMenu() {
             values[0] = 1;
             writeOrUpdateValueToFile("FUEL_CAP_RELEASE", values, ONE);
             // Register the handler
+            printf("****************************\n");
             fr = activateFuelCapRelease;
             registerHandler(FUEL_CAP_RELEASE, fr);
             // Notify the event
             handlerEvent(FUEL_CAP_RELEASE);
             unregisterHandler(FUEL_CAP_RELEASE, fr);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("FUEL_CAP_RELEASE", ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -184,17 +193,20 @@ void parkingBrakeMenu() {
             }
 
             // Execute the brake control function
+            printf("****************************\n");
             parkingBrakeControl(pc);
             registerHandler(PARKING_BRAKE, pc);
             // Notify the event
             handlerEvent(PARKING_BRAKE);
             unregisterHandler(PARKING_BRAKE, pc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("PARKING_BRAKE", ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -238,18 +250,21 @@ void driveModeMenu() {
                 dc = normalMode;
             }
 
-            // Execute the traction control function
+            // Execute the drive mode function
+            printf("****************************\n");
             driveModeControl(dc);
             registerHandler(DRIVE_MODE, dc);
             // Notify the event
             handlerEvent(DRIVE_MODE);
             unregisterHandler(DRIVE_MODE, dc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("DRIVE_MODE", ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -292,17 +307,20 @@ void tractionMenu() {
             }
 
             // Execute the traction control function
+            printf("****************************\n");
             tractionControl(tc);
             registerHandler(TRACTION_CONTROL, tc);
             // Notify the event
             handlerEvent(TRACTION_CONTROL);
             unregisterHandler(TRACTION_CONTROL, tc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("TRACTION_CONTROL",ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -350,6 +368,7 @@ void heatedSeatMenu() {
             
             // Use a wrapper to pass the changed value of the structure
             adjustHeatedSeat(status);
+            printf("****************************\n");
             hc = heatedSeatHandlerWrapper;
 
             // register handler
@@ -360,12 +379,14 @@ void heatedSeatMenu() {
 
             // Unregister the handler
             unregisterHandler(HEATED_SEATS, hc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("HEATED_SEATS",2);
+            printf("****************************************\n");
             break;
 
         default:
@@ -413,6 +434,7 @@ void cooledSeatMenu() {
             
             // Use a wrapper to pass the changed value of the structure
             adjustCooledSeat(status);
+            printf("****************************\n");
             cc = cooledSeatHandlerWrapper;
 
             // register handler
@@ -423,12 +445,14 @@ void cooledSeatMenu() {
 
             // Unregister the handler
             unregisterHandler(COOLED_SEATS, cc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("COOLED_SEATS",TWO);
+            printf("****************************************\n");
             break;
 
         default:
@@ -476,17 +500,20 @@ void steeringMenu() {
             }
 
             // Execute the traction control function
+            printf("****************************\n");
             steeringControl(sc);
             registerHandler(STEERING_ADJUST, sc);
             // Notify the event
             handlerEvent(STEERING_ADJUST);
             unregisterHandler(STEERING_ADJUST, sc);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             // Implement event listening functionality if needed
             printCurrentValues("STEERING_ADJUST", ONE);
+            printf("****************************************\n");
             break;
 
         default:
@@ -529,16 +556,19 @@ void interiorLightMenu() {
             }
 
             // Execute the interior light function
+            printf("****************************\n");
             interiorLightControl(ic);
             registerHandler(INTERIOR_LIGHT, ic);
             // Notify the event
             handlerEvent(INTERIOR_LIGHT);
             unregisterHandler(INTERIOR_LIGHT, ic);
+            printf("****************************\n");
             break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("**********Listening to events***********\n");
             printCurrentValues("INTERIOR_LIGHT", ONE);
+            printf("****************************************\n");
             break;
 
         default:
