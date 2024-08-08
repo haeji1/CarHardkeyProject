@@ -16,6 +16,9 @@
 #include "ClimateFan.h"
 #include "ClimateTemp.h"
 #include "Defrost.h"
+#include "DoorLock.h"
+
+
 
 #include "lock_strategy.c"
 #include "rear_defrost_strategy.c"
@@ -109,8 +112,8 @@ int main() {
 
 			} else if (selection == 16) {
 
-
-
+            } else if (selection == 17) {
+                DoorLockMenu();
 
 
 

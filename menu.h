@@ -22,5 +22,6 @@ void climateAirflowMenu();
 void climateFanMenu();
 void ClimateTempMenu();
 void DefrostMenu();
+void DoorLockMenu();
 
 #endif // MENU_H

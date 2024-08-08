@@ -23,6 +23,8 @@
 #include "ClimateFan.h"
 #include "ClimateTemp.h"
 #include "Defrost.h"
+#include "DoorLock.h"
+
 
 #define MAX_NUM 5
 #define ONE 1
@@ -331,7 +333,58 @@ void DefrostMenu() {
         break;
     }
 }
+void DoorLockMenu() {
+    int option, value;
+    int values[MAX_NUM];
+    DoorLockControlFunction dl;
 
+    printf("DoorLock Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter DoorLock state (0=DoorUnlock, 1=Doorlock, 2=Tilt): ");
+        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+        // Perform write operation to file if needed
+        values[0] = value;
+        writeOrUpdateValueToFile("DOOR_LOCKS", values, ONE);
+
+        // Set the sunroof control function
+        if (value == 0) {
+            dl = DoorUnlock;
+        } else if (value == 1) {
+            dl = DoorLock;
+        }
+
+        // Execute the traction control function
+        handleDoorLock(dl);
+        registerHandler(DOOR_LOCKS, dl);
+        // Notify the event
+        handlerEvent(DOOR_LOCKS);
+        unregisterHandler(DOOR_LOCKS, dl);
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("DOOR_LOCKS", ONE);
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+    }
+}
 
 
 
