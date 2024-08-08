@@ -32,7 +32,7 @@ void displayMenu() {
     printf("22. Fuel Cap Release\n");
     printf("23. PARKING BRAKE\n");
     printf("24. DRIVE MODE\n");
-    printf("25. TRACTION\n");
+    printf("25. TRACTION CONTROL\n");
     printf("26. HEATED SEATS\n");
     printf("27. COOLED SEATS\n");
     printf("28. STEERING ADJUST\n");

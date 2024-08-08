@@ -48,28 +48,99 @@ SEAT_ADJUST
 1   // Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar)
 3   // Adjustment value
 SUNROOF_CONTROL
-1   // Action (0 = Open, 1 = Close, 2 = Tilt)
+2
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 TRUNK_RELEASE
-1   // Activation signal
+1
+   // Updated values
+
 FUEL_CAP_RELEASE
-1   // Activation signal
+1
+   // Updated values
+
 PARKING_BRAKE
-1   // Brake state (0 = Disengage, 1 = Engage)
+0
+   // Updated values
+
 DRIVE_MODE
-2   // Drive mode (0 = Eco, 1 = Sport, 2 = Normal)
+1
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 TRACTION_CONTROL
-1   // Control state (0 = Off, 1 = On)
+0
+   // Updated values
+   // Updated values
+
+
 HEATED_SEATS
-0   // Seat identifier (0 = Driver, 1 = Passenger)
-2   // Heat level (0-3)
+1
+3
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 COOLED_SEATS
-1   // Seat identifier (0 = Driver, 1 = Passenger)
-3   // Cooling level (0-3)
+1
+3
+   // Updated values
+   // Updated values
+
+
 STEERING_ADJUST
-1   // Adjustment direction (0 = Up, 1 = Down, 2 = In, 3 = Out)
+3
+   // Updated values
+
+   // Updated values
+
 INTERIOR_LIGHT
-1   // Light state (0 = Off, 1 = On)
+0
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+
 REAR_DEFROST
+
 1   // Defrost state (0 = Off, 1 = On)
 CHILD_LOCK
 0   // Lock state (0 = Disengage, 1 = Engage)
@@ -110,3 +181,56 @@ SEAT_HEATER
 SEAT_COOLER
 1   // Seat identifier (0 = Driver, 1 = Passenger)
 2   // Cooling level (0-3)
+HEATED_SEAT
+1
+3
+   // Updated values
+   // Updated values
+
+TRACTION_CONTROL
+0
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
