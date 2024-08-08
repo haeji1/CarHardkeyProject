@@ -6,7 +6,6 @@ void voiceCommandToggleImpl() {
        int values[]={1};
         printf("\nVoice_Command system is now Active\n");
         writeOrUpdateValueToFile("VOICE_COMMAND", values, 1);  // 배열의 주소를 전달
-
     sleep(3); // 3초 대기
 }
 

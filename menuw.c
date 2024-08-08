@@ -38,9 +38,8 @@ void MUTE_BUTTON_MENU(){
         case 1:
 
         registerHandler(MUTE_BUTTON, muteButtonHandler);
-        handlerEvent(MUTE_BUTTON);
+        handlerEvent(MUTE_BUTTON);3
         unregisterHandler(MUTE_BUTTON, muteButtonHandler);
-
         break;
 
         case 2:
@@ -135,8 +134,6 @@ void PARKING_ASSIST_MENU(){
 
 void REAR_DEFROST_MENU(){
     int option, value;
-
-
     printf("Steering Adjust Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");
@@ -188,9 +185,9 @@ void CHILD_LOCK_MENU(){
 
     switch (option) {
         case 1:
-        registerHandler(CHILD_LOCK, handleLockCommand);
+        registerHandler(CHILD_LOCK, childFunction);
         handlerEvent(CHILD_LOCK);
-        unregisterHandler(CHILD_LOCK, handleLockCommand);
+        unregisterHandler(CHILD_LOCK, childFunction);
         break;
 
         case 2:
@@ -271,8 +268,7 @@ void LANE_ASSIST_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("LANE_ASSIST", 1);
-			sleep(3)
-
+			sleep(3);
         break;
 
         default:
@@ -330,7 +326,6 @@ void Phone_Answer_MENU(){
         printf("Invalid input. Returning to menu.\n");
         return;
     }
-
     switch (option) {
         case 1:
 
@@ -343,7 +338,7 @@ void Phone_Answer_MENU(){
         case 2:
             printf("Listening to events...\n");
             printCurrentValues("PHONE_END_CALL", 1);
-			sleep(3)
+			sleep(3);
         break;
 
         default:

@@ -69,11 +69,12 @@ STEERING_ADJUST
 INTERIOR_LIGHT
 1   // Light state (0 = Off, 1 = On)
 REAR_DEFROST
-0
+1
 CHILD_LOCK
-0   // Lock state (0 = Disengage, 1 = Engage)
+1
+   // Updated values
 MUTE_BUTTON
-1   // Activation signal
+1
 VOICE_COMMAND
 1
 PHONE_ANSWER
@@ -81,14 +82,17 @@ PHONE_ANSWER
 PHONE_END_CALL
 1   // Activation signal
 NAVIGATION
-37.7749  // Latitude
--122.4194 // Longitude
+123
+342
 LANE_ASSIST
-1   // Assist state (0 = Off, 1 = On)
+0
 PARKING_ASSIST
 0   // Assist state (0 = Off, 1 = On)
 HILL_DESCENT
 0
+   // Updated values
+   // Updated values
+
 HUD_ADJUST
 
 3   // Display setting
@@ -112,4 +116,3 @@ SEAT_COOLER
 2   // Cooling level (0-3)
 PHONE_CALL
 0
-   // Updated values
