@@ -2,7 +2,7 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
-#define NUM_KEYS 40
+#define NUM_KEYS 48
 
 typedef enum {
     IGNITION,            // Start/Stop engine
