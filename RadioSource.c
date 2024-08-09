@@ -4,7 +4,7 @@
 
 #include "RadioSource.h"
 #include <stdio.h>
-
+#include <unistd.h>
 /*
     0 : open
     1 : close
@@ -14,17 +14,21 @@
 typedef void (*RadioSouceControlFunction)();
 
 void AM() {
-    printf("AM\n");
+    printf("AM mode\n");
+    sleep(3);
 }
 
 void FM() {
-    printf("FM\n");
+    printf("FM mode\n");
+    sleep(3);
 }
 
 void BT(){
-    printf("BTT");
+    printf("Bluetooth mode\n");
+    sleep(3);
 }
 
 void radioSouceControl(RadioSouceControlFunction rs) {
     printf("status changed by function\n");
+    sleep(2);
 }

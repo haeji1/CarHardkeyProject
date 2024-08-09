@@ -67,7 +67,7 @@ void Level_Five(){
 
 void handleClimateFan(ClimateFanControlFunction cf){
     printf("status changed by function\n");
-
+    sleep(1);
     //(*cf)();
 }
 

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
@@ -193,7 +194,7 @@ void climateFanMenu() {
     switch (option) {
         case 1:
         printf("Enter CLIMATE_FAN level (1 = level_1, 2 = level_2, 3 = level_3, 4 = level_4, 5 = level_5):");
-        if (scanf("%d", &value) != 1 || value < 1 || value > 6) {
+        if (scanf("%d", &value) != 1 || value < 1 || value > 5) {
             printf("Invalid input. Enter a value between 1 and 5.\n");
         return;
         }
@@ -212,7 +213,7 @@ void climateFanMenu() {
         }else if(value == 4){
             cf = Level_Four;
 		}
-		else if(value == 4){
+		else if(value == 5){
             cf = Level_Five;
 		}
         // Execute the traction control function

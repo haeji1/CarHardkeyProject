@@ -17,9 +17,11 @@ void adjustTemp(TempState state){
 // context
 void handleClimateTemp(ClimateTempControlFunction ct){
     printf("status changed by function\n");
+    sleep(1);
 
 }
 void ClimateTempHandlerWrapper() {
     // Wrapper function to call
     printf("Climate Temp is = %d\n",globalTempState.setting);
+    sleep(1);
 }
