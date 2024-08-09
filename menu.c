@@ -26,7 +26,7 @@
 #define ONE 1
 #define TWO 2
 
-int ignitionMenu() {
+void ignitionMenu() {
     int option, value;
     int values[MAX_NUM];
     ignitionFunction igFunc;
@@ -37,7 +37,7 @@ int ignitionMenu() {
     printf("Enter your choice: ");
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
-        return 0 ;
+        return;
     }
 
     switch (option) {
@@ -45,7 +45,7 @@ int ignitionMenu() {
             printf("Enter ignition state (1=On): ");
             if (scanf("%d", &value) != 1 || (value != 1)) {
                 printf("Invalid input. Enter 1.\n");
-                return 0;
+                break;
             }
 
             // Perform write operation to file if needed
@@ -55,21 +55,26 @@ int ignitionMenu() {
             // Set the ignition function
             if (value == 1) {
                 igFunc = onIgnition;
+                ignitionStarted = value;
                 printf("IGNITION ON\n");
             }
 
             // Execute the ignition function
-            tractionControl(igFunc);
+            ignition(igFunc);
+
             registerHandler(IGNITION, igFunc);
+
             // Notify the event
             handlerEvent(IGNITION);
-            //unregisterHandler(IGNITION, igFunc);
-            break;
+
+            return;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             printCurrentValues("IGNITION", ONE);
+            ignitionStarted = getNumValues("IGNITION", ONE);
+
             break;
 
         default:
@@ -358,23 +363,25 @@ void cruiseControlMenu() {
 
             // Set the cruise control status
             cruiseControlState.cruiseState = state;
+            //speed = getNumValues("CRUISE_CONTROL", TWO);
             cruiseControlState.speed = speed;
 
             values[0] = state;
             values[1] = speed;
-            writeOrUpdateValueToFile("CRUISE_CONTROL", values, 60);
+            writeOrUpdateValueToFile("CRUISE_CONTROL", values, TWO);
             
             //Set the cruise control function
             if (state == 0) {
                 cc = deactivateCruiseControl;
             } else {
                 cc = activateCruiseControl;
-                cc = adjustCruiseControlSpeed;
+                //adjustCruiseControlSpeed(cc);
+                //cc = setCruiseControlSpeed;
             }
 
+            //CruiseControlState cs = cruiseControlAction(cc, &cruiseControlState);
+            
             // register handler
-            //adjustCruiseControl(cc, &cruiseControlState);
-            cruiseControlAction(cc, &cruiseControlState);
             registerHandler(CRUISE_CONTROL, (Handler)cc);
 
             // Notify the event
@@ -387,7 +394,7 @@ void cruiseControlMenu() {
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            printCurrentValues("CRUISE_CONTROL", 60);
+            printCurrentValues("CRUISE_CONTROL", TWO);
             break;
 
         default:
