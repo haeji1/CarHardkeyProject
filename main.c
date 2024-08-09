@@ -20,13 +20,6 @@
 #include "PowerWindows.h"
 #include "WindowLock.h"
 #include "SeatAdjust.h"
-#include "lock_strategy.c"
-#include "rear_defrost_strategy.c"
-#include "MUTE_BUTTON.c"
-#include "VOICE_COMMAND.c"
-#include "NAVIGATION.c"
-#include "Lane_Support.c"
-#include "ParkingAssistance.c"
 #include "auto_hold.h"
 #include "fog_lights.h"
 #include "seat_heater.h"
@@ -36,7 +29,7 @@
 #include "hud_Adjust.h"
 #include "glove_box_release.h"
 #include "emergency_brake.h"
-#include "menuw.h"
+#include "file.c"
 
 
 // void initializeFeatureHandlers();
@@ -50,14 +43,8 @@ int main() {
     //initializeObservers();
     // initializeFeatureHandlers();
 
-    //등록30~39
-    registerHandler(MUTE_BUTTON, muteButtonHandler);//
-    registerHandler(VOICE_COMMAND,voiceCommandToggle);//
-    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
-    registerHandler(REAR_DEFROST, handleDefrostCommand);//
-    registerHandler(CHILD_LOCK, handleLockCommand);//
-    registerHandler(NAVIGATION,navigatehandle);//
-    registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
+
+
 
 
     while (1) {
@@ -166,7 +153,27 @@ int main() {
                 PARKING_ASSIST_MENU();// 주차 보조
             } else if(selection ==39) { // HILL
                 HILL_DESCENT_MENU(); // 아직 안함
-            } else{
+            } else if(selection ==40) {
+                hudAdjustMenu();
+            } else if(selection ==41) {
+                gloveBoxReleaseMenu();
+            } else if(selection ==42) {
+                fogLightsMenu();
+            }  else if(selection ==43) {
+                emergencyBrakeMenu();
+            } else if(selection == 44) {
+                trailerControlMenu();
+            } else if(selection == 45) {
+                autoHoldMenu();
+            } else if(selection == 46) {
+                handsFreeMenu();
+            } else if(selection == 47) {
+                seatHeaterMenu();
+            } else if(selection == 48) {
+                seatCoolerMenu();
+            } else if(selection == 49) {
+                break;
+            } else {
                 printf("Invalid selection. Please try again.\n");
             }
         }

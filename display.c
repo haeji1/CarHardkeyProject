@@ -68,7 +68,7 @@ void displayMenu() {
     printf("46. HANDS FREE\n");
 	printf("47. SEAT HEATER\n");
 	printf("48. SEAT COOLER\n");
-    printf("50. EXIT\n");
+    printf("49. EXIT\n");
 }
 
 void handleHornCommands() {
