@@ -60,6 +60,9 @@ void displayMenu() {
     printf("           38. PARKING_ASSIST\n");
     printf("           39. HILL_DESCENT\n");
     printf("           45. AUTO_HOLD\n");
-    printf("           50. EXIT\n");
+    printf("           46. HANDS_FREE\n");
+    printf("           47. SEAT_HEATER\n");
+    printf("           48. SEAT_COOLER\n");
+    printf("           49. EXIT\n");
     printf("****************************************\n");
 }
