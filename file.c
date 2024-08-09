@@ -187,6 +187,19 @@ void printCurrentValues(const char *command, int num_values) {
     }
 }
 
+// 파일에서 명령어의 idx 번 값을 출력하는 함수
+int getNumValues(const char *command, int num_values) {
+    int current_values[MAX_VALUES];
+    int num_read_values = readValuesFromFile(command, current_values, num_values);
+    if (num_read_values > 0) {
+        return (int)current_values[num_values-1];
+    } else {
+        printf("No values found for '%s'.\n", command);
+    }
+
+    return 0;
+}
+
 // 명령어 값을 업데이트하는 함수
 void handleUpdateCommand() {
     char command[256];
