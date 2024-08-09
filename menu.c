@@ -126,10 +126,12 @@ void radioSourceMenu() {
     int values[MAX_NUM];
     RadioSouceControlFunction rc;
 
-    printf("RADIO_SOURCE Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            RADIO_SOURCE Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -137,12 +139,15 @@ void radioSourceMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter RADIO_SOURCE state (0= AM, 1= FM, 2= Bluetooth): ");
+            printf("****************************************\n");
+            printf("Enter RADIO_SOURCE state (0 = AM, 1 = FM, 2 = Bluetooth)\n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
-
+        printf("****************************************\n");
         // Perform write operation to file if needed
         values[0] = value;
         writeOrUpdateValueToFile("RADIO_SOURCE", values, ONE);

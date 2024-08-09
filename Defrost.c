@@ -13,18 +13,18 @@ static int deforstState = 1;
 
 void WindshieldDefrostON(){
     deforstState = 1;
-    printf("Defrost_ON\n");
+    printf("====== Defrost_ON ======\n");
     sleep(3);
 }
 void WindshieldDefrostOFF(){
     deforstState = 0;
-    printf("Defrost_OFF\n");
+    printf("====== Defrost_OFF ======\n");
     sleep(3);
 }
 
 
 void handleDefrost(DefrostControlFunction dfc){
     printf("status changed by function\n");
-
+    sleep(1);
 
 }

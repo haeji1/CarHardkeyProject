@@ -17,36 +17,36 @@ static int ClimateAirflowState = 2;
 
 void AirflowFace(){
     if (ClimateAirflowState == 0) {
-        printf("AirflowFace mode.\n");
+        printf("====== AirflowFace mode. ======\n");
 
     } else {
         ClimateAirflowState = 0;
-        printf("AirflowFace Turned\n");
+        printf("====== AirflowFace Turned ======\n");
     }
     sleep(3);
 }
 
 void AirflowFoot(){
     if (ClimateAirflowState == 1) {
-        printf("AirflowFoot mode.\n");
+        printf("====== AirflowFoot mode. ======\n");
     } else {
         ClimateAirflowState = 1;
-        printf("AirflowFoot Turned\n");
+        printf("====== AirflowFoot Turned ======\n");
     }
     sleep(3);
 
 }
 void AirflowDefrost(){
     if (ClimateAirflowState == 2) {
-        printf("AirflowDefrost mode.\n");
+        printf("====== AirflowDefrost mode. ======\n");
     } else {
         ClimateAirflowState = 2;
-        printf("AirflowDefrost Turned\n");
+        printf("====== AirflowDefrost Turned ======\n");
     }
     sleep(3);
 }
 
 void handleClimateAirflow(ClimateAirflowControlFunction cfcf){
-    printf("status changed by function\n");
+    printf("====== status changed by function ======\n");
     sleep(1);
 }
