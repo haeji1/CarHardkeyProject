@@ -16,6 +16,6 @@ void adjustCruiseControlSpeed(CruiseControlState *cs);
 void setCruiseControlState(CruiseControlState *cs, int state);
 void setCruiseControlSpeed(CruiseControlState *cs, int speed);
 
-void cruiseControlAction(cruiseControlFunction cc, CruiseControlState *cs);
+void cruiseControlAction(cruiseControlFunction cc);
 
 #endif

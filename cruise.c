@@ -8,14 +8,8 @@
 */
 
 void setCruiseControlState(CruiseControlState *cs, int state) {
-    if(state == 1){
-        cs->cruiseState = state;
-        printf("Cruise control state set to %d\n", cs->cruiseState);
-    }else{
-        
-        printf("Cruise control turned off\n");
-
-    }
+    cs->cruiseState = state;
+    printf("Cruise control state set to %d\n", cs->cruiseState);
 }
 
 void setCruiseControlSpeed(CruiseControlState *cs, int speed) {
@@ -27,8 +21,8 @@ void setCruiseControlSpeed(CruiseControlState *cs, int speed) {
     }
 }
 
-void cruiseControlAction(cruiseControlFunction ccFunc, CruiseControlState *cs) {
-    ccFunc(cs);
+void cruiseControlAction(cruiseControlFunction ccFunc) {
+    printf("status changed by function\n");
 }
 
 void activateCruiseControl(CruiseControlState *cs) {
