@@ -18,6 +18,7 @@
 #include "RadioSource.h"
 #include "auto_hold.h"
 
+
 void displayMenu() {
     printf("\nAvailable features:\n");
     printf("1. HORN\n");
@@ -57,8 +58,16 @@ void displayMenu() {
     printf("36. NAVIGATION\n");
     printf("37. LANE_ASSIST\n");
     printf("38. PARKING_ASSIST\n");
-    printf("39. HILL_DESCENT\n");
-    printf("45. AUTO_HOLD\n");
+    printf("39. HILL DESCENT\n");
+    printf("40. HUD ADJUST\n");
+	printf("41. GLOVE BOX RELEASE\n");
+    printf("42. FOG LIGHT\n");
+	printf("43. EMERGENCY BRAKE\n");
+	printf("44. TRAILER CONTROL\n");
+	printf("45. AUTO HOLD\n");
+    printf("46. HANDS FREE\n");
+	printf("47. SEAT HEATER\n");
+	printf("48. SEAT COOLER\n");
     printf("50. EXIT\n");
 }
 

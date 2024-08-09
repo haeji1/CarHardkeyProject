@@ -28,6 +28,15 @@
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
 #include "auto_hold.h"
+#include "fog_lights.h"
+#include "seat_heater.h"
+#include "seat_cooler.h"
+#include "hands_free.h"
+#include "trailer_control.h"
+#include "hud_Adjust.h"
+#include "glove_box_release.h"
+#include "emergency_brake.h"
+
 
 // void initializeFeatureHandlers();
 // void cleanupFeatureHandlers();
@@ -156,12 +165,27 @@ int main() {
                 handlerEvent(PARKING_ASSIST);// 주차 보조
             } else if(selection ==39) {
 
-            } else if (selection == 45) {
+			} else if(selection ==40) {
+				hudAdjustMenu();
+			} else if(selection ==41) {
+				gloveBoxReleaseMenu();
+            } else if(selection ==42) {
+				fogLightsMenu();
+			}  else if(selection ==43) {
+				emergencyBrakeMenu();
+			} else if(selection == 44) {
+                trailerControlMenu();
+            } else if(selection == 45) {
                 autoHoldMenu();
-            } else if (selection == 50) {
+            } else if(selection == 46) {
+                handsFreeMenu();
+			} else if(selection == 47) {
+                seatHeaterMenu();
+			} else if(selection == 48) {
+                seatCoolerMenu();
+            } else if(selection == 50) {
                 break;
-            }
-            else {
+            } else {
                 printf("Invalid selection. Please try again.\n");
             }
         }

@@ -26,4 +26,12 @@ void DoorLockMenu();
 void mirrorAdjustMenu();
 void powerwindowMenu();
 void seatAdjustMenu();
+void fogLightsMenu();
+void seatHeaterMenu();
+void trailerControlMenu();
+void seatCoolerMenu();
+void handsFreeMenu();
+void hudAdjustMenu();
+void gloveBoxReleaseMenu();
+void emergencyBrakeMenu();
 #endif // MENU_H
