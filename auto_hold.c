@@ -11,7 +11,7 @@ void autoHoldOff() {
 }
 
 void autoHoldOn() {
-    printf("\n***** On the autohold mod *****\n");
+    printf("on the autohold mod *****\n");
 }
 
 void setAutoHold(autoHoldFunction af) {

@@ -16,4 +16,12 @@ void parkingBrakeMenu();
 void heatedSeatMenu();
 void cooledSeatMenu();
 void autoHoldMenu();
+void fogLightsMenu();
+void seatHeaterMenu();
+void trailerControlMenu();
+void seatCoolerMenu();
+void handsFreeMenu();
+void hudAdjustMenu();
+void gloveBoxReleaseMenu();
+void emergencyBrakeMenu();
 #endif // MENU_H

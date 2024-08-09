@@ -18,6 +18,15 @@
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
 #include "auto_hold.h"
+#include "fog_lights.h"
+#include "seat_heater.h"
+#include "seat_cooler.h"
+#include "hands_free.h"
+#include "trailer_control.h"
+#include "hud_Adjust.h"
+#include "glove_box_release.h"
+#include "emergency_brake.h"
+
 
 // void initializeFeatureHandlers();
 // void cleanupFeatureHandlers();
@@ -96,8 +105,7 @@ int main() {
                 fuelCapReleaseMenu();
             } else if (selection == 23) {
                 parkingBrakeMenu();
-            }
-            else if (selection == 24) {
+            } else if (selection == 24) {
                 driveModeMenu();
             } else if (selection == 25) {
                 tractionMenu();
@@ -111,40 +119,45 @@ int main() {
                 interiorLightMenu();
             } else if(selection ==30) {
                 handlerEvent(REAR_DEFROST); // 서리제거
-            }
-            else if(selection ==31){
+            } else if(selection ==31){
                 handlerEvent(CHILD_LOCK); // 어린이 보호
-            }
-            else if(selection ==32) {
+            } else if(selection ==32) {
                 handlerEvent(MUTE_BUTTON); // 음소거 기능
-           }
-            else if(selection ==33) {
+            } else if(selection ==33) {
                 handlerEvent(VOICE_COMMAND); // 음소거 기능
-            }
-            else if(selection ==34) {
+            } else if(selection ==34) {
 
-            }
-            else if(selection ==35) {
+            } else if(selection ==35) {
 
-            }
-            else if(selection ==36) {
+            } else if(selection ==36) {
                 handlerEvent(NAVIGATION); // 네비게이션
-            }
-            else if(selection ==37) {
+            } else if(selection ==37) {
                handlerEvent(LANE_ASSIST); // 차선 지원
-            }
-            else if(selection ==38) {
+            } else if(selection ==38) {
                 handlerEvent(PARKING_ASSIST);// 주차 보조
-            }
-            else if(selection ==39) {
+            } else if(selection ==39) {
 
-            } else if (selection == 45) {
+			} else if(selection ==40) {
+				hudAdjustMenu();
+			} else if(selection ==41) {
+				gloveBoxReleaseMenu();
+            } else if(selection ==42) {
+				fogLightsMenu();
+			}  else if(selection ==43) {
+				emergencyBrakeMenu();
+			} else if(selection == 44) {
+                trailerControlMenu();
+            } else if(selection == 45) {
                 autoHoldMenu();
-            }
-             else if (selection == 50) {
+            } else if(selection == 46) {
+                handsFreeMenu();
+			} else if(selection == 47) {
+                seatHeaterMenu();
+			} else if(selection == 48) {
+                seatCoolerMenu();
+            } else if(selection == 50) {
                 break;
-            }
-            else {
+            } else {
                 printf("Invalid selection. Please try again.\n");
             }
         }
