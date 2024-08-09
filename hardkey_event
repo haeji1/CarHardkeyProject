@@ -4,11 +4,9 @@ IGNITION
 
 
 HORN
-
 3
    // Updated values
 HEADLIGHTS
-
 2   // Headlight state (0 = Off, 1 = Low, 2 = High)
 TURN_SIGNALS
 0   // Direction (0 = Left, 1 = Right)
@@ -24,25 +22,76 @@ RADIO_VOLUME
    // Updated valuesRADIO_TUNING
 1010    // Radio station frequency
 RADIO_SOURCE
-1   // Source type (0 = AM, 1 = FM, 2 = Bluetooth, etc.)
+1
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 CLIMATE_TEMP
-22  // Desired temperature
+40
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 CLIMATE_FAN
-3   // Fan speed level (0-5)
+5
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+
+   // Updated values
+
 CLIMATE_AIRFLOW
-2   // Airflow direction (0 = Face, 1 = Feet, 2 = Defrost, etc.)
+2
+   // Updated values
+   // Updated values
+
+
 DEFROST
-1   // Defrost state (0 = Off, 1 = On)
+0
+   // Updated values
+   // Updated values
+
+
 POWER_WINDOWS
-0   // Window identifier (0 = FrontLeft, 1 = FrontRight, 2 = RearLeft, 3 = RearRight)
-1   // Action (0 = Up, 1 = Down)
+1
+1
+   // Updated values
+   // Updated values
+
 WINDOW_LOCK
-0   // Lock state (0 = Unlock, 1 = Lock)
+
+0
+   // Updated values
+   // Updated values
+
 DOOR_LOCKS
 1   // Lock state (0 = Unlock, 1 = Lock)
 MIRROR_ADJUST
-0   // Mirror identifier (0 = Left, 1 = Right)
-1   // Adjustment direction (0 = Up, 1 = Down, 2 = Left, 3 = Right)
+1
+2
+   // Updated values
 SEAT_ADJUST
 0   // Seat identifier (0 = Driver, 1 = Passenger)
 1   // Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar)
