@@ -17,8 +17,9 @@ void Level_One(){
     }
     else{
         ClimateFan = 1;
+        printf("ClimateFanLevel : %d\n", ClimateFan);
     }
-    printf("ClimateFanLevel : %d\n", ClimateFan);
+
     sleep(3);
 }
 void Level_Two(){
@@ -27,8 +28,9 @@ void Level_Two(){
     }
     else{
         ClimateFan = 2;
+        printf("ClimateFanLevel : %d\n", ClimateFan);
     }
-    printf("ClimateFanLevel : %d\n", ClimateFan);
+
     sleep(3);
 }
 void Level_Three(){
@@ -37,8 +39,9 @@ void Level_Three(){
     }
     else{
         ClimateFan = 3;
+        printf("ClimateFanLevel : %d\n", ClimateFan);
     }
-    printf("ClimateFanLevel : %d\n", ClimateFan);
+
     sleep(3);
 }
 
@@ -48,8 +51,9 @@ void Level_Four(){
     }
     else{
         ClimateFan = 4;
+        printf("ClimateFanLevel : %d\n", ClimateFan);
     }
-    printf("ClimateFanLevel : %d\n", ClimateFan);
+
     sleep(3);
 }
 void Level_Five(){
@@ -58,8 +62,9 @@ void Level_Five(){
     }
     else{
         ClimateFan = 5;
+        printf("ClimateFanLevel : %d\n", ClimateFan);
     }
-    printf("ClimateFanLevel : %d\n", ClimateFan);
+
     sleep(3);
 }
 
