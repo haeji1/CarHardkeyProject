@@ -184,11 +184,13 @@ void climateAirflowMenu() {
     int option, value;
     int values[MAX_NUM];
     ClimateAirflowControlFunction cac;
+    printf("****************************************\n");
+    printf("            CLIMATE_AIRFLOW Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
 
-    printf("climateAirflow Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -196,7 +198,10 @@ void climateAirflowMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter climateAirflow state (0= Face, 1= Foot, 2= Defrost): ");  // 교체 airflow로
+            printf("****************************************\n");
+            printf("Enter climateAirflow state (0= Face, 1= Foot, 2= Defrost): \n");  // 교체 airflow로
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -240,10 +245,13 @@ void climateFanMenu() {
     int values[MAX_NUM];
     ClimateFanControlFunction cf;
 
-    printf("climateFan Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            CLIMATE_FAN Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -251,7 +259,10 @@ void climateFanMenu() {
 
     switch (option) {
         case 1:
-        printf("Enter CLIMATE_FAN level (1 = level_1, 2 = level_2, 3 = level_3, 4 = level_4, 5 = level_5):");
+        printf("****************************************\n");
+        printf("Enter CLIMATE_FAN level (1 = level_1, 2 = level_2, 3 = level_3, 4 = level_4, 5 = level_5):\n");
+        printf("            Enter your choice: \n");
+        printf("****************************************\n");
         if (scanf("%d", &value) != 1 || value < 1 || value > 5) {
             printf("Invalid input. Enter a value between 1 and 5.\n");
         return;
@@ -300,10 +311,12 @@ void ClimateTempMenu() {
     ClimateTempControlFunction ct;
     TempState state;
 
-    printf("CLIMATE_TEMP Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            CLIMATE_TEMP Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -311,7 +324,10 @@ void ClimateTempMenu() {
 
     switch (option) {
         case 1:
-        printf("Enter CLIMATE_TEMP setting -20 to 80: ");  /////////// 세팅
+        printf("****************************************\n");
+        printf("Enter CLIMATE_TEMP setting -20 to 80: \n");  /////////// 세팅
+        printf("            Enter your setting: \n");
+        printf("****************************************\n");
         if (scanf("%d", &setting) != 1 || setting < -20 || setting > 80){
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -351,10 +367,13 @@ void DefrostMenu() {
     int values[MAX_NUM];
     DefrostControlFunction dfc;
 
-    printf("Defrost Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            DEFROST Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -362,7 +381,10 @@ void DefrostMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter Defrost state (0=OFF, 1=ON): ");  /////////// 세팅
+            printf("****************************************\n");
+            printf("Enter Defrost state (0=OFF, 1=ON): \n");  /////////// 세팅
+            printf("            Enter your setting: \n");
+            printf("****************************************\n");
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -402,10 +424,13 @@ void WindowLockMenu() { /////////////////////
     int values[MAX_NUM];
     WindowLockControlFunction wl;
 
-    printf("WindowLock Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            WindowLock Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -413,7 +438,10 @@ void WindowLockMenu() { /////////////////////
 
     switch (option) {
         case 1:
-            printf("Enter WindowLock state (0=DoorUnlock, 1=Windowlock): ");
+            printf("****************************************\n");
+            printf("Enter WindowLock state (0=DoorUnlock, 1=Windowlock): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -454,10 +482,12 @@ void DoorLockMenu() {
     int values[MAX_NUM];
     DoorLockControlFunction dl;
 
-    printf("DoorLock Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            Doorlock Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -465,7 +495,10 @@ void DoorLockMenu() {
 
     switch (option) {
         case 1:
-            printf("Enter DoorLock state (0=DoorUnlock, 1=Doorlock): ");
+            printf("****************************************\n");
+            printf("Enter DoorLock state (0=DoorUnlock, 1=Doorlock): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
         if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
@@ -475,7 +508,7 @@ void DoorLockMenu() {
         values[0] = value;
         writeOrUpdateValueToFile("DOOR_LOCKS", values, ONE);
 
-        // Set the sunroof control function
+        // select 0 to 1
         if (value == 0) {
             dl = DoorUnlock;
         } else if (value == 1) {
@@ -508,10 +541,13 @@ void mirrorAdjustMenu() { /////////////////////////////////////////////
     MirrorAdjustControlFunction ma;
     MirrorState state;
 
-    printf("mirrorAdjust Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            MIRROR_ADJUST Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -519,12 +555,19 @@ void mirrorAdjustMenu() { /////////////////////////////////////////////
 
     switch (option) {
         case 1:
-            printf("Enter mirrorAdjust state (0=Left, 1=Right): ");
+            printf("****************************************\n");
+            printf("Enter mirrorAdjust state (0=Left, 1=Right): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
+
             if (scanf("%d", &mirrorId) != 1 || (mirrorId != 0 && mirrorId != 1)) {
                 printf("Invalid input. Enter 0 or 1.\n");
             return;
             }
-            printf("Enter ajustmentDirection (0-3): ");
+            printf("****************************************\n");
+            printf("Enter ajustmentDirection (0-3): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
             if (scanf("%d", &ajustmentDirection) != 1 || (ajustmentDirection < 0 || ajustmentDirection > 3)) {
                 printf("Invalid input. Enter a value between 0 and 3.\n");
                 return;
@@ -566,10 +609,13 @@ void powerwindowMenu() { /////////////////////////////////////////////
     handlePowerWindowsControlFunction pwcf;
     WindowState state;
 
-    printf("powerwindow Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            POWER_WINDOWS Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -577,7 +623,10 @@ void powerwindowMenu() { /////////////////////////////////////////////
 
     switch (option) {
         case 1:
-            printf("Enter powerwindow state (0=FrontLeft, 1=FrontRight, 2=RearLeft, 3=RearRight): ");
+            printf("****************************************\n");
+            printf("Enter powerwindow state (0=FrontLeft, 1=FrontRight, 2=RearLeft, 3=RearRight): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
             if (scanf("%d", &windowId) != 1 || windowId < 0 || windowId > 3) {
                 printf("Invalid input. Enter a value between 0 and 3.\n");
             return;
@@ -625,10 +674,13 @@ void seatAdjustMenu() { /////////////////////////////////////////////
     SeatAdjustControlFunction sac;
     SeatState state;
 
-    printf("seatAdjust Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
+    printf("****************************************\n");
+    printf("            SEAT_ADJUST Menu:\n");
+    printf("        1. Write value to file\n");
+    printf("        2. Listen to event\n");
+    printf("            Enter your choice: \n");
+    printf("****************************************\n");
+
     if (scanf("%d", &option) != 1) {
         printf("Invalid input. Returning to menu.\n");
         return;
@@ -636,21 +688,29 @@ void seatAdjustMenu() { /////////////////////////////////////////////
 
     switch (option) {
         case 1:
-            printf("Enter seatAdjust state (0= Driver, 1= Passenger): ");
-
+            printf("****************************************\n");
+            printf("Enter seatAdjust state (0= Driver, 1= Passenger): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
             if (scanf("%d", &seatId) != 1 || (seatId != 0 && seatId != 1)) {
                 printf("Invalid input. Enter a value between 0 and 1.\n");
             return;
             }
 
-            // 조정 타입 입력 받기
-            printf("Enter Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar): ");
+            // Adjust type User input
+            printf("****************************************\n");
+            printf("Enter Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
             if (scanf("%d", &adjustType) != 1 || (adjustType < 0 || adjustType > 2)) {
                 printf("Invalid input. Enter a value between 0 and 2.\n");
             return;
             }
             // Adjust Value 1~3
-            printf("Enter Adjust Value (1 = level_1, 2 = level_2, 3 = level_3): ");
+            printf("****************************************\n");
+            printf("Enter Adjust Value (1 = level_1, 2 = level_2, 3 = level_3): \n");
+            printf("            Enter your choice: \n");
+            printf("****************************************\n");
             if (scanf("%d", &adjustValue) != 1 || adjustType < 1 || adjustType > 3) {
                 printf("Invalid input. Enter a value between 1 and 3.\n");
             return;
