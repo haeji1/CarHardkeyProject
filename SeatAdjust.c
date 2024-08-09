@@ -16,13 +16,6 @@
 typedef void(*SeatAdjustControlFunction)();
 
 
-static int SeatIdentifierState = 0;
-static int AdjustmentTypeState = 1;
-static int AdjustmentValueState = 3;
-
-
-
-
 void adjustSeatSeat(SeatState state) {
     globalSeatState.seatId = state.seatId;
     globalSeatState.adjustType = state.adjustType;
@@ -37,7 +30,7 @@ void handleSeatAdjust(SeatAdjustControlFunction sac){
 void seatadjustHandlerWrapper() {
     // Wrapper function to call
     const char *seatName = (globalSeatState.seatId == 0) ? "Driver" : "Passenger";
-    printf("seat %s seat adjustType set to %d, Adjustment is %d\n", seatName, globalSeatState.adjustType, globalSeatState.adjustValue);
+    printf("seat %s seat adjustType set to %d, Adjust Value is %d\n", seatName, globalSeatState.adjustType, globalSeatState.adjustValue);
     // seat Driver heat adjustType set to Position, Adjustment is 3\n
 }
 //0 Seat identifier (0 = Driver, 1 = Passenger)

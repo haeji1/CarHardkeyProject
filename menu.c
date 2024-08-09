@@ -613,7 +613,7 @@ void powerwindowMenu() { /////////////////////////////////////////////
         break;
     }
 }
-
+////////////////////////////////////////////////////////
 void seatAdjustMenu() { /////////////////////////////////////////////
     int option, seatId, adjustType, adjustValue;
     int values[MAX_NUM];
@@ -642,6 +642,12 @@ void seatAdjustMenu() { /////////////////////////////////////////////
             printf("Enter Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar): ");
             if (scanf("%d", &adjustType) != 1 || (adjustType < 0 || adjustType > 2)) {
                 printf("Invalid input. Enter a value between 0 and 2.\n");
+            return;
+            }
+            // Adjust Value 1~3
+            printf("Enter Adjust Value (1 = level_1, 2 = level_2, 3 = level_3): ");
+            if (scanf("%d", &adjustValue) != 1 || adjustType < 1 || adjustType > 3) {
+                printf("Invalid input. Enter a value between 1 and 3.\n");
             return;
             }
 
