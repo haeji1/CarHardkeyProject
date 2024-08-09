@@ -17,10 +17,62 @@
 #include "hseat.h"
 #include "cseat.h"
 #include "file.c"
-
+#include "auto_hold.h"
 #define MAX_NUM 5
 #define ONE 1
 #define TWO 2
+
+void autoHoldMenu(){
+    int values[MAX_NUM];
+    int option, value;
+    autoHoldFunction af;
+
+    printf(" Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter Auto Hold state (0=Off, 1=On): ");
+        if (scanf("%d", &value) != 1 && (value != 0)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+
+
+        values[0] = value;
+        writeOrUpdateValueToFile("AUTO_HOLD", values, 1);
+
+        if (value == 0) {
+            af = autoHoldOff;
+        } else {
+            af = autoHoldOn;
+        }
+        setAutoHold(af);
+        registerHandler(AUTO_HOLD, af);
+        handlerEvent(AUTO_HOLD);
+        unregisterHandler(AUTO_HOLD, af);
+        printf("****************************************\n");
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+        printCurrentValues("AUTO_HOLD", 1);
+        printf("****************************************\n");
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+
+    }
+}
 
 void hornMenu() {
     int option, value;

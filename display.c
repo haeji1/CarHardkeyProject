@@ -47,6 +47,7 @@ void displayMenu() {
     printf("37. LANE_ASSIST\n");
     printf("38. PARKING_ASSIST\n");
     printf("39. HILL_DESCENT\n");
+    printf("45. AUTO_HOLD\n");
     printf("50. EXIT\n");
 }
 
@@ -98,7 +99,7 @@ void handleRadioTuningCommands(){
 //     initializeRadioHandlers();
 // }
 
-void cleanupFeatureHandlers() {
-    // Unregister handlers for various features
-    // unregisterHandler(HORN, handleHorn);
-}
+// void cleanupFeatureHandlers() {
+//     // Unregister handlers for various features
+//     unregisterHandler(HORN, handleHorn);
+// }

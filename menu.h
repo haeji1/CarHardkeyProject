@@ -15,5 +15,5 @@ void interiorLightMenu();
 void parkingBrakeMenu();
 void heatedSeatMenu();
 void cooledSeatMenu();
-
+void autoHoldMenu();
 #endif // MENU_H

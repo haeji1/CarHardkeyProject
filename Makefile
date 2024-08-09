@@ -1,10 +1,10 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o
+main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o auto_hold.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o auto_hold.o
 
-main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h cruise.h radio.h display.h
+main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h cruise.h radio.h display.h auto_hold.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -66,6 +66,9 @@ interior.o: interior.c observer.h interior.h
 
 traction.o: traction.c observer.h traction.h
 	gcc -c traction.c
+
+auto_hold.o: auto_hold.c observer.h auto_hold.h
+	gcc -c auto_hold.c
 
 menu.o: menu.c observer.h menu.h
 	gcc -c menu.c

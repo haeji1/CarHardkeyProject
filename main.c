@@ -17,9 +17,10 @@
 #include "NAVIGATION.c"
 #include "Lane_Support.c"
 #include "ParkingAssistance.c"
+#include "auto_hold.h"
 
-void initializeFeatureHandlers();
-void cleanupFeatureHandlers();
+// void initializeFeatureHandlers();
+// void cleanupFeatureHandlers();
 
 int main() {
     char input[10];
@@ -108,11 +109,7 @@ int main() {
                 steeringMenu();
             } else if (selection == 29) {
                 interiorLightMenu();
-            }
-            else if (selection == 4) {
-                break; // Exit the program
-            }
-            else if(selection ==30) {
+            } else if(selection ==30) {
                 handlerEvent(REAR_DEFROST); // 서리제거
             }
             else if(selection ==31){
@@ -141,7 +138,10 @@ int main() {
             }
             else if(selection ==39) {
 
-            } else if (selection == 50) {
+            } else if (selection == 45) {
+                autoHoldMenu();
+            }
+             else if (selection == 50) {
                 break;
             }
             else {
