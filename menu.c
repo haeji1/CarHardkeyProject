@@ -143,7 +143,7 @@ void radioSourceMenu() {
             printf("Enter RADIO_SOURCE state (0 = AM, 1 = FM, 2 = Bluetooth)\n");
             printf("            Enter your choice: \n");
             printf("****************************************\n");
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+        if (scanf("%d", &value) != 1 || (value < 0 || value > 2)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
@@ -202,7 +202,7 @@ void climateAirflowMenu() {
             printf("Enter climateAirflow state (0= Face, 1= Foot, 2= Defrost): \n");  // 교체 airflow로
             printf("            Enter your choice: \n");
             printf("****************************************\n");
-        if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+        if (scanf("%d", &value) != 1 || (value < 0 || value > 2)) {
             printf("Invalid input. Enter 0 or 1.\n");
             return;
         }
@@ -627,7 +627,7 @@ void powerwindowMenu() { /////////////////////////////////////////////
             printf("Enter powerwindow state (0=FrontLeft, 1=FrontRight, 2=RearLeft, 3=RearRight): \n");
             printf("            Enter your choice: \n");
             printf("****************************************\n");
-            if (scanf("%d", &windowId) != 1 || windowId < 0 || windowId > 3) {
+            if (scanf("%d", &windowId) != 1 || (windowId < 0 || windowId > 3)) {
                 printf("Invalid input. Enter a value between 0 and 3.\n");
             return;
             }
@@ -701,20 +701,25 @@ void seatAdjustMenu() { /////////////////////////////////////////////
             printf("****************************************\n");
             printf("Enter Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar): \n");
             printf("            Enter your choice: \n");
-            printf("****************************************\n");
+            printf("****************************************\n"); // 0/1/2
             if (scanf("%d", &adjustType) != 1 || (adjustType < 0 || adjustType > 2)) {
+                        // 0 != 0 F / 1 != 1 F / 2 != 2 F/
                 printf("Invalid input. Enter a value between 0 and 2.\n");
             return;
             }
+
             // Adjust Value 1~3
             printf("****************************************\n");
             printf("Enter Adjust Value (1 = level_1, 2 = level_2, 3 = level_3): \n");
             printf("            Enter your choice: \n");
             printf("****************************************\n");
-            if (scanf("%d", &adjustValue) != 1 || adjustType < 1 || adjustType > 3) {
+            // 1 / 2 / 3
+            if (scanf("%d", &adjustValue) !=1 || (adjustValue < 1 || adjustValue > 3)){
+                // 1 != 1 F / 2 != 2
                 printf("Invalid input. Enter a value between 1 and 3.\n");
-            return;
+                return;
             }
+
 
         state.seatId = seatId;
         state.adjustType = adjustType;
@@ -723,6 +728,7 @@ void seatAdjustMenu() { /////////////////////////////////////////////
         values[0] = seatId;
         values[1] = adjustType;
         values[2] = adjustValue;
+
 
         writeOrUpdateValueToFile("SEAT_ADJUST", values, 3);
 
