@@ -33,7 +33,6 @@
 
 int main() {
     char input[10];
-    int ignitionStarted = 0; 
     int selection;
 
     ignitionStarted = 0;
