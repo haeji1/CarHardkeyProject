@@ -16,7 +16,7 @@
 #include "cruise.h"
 #include "radio.h"
 #include "RadioSource.h"
-
+#include "auto_hold.h"
 
 void displayMenu() {
     printf("\nAvailable features:\n");
@@ -28,7 +28,6 @@ void displayMenu() {
     printf("6. CRUISE_CONTROL\n");
     printf("7. RADIO_VOLUME\n");
     printf("8. RADIO_TUNING\n");
-    printf("3. RADIO\n");
     printf("10. RADIO_SOURCE\n");
     printf("11. ClimateTemp\n");
     printf("12. ClimateFan\n");
@@ -59,6 +58,7 @@ void displayMenu() {
     printf("37. LANE_ASSIST\n");
     printf("38. PARKING_ASSIST\n");
     printf("39. HILL_DESCENT\n");
+    printf("45. AUTO_HOLD\n");
     printf("50. EXIT\n");
 }
 

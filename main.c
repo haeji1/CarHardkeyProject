@@ -156,6 +156,8 @@ int main() {
                 handlerEvent(PARKING_ASSIST);// 주차 보조
             } else if(selection ==39) {
 
+            } else if (selection == 45) {
+                autoHoldMenu();
             } else if (selection == 50) {
                 break;
             }
