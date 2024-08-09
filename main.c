@@ -11,31 +11,31 @@
 #include "interior.h"
 #include "traction.h"
 #include "menu.h"
-
-
-
-// 30~39번 입니다
-
-#include "lock_strategy.c"
-#include "rear_defrost_strategy.c"
-#include "MUTE_BUTTON.c"
-#include "VOICE_COMMAND.c"
-#include "NAVIGATION.c"
-#include "Lane_Support.c"
-#include "ParkingAssistance.c"
+#include "RadioSource.h"
+#include "ClimateAirflow.h"
+#include "ClimateFan.h"
+#include "ClimateTemp.h"
+#include "Defrost.h"
+#include "DoorLock.h"
+#include "MirrorAdjust.h"
+#include "PowerWindows.h"
+#include "WindowLock.h"
+#include "SeatAdjust.h"
+#include "auto_hold.h"
+#include "fog_lights.h"
+#include "seat_heater.h"
+#include "seat_cooler.h"
+#include "hands_free.h"
+#include "trailer_control.h"
+#include "hud_Adjust.h"
+#include "glove_box_release.h"
+#include "emergency_brake.h"
+#include "file.c"
 
 int main() {
     char input[10];
+    int ignitionStarted = 0; 
     int selection;
-
-    //등록30~39
-    registerHandler(MUTE_BUTTON, muteButtonHandler);//
-    registerHandler(VOICE_COMMAND,voiceCommandToggle);//
-    registerHandler(PARKING_ASSIST, handleParkingAssistCommand);//
-    registerHandler(REAR_DEFROST, handleDefrostCommand);//
-    registerHandler(CHILD_LOCK, handleLockCommand);//
-    registerHandler(NAVIGATION,navigatehandle);//
-    registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
 
     ignitionStarted = 0;
 
@@ -66,7 +66,27 @@ int main() {
                 //handleRadioVolumeCommands();
             } else if (selection == 8) {
                 //handleRadioTuningCommands();
-            }  else if (selection == 20) {
+            } else if (selection == 10) {
+                radioSourceMenu();
+			} else if (selection == 11) {
+				ClimateTempMenu();
+			} else if (selection == 12) {
+				climateFanMenu();
+			} else if (selection == 13) {
+                climateAirflowMenu();
+			} else if (selection == 14) {
+                DefrostMenu();
+			} else if (selection == 15) {
+                powerwindowMenu();
+			} else if (selection == 16) {
+                WindowLockMenu();
+            } else if (selection == 17) {
+                DoorLockMenu();
+            } else if (selection == 18){
+                mirrorAdjustMenu();
+            } else if (selection == 19){
+                seatAdjustMenu();
+            } else if (selection == 20) {
                 sunroofMenu();
             } else if (selection == 21) {
                 trunkReleaseMenu();
@@ -74,8 +94,7 @@ int main() {
                 fuelCapReleaseMenu();
             } else if (selection == 23) {
                 parkingBrakeMenu();
-            }
-            else if (selection == 24) {
+            }  else if (selection == 24) {
                 driveModeMenu();
             } else if (selection == 25) {
                 tractionMenu();
@@ -87,40 +106,47 @@ int main() {
                 steeringMenu();
             } else if (selection == 29) {
                 interiorLightMenu();
-            }
-            else if (selection == 4) {
-                break; // Exit the program
-            }
-            else if(selection ==30) {
-                handlerEvent(REAR_DEFROST); // 서리제거
-            }
-            else if(selection ==31){
-                handlerEvent(CHILD_LOCK); // 어린이 보호
-            }
-            else if(selection ==32) {
-                handlerEvent(MUTE_BUTTON); // 음소거 기능
-           }
-            else if(selection ==33) {
-                handlerEvent(VOICE_COMMAND); // 음소거 기능
-            }
-            else if(selection ==34) {
-
-            }
-            else if(selection ==35) {
-
-            }
-            else if(selection ==36) {
-                handlerEvent(NAVIGATION); // 네비게이션
-            }
-            else if(selection ==37) {
-               handlerEvent(LANE_ASSIST); // 차선 지원
-            }
-            else if(selection ==38) {
-                handlerEvent(PARKING_ASSIST);// 주차 보조
-            }
-            else if(selection ==39) {
-
-            }else{
+            } else if(selection ==30) {
+                REAR_DEFROST_MENU(); // 후면 서리 제거
+            } else if(selection ==31){
+                CHILD_LOCK_MENU(); // 어린이 보호
+            } else if(selection ==32) {
+                MUTE_BUTTON_MENU(); // 음소거 기능
+            } else if(selection ==33) {
+                VOICE_COMMAND_MENU(); // 보이스 커맨드 기능
+            } else if(selection ==34) {
+                Phone_Answer_MENU(); // 됬네 전화끊기
+            } else if(selection ==35) {
+                Phone_End_Call_MENU();//전화걸기!
+            } else if(selection ==36) {
+                NAVIGATION_MENU(); // 네비게이션
+            } else if(selection ==37) {
+                LANE_ASSIST_MENU(); //차선 보조
+            } else if(selection ==38) {
+                PARKING_ASSIST_MENU();// 주차 보조
+            } else if(selection ==39) { // HILL
+                HILL_DESCENT_MENU(); // 아직 안함
+            } else if(selection ==40) {
+                hudAdjustMenu();
+            } else if(selection ==41) {
+                gloveBoxReleaseMenu();
+            } else if(selection ==42) {
+                fogLightsMenu();
+            }  else if(selection ==43) {
+                emergencyBrakeMenu();
+            } else if(selection == 44) {
+                trailerControlMenu();
+            } else if(selection == 45) {
+                autoHoldMenu();
+            } else if(selection == 46) {
+                handsFreeMenu();
+            } else if(selection == 47) {
+                seatHeaterMenu();
+            } else if(selection == 48) {
+                seatCoolerMenu();
+            } else if(selection == 49) {
+                break;
+            } else {
                 printf("Invalid selection. Please try again.\n");
             }
         }

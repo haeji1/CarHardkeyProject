@@ -1,21 +1,18 @@
 #include "strategy.h"
 #include <stdio.h>
-
+#include <unistd.h> // sleep 함수 사용을 위해 필요한 헤더 파일
 // Placeholder for the actual audio state
 static AudioState currentAudioState = UNMUTED;
 
 // 실제 구현 함수
 void toggleMuteImpl() {
-    if (currentAudioState == UNMUTED) {
         currentAudioState = MUTED;
         printf("Audio system is muted.\n");
-        // 실제 음소거 처리 코드
-    } else {
-        currentAudioState = UNMUTED;
-        printf("Audio system is unmuted.\n");
-        // 실제 음소거 해제 처리 코드
+        int values[]={1};
+        writeOrUpdateValueToFile("MUTE_BUTTON", values, 1);
+        sleep(3);
     }
-}
+
 
 AudioState getAudioStateImpl() {
     return currentAudioState;
