@@ -30,7 +30,6 @@
 #include "hud_Adjust.h"
 #include "glove_box_release.h"
 #include "emergency_brake.h"
-#include "file.c"
 
 int main() {
     char input[10];
