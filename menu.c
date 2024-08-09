@@ -2078,16 +2078,18 @@ void MUTE_BUTTON_MENU(){
 
     switch (option) {
         case 1:
-
-        registerHandler(MUTE_BUTTON, muteButtonHandler);
-        handlerEvent(MUTE_BUTTON);
-        unregisterHandler(MUTE_BUTTON, muteButtonHandler);
+			printf("****************************\n");
+            registerHandler(MUTE_BUTTON, muteButtonHandler);
+            handlerEvent(MUTE_BUTTON);
+            unregisterHandler(MUTE_BUTTON, muteButtonHandler);
+			printf("****************************\n");
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("MUTE_BUTTON", 1);
 			sleep(3);
+            printf("*****************************************\n");
         break;
 
         default:
@@ -2115,16 +2117,19 @@ void VOICE_COMMAND_MENU(){
 
     switch (option) {
         case 1:
+			printf("****************************\n");
         registerHandler(VOICE_COMMAND, voiceCommandToggle);
         handlerEvent(VOICE_COMMAND);
         unregisterHandler(VOICE_COMMAND, voiceCommandToggle);
+        printf("****************************\n");
 
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("VOICE_COMMAND", 1);
 			sleep(3);
+            printf("*****************************************\n");
         break;
 
         default:
@@ -2152,18 +2157,18 @@ void PARKING_ASSIST_MENU(){
 
     switch (option) {
         case 1:
-            printf("Enter PARKING_ASSIST (0=ON, 1=OFF): ");
-
-        registerHandler(PARKING_ASSIST, handleParkingAssistCommand);
-        handlerEvent(PARKING_ASSIST);
-        unregisterHandler(PARKING_ASSIST, handleParkingAssistCommand);
-
+			printf("****************************\n");
+            registerHandler(PARKING_ASSIST, handleParkingAssistCommand);
+            handlerEvent(PARKING_ASSIST);
+            unregisterHandler(PARKING_ASSIST, handleParkingAssistCommand);
+			printf("****************************\n");
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
 			printCurrentValues("PARKING_ASSIST", 1);
 			sleep(3);
+            printf("*****************************************\n");
         break;
 
         default:
@@ -2189,16 +2194,18 @@ void REAR_DEFROST_MENU(){
 
     switch (option) {
         case 1:
-        registerHandler(REAR_DEFROST,handleDefrostCommand);
-        handlerEvent(REAR_DEFROST);
-        unregisterHandler(REAR_DEFROST,handleDefrostCommand);
+			printf("****************************\n");
+            registerHandler(REAR_DEFROST,handleDefrostCommand);
+            handlerEvent(REAR_DEFROST);
+            unregisterHandler(REAR_DEFROST,handleDefrostCommand);
+			printf("****************************\n");
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("REAR_DEFROST", 1);
 			sleep(3);
-
+            printf("*****************************************\n");
         break;
 
         default:
@@ -2227,15 +2234,18 @@ void CHILD_LOCK_MENU(){
 
     switch (option) {
         case 1:
-        registerHandler(CHILD_LOCK, handleLockCommand);
-        handlerEvent(CHILD_LOCK);
-        unregisterHandler(CHILD_LOCK, handleLockCommand);
+			printf("****************************\n");
+            registerHandler(CHILD_LOCK, handleLockCommand);
+            handlerEvent(CHILD_LOCK);
+            unregisterHandler(CHILD_LOCK, handleLockCommand);
+			printf("****************************\n");
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("CHILD_LOCK", 1);
 			sleep(3);
+            printf("*****************************************\n");
         break;
 
         default:
@@ -2264,15 +2274,20 @@ void NAVIGATION_MENU(){
 
     switch (option) {
         case 1:
+	    printf("****************************\n");
         registerHandler(NAVIGATION, navigatehandle);
         handlerEvent(NAVIGATION);
         unregisterHandler(NAVIGATION, navigatehandle);
+        printf("****************************\n");
+
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("NAVIGATION", 2);
 			sleep(3);
+            printf("*****************************************\n");
+
         break;
 
         default:
@@ -2300,17 +2315,20 @@ void LANE_ASSIST_MENU(){
 
     switch (option) {
         case 1:
-
-        registerHandler(LANE_ASSIST, handleLaneSupportCommand);
-        handlerEvent(LANE_ASSIST);
-        unregisterHandler(LANE_ASSIST, handleLaneSupportCommand);
+			printf("****************************\n");
+            registerHandler(LANE_ASSIST, handleLaneSupportCommand);
+            handlerEvent(LANE_ASSIST);
+            unregisterHandler(LANE_ASSIST, handleLaneSupportCommand);
+            printf("****************************\n");
 
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("LANE_ASSIST", 1);
 			sleep(3);
+            printf("*****************************************\n");
+
         break;
 
         default:
@@ -2337,15 +2355,19 @@ void Phone_End_Call_MENU(){ //34
 
     switch (option) {
         case 1:
+	    printf("****************************\n");
         registerHandler(PHONE_ANSWER,answerPhone);
         handlerEvent(PHONE_ANSWER);
         unregisterHandler(PHONE_ANSWER,answerPhone);
+		printf("****************************\n");
         break;
-
         case 2:
-         printf("Listening to events...\n");
+
+         printf("********** Listening to Events **********\n");
          printCurrentValues("PHONE_ANSWER", 1);
 		 sleep(3);
+         printf("*****************************************\n");
+
         break;
 
         default:
@@ -2370,17 +2392,18 @@ void Phone_Answer_MENU(){
     }
     switch (option) {
         case 1:
-
+			printf("****************************\n");
         registerHandler(PHONE_END_CALL,endCall);
         handlerEvent(PHONE_END_CALL);
         unregisterHandler(PHONE_END_CALL,endCall);
-
+			printf("****************************\n");
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("PHONE_END_CALL", 1);
 			sleep(3);
+            printf("*****************************************\n");
         break;
 
         default:
@@ -2406,16 +2429,18 @@ void HILL_DESCENT_MENU(){
 
     switch (option) {
         case 1:
-
+			printf("****************************\n");
         registerHandler(HILL_DESCENT,handleHillDescentCommand);
         handlerEvent(HILL_DESCENT);
         unregisterHandler(HILL_DESCENT,handleHillDescentCommand);
+			printf("****************************\n");
         break;
 
         case 2:
-            printf("Listening to events...\n");
+            printf("********** Listening to Events **********\n");
             printCurrentValues("HILL_DESCENT", 1);
 			sleep(3);
+            printf("*****************************************\n");
         break;
 
         default:
