@@ -3,6 +3,7 @@
 #include <string.h>
 #include "observer.h"
 #include "display.h"
+#include "ignition.h"
 #include "sunroof.h"
 #include "drive.h"
 #include "steering.h"
@@ -25,7 +26,6 @@
 
 int main() {
     char input[10];
-    int ignitionStarted = 0; 
     int selection;
 
     //등록30~39
@@ -37,30 +37,11 @@ int main() {
     registerHandler(NAVIGATION,navigatehandle);//
     registerHandler(LANE_ASSIST,handleLaneSupportCommand);//
 
+    ignitionStarted = 0;
 
     while (1) {
-        if(!ignitionStarted){
-            ignitionStarted = ignitionMenu();
-            // printf("\nEnter command for IGNITION (ON/OFF/EXIT): ");
-            // if (scanf("%9s", input) != 1) {
-            //     perror("scanf failed");
-            //     exit(EXIT_FAILURE);
-            // }
-
-            // if (strcmp(input, "ON") == 0) {
-            //     handlerEvent(HORN);// -> notify 다른 기능들
-            //     handlerEvent(HEADLIGHTS);
-            //     ignitionStarted = 1; // Set the ignition started flag
-            //     printf("Engine started. Select a feature using the menu.\n");
-            // } else if (strcmp(input, "OFF") == 0) {
-            //     //handleShutdownEvent();
-            //     printf("Unknown command. Please use START or EXIT.\n");
-            //     break;
-            // } else if (strcmp(input, "EXIT") == 0) {
-            //     break;
-            // } else {
-            //     printf("Unknown command.\n");
-            // }
+        if(ignitionStarted != 1){
+            ignitionMenu();
         }else{
             displayMenu();
             printf("Enter your choice (number): ");

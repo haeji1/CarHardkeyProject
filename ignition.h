@@ -3,6 +3,8 @@
 
 typedef void(*ignitionFunction)();
 
+int ignitionStarted;
+
 void onIgnition();
 void ignition(ignitionFunction igFunc);
 
