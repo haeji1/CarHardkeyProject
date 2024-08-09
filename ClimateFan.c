@@ -13,22 +13,22 @@ static int ClimateFan = 3; // 0 - 5 level
 
 void Level_One(){
     if(ClimateFan == 1){
-        printf("ClimateFanLevel : %d\n", ClimateFan);
+        printf("====== ClimateFanLevel : %d ======\n", ClimateFan);
     }
     else{
         ClimateFan = 1;
-        printf("ClimateFanLevel : %d\n", ClimateFan);
+        printf("====== ClimateFanLevel : %d ======\n", ClimateFan);
     }
 
     sleep(3);
 }
 void Level_Two(){
     if(ClimateFan == 2){
-        printf("ClimateFanLevel : %d\n", ClimateFan);
+        printf("====== ClimateFanLevel : %d ======\n", ClimateFan);
     }
     else{
         ClimateFan = 2;
-        printf("ClimateFanLevel : %d\n", ClimateFan);
+        printf("====== ClimateFanLevel : %d ======\n", ClimateFan);
     }
 
     sleep(3);

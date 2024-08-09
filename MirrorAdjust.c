@@ -30,10 +30,12 @@ void adjustMirrorSeat(MirrorState state) {
 
 void handleMirrorAdjust(MirrorAdjustControlFunction ma){
     printf("status changed by function\n");
+    sleep(1);
 }
 
 void mirroradjustHandlerWrapper() {
     // Wrapper function to call
     const char *mirrorName = (globalMirrorState.mirrorId == 0) ? "Left" : "Right";
-    printf("%s mirror ajustment set to %d\n", mirrorName, globalMirrorState.ajustmentDirection);
+    printf("====== %s mirror ajustment set to %d ====== \n", mirrorName, globalMirrorState.ajustmentDirection);
+    sleep(1);
 }

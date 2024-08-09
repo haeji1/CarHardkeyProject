@@ -22,6 +22,6 @@ void handleClimateTemp(ClimateTempControlFunction ct){
 }
 void ClimateTempHandlerWrapper() {
     // Wrapper function to call
-    printf("Climate Temp is = %d\n",globalTempState.setting);
-    sleep(1);
+    printf("====== Climate Temp is = %d ======\n",globalTempState.setting);
+    sleep(3);
 }
