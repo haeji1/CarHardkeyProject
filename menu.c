@@ -3,9 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "menu.h"
+#include "ignition.h"
 #include "horn.h"
 #include "headlights.h"
 #include "turnsignals.h"
+#include "windshield.h"
+#include "hazard.h"
+#include "cruise.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -36,6 +40,7 @@
 #include "hud_Adjust.h"
 #include "glove_box_release.h"
 #include "emergency_brake.h"
+#include "file.c"
 
 
 #define MAX_NUM 5
@@ -43,13 +48,12 @@
 #define TWO 2
 
 
-
-void autoHoldMenu(){
-    int values[MAX_NUM];
+void ignitionMenu() {
     int option, value;
-    autoHoldFunction af;
+    int values[MAX_NUM];
+    ignitionFunction igFunc;
 
-    printf(" Menu:\n");
+    printf("IGNITION Menu:\n");
     printf("1. Write value to file\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
@@ -60,39 +64,44 @@ void autoHoldMenu(){
 
     switch (option) {
         case 1:
-            printf("Enter Auto Hold state (0=Off, 1=On): ");
-        if (scanf("%d", &value) != 1 && (value != 0)) {
-            printf("Invalid input. Enter 0 or 1.\n");
+            printf("Enter ignition state (1=On): ");
+            if (scanf("%d", &value) != 1 || (value != 1)) {
+                printf("Invalid input. Enter 1.\n");
+                break;
+            }
+
+            // Perform write operation to file if needed
+            values[0] = value;
+            writeOrUpdateValueToFile("IGNITION", values, ONE);
+
+            // Set the ignition function
+            if (value == 1) {
+                igFunc = onIgnition;
+                ignitionStarted = value;
+                printf("IGNITION ON\n");
+            }
+
+            // Execute the ignition function
+            ignition(igFunc);
+
+            registerHandler(IGNITION, igFunc);
+
+            // Notify the event
+            handlerEvent(IGNITION);
+
             return;
-        }
-
-
-
-        values[0] = value;
-        writeOrUpdateValueToFile("AUTO_HOLD", values, 1);
-
-        if (value == 0) {
-            af = autoHoldOff;
-        } else {
-            af = autoHoldOn;
-        }
-        setAutoHold(af);
-        registerHandler(AUTO_HOLD, af);
-        handlerEvent(AUTO_HOLD);
-        unregisterHandler(AUTO_HOLD, af);
-        printf("****************************************\n");
-        break;
 
         case 2:
             printf("Listening to events...\n");
-        printCurrentValues("AUTO_HOLD", 1);
-        printf("****************************************\n");
-        break;
+            // Implement event listening functionality if needed
+            printCurrentValues("IGNITION", ONE);
+            ignitionStarted = getNumValues("IGNITION", ONE);
+
+            break;
 
         default:
             printf("Invalid choice. Returning to menu.\n");
-        break;
-
+            break;
     }
 }
 
@@ -123,6 +132,291 @@ void hornMenu() {
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             // listenToEvents("HORN");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
+void headlightsMenu(){
+    int option, value;
+    headlightsControlFunction hc;
+
+    printf("HEADLIGHTS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter headlights state (0=Off, 1=Low, 2=High): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("HEADLIGHTS", value);
+
+            // Set the headlights control function
+            if (value == 0) {
+                hc = offHeadlights;
+            } else if (value == 1) {
+                hc = lowHeadlights;
+            } else {
+                hc = highHeadlights;
+            }
+
+            // Execute the head lights function
+            headlightsControl(hc);
+            registerHandler(HEADLIGHTS, hc);
+            // Notify the event
+            handlerEvent(HEADLIGHTS);
+            unregisterHandler(HEADLIGHTS, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HAEDLIGHTS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
+
+void turnSignalsMenu(){
+    int option, value;
+    turnSignalsControlFunction tc;
+
+    printf("TURN_SIGNALS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter turn signals state (0=Left, 1=Right): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("TURN_SIGNALS", value);
+
+            // Set the headlights control function
+            if (value == 0) {
+                tc = leftTurnSignal;
+                
+            } else {
+                tc = rightTurnSignal;
+            }
+
+            // Execute the turn signals function
+            turnSignalsControl(tc);
+            registerHandler(TURN_SIGNALS, tc);
+            // Notify the event
+            handlerEvent(TURN_SIGNALS);
+            unregisterHandler(TURN_SIGNALS, tc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("TURN_SIGNALS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
+
+void windshieldWipersMenu(){
+    int option, value;
+    windshieldWipersControlFunction wc;
+
+    printf("WINDSHIELD_WIPERS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter windshield wipers state (0=Off, 1=Low, 2=High): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("WINDSHIELD_WIPERS", value);
+
+            // Set the windshield wipers control function
+            if (value == 0) {
+                wc = offWindshieldWipers;
+            } else if (value == 1) {
+                wc = lowWindshieldWipers;
+            } else {
+                wc = highWindshieldWipers;
+            }
+
+            // Execute the windshield wipers function
+            windshieldWipersControl(wc);
+            registerHandler(WINDSHIELD_WIPERS, wc);
+            // Notify the event
+            handlerEvent(WINDSHIELD_WIPERS);
+            unregisterHandler(WINDSHIELD_WIPERS, wc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("WINDSHIELD_WIPERS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
+
+void hazardLightsMenu(){
+    int option, value;
+    hazardLightsControlFunction hc;
+
+    printf("HAZARD_LIGHTS Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter turn signals state (0=Off, 1=On): ");
+            if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            // Perform write operation to file if needed
+            // writeOrUpdateValueToFile("HAZARD_LIGHTS", value);
+
+            // Set the hazard lights control function
+            if (value == 0) {
+                hc = offHazardLights;
+                
+            } else {
+                hc = onHazardLights;
+            }
+
+            // Execute the hazard lights control function
+            hazardLightsControl(hc);
+            registerHandler(HAZARD_LIGHTS, hc);
+            // Notify the event
+            handlerEvent(HAZARD_LIGHTS);
+            unregisterHandler(HAZARD_LIGHTS, hc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            // listenToEvents("HAZARD_LIGHTS");
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+
+}
+
+void cruiseControlMenu() {
+    int option, state, speed;
+    int values[MAX_NUM];
+    cruiseControlFunction cc;
+    CruiseControlState cruiseControlState;
+
+    printf("CRUISE_CONTROL Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter cruise control state (0 = Off, 1 = On): ");
+            if (scanf("%d", &state) != 1 || (state < 0 || state > 1)) {
+                printf("Invalid input. Enter 0 or 1.\n");
+                return;
+            }
+
+            printf("Enter speed in cruise control (30-150): ");
+            if (scanf("%d", &speed) != 1 || (speed < 30 || speed > 150)) {
+                printf("Invalid input. Enter a value between 30 and 150.\n");
+                return;
+            }
+
+            // Set the cruise control status
+            cruiseControlState.cruiseState = state;
+            //speed = getNumValues("CRUISE_CONTROL", TWO);
+            cruiseControlState.speed = speed;
+
+            values[0] = state;
+            values[1] = speed;
+            writeOrUpdateValueToFile("CRUISE_CONTROL", values, TWO);
+            
+            //Set the cruise control function
+            if (state == 0) {
+                cc = deactivateCruiseControl;
+            } else {
+                cc = activateCruiseControl;
+                //adjustCruiseControlSpeed(cc);
+                //cc = setCruiseControlSpeed;
+            }
+
+            //CruiseControlState cs = cruiseControlAction(cc, &cruiseControlState);
+            
+            // register handler
+            registerHandler(CRUISE_CONTROL, (Handler)cc);
+
+            // Notify the event
+            handlerEvent(CRUISE_CONTROL);
+
+            // Unregister the handler
+            unregisterHandler(CRUISE_CONTROL, (Handler)cc);
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("CRUISE_CONTROL", TWO);
             break;
 
         default:
@@ -686,113 +980,6 @@ void seatAdjustMenu() { /////////////////////////////////////////////
             printf("Invalid choice. Returning to menu.\n");
             break;
     }
-}
-
-void headlightsMenu(){
-    int option, value;
-    headlightsControlFunction hc;
-
-    printf("HEADLIGHTS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
-
-    switch (option) {
-        case 1:
-            printf("Enter headlights state (0=Off, 1=Low, 2=High): ");
-            if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-                printf("Invalid input. Enter 0 or 1.\n");
-                return;
-            }
-
-            // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("HEADLIGHTS", value);
-
-            // Set the headlights control function
-            if (value == 0) {
-                hc = offHeadlights;
-            } else if (value == 1) {
-                hc = lowHeadlights;
-            } else {
-                hc = highHeadlights;
-            }
-
-            // Execute the traction control function
-            headlightsControl(hc);
-            registerHandler(HEADLIGHTS, hc);
-            // Notify the event
-            handlerEvent(HEADLIGHTS);
-            unregisterHandler(HEADLIGHTS, hc);
-            break;
-
-        case 2:
-            printf("Listening to events...\n");
-            // Implement event listening functionality if needed
-            // listenToEvents("HAEDLIGHTS");
-            break;
-
-        default:
-            printf("Invalid choice. Returning to menu.\n");
-            break;
-    }
-
-}
-
-void turnSignalsMenu(){
-    int option, value;
-    turnSignalsControlFunction tc;
-
-    printf("TURN_SIGNALS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
-
-    switch (option) {
-        case 1:
-            printf("Enter turn signals state (0=Left, 1=Right): ");
-            if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
-                printf("Invalid input. Enter 0 or 1.\n");
-                return;
-            }
-
-            // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("TURN_SIGNALS", value);
-
-            // Set the headlights control function
-            if (value == 0) {
-                tc = leftTurnSignal;
-                
-            } else {
-                tc = rightTurnSignal;
-            }
-
-            // Execute the traction control function
-            turnSignalsControl(tc);
-            registerHandler(TURN_SIGNALS, tc);
-            // Notify the event
-            handlerEvent(TURN_SIGNALS);
-            unregisterHandler(TURN_SIGNALS, tc);
-            break;
-
-        case 2:
-            printf("Listening to events...\n");
-            // Implement event listening functionality if needed
-            // listenToEvents("TURN_SIGNALS");
-            break;
-
-        default:
-            printf("Invalid choice. Returning to menu.\n");
-            break;
-    }
-
 }
 
 void sunroofMenu() {
@@ -1577,6 +1764,59 @@ void trailerControlMenu(){
             break;
         }
     }
+
+void autoHoldMenu(){
+    int values[MAX_NUM];
+    int option, value;
+    autoHoldFunction af;
+
+    printf(" Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &option) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (option) {
+        case 1:
+            printf("Enter Auto Hold state (0=Off, 1=On): ");
+        if (scanf("%d", &value) != 1 && (value != 0)) {
+            printf("Invalid input. Enter 0 or 1.\n");
+            return;
+        }
+
+
+
+        values[0] = value;
+        writeOrUpdateValueToFile("AUTO_HOLD", values, 1);
+
+        if (value == 0) {
+            af = autoHoldOff;
+        } else {
+            af = autoHoldOn;
+        }
+        setAutoHold(af);
+        registerHandler(AUTO_HOLD, af);
+        handlerEvent(AUTO_HOLD);
+        unregisterHandler(AUTO_HOLD, af);
+        printf("****************************************\n");
+        break;
+
+        case 2:
+            printf("Listening to events...\n");
+        printCurrentValues("AUTO_HOLD", 1);
+        printf("****************************************\n");
+        break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+        break;
+
+    }
+}
+
 
 void handsFreeMenu(){
     int option, value;

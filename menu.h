@@ -2,9 +2,13 @@
 #ifndef MENU_H
 #define MENU_H
 
+void ignitionMenu();
 void hornMenu();
 void headlightsMenu();
 void turnSignalsMenu();
+void windshieldWipersMenu();
+void hazardLightsMenu();
+void cruiseControlMenu();
 void sunroofMenu();
 void trunkReleaseMenu();
 void fuelCapReleaseMenu();

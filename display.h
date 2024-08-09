@@ -1,11 +1,1 @@
 void displayMenu();
-void handleHornCommands();
-void handleHeadlightsCommands();
-void handleTurnSignalsCommands();
-void handleWindshieldWipersCommands();
-void handleHazardLightsCommands();
-void handleCruiseControlCommands();
-void handleRadioVolumeCommands();
-void handleRadioTuningCommands();
-void initializeFeatureHandlers();
-void cleanupFeatureHandlers();
