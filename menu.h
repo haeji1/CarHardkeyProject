@@ -9,6 +9,8 @@ void turnSignalsMenu();
 void windshieldWipersMenu();
 void hazardLightsMenu();
 void cruiseControlMenu();
+void radioVolumeMenu();
+void radioTuningMenu();
 void sunroofMenu();
 void trunkReleaseMenu();
 void fuelCapReleaseMenu();
