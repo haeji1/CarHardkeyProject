@@ -35,7 +35,7 @@ int main() {
     char input[10];
     int selection;
 
-    ignitionStarted = 0;
+    ignitionStarted = 0; //gobal variable in ignition.h
 
     while (1) {
         if(ignitionStarted != 1){

@@ -53,7 +53,7 @@
 void ignitionMenu() {
     int option, value;
     int values[MAX_NUM];
-    ignitionFunction igFunc;
+    ignitionFunction ignitionFunc;
 
     printf("IGNITION Menu:\n");
     printf("1. Write value to file\n");
@@ -78,15 +78,15 @@ void ignitionMenu() {
 
             // Set the ignition function
             if (value == 1) {
-                igFunc = onIgnition;
+                ignitionFunc = onIgnition;
                 ignitionStarted = value;
                 printf("IGNITION ON\n");
             }
 
             // Execute the ignition function
-            ignition(igFunc);
+            ignition(ignitionFunc);
 
-            registerHandler(IGNITION, igFunc);
+            registerHandler(IGNITION, ignitionFunc);
 
             // Notify the event
             handlerEvent(IGNITION);
@@ -109,9 +109,10 @@ void ignitionMenu() {
 
 void hornMenu() {
     int option, value;
-    hornControlFunction hc;
+    int values[MAX_NUM];
+    hornControlFunction hronFunc;
 
-    printf("Horn Menu:\n");
+    printf("HORN Menu:\n");
     printf("1. Activate horn\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
@@ -122,18 +123,21 @@ void hornMenu() {
 
     switch (option) {
         case 1:
+            values[0] = 1;
+            writeOrUpdateValueToFile("HORN", values, ONE);
             // Register the handler
-            hc = activateHorn;
-            registerHandler(HORN, hc);
+            hronFunc = activateHorn;
+            registerHandler(HORN, hronFunc);
             // Notify the event
             handlerEvent(HORN);
-            unregisterHandler(HORN, hc);
+
+            unregisterHandler(HORN, hronFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HORN");
+            printCurrentValues("HORN", ONE);
             break;
 
         default:
@@ -144,7 +148,8 @@ void hornMenu() {
 
 void headlightsMenu(){
     int option, value;
-    headlightsControlFunction hc;
+    int values[MAX_NUM];
+    headlightsControlFunction headlightsFunc;
 
     printf("HEADLIGHTS Menu:\n");
     printf("1. Write value to file\n");
@@ -159,34 +164,37 @@ void headlightsMenu(){
         case 1:
             printf("Enter headlights state (0=Off, 1=Low, 2=High): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-                printf("Invalid input. Enter 0 or 1.\n");
+                printf("Invalid input. Enter 0 or 1 or 2.\n");
                 return;
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("HEADLIGHTS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("HEADLIGHTS", values, ONE);
 
             // Set the headlights control function
             if (value == 0) {
-                hc = offHeadlights;
+                headlightsFunc = offHeadlights;
             } else if (value == 1) {
-                hc = lowHeadlights;
+                headlightsFunc = lowHeadlights;
             } else {
-                hc = highHeadlights;
+                headlightsFunc = highHeadlights;
             }
 
             // Execute the head lights function
-            headlightsControl(hc);
-            registerHandler(HEADLIGHTS, hc);
+            headlightsControl(headlightsFunc);
+            registerHandler(HEADLIGHTS, headlightsFunc);
+
             // Notify the event
             handlerEvent(HEADLIGHTS);
-            unregisterHandler(HEADLIGHTS, hc);
+
+            unregisterHandler(HEADLIGHTS, headlightsFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HAEDLIGHTS");
+            printCurrentValues("HEADLIGHTS", ONE);
             break;
 
         default:
@@ -198,7 +206,8 @@ void headlightsMenu(){
 
 void turnSignalsMenu(){
     int option, value;
-    turnSignalsControlFunction tc;
+    int values[MAX_NUM];
+    turnSignalsControlFunction turnSignalsFunc;
 
     printf("TURN_SIGNALS Menu:\n");
     printf("1. Write value to file\n");
@@ -218,28 +227,30 @@ void turnSignalsMenu(){
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("TURN_SIGNALS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("TURN_SIGNALS", values, ONE);
 
-            // Set the headlights control function
+            // Set the turn signals control function
             if (value == 0) {
-                tc = leftTurnSignal;
-                
+                turnSignalsFunc = leftTurnSignal;
             } else {
-                tc = rightTurnSignal;
+                turnSignalsFunc = rightTurnSignal;
             }
 
             // Execute the turn signals function
-            turnSignalsControl(tc);
-            registerHandler(TURN_SIGNALS, tc);
+            turnSignalsControl(turnSignalsFunc);
+            registerHandler(TURN_SIGNALS, turnSignalsFunc);
+
             // Notify the event
             handlerEvent(TURN_SIGNALS);
-            unregisterHandler(TURN_SIGNALS, tc);
+
+            unregisterHandler(TURN_SIGNALS, turnSignalsFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("TURN_SIGNALS");
+            printCurrentValues("TURN_SIGNALS", ONE);
             break;
 
         default:
@@ -251,7 +262,8 @@ void turnSignalsMenu(){
 
 void windshieldWipersMenu(){
     int option, value;
-    windshieldWipersControlFunction wc;
+    int values[MAX_NUM];
+    windshieldWipersControlFunction windshiledFunc;
 
     printf("WINDSHIELD_WIPERS Menu:\n");
     printf("1. Write value to file\n");
@@ -266,34 +278,37 @@ void windshieldWipersMenu(){
         case 1:
             printf("Enter windshield wipers state (0=Off, 1=Low, 2=High): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-                printf("Invalid input. Enter 0 or 1.\n");
+                printf("Invalid input. Enter 0 or 1 or 2.\n");
                 return;
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("WINDSHIELD_WIPERS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("WINDSHIELD_WIPERS", values, ONE);
 
             // Set the windshield wipers control function
             if (value == 0) {
-                wc = offWindshieldWipers;
+                windshiledFunc = offWindshieldWipers;
             } else if (value == 1) {
-                wc = lowWindshieldWipers;
+                windshiledFunc = lowWindshieldWipers;
             } else {
-                wc = highWindshieldWipers;
+                windshiledFunc = highWindshieldWipers;
             }
 
             // Execute the windshield wipers function
-            windshieldWipersControl(wc);
-            registerHandler(WINDSHIELD_WIPERS, wc);
+            windshieldWipersControl(windshiledFunc);
+            registerHandler(WINDSHIELD_WIPERS, windshiledFunc);
+
             // Notify the event
             handlerEvent(WINDSHIELD_WIPERS);
-            unregisterHandler(WINDSHIELD_WIPERS, wc);
+            
+            unregisterHandler(WINDSHIELD_WIPERS, windshiledFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("WINDSHIELD_WIPERS");
+            printCurrentValues("WINDSHIELD_WIPERS", ONE);
             break;
 
         default:
