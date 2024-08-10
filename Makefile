@@ -1,10 +1,10 @@
 all: main.exe
 	./main.exe
 
-main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o auto_hold.o hud_Adjust.o glove_box_release.o fog_lights.o emergency_brake.o trailer_control.o hands_free.o seat_heater.o seat_cooler.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o WindowLock.o SeatAdjust.o
-	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radio.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o auto_hold.o hud_Adjust.o glove_box_release.o fog_lights.o emergency_brake.o trailer_control.o hands_free.o seat_heater.o seat_cooler.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o WindowLock.o SeatAdjust.o
+main.exe: main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radioVolume.o radioTuning.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o auto_hold.o hud_Adjust.o glove_box_release.o fog_lights.o emergency_brake.o trailer_control.o hands_free.o seat_heater.o seat_cooler.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o WindowLock.o SeatAdjust.o
+	gcc -o main.exe main.o observer.o ignition.o horn.o headlights.o turnsignals.o windshield.o hazard.o cruise.o radioVolume.o radioTuning.o display.o trunk.o steering.o sunroof.o traction.o pbrake.o menu.o interior.o drive.o fuel.o hseat.o cseat.o auto_hold.o hud_Adjust.o glove_box_release.o fog_lights.o emergency_brake.o trailer_control.o hands_free.o seat_heater.o seat_cooler.o RadioSource.o ClimateAirflow.o ClimateFan.o ClimateTemp.o Defrost.o DoorLock.o MirrorAdjust.o PowerWindows.o WindowLock.o SeatAdjust.o
 
-main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h cruise.h radio.h display.h auto_hold.h hud_Adjust.h glove_box_release.h fog_lights.h emergency_brake.h trailer_control.h hands_free.h seat_heater.h seat_cooler.h
+main.o: main.c observer.h ignition.h horn.h headlights.h turnsignals.h windshield.h hazard.h cruise.h radioVolume.h radioTuning.h display.h auto_hold.h hud_Adjust.h glove_box_release.h fog_lights.h emergency_brake.h trailer_control.h hands_free.h seat_heater.h seat_cooler.h
 	gcc -c main.c
 
 observer.o: observer.c observer.h
@@ -34,8 +34,11 @@ hazard.o: hazard.c observer.h hazard.h
 cruise.o: cruise.c observer.h cruise.h
 	gcc -c cruise.c
 
-radio.o: radio.c observer.h radio.h
-	gcc -c radio.c
+radioVolume.o: radioVolume.c observer.h radioVolume.h
+	gcc -c radioVolume.c
+
+radioTuning.o: radioTuning.c observer.h radioTuning.h
+	gcc -c radioTuning.c
 
 sunroof.o: sunroof.c observer.h sunroof.h
 	gcc -c sunroof.c

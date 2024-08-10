@@ -61,9 +61,9 @@ int main() {
             } else if (selection == 6) {
                 cruiseControlMenu();
             } else if (selection == 7) {
-                //handleRadioVolumeCommands();
+                radioVolumeMenu();
             } else if (selection == 8) {
-                //handleRadioTuningCommands();
+                radioTuningMenu();
             } else if (selection == 10) {
                 radioSourceMenu();
 			} else if (selection == 11) {

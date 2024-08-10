@@ -10,6 +10,8 @@
 #include "windshield.h"
 #include "hazard.h"
 #include "cruise.h"
+#include "radioVolume.h"
+#include "radioTuning.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -417,6 +419,199 @@ void cruiseControlMenu() {
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
             printCurrentValues("CRUISE_CONTROL", TWO);
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
+void radioVolumeMenu(){
+    int mainOption,subOption, value;
+    int values[MAX_NUM];
+    radioVolumeFunction rvFunc;
+
+    printf("RADIO_VOLUME Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &mainOption) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (mainOption) {
+        case 1:
+            // Suboption for volume setting
+            printf("Volume Settings:\n");
+            printf("1. Set volume\n");
+            printf("2. Increase volume\n");
+            printf("3. Decrease volume\n");
+            printf("Enter your choice: ");
+            if (scanf("%d", &subOption) != 1) {
+                printf("Invalid input. Returning to menu.\n");
+                return;
+            }
+
+            switch (subOption) {
+                case 1:
+                    printf("Enter volume level (0-100): ");
+                    if (scanf("%d", &value) != 1 || (value < 0 || value > 100)) {
+                        printf("Invalid input. Enter a value between 0 and 100.\n");
+                        return;
+                    }
+                    rvFunc = setRadioVolume;
+                    radioVolumeControl(rvFunc, value);
+                    values[0] = value;
+                    writeOrUpdateValueToFile("RADIO_VOLUME", values, ONE);
+                    break;
+
+                case 2:
+                    printf("Enter amount to increase volume by: ");
+                    if (scanf("%d", &value) != 1 || value < 0) {
+                        printf("Invalid input. Enter a positive value.\n");
+                        return;
+                    }
+                    rvFunc = increaseRadioVolume;
+                    radioVolumeControl(rvFunc, value);
+                    values[0] = value;
+                    writeOrUpdateValueToFile("RADIO_VOLUME", values, ONE);
+                    break;
+
+                case 3:
+                    printf("Enter amount to decrease volume by: ");
+                    if (scanf("%d", &value) != 1 || value < 0) {
+                        printf("Invalid input. Enter a positive value.\n");
+                        return;
+                    }
+                    rvFunc = decreaseRadioVolume;
+                    radioVolumeControl(rvFunc, value);
+                    values[0] = value;
+                    writeOrUpdateValueToFile("RADIO_VOLUME", values, ONE);
+                    break;
+
+                default:
+                    printf("Invalid choice. Returning to menu.\n");
+                    break;
+            }
+            break;
+
+            // Execute the radio volume function
+            registerHandler(RADIO_VOLUME, (Handler)rvFunc);
+
+            // Notify the event
+            handlerEvent(RADIO_VOLUME);
+            unregisterHandler(RADIO_VOLUME, (Handler)rvFunc);
+
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("RADIO_VOLUME", ONE);
+            break;
+
+        default:
+            printf("Invalid choice. Returning to menu.\n");
+            break;
+    }
+}
+
+void radioTuningMenu(){
+    int mainOption,subOption, value;
+    int values[MAX_NUM];
+    radioTuningFunction rtFunc;
+
+    printf("RADIO_TUNING Menu:\n");
+    printf("1. Write value to file\n");
+    printf("2. Listen to event\n");
+    printf("Enter your choice: ");
+    if (scanf("%d", &mainOption) != 1) {
+        printf("Invalid input. Returning to menu.\n");
+        return;
+    }
+
+    switch (mainOption) {
+        case 1:
+            // Suboption for frequency setting
+            printf("Radio freqency Settings:\n");
+            printf("1. Set specific frequency\n");
+            printf("2. Increase frequency\n");
+            printf("3. Decrease frequency\n");
+            printf("Enter your choice: ");
+            if (scanf("%d", &subOption) != 1) {
+                printf("Invalid input. Returning to menu.\n");
+                return;
+            }
+            
+            int originFrequency = getNumValues("RADIO_TUNING", ONE);
+
+            switch (subOption) {
+                case 1:
+                    printf("Enter radio frequency (3-1605): ");
+                    if (scanf("%d", &value) != 1 || (value < 3 || value > 1605)) {
+                        printf("Invalid input. Enter a value between 3 and 1605.\n");
+                        return;
+                    }
+                    rtFunc = setRadioTuning;
+                    radioTuningControl(rtFunc, value);
+                    values[0] = value;
+                    writeOrUpdateValueToFile("RADIO_TUNING", values, ONE);
+                    break;
+
+                case 2:
+                    printf("Enter amount to increase frequency by: ");
+                    if (scanf("%d", &value) != 1 || value < 0) {
+                        printf("Invalid input. Enter a positive value.\n");
+                        return;
+                    }
+                    rtFunc = increaseRadioTuning;
+                    radioTuningControl(rtFunc, value);
+                    if(originFrequency + value <= 1605){
+                        values[0] = originFrequency + value;
+                    }else{
+                        values[0] = 1605;
+                    }
+                    writeOrUpdateValueToFile("RADIO_TUNING", values, ONE);
+                    break;
+
+                case 3:
+                    printf("Enter amount to decrease frequency by: ");
+                    if (scanf("%d", &value) != 1 || value < 0) {
+                        printf("Invalid input. Enter a positive value.\n");
+                        return;
+                    }
+                    rtFunc = decreaseRadioTuning;
+                    radioTuningControl(rtFunc, value);
+                    //int originFrequency = getNumValues("RADIO_TUNING", ONE);
+                    if(originFrequency - value >= 3) {
+                        values[0] = originFrequency - value;
+                    } else{
+                        values[0] = 3;
+                    }
+                    writeOrUpdateValueToFile("RADIO_TUNING", values, ONE);
+                    break;
+
+                default:
+                    printf("Invalid choice. Returning to menu.\n");
+                    break;
+            }
+            break;
+
+            // Execute the radio volume function
+            registerHandler(RADIO_TUNING, (Handler)rtFunc);
+
+            // Notify the event
+            handlerEvent(RADIO_TUNING);
+            unregisterHandler(RADIO_TUNING, (Handler)rtFunc);
+
+            break;
+
+        case 2:
+            printf("Listening to events...\n");
+            // Implement event listening functionality if needed
+            printCurrentValues("RADIO_TUNING", ONE);
             break;
 
         default:
