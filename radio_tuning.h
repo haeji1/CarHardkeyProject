@@ -6,6 +6,6 @@ typedef void(*radioTuningFunction)(int frequency);
 void setRadioTuning(int frequency);
 void increaseRadioTuning(int increment);
 void decreaseRadioTuning(int decrement);
-void radioTuningControl(radioTuningFunction rtFunc, int frequency);
+void radioTuningControl(radioTuningFunction radioTuningFunc, int frequency);
 
 #endif 

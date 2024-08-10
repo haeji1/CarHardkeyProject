@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "radioVolume.h"
+#include "radio_volume.h"
 
 static int currentVolume = 50;  // initial volume setting
 
@@ -20,7 +20,7 @@ void decreaseRadioVolume(int decrement) {
     printf("Radio volume decreased to %d\n", currentVolume);
 }
 
-void radioVolumeControl(radioVolumeFunction vcFunc, int volume) {
-    vcFunc(volume);
+void radioVolumeControl(radioVolumeFunction radioVolumeFunc, int volume) {
+    radioVolumeFunc(volume);
     printf("Volume control executed.\n");
 }

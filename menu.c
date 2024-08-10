@@ -10,8 +10,8 @@
 #include "windshield.h"
 #include "hazard.h"
 #include "cruise.h"
-#include "radioVolume.h"
-#include "radioTuning.h"
+#include "radio_volume.h"
+#include "radio_tuning.h"
 #include "sunroof.h"
 #include "trunk.h"
 #include "fuel.h"
@@ -53,7 +53,7 @@
 void ignitionMenu() {
     int option, value;
     int values[MAX_NUM];
-    ignitionFunction igFunc;
+    ignitionFunction ignitionFunc;
 
     printf("IGNITION Menu:\n");
     printf("1. Write value to file\n");
@@ -78,15 +78,15 @@ void ignitionMenu() {
 
             // Set the ignition function
             if (value == 1) {
-                igFunc = onIgnition;
+                ignitionFunc = onIgnition;
                 ignitionStarted = value;
                 printf("IGNITION ON\n");
             }
 
             // Execute the ignition function
-            ignition(igFunc);
+            ignition(ignitionFunc);
 
-            registerHandler(IGNITION, igFunc);
+            registerHandler(IGNITION, ignitionFunc);
 
             // Notify the event
             handlerEvent(IGNITION);
@@ -109,9 +109,10 @@ void ignitionMenu() {
 
 void hornMenu() {
     int option, value;
-    hornControlFunction hc;
+    int values[MAX_NUM];
+    hornControlFunction hronFunc;
 
-    printf("Horn Menu:\n");
+    printf("HORN Menu:\n");
     printf("1. Activate horn\n");
     printf("2. Listen to event\n");
     printf("Enter your choice: ");
@@ -122,18 +123,21 @@ void hornMenu() {
 
     switch (option) {
         case 1:
+            values[0] = 1;
+            writeOrUpdateValueToFile("HORN", values, ONE);
             // Register the handler
-            hc = activateHorn;
-            registerHandler(HORN, hc);
+            hronFunc = activateHorn;
+            registerHandler(HORN, hronFunc);
             // Notify the event
             handlerEvent(HORN);
-            unregisterHandler(HORN, hc);
+
+            unregisterHandler(HORN, hronFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HORN");
+            printCurrentValues("HORN", ONE);
             break;
 
         default:
@@ -144,7 +148,8 @@ void hornMenu() {
 
 void headlightsMenu(){
     int option, value;
-    headlightsControlFunction hc;
+    int values[MAX_NUM];
+    headlightsControlFunction headlightsFunc;
 
     printf("HEADLIGHTS Menu:\n");
     printf("1. Write value to file\n");
@@ -159,34 +164,37 @@ void headlightsMenu(){
         case 1:
             printf("Enter headlights state (0=Off, 1=Low, 2=High): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-                printf("Invalid input. Enter 0 or 1.\n");
+                printf("Invalid input. Enter 0 or 1 or 2.\n");
                 return;
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("HEADLIGHTS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("HEADLIGHTS", values, ONE);
 
             // Set the headlights control function
             if (value == 0) {
-                hc = offHeadlights;
+                headlightsFunc = offHeadlights;
             } else if (value == 1) {
-                hc = lowHeadlights;
+                headlightsFunc = lowHeadlights;
             } else {
-                hc = highHeadlights;
+                headlightsFunc = highHeadlights;
             }
 
             // Execute the head lights function
-            headlightsControl(hc);
-            registerHandler(HEADLIGHTS, hc);
+            headlightsControl(headlightsFunc);
+            registerHandler(HEADLIGHTS, headlightsFunc);
+
             // Notify the event
             handlerEvent(HEADLIGHTS);
-            unregisterHandler(HEADLIGHTS, hc);
+
+            unregisterHandler(HEADLIGHTS, headlightsFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HAEDLIGHTS");
+            printCurrentValues("HEADLIGHTS", ONE);
             break;
 
         default:
@@ -198,7 +206,8 @@ void headlightsMenu(){
 
 void turnSignalsMenu(){
     int option, value;
-    turnSignalsControlFunction tc;
+    int values[MAX_NUM];
+    turnSignalsControlFunction turnSignalsFunc;
 
     printf("TURN_SIGNALS Menu:\n");
     printf("1. Write value to file\n");
@@ -218,28 +227,30 @@ void turnSignalsMenu(){
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("TURN_SIGNALS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("TURN_SIGNALS", values, ONE);
 
-            // Set the headlights control function
+            // Set the turn signals control function
             if (value == 0) {
-                tc = leftTurnSignal;
-                
+                turnSignalsFunc = leftTurnSignal;
             } else {
-                tc = rightTurnSignal;
+                turnSignalsFunc = rightTurnSignal;
             }
 
             // Execute the turn signals function
-            turnSignalsControl(tc);
-            registerHandler(TURN_SIGNALS, tc);
+            turnSignalsControl(turnSignalsFunc);
+            registerHandler(TURN_SIGNALS, turnSignalsFunc);
+
             // Notify the event
             handlerEvent(TURN_SIGNALS);
-            unregisterHandler(TURN_SIGNALS, tc);
+
+            unregisterHandler(TURN_SIGNALS, turnSignalsFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("TURN_SIGNALS");
+            printCurrentValues("TURN_SIGNALS", ONE);
             break;
 
         default:
@@ -251,7 +262,8 @@ void turnSignalsMenu(){
 
 void windshieldWipersMenu(){
     int option, value;
-    windshieldWipersControlFunction wc;
+    int values[MAX_NUM];
+    windshieldWipersControlFunction windshiledFunc;
 
     printf("WINDSHIELD_WIPERS Menu:\n");
     printf("1. Write value to file\n");
@@ -266,34 +278,37 @@ void windshieldWipersMenu(){
         case 1:
             printf("Enter windshield wipers state (0=Off, 1=Low, 2=High): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-                printf("Invalid input. Enter 0 or 1.\n");
+                printf("Invalid input. Enter 0 or 1 or 2.\n");
                 return;
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("WINDSHIELD_WIPERS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("WINDSHIELD_WIPERS", values, ONE);
 
             // Set the windshield wipers control function
             if (value == 0) {
-                wc = offWindshieldWipers;
+                windshiledFunc = offWindshieldWipers;
             } else if (value == 1) {
-                wc = lowWindshieldWipers;
+                windshiledFunc = lowWindshieldWipers;
             } else {
-                wc = highWindshieldWipers;
+                windshiledFunc = highWindshieldWipers;
             }
 
             // Execute the windshield wipers function
-            windshieldWipersControl(wc);
-            registerHandler(WINDSHIELD_WIPERS, wc);
+            windshieldWipersControl(windshiledFunc);
+            registerHandler(WINDSHIELD_WIPERS, windshiledFunc);
+
             // Notify the event
             handlerEvent(WINDSHIELD_WIPERS);
-            unregisterHandler(WINDSHIELD_WIPERS, wc);
+            
+            unregisterHandler(WINDSHIELD_WIPERS, windshiledFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("WINDSHIELD_WIPERS");
+            printCurrentValues("WINDSHIELD_WIPERS", ONE);
             break;
 
         default:
@@ -305,7 +320,8 @@ void windshieldWipersMenu(){
 
 void hazardLightsMenu(){
     int option, value;
-    hazardLightsControlFunction hc;
+    int values[MAX_NUM];
+    hazardLightsControlFunction hazardFunc;
 
     printf("HAZARD_LIGHTS Menu:\n");
     printf("1. Write value to file\n");
@@ -318,35 +334,37 @@ void hazardLightsMenu(){
 
     switch (option) {
         case 1:
-            printf("Enter turn signals state (0=Off, 1=On): ");
+            printf("Enter hazard Lights state (0=Off, 1=On): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1)) {
                 printf("Invalid input. Enter 0 or 1.\n");
                 return;
             }
 
             // Perform write operation to file if needed
-            // writeOrUpdateValueToFile("HAZARD_LIGHTS", value);
+            values[0] = value;
+            writeOrUpdateValueToFile("HAZARD_LIGHTS", values, ONE);
 
             // Set the hazard lights control function
             if (value == 0) {
-                hc = offHazardLights;
-                
+                hazardFunc = offHazardLights;
             } else {
-                hc = onHazardLights;
+                hazardFunc = onHazardLights;
             }
 
             // Execute the hazard lights control function
-            hazardLightsControl(hc);
-            registerHandler(HAZARD_LIGHTS, hc);
+            hazardLightsControl(hazardFunc);
+            registerHandler(HAZARD_LIGHTS, hazardFunc);
+
             // Notify the event
             handlerEvent(HAZARD_LIGHTS);
-            unregisterHandler(HAZARD_LIGHTS, hc);
+
+            unregisterHandler(HAZARD_LIGHTS, hazardFunc);
             break;
 
         case 2:
             printf("Listening to events...\n");
             // Implement event listening functionality if needed
-            // listenToEvents("HAZARD_LIGHTS");
+            printCurrentValues("HAZARD_LIGHTS", ONE);
             break;
 
         default:
@@ -430,7 +448,7 @@ void cruiseControlMenu() {
 void radioVolumeMenu(){
     int mainOption,subOption, value;
     int values[MAX_NUM];
-    radioVolumeFunction rvFunc;
+    radioVolumeFunction radioVolumeFunc;
 
     printf("RADIO_VOLUME Menu:\n");
     printf("1. Write value to file\n");
@@ -454,6 +472,8 @@ void radioVolumeMenu(){
                 return;
             }
 
+            int originVolume = getNumValues("RADIO_VOLUME", ONE);
+
             switch (subOption) {
                 case 1:
                     printf("Enter volume level (0-100): ");
@@ -461,8 +481,8 @@ void radioVolumeMenu(){
                         printf("Invalid input. Enter a value between 0 and 100.\n");
                         return;
                     }
-                    rvFunc = setRadioVolume;
-                    radioVolumeControl(rvFunc, value);
+                    radioVolumeFunc = setRadioVolume;
+                    radioVolumeControl(radioVolumeFunc, value);
                     values[0] = value;
                     writeOrUpdateValueToFile("RADIO_VOLUME", values, ONE);
                     break;
@@ -473,9 +493,13 @@ void radioVolumeMenu(){
                         printf("Invalid input. Enter a positive value.\n");
                         return;
                     }
-                    rvFunc = increaseRadioVolume;
-                    radioVolumeControl(rvFunc, value);
-                    values[0] = value;
+                    radioVolumeFunc = increaseRadioVolume;
+                    radioVolumeControl(radioVolumeFunc, value);
+                    if(originVolume + value <= 100){
+                        values[0] = originVolume + value;
+                    }else {
+                        values[0] = 100;
+                    }
                     writeOrUpdateValueToFile("RADIO_VOLUME", values, ONE);
                     break;
 
@@ -485,9 +509,13 @@ void radioVolumeMenu(){
                         printf("Invalid input. Enter a positive value.\n");
                         return;
                     }
-                    rvFunc = decreaseRadioVolume;
-                    radioVolumeControl(rvFunc, value);
-                    values[0] = value;
+                    radioVolumeFunc = decreaseRadioVolume;
+                    radioVolumeControl(radioVolumeFunc, value);
+                    if(originVolume - value >= 0){
+                        values[0] = originVolume - value;
+                    } else {
+                        values[0] = 0;
+                    }
                     writeOrUpdateValueToFile("RADIO_VOLUME", values, ONE);
                     break;
 
@@ -498,11 +526,11 @@ void radioVolumeMenu(){
             break;
 
             // Execute the radio volume function
-            registerHandler(RADIO_VOLUME, (Handler)rvFunc);
+            registerHandler(RADIO_VOLUME, (Handler)radioVolumeFunc);
 
             // Notify the event
             handlerEvent(RADIO_VOLUME);
-            unregisterHandler(RADIO_VOLUME, (Handler)rvFunc);
+            unregisterHandler(RADIO_VOLUME, (Handler)radioVolumeFunc);
 
             break;
 
@@ -521,7 +549,7 @@ void radioVolumeMenu(){
 void radioTuningMenu(){
     int mainOption,subOption, value;
     int values[MAX_NUM];
-    radioTuningFunction rtFunc;
+    radioTuningFunction radioTuningFunc;
 
     printf("RADIO_TUNING Menu:\n");
     printf("1. Write value to file\n");
@@ -535,7 +563,7 @@ void radioTuningMenu(){
     switch (mainOption) {
         case 1:
             // Suboption for frequency setting
-            printf("Radio freqency Settings:\n");
+            printf("Frequency Settings:\n");
             printf("1. Set specific frequency\n");
             printf("2. Increase frequency\n");
             printf("3. Decrease frequency\n");
@@ -554,8 +582,8 @@ void radioTuningMenu(){
                         printf("Invalid input. Enter a value between 3 and 1605.\n");
                         return;
                     }
-                    rtFunc = setRadioTuning;
-                    radioTuningControl(rtFunc, value);
+                    radioTuningFunc = setRadioTuning;
+                    radioTuningControl(radioTuningFunc, value);
                     values[0] = value;
                     writeOrUpdateValueToFile("RADIO_TUNING", values, ONE);
                     break;
@@ -566,8 +594,8 @@ void radioTuningMenu(){
                         printf("Invalid input. Enter a positive value.\n");
                         return;
                     }
-                    rtFunc = increaseRadioTuning;
-                    radioTuningControl(rtFunc, value);
+                    radioTuningFunc = increaseRadioTuning;
+                    radioTuningControl(radioTuningFunc, value);
                     if(originFrequency + value <= 1605){
                         values[0] = originFrequency + value;
                     }else{
@@ -582,9 +610,8 @@ void radioTuningMenu(){
                         printf("Invalid input. Enter a positive value.\n");
                         return;
                     }
-                    rtFunc = decreaseRadioTuning;
-                    radioTuningControl(rtFunc, value);
-                    //int originFrequency = getNumValues("RADIO_TUNING", ONE);
+                    radioTuningFunc = decreaseRadioTuning;
+                    radioTuningControl(radioTuningFunc, value);
                     if(originFrequency - value >= 3) {
                         values[0] = originFrequency - value;
                     } else{
@@ -600,11 +627,11 @@ void radioTuningMenu(){
             break;
 
             // Execute the radio volume function
-            registerHandler(RADIO_TUNING, (Handler)rtFunc);
+            registerHandler(RADIO_TUNING, (Handler)radioTuningFunc);
 
             // Notify the event
             handlerEvent(RADIO_TUNING);
-            unregisterHandler(RADIO_TUNING, (Handler)rtFunc);
+            unregisterHandler(RADIO_TUNING, (Handler)radioTuningFunc);
 
             break;
 
