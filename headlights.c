@@ -8,8 +8,6 @@
 
 */
 
-typedef void(*headlightsControlFunction)();
-
 void offHeadlights(){
     printf("Headlights turned OFF.\n");
 }

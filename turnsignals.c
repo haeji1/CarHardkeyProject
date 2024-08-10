@@ -4,10 +4,7 @@
 /*
     0 : left
     1 : right
-
 */
-
-typedef void(*turnSignalsControlFunction)();
 
 void leftTurnSignal(){
     printf("Turn signal turned LEFT.\n");

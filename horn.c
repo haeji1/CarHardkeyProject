@@ -5,8 +5,6 @@
     1 : Actvation Signal
 */
 
-typedef void(*hornControlFunction)();
-
 void activateHorn() {
     printf("Horn sounds!\n");
 }

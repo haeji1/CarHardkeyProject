@@ -5,12 +5,6 @@
     1 : on
 */
 
-typedef void(*ignitionFunction)();
-
-// void offIgnition() {
-//     printf("Engine turned OFF\n");
-// }
-
 void onIgnition() {
     printf("Engine starts with ignition!\n");
 }

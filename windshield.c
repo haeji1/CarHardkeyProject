@@ -5,10 +5,7 @@
     0 : off
     1 : low
     2 : high
-
 */
-
-typedef void(*windshieldWipersControlFunction)();
 
 void offWindshieldWipers(){
     printf("Windshield wipers turned OFF.\n");
