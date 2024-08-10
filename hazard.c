@@ -4,10 +4,7 @@
 /*
     0 : off
     1 : on
-
 */
-
-typedef void(*hazardLightsControlFunction)();
 
 void offHazardLights(){
     printf("Hazard lighs turned OFF.\n");

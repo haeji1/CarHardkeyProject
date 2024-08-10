@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "radioTuning.h"
+#include "radio_tuning.h"
 
 static int currentFrequency = 1010;  // initial frequency setting
 
@@ -20,7 +20,7 @@ void decreaseRadioTuning(int decrement) {
     printf("Radio frequency decreased to %d\n", currentFrequency);
 }
 
-void radioTuningControl(radioTuningFunction rtFunc, int frequency) {
-    rtFunc(frequency);
+void radioTuningControl(radioTuningFunction radioTuningFunc, int frequency) {
+    radioTuningFunc(frequency);
     printf("Frequency tuning executed.\n");
 }

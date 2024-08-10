@@ -6,6 +6,6 @@ typedef void(*radioVolumeFunction)(int volume);
 void setRadioVolume(int volume);
 void increaseRadioVolume(int increment);
 void decreaseRadioVolume(int decrement);
-void radioVolumeControl(radioVolumeFunction rcFunc, int volume);
+void radioVolumeControl(radioVolumeFunction radioVolumeFunc, int volume);
 
 #endif 
