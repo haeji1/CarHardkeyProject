@@ -1300,7 +1300,7 @@ void sunroofMenu() {
         case 1:
             printf("Enter sunroof state (0=Open, 1=Close, 2=Tilt): ");
             if (scanf("%d", &value) != 1 || (value != 0 && value != 1 && value != 2)) {
-                printf("Invalid input. Enter 0 or 1.\n");
+                printf("Invalid input. Enter 0 or 1 or 2.\n");
                 return;
             }
 
