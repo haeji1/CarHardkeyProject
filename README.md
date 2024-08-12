@@ -1,5 +1,33 @@
-# CarHardkeyProject
+# 💻 CarHardkeyProject
+## Language
+![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=orange)
+![CLion](https://img.shields.io/badge/CLion-black?style=for-the-badge&logo=clion&logoColor=green)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+## Introduction
+- This project is a program that simulates the vehicle's internal control system.
+
+## Features
+
+- 
+
+## Usage
+Mingw version that we used.
+```
+& MinGw gcc version 9.2.0 (MinGW.org GCC Build-2)
+& vim README.md
+```
+## Execution
 For, execution of program
 ```
-mingw32-make all
+& mingw-make all
 ```
+
+## Reference
+https://github.com/ninhnv/C-programming/blob/main/Exercise_project.md
+
+## Contact
+- GitHub: yourusername 
+- Email: yourname@example.com
+## 💻...
+- <a href = "https://https://github.com/KMSEOK"><img alt="GitHub" src ="https://img.shields.io/badge/GitHub-181717.svg?&style=for-the-badge&logo=GitHub&logoColor=white"/>
+- <a href = "https://www.notion.so/67135130399a4bd1ae17eb9c809df56f?v=f376d6adec164253afb195ac665a6921"> <img alt="Notion" src ="https://img.shields.io/badge/Notion-4A154B.svg?&style=for-the-badge&logo=Notion&logoColor=white"/></a>
