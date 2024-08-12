@@ -68,6 +68,8 @@ CommandInfo commands[] = {
 
 #define NUM_COMMANDS (sizeof(commands) / sizeof(commands[0]))  // 명령어 배열의 총 개수
 
+// 파일에서 명령어와 값을 읽어오는 함수
+
 int readValuesFromFile(const char *command, int *values, int max_values) {
     FILE *file = fopen(INPUT_FILE, "r");
     if (file == NULL) {
@@ -113,6 +115,7 @@ int readValuesFromFile(const char *command, int *values, int max_values) {
     fclose(file);
     return num_read_values;
 }
+
 // 파일에 명령어와 값을 작성 또는 업데이트하는 함수
 void writeOrUpdateValueToFile(const char *command, int *values, int num_values) {
     FILE *file = fopen(INPUT_FILE, "r");
@@ -196,6 +199,19 @@ void printCurrentValues(const char *command, int num_values) {
     } else {
         printf("No values found for '%s'.\n", command);
     }
+}
+
+// 파일에서 명령어의 idx 번 값을 출력하는 함수
+int getNumValues(const char *command, int num_values) {
+    int current_values[MAX_VALUES];
+    int num_read_values = readValuesFromFile(command, current_values, num_values);
+    if (num_read_values > 0) {
+        return (int)current_values[num_values-1];
+    } else {
+        printf("No values found for '%s'.\n", command);
+    }
+
+    return 0;
 }
 
 // 명령어 값을 업데이트하는 함수
