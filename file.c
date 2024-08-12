@@ -195,7 +195,7 @@ void printCurrentValues(const char *command, int num_values) {
         }
         printf("\n");
     } else {
-        printf("No values found for '%s'.\n", command);
+        printf("\n");
     }
 }
 
@@ -206,7 +206,7 @@ int getNumValues(const char *command, int num_values) {
     if (num_read_values > 0) {
         return (int)current_values[num_values-1];
     } else {
-        printf("No values found for '%s'.\n", command);
+        printf("\n");
     }
 
     return 0;
