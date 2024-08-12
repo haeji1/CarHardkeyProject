@@ -68,7 +68,6 @@ CommandInfo commands[] = {
 
 #define NUM_COMMANDS (sizeof(commands) / sizeof(commands[0]))  // 명령어 배열의 총 개수
 
-// 파일에서 명령어와 값을 읽어오는 함수
 int readValuesFromFile(const char *command, int *values, int max_values) {
     FILE *file = fopen(INPUT_FILE, "r");
     if (file == NULL) {
@@ -84,13 +83,26 @@ int readValuesFromFile(const char *command, int *values, int max_values) {
     while (fgets(line, sizeof(line), file)) {
         line[strcspn(line, "\n")] = 0;  // 줄 끝의 개행 문자 제거
 
-        if (found_command && isdigit(line[0])) {
-            values[num_read_values] = atoi(line);  // 문자열을 정수로 변환
-            num_read_values++;
+        // 명령어를 찾았고 현재 줄이 숫자로 시작하면
+        if (found_command) {
+            char *endptr;
+            long value = strtol(line, &endptr, 10);  // 문자열을 정수로 변환
+
+            if (*endptr == '\0') {  // 변환이 성공했는지 확인
+                if (num_read_values < max_values) {
+                    values[num_read_values] = (int)value;
+                    num_read_values++;
+                }
+            } else {
+                // 문자열 변환 실패 또는 숫자가 아닌 문자가 포함된 경우
+                fprintf(stderr, "Invalid number format: %s\n", line);
+            }
+
             if (num_read_values >= max_values) {
                 break;  // 최대 값 개수에 도달하면 종료
             }
         }
+
         if (strcmp(line, command) == 0) {
             found_command = 1;  // 명령어 찾음
         } else if (!isdigit(line[0])) {
@@ -101,7 +113,6 @@ int readValuesFromFile(const char *command, int *values, int max_values) {
     fclose(file);
     return num_read_values;
 }
-
 // 파일에 명령어와 값을 작성 또는 업데이트하는 함수
 void writeOrUpdateValueToFile(const char *command, int *values, int num_values) {
     FILE *file = fopen(INPUT_FILE, "r");
@@ -185,19 +196,6 @@ void printCurrentValues(const char *command, int num_values) {
     } else {
         printf("No values found for '%s'.\n", command);
     }
-}
-
-// 파일에서 명령어의 idx 번 값을 출력하는 함수
-int getNumValues(const char *command, int num_values) {
-    int current_values[MAX_VALUES];
-    int num_read_values = readValuesFromFile(command, current_values, num_values);
-    if (num_read_values > 0) {
-        return (int)current_values[num_values-1];
-    } else {
-        printf("No values found for '%s'.\n", command);
-    }
-
-    return 0;
 }
 
 // 명령어 값을 업데이트하는 함수
