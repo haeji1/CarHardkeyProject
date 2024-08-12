@@ -84,9 +84,21 @@ int readValuesFromFile(const char *command, int *values, int max_values) {
     while (fgets(line, sizeof(line), file)) {
         line[strcspn(line, "\n")] = 0;  // 줄 끝의 개행 문자 제거
 
-        if (found_command && isdigit(line[0])) {
-            values[num_read_values] = atoi(line);  // 문자열을 정수로 변환
-            num_read_values++;
+        // 명령어를 찾았고 현재 줄이 숫자로 시작하면
+        if (found_command) {
+            char *endptr;
+            long value = strtol(line, &endptr, 10);  // 문자열을 정수로 변환
+
+            if (*endptr == '\0') {  // 변환이 성공했는지 확인
+                if (num_read_values < max_values) {
+                    values[num_read_values] = (int)value;
+                    num_read_values++;
+                }
+            } else {
+                // 문자열 변환 실패 또는 숫자가 아닌 문자가 포함된 경우
+                fprintf(stderr, "Invalid number format: %s\n", line);
+            }
+
             if (num_read_values >= max_values) {
                 break;  // 최대 값 개수에 도달하면 종료
             }
