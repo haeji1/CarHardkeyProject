@@ -5,7 +5,7 @@ CC = gcc
 TARGET = main.exe
 
 # Source files
-SRCS = domain/main.c observer/observer.c domain/ignition.c domain/horn.c domain/headlights.c domain/turnsignals.c \
+SRCS = main.c observer/observer.c domain/ignition.c domain/horn.c domain/headlights.c domain/turnsignals.c \
        domain/windshield.c domain/hazard.c domain/cruise.c domain/radio_volume.c domain/radio_tuning.c \
        domain/display.c domain/trunk.c domain/steering.c domain/sunroof.c domain/traction.c domain/pbrake.c \
        domain/menu.c domain/interior.c domain/drive.c domain/fuel.c domain/hseat.c domain/cseat.c \
