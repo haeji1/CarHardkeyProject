@@ -1,6 +1,8 @@
 IGNITION
-4
+1
    // Updated values
+   // Updated values
+
 
 
 HORN
@@ -97,8 +99,10 @@ SEAT_ADJUST
 1   // Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar)
 3   // Adjustment value
 SUNROOF_CONTROL
-2
+1
    // Updated values
+   // Updated values
+
    // Updated values
 
    // Updated values
