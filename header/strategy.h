@@ -1,6 +1,6 @@
 #ifndef STRATEGY_H
 #define STRATEGY_H
-#include "menu.h"
+#include "menu.c"
 typedef enum {
     OFF,
     ON

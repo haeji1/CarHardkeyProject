@@ -69,7 +69,6 @@ CommandInfo commands[] = {
 #define NUM_COMMANDS (sizeof(commands) / sizeof(commands[0]))  // 명령어 배열의 총 개수
 
 // 파일에서 명령어와 값을 읽어오는 함수
-
 int readValuesFromFile(const char *command, int *values, int max_values) {
     FILE *file = fopen(INPUT_FILE, "r");
     if (file == NULL) {
@@ -104,7 +103,6 @@ int readValuesFromFile(const char *command, int *values, int max_values) {
                 break;  // 최대 값 개수에 도달하면 종료
             }
         }
-
         if (strcmp(line, command) == 0) {
             found_command = 1;  // 명령어 찾음
         } else if (!isdigit(line[0])) {
@@ -197,7 +195,7 @@ void printCurrentValues(const char *command, int num_values) {
         }
         printf("\n");
     } else {
-        printf("No values found for '%s'.\n", command);
+        printf("\n");
     }
 }
 
@@ -208,7 +206,7 @@ int getNumValues(const char *command, int num_values) {
     if (num_read_values > 0) {
         return (int)current_values[num_values-1];
     } else {
-        printf("No values found for '%s'.\n", command);
+        printf("\n");
     }
 
     return 0;
