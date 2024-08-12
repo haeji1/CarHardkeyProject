@@ -2279,16 +2279,16 @@ void emergencyBrakeMenu(){
 
 
 
-#include "lock_strategy.c"
-#include "rear_defrost_strategy.c"
-#include "MUTE_BUTTON.c"
-#include "VOICE_COMMAND.c"
-#include "NAVIGATION.c"
-#include "Lane_Support.c"
-#include "ParkingAssistance.c"
+#include "child_lock.c"
+#include "rear_defrost.c"
+#include "mute_button.c"
+#include "voice_command.c"
+#include "navigation.c"
+#include "lane_support.c"
+#include "parking_assistance.c"
 #include "end_call.c"
 #include "answer_call.c"
-#include "HILL_DESCENT.c"
+#include "hill_descent.c"
 
 
 void MUTE_BUTTON_MENU(){
