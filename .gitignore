@@ -1,0 +1,105 @@
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+### VisualStudioCode ###
+.vscode/*
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### IntelliJ IDEA ###
+# IntelliJ IDEA project files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Gradle project files (if using Gradle)
+.gradle/
+build/
+
+# User-specific files
+.idea/.idea.*
+.idea/.name
+.idea/modules.xml
+.idea/workspace.xml
+.idea/misc.xml
+
+# Project-specific directories
+.idea/gradle.xml
+.idea/gradle/
+.idea/libraries/
+.idea/jdkTable.xml
+.idea/shelf/
+.idea/.editorconfig
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Other files
+.DS_Store
+*.swp
+*.swo
+
+# Initial value file
+hardkey_event
