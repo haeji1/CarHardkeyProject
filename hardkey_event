@@ -64,8 +64,18 @@ STEERING_ADJUST
 INTERIOR_LIGHT
 0
 REAR_DEFROST
-1
+0
+   // Updated values
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
+   // Updated values
+
 CHILD_LOCK
+
 0   // Lock state (0 = Disengage, 1 = Engage)
 MUTE_BUTTON
 1   // Activation signal

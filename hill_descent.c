@@ -60,3 +60,4 @@ void handleHillDescentCommand() {
         while (getchar() != '\n');
     }
 }
+ 

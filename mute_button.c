@@ -6,12 +6,12 @@ static AudioState currentAudioState = UNMUTED;
 
 // 실제 구현 함수
 void toggleMuteImpl() {
-        currentAudioState = MUTED;
-        printf("Audio system is muted.\n");
-        int values[]={1};
-        writeOrUpdateValueToFile("MUTE_BUTTON", values, 1);
-        sleep(3);
-    }
+    currentAudioState = MUTED;
+    printf("Audio system is muted.\n");
+    int values[]={1};
+    writeOrUpdateValueToFile("MUTE_BUTTON", values, 1);
+    sleep(3);
+}
 
 
 AudioState getAudioStateImpl() {
