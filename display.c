@@ -1,23 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "display.h"
-#include "observer.h"
-#include "horn.h"
-#include "sunroof.h"
-#include "drive.h"
-#include "steering.h"
-#include "traction.h"
-#include "menu.h"
-#include "headlights.h"
-#include "turnsignals.h"
-#include "windshield.h"
-#include "hazard.h"
-#include "cruise.h"
-#include "radio.h"
-#include "RadioSource.h"
-#include "auto_hold.h"
-
 void displayMenu() {
     printf("****************************************\n");
     printf("\n        Available features:\n");
