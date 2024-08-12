@@ -29,11 +29,7 @@
 #include "hud_Adjust.h"
 #include "glove_box_release.h"
 #include "emergency_brake.h"
-#include "file.c"
 
-
-// void initializeFeatureHandlers();
-// void cleanupFeatureHandlers();
 
 int main() {
     char input[10];

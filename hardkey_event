@@ -1,11 +1,7 @@
 IGNITION
 4
-   // Updated values
-
-
 HORN
 3
-   // Updated values
 HEADLIGHTS
 2   // Headlight state (0 = Off, 1 = Low, 2 = High)
 TURN_SIGNALS
@@ -23,181 +19,61 @@ RADIO_VOLUME
 1010    // Radio station frequency
 RADIO_SOURCE
 1
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
 CLIMATE_TEMP
-40
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
+40   // Updated
 CLIMATE_FAN
 5
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-
-   // Updated values
-
 CLIMATE_AIRFLOW
 2
-   // Updated values
-   // Updated values
-
-
 DEFROST
 0
-   // Updated values
-   // Updated values
-
-
 POWER_WINDOWS
 1
 1
-   // Updated values
-   // Updated values
-
 WINDOW_LOCK
-
 0
-   // Updated values
-   // Updated values
-
 DOOR_LOCKS
 1   // Lock state (0 = Unlock, 1 = Lock)
 MIRROR_ADJUST
 1
 2
-   // Updated values
 SEAT_ADJUST
 0   // Seat identifier (0 = Driver, 1 = Passenger)
 1   // Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar)
 3   // Adjustment value
 SUNROOF_CONTROL
 2
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
 TRUNK_RELEASE
 1
-   // Updated values
-
 FUEL_CAP_RELEASE
 1
-   // Updated values
-
 PARKING_BRAKE
 0
-   // Updated values
-
 DRIVE_MODE
 1
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
 TRACTION_CONTROL
 0
-   // Updated values
-   // Updated values
-
-
 HEATED_SEATS
 1
 3
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
 COOLED_SEATS
 1
 3
-   // Updated values
-   // Updated values
-
-
 STEERING_ADJUST
 3
-   // Updated values
-
-   // Updated values
-
 INTERIOR_LIGHT
 0
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-
 REAR_DEFROST
-
-1   // Defrost state (0 = Off, 1 = On)
+1
 CHILD_LOCK
 0   // Lock state (0 = Disengage, 1 = Engage)
 MUTE_BUTTON
 1   // Activation signal
 VOICE_COMMAND
-1   // Activation signal
+1
+   // Updated values
 PHONE_ANSWER
+
 1   // Activation signal
 PHONE_END_CALL
 1   // Activation signal
@@ -233,53 +109,5 @@ SEAT_COOLER
 HEATED_SEAT
 1
 3
-   // Updated values
-   // Updated values
-
 TRACTION_CONTROL
 0
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-

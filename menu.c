@@ -36,7 +36,7 @@
 #include "hud_Adjust.h"
 #include "glove_box_release.h"
 #include "emergency_brake.h"
-
+#include "file.c"
 
 #define MAX_NUM 5
 #define ONE 1
@@ -1733,16 +1733,16 @@ void emergencyBrakeMenu(){
 
 
 
-#include "lock_strategy.c"
-#include "rear_defrost_strategy.c"
-#include "MUTE_BUTTON.c"
-#include "VOICE_COMMAND.c"
-#include "NAVIGATION.c"
-#include "Lane_Support.c"
-#include "ParkingAssistance.c"
+#include "child_lock.c"
+#include "rear_defrost.c"
+#include "mute_button.c"
+#include "voice_commend.c"
+#include "navigation.c"
+#include "lane_Support.c"
+#include "parkingAssistance.c"
 #include "end_call.c"
 #include "answer_call.c"
-#include "HILL_DESCENT.c"
+#include "hill_descent.c"
 
 
 void MUTE_BUTTON_MENU(){
