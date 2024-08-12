@@ -35,11 +35,11 @@ void handleDefrostCommand() {
             continue;
         }
         // 명령 처리
-        if (strcmp(input, "ON") == 0) {
+        if (strcmp(input, "1") == 0) {
             int values[]={1};
             activateDefrost();
             writeOrUpdateValueToFile("REAR_DEFROST", values, 1);  // 배열의 주소를 전달
-        } else if (strcmp(input, "OFF") == 0) {
+        } else if (strcmp(input, "2") == 0) {
             deactivateDefrost();
             int values[]={0};
             writeOrUpdateValueToFile("REAR_DEFROST", values, 1);  // 배열의 주소를 전달
