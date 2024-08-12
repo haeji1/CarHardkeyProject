@@ -1,11 +1,7 @@
 IGNITION
-4
-   // Updated values
-
-
+1   // Ignition state (1 = On)
 HORN
-3
-   // Updated values
+1   // Activation signal
 HEADLIGHTS
 2   // Headlight state (0 = Off, 1 = Low, 2 = High)
 TURN_SIGNALS
@@ -18,178 +14,56 @@ CRUISE_CONTROL
 1   // Cruise control state (1 = On)
 60  // Speed setting
 RADIO_VOLUME
-3
-   // Updated valuesRADIO_TUNING
+50  // Volume level (0-100)
+RADIO_TUNING
 1010    // Radio station frequency
 RADIO_SOURCE
-1
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
+1   // Source type (0 = AM, 1 = FM, 2 = Bluetooth, etc.)
 CLIMATE_TEMP
-40
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
+22  // Desired temperature
 CLIMATE_FAN
-5
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-
-   // Updated values
-
+3   // Fan speed level (0-5)
 CLIMATE_AIRFLOW
-2
-   // Updated values
-   // Updated values
-
-
+2   // Airflow direction (0 = Face, 1 = Feet, 2 = Defrost, etc.)
 DEFROST
-0
-   // Updated values
-   // Updated values
-
-
+1   // Defrost state (0 = Off, 1 = On)
 POWER_WINDOWS
-1
-1
-   // Updated values
-   // Updated values
-
+0   // Window identifier (0 = FrontLeft, 1 = FrontRight, 2 = RearLeft, 3 = RearRight)
+1   // Action (0 = Up, 1 = Down)
 WINDOW_LOCK
-
-0
-   // Updated values
-   // Updated values
-
+0   // Lock state (0 = Unlock, 1 = Lock)
 DOOR_LOCKS
 1   // Lock state (0 = Unlock, 1 = Lock)
 MIRROR_ADJUST
-1
-2
-   // Updated values
+0   // Mirror identifier (0 = Left, 1 = Right)
+1   // Adjustment direction (0 = Up, 1 = Down, 2 = Left, 3 = Right)
 SEAT_ADJUST
 0   // Seat identifier (0 = Driver, 1 = Passenger)
 1   // Adjustment type (0 = Position, 1 = Recline, 2 = Lumbar)
 3   // Adjustment value
 SUNROOF_CONTROL
-2
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
+1   // Action (0 = Open, 1 = Close, 2 = Tilt)
 TRUNK_RELEASE
-1
-   // Updated values
-
+1   // Activation signal
 FUEL_CAP_RELEASE
-1
-   // Updated values
-
+1   // Activation signal
 PARKING_BRAKE
-0
-   // Updated values
-
+1   // Brake state (0 = Disengage, 1 = Engage)
 DRIVE_MODE
-1
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
+2   // Drive mode (0 = Eco, 1 = Sport, 2 = Normal)
 TRACTION_CONTROL
-0
-   // Updated values
-   // Updated values
-
-
+1   // Control state (0 = Off, 1 = On)
 HEATED_SEATS
-1
-3
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
+0   // Seat identifier (0 = Driver, 1 = Passenger)
+2   // Heat level (0-3)
 COOLED_SEATS
-1
-3
-   // Updated values
-   // Updated values
-
-
+1   // Seat identifier (0 = Driver, 1 = Passenger)
+3   // Cooling level (0-3)
 STEERING_ADJUST
-3
-   // Updated values
-
-   // Updated values
-
+1   // Adjustment direction (0 = Up, 1 = Down, 2 = In, 3 = Out)
 INTERIOR_LIGHT
-0
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-
+1   // Light state (0 = Off, 1 = On)
 REAR_DEFROST
-
 1   // Defrost state (0 = Off, 1 = On)
 CHILD_LOCK
 0   // Lock state (0 = Disengage, 1 = Engage)
@@ -230,56 +104,3 @@ SEAT_HEATER
 SEAT_COOLER
 1   // Seat identifier (0 = Driver, 1 = Passenger)
 2   // Cooling level (0-3)
-HEATED_SEAT
-1
-3
-   // Updated values
-   // Updated values
-
-TRACTION_CONTROL
-0
-   // Updated values
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-
-   // Updated values
-

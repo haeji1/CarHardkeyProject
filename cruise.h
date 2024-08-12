@@ -8,14 +8,13 @@ typedef struct {
 
 typedef void(*cruiseControlFunction)(CruiseControlState*);
 
-
 void activateCruiseControl(CruiseControlState *cs);
 void deactivateCruiseControl(CruiseControlState *cs);
 void adjustCruiseControlSpeed(CruiseControlState *cs);
 
 void setCruiseControlState(CruiseControlState *cs, int state);
-void setCruiseControlSpeed(CruiseControlState *cs, int speed);
+int setCruiseControlSpeed(CruiseControlState *cs);
 
-void cruiseControlAction(cruiseControlFunction cc);
+void cruiseControlAction(cruiseControlFunction cruiseFunc);
 
 #endif

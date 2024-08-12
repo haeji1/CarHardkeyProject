@@ -377,7 +377,7 @@ void hazardLightsMenu(){
 void cruiseControlMenu() {
     int option, state, speed;
     int values[MAX_NUM];
-    cruiseControlFunction cc;
+    cruiseControlFunction cruiseFunc;
     CruiseControlState cruiseControlState;
 
     printf("CRUISE_CONTROL Menu:\n");
@@ -397,40 +397,39 @@ void cruiseControlMenu() {
                 return;
             }
 
-            printf("Enter speed in cruise control (30-150): ");
-            if (scanf("%d", &speed) != 1 || (speed < 30 || speed > 150)) {
-                printf("Invalid input. Enter a value between 30 and 150.\n");
-                return;
-            }
-
-            // Set the cruise control status
-            cruiseControlState.cruiseState = state;
-            //speed = getNumValues("CRUISE_CONTROL", TWO);
-            cruiseControlState.speed = speed;
-
-            values[0] = state;
-            values[1] = speed;
-            writeOrUpdateValueToFile("CRUISE_CONTROL", values, TWO);
-            
             //Set the cruise control function
             if (state == 0) {
-                cc = deactivateCruiseControl;
+                cruiseControlState.cruiseState = state;
+                cruiseControlState.speed = 60;
+                values[0] = state;
+                values[1] = 60;
+                writeOrUpdateValueToFile("CRUISE_CONTROL", values, TWO);
+
+                cruiseFunc = deactivateCruiseControl;
+
             } else {
-                cc = activateCruiseControl;
-                //adjustCruiseControlSpeed(cc);
-                //cc = setCruiseControlSpeed;
+                // Set the cruise control status
+                cruiseControlState.cruiseState = state;
+                cruiseControlState.speed = speed;
+       
+                values[0] = state;
+                values[1] = speed;
+                writeOrUpdateValueToFile("CRUISE_CONTROL", values, TWO);
+            
+                cruiseFunc = activateCruiseControl;
+
             }
 
-            //CruiseControlState cs = cruiseControlAction(cc, &cruiseControlState);
-            
+            cruiseControlAction(cruiseFunc);
+
             // register handler
-            registerHandler(CRUISE_CONTROL, (Handler)cc);
+            registerHandler(CRUISE_CONTROL, (Handler)cruiseFunc);
 
             // Notify the event
             handlerEvent(CRUISE_CONTROL);
 
             // Unregister the handler
-            unregisterHandler(CRUISE_CONTROL, (Handler)cc);
+            unregisterHandler(CRUISE_CONTROL, (Handler)cruiseFunc);
             break;
 
         case 2:
@@ -473,6 +472,7 @@ void radioVolumeMenu(){
             }
 
             int originVolume = getNumValues("RADIO_VOLUME", ONE);
+            printf("== origin : %d\n", originVolume);
 
             switch (subOption) {
                 case 1:
