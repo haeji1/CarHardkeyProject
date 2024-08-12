@@ -21,7 +21,7 @@
 Mingw version that we used.
 ```
 & MinGw gcc version 9.2.0 (MinGW.org GCC Build-2)
-& vim README.md
+& vmd README.md
 ```
 ## Execution
 For, execution of program
