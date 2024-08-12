@@ -6,6 +6,7 @@ typedef void(*driveModeControlFunction)();
 void ecoMode();
 void sportsMode();
 void normalMode();
+void changeSunroof();
 void driveModeControl(driveModeControlFunction);
 
 #endif

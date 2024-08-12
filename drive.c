@@ -23,6 +23,10 @@ void normalMode() {
     printf("Change to normal mode\n");
 }
 
+void changeSunroofControl() {
+    printf("Change sunroof control\n");
+}
+
 void driveModeControl(driveModeControlFunction dc) {
      printf("status changed by function\n");
 }

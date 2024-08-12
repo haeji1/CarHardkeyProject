@@ -1285,6 +1285,7 @@ void sunroofMenu() {
     int option, value;
     int values[MAX_NUM];
     sunroofControlFunction sc;
+    driveModeControlFunction dc;
 
     printf("SUNROOF Menu:\n");
     printf("1. Write value to file\n");
@@ -1320,9 +1321,15 @@ void sunroofMenu() {
             printf("****************************\n");
             sunroofControl(sc);
             registerHandler(SUNROOF_CONTROL, sc);
+
+            // dc = changeSunroof;
+            // event listner about drive mode
+            registerHandler(DRIVE_MODE, dc);
             // Notify the event
-            handlerEvent(SUNROOF_CONTROL);
+            // handlerEvent(SUNROOF_CONTROL);
+
             unregisterHandler(SUNROOF_CONTROL, sc);
+            unregisterHandler(DRIVE_MODE, dc);
             printf("****************************\n");
             break;
 
