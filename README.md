@@ -6,9 +6,16 @@
 ## Introduction
 - This project is a program that simulates the vehicle's internal control system.
 
-## Features
+## Features <sub>[HardKey Features](https://github.com/KangInyeong/CarHardkeyProject/blob/dev/hardkey_event)</sub>
 
-- 
+
+- Ignition (1 = On)
+- Horn (ON/OFF)
+- Headlights (0 = Off, 1 = Low, 2 = High)
+- ...
+- ...
+- Seat Heater (0 = Driver, 1 = Passenger) Heat level (0-3)
+- Seat Cooler (0 = Driver, 1 = Passenger) Cooling level (0-3)
 
 ## Usage
 Mingw version that we used.
@@ -26,8 +33,8 @@ For, execution of program
 https://github.com/ninhnv/C-programming/blob/main/Exercise_project.md
 
 ## Contact
-- GitHub: yourusername 
-- Email: yourname@example.com
+- GitHub : KMSEOK 
+- Email : alstjr133@naver.com
 ## 💻...
 - <a href = "https://https://github.com/KMSEOK"><img alt="GitHub" src ="https://img.shields.io/badge/GitHub-181717.svg?&style=for-the-badge&logo=GitHub&logoColor=white"/>
 - <a href = "https://www.notion.so/67135130399a4bd1ae17eb9c809df56f?v=f376d6adec164253afb195ac665a6921"> <img alt="Notion" src ="https://img.shields.io/badge/Notion-4A154B.svg?&style=for-the-badge&logo=Notion&logoColor=white"/></a>
