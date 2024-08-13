@@ -53,12 +53,14 @@
 #include "glove_box_release.h"
 #include "emergency_brake.h"
 #include "file.c"
+#include "display.h"
 
 
 #define MAX_NUM 5
 #define ONE 1
 #define TWO 2
 
+int needHardkeyOption = 1;
 
 void ignitionMenu() {
     int option, value;
@@ -122,14 +124,9 @@ void hornMenu() {
     int values[MAX_NUM];
     hornControlFunction hronFunc;
 
-    printf("HORN Menu:\n");
-    printf("1. Activate horn\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(HORN);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -161,14 +158,9 @@ void headlightsMenu(){
     int values[MAX_NUM];
     headlightsControlFunction headlightsFunc;
 
-    printf("HEADLIGHTS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(HEADLIGHTS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -210,7 +202,7 @@ void headlightsMenu(){
         default:
             printf("Invalid choice. Returning to menu.\n");
             break;
-    }
+    }   
 
 }
 
@@ -219,14 +211,9 @@ void turnSignalsMenu(){
     int values[MAX_NUM];
     turnSignalsControlFunction turnSignalsFunc;
 
-    printf("TURN_SIGNALS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(TURN_SIGNALS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -275,14 +262,9 @@ void windshieldWipersMenu(){
     int values[MAX_NUM];
     windshieldWipersControlFunction windshiledFunc;
 
-    printf("WINDSHIELD_WIPERS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(WINDSHIELD_WIPERS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -333,14 +315,9 @@ void hazardLightsMenu(){
     int values[MAX_NUM];
     hazardLightsControlFunction hazardFunc;
 
-    printf("HAZARD_LIGHTS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(HAZARD_LIGHTS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -390,14 +367,9 @@ void cruiseControlMenu() {
     cruiseControlFunction cruiseFunc;
     CruiseControlState cruiseControlState;
 
-    printf("CRUISE_CONTROL Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(CRUISE_CONTROL);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -459,14 +431,9 @@ void radioVolumeMenu(){
     int values[MAX_NUM];
     radioVolumeFunction radioVolumeFunc;
 
-    printf("RADIO_VOLUME Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &mainOption) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    mainOption = displayHardkeyOption(RADIO_VOLUME);
+    if(mainOption == -1 || mainOption == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (mainOption) {
         case 1:
@@ -561,14 +528,9 @@ void radioTuningMenu(){
     int values[MAX_NUM];
     radioTuningFunction radioTuningFunc;
 
-    printf("RADIO_TUNING Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &mainOption) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    mainOption = displayHardkeyOption(RADIO_TUNING);
+    if(mainOption == -1 || mainOption == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (mainOption) {
         case 1:

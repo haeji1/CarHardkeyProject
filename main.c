@@ -34,18 +34,20 @@
 int main() {
     char input[10];
     int selection;
-
     ignitionStarted = 0; //gobal variable in ignition.h
+    extern int needHardkeyOption;
 
     while (1) {
         if(ignitionStarted != 1){
             ignitionMenu();
         }else{
-            displayMenu();
-            printf("Enter your choice (number): ");
-            if (scanf("%d", &selection) != 1) {
-                perror("scanf failed");
-                exit(EXIT_FAILURE);
+            if(needHardkeyOption){
+                displayMenu();
+                printf("Enter your choice (number): ");
+                if (scanf("%d", &selection) != 1) {
+                    perror("scanf failed");
+                    exit(EXIT_FAILURE);
+                }
             }
             
             if (selection == 1) {

@@ -45,17 +45,3 @@ void deactivateCruiseControl(CruiseControlState *cs) {
     setCruiseControlState(cs, 0);
     printf("Cruise control turned OFF.\n");
 }
-
-// void adjustCruiseControlSpeed(CruiseControlState *cs) {
-//     if (cs->cruiseState == 1) {
-//         int newSpeed;
-//         printf("Enter new cruise control speed: ");
-//         if (scanf("%d", &newSpeed) == 1) {
-//             setCruiseControlSpeed(cs, newSpeed);
-//         } else {
-//             printf("Invalid input.\n");
-//         }
-//     } else {
-//         printf("Cruise control is off. Cannot adjust speed.\n");
-//     }
-// }
