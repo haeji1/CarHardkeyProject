@@ -4,6 +4,7 @@
 #include "observer.h"
 
 void displayMenu();
+int displayHardkeyOption(HardKey key);
 const char* getHardKeyName(HardKey key);
 
 #endif
