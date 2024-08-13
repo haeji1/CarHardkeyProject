@@ -7,11 +7,11 @@
 */
 
 void offHazardLights(){
-    printf("Hazard lighs turned OFF.\n");
+    printf("Hazard lights turned OFF.\n");
 }
 
 void onHazardLights(){
-    printf("Hazard lighs turned ON.\n");
+    printf("Hazard lights turned ON.\n");
 }
 
 void hazardLightsControl(hazardLightsControlFunction tc){
