@@ -19,7 +19,7 @@ SRCS = main.c observer/observer.c domain/ignition.c domain/horn.c domain/headlig
 OBJS = $(SRCS:.c=.o)
 
 # Include directory (optional, currently commented out)
-INCLUDES = -Iheader -Iobserver
+INCLUDES = -Iheader -Iobserver -I.
 
 # Build all and execute
 all: $(TARGET)
@@ -30,10 +30,9 @@ $(TARGET): $(OBJS)
 	$(CC) -o $(TARGET) $(OBJS)
 
 # Compile .c files to .o files
-# %.o: %.c
-# 	$(CC) -I. -c $< -o $@
 %.o: %.c
-	$(CC) -I. -c $< -o $@
+	$(CC) $(INCLUDES) -c $< -o $@
+       
 # Clean up
 clean:
 	rm -f $(OBJS) $(TARGET)
