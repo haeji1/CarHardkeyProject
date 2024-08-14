@@ -779,10 +779,10 @@ void climateFanMenu() {
             cf = Level_Three;
         }else if(value == 4){
             cf = Level_Four;
-		}
-		else if(value == 5){
+      }
+      else if(value == 5){
             cf = Level_Five;
-		}
+      }
         // Execute the traction control function
         handleClimateFan(cf);
         registerHandler(CLIMATE_FAN, cf);
@@ -1258,14 +1258,9 @@ void sunroofMenu() {
     int values[MAX_NUM];
     sunroofControlFunction sc;
 
-    printf("SUNROOF Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(SUNROOF_CONTROL);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1317,14 +1312,9 @@ void trunkReleaseMenu() {
     int values[MAX_NUM];
     trunkReleaseControlFunction tr;
 
-    printf("TRUNK RELEASE Menu:\n");
-    printf("1. Activate trunk release\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(TRUNK_RELEASE);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1358,14 +1348,9 @@ void fuelCapReleaseMenu() {
     int values[MAX_NUM];
     fuelCapReleaseControlFunction fr;
 
-    printf("FUEL CAP RELEASE Menu:\n");
-    printf("1. Activate fuel cap release\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(FUEL_CAP_RELEASE);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1399,14 +1384,9 @@ void parkingBrakeMenu() {
     int values[MAX_NUM];
     parkingBrakeControlFunction pc;
 
-    printf("Parking Brake Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(PARKING_ASSIST);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1455,14 +1435,18 @@ void driveModeMenu() {
     int values[MAX_NUM];
     driveModeControlFunction dc;
 
-    printf("Drive mode Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    // printf("Drive mode Menu:\n");
+    // printf("1. Write value to file\n");
+    // printf("2. Listen to event\n");
+    // printf("Enter your choice: ");
+    // if (scanf("%d", &option) != 1) {
+    //     printf("Invalid input. Returning to menu.\n");
+    //     return;
+    // }
+
+    option = displayHardkeyOption(DRIVE_MODE);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1570,14 +1554,9 @@ void heatedSeatMenu() {
     heatSeatControlFunction hc;
     HseatStatus status;
 
-    printf("HEATED SEATS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(HEATED_SEATS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1636,14 +1615,9 @@ void cooledSeatMenu() {
     coolSeatControlFunction cc;
     CseatStatus status;
 
-    printf("COOLED SEATS Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(COOLED_SEATS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1702,14 +1676,9 @@ void steeringMenu() {
 
     steeringControlFunction sc;
 
-    printf("Steering Adjust Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    option = displayHardkeyOption(STEERING_ADJUST);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1763,14 +1732,9 @@ void interiorLightMenu() {
     int values[MAX_NUM];
     interiorLightControlFunction ic;
 
-    printf("Interior Light Menu:\n");
-    printf("1. Write value to file\n");
-    printf("2. Listen to event\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+     option = displayHardkeyOption(INTERIOR_LIGHT);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1841,7 +1805,7 @@ void fogLightsMenu(){
             } else {
                 flf = fogLightsOn;
             }
-			printf("****************************\n");
+         printf("****************************\n");
             setFogLights(flf);
             registerHandler(FOG_LIGHTS, flf);
             handlerEvent(FOG_LIGHTS);
@@ -1908,12 +1872,12 @@ void seatHeaterMenu() {
             }
 
             // Apply the seat heater configuration
-			printf("****************************\n");
-			setSeatHeater(shf, &config);
+         printf("****************************\n");
+         setSeatHeater(shf, &config);
             registerHandler(SEAT_HEATER, seatHeaterHandlerWrapper);
             handlerEvent(SEAT_HEATER);
             unregisterHandler(SEAT_HEATER, seatHeaterHandlerWrapper);
-			printf("****************************\n");
+         printf("****************************\n");
 
             break;
 
@@ -1978,11 +1942,11 @@ void seatCoolerMenu() {
 
             // Apply the seat cooler configuration
             printf("****************************\n");
-			setSeatCooler(scf, &config);
+         setSeatCooler(scf, &config);
             registerHandler(SEAT_COOLER, seatCoolerHandlerWrapper);
             handlerEvent(SEAT_COOLER);
             unregisterHandler(SEAT_COOLER, seatCoolerHandlerWrapper);
-			printf("****************************\n");
+         printf("****************************\n");
             break;
 
         case 2:
