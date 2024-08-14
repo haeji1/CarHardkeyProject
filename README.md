@@ -26,8 +26,21 @@ Mingw version that we used.
 ## Execution
 For, execution of program
 ```
-& mingw-make all
+# Build all and execute
+$ mingw-make all
+
+# Remove build files
+$ mingw-make clean
 ```
+
+## Commit Message Convention
+- `feat` : add new function
+- `fix` : modify bug
+- `docs` : modify document
+- `style` : code formating (not changed code)
+- `refactor` : code refactoring
+- `test` : test code, refactoring test code
+- `chore` : modify build option
 
 ## Team Members
 - ![haeji's GitHub](https://img.shields.io/badge/-Kim%20haeji-black?style=flat-square&logo=github) [**haeji1**](https://github.com/haeji1) -  Project Leader
