@@ -624,16 +624,20 @@ void radioSourceMenu() {
     int values[MAX_NUM];
     RadioSouceControlFunction rc;
 
-    printf("****************************************\n");
-    printf("            RADIO_SOURCE Menu:\n");
-    printf("        1. Write value to file\n");
-    printf("        2. Listen to event\n");
-    printf("            Enter your choice: \n");
-    printf("****************************************\n");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        return;
-    }
+    // printf("****************************************\n");
+    // printf("            RADIO_SOURCE Menu:\n");
+    // printf("        1. Write value to file\n");
+    // printf("        2. Listen to event\n");
+    // printf("            Enter your choice: \n");
+    // printf("****************************************\n");
+    // if (scanf("%d", &option) != 1) {
+    //     printf("Invalid input. Returning to menu.\n");
+    //     return;
+    // }
+
+    option = displayHardkeyOption(RADIO_SOURCE);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1732,7 +1736,7 @@ void interiorLightMenu() {
     int values[MAX_NUM];
     interiorLightControlFunction ic;
 
-     option = displayHardkeyOption(INTERIOR_LIGHT);
+    option = displayHardkeyOption(INTERIOR_LIGHT);
     if(option == -1 || option == 3) needHardkeyOption = 1;
     else needHardkeyOption = 0;
 
@@ -1780,14 +1784,17 @@ void fogLightsMenu(){
     int values[MAX_NUM];
     fogLightFunction flf;
 
-    printf("Ac: \n");
-    printf("1. Fog Light mode\n");
-    printf("2. Listen to event\n");
-    if (scanf("%d", &option) != 1){
-        printf("Invalid input. Returning to menu.\n");
-        return;
+    // printf("Ac: \n");
+    // printf("1. Fog Light mode\n");
+    // printf("2. Listen to event\n");
+    // if (scanf("%d", &option) != 1){
+    //     printf("Invalid input. Returning to menu.\n");
+    //     return;
 
-    }
+    // }
+    option = displayHardkeyOption(FOG_LIGHTS);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -1831,15 +1838,9 @@ void seatHeaterMenu() {
     seatHeaterFunction shf;
     seatHeaterConfig config;
 
-    printf("Seat Heater Menu:\n");
-    printf("1. Set and Save Seat Heater Configuration\n");
-    printf("2. Listen to Events\n");
-    printf("Enter your choice: ");
-    if (scanf("%d", &option) != 1) {
-        printf("Invalid input. Returning to menu.\n");
-        while (getchar() != '\n'); // Clear input buffer
-        return;
-    }
+    option = displayHardkeyOption(SEAT_HEATER);
+    if(option == -1 || option == 3) needHardkeyOption = 1;
+    else needHardkeyOption = 0;
 
     switch (option) {
         case 1:
@@ -2338,6 +2339,7 @@ void REAR_DEFROST_MENU(){
         printf("Invalid input. Returning to menu.\n");
         return;
     }
+
 
 
     switch (option) {
