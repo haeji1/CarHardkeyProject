@@ -10,7 +10,6 @@ typedef void(*cruiseControlFunction)(CruiseControlState*);
 
 void activateCruiseControl(CruiseControlState *cs);
 void deactivateCruiseControl(CruiseControlState *cs);
-void adjustCruiseControlSpeed(CruiseControlState *cs);
 
 void setCruiseControlState(CruiseControlState *cs, int state);
 int setCruiseControlSpeed(CruiseControlState *cs);
