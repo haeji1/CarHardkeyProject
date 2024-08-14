@@ -5,7 +5,7 @@ void displayMenu() {
     printf("****************************************\n");
     printf("\n        Available features:\n");
     for(int i=1; i<NUM_KEYS; i++){
-        printf("       %d. %s \n", i, getHardKeyName(i));
+        printf("       %d. %s \n", i+1, getHardKeyName(i));
     }
     printf("       49. EXIT\n");
     printf("****************************************\n");

@@ -50,21 +50,21 @@ int main() {
                 }
             }
             
-            if (selection == 1) {
+            if (selection == 2) {
                 hornMenu();
-            } else if (selection == 2) {
-                headlightsMenu();
             } else if (selection == 3) {
-                turnSignalsMenu();
+                headlightsMenu();
             } else if (selection == 4) {
-                windshieldWipersMenu();
+                turnSignalsMenu();
             } else if (selection == 5) {
-                hazardLightsMenu();
+                windshieldWipersMenu();
             } else if (selection == 6) {
-                cruiseControlMenu();
+                hazardLightsMenu();
             } else if (selection == 7) {
-                radioVolumeMenu();
+                cruiseControlMenu();
             } else if (selection == 8) {
+                radioVolumeMenu();
+            } else if (selection == 9) {
                 radioTuningMenu();
             } else if (selection == 10) {
                 radioSourceMenu();
